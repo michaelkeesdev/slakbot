@@ -85,7 +85,7 @@ app.event("app_mention", async ({ context, event }) => {
         q: text,
       });
       let index = getRandom(50);
-      response = `https://www.youtube.com/watch?v=${result.data.items[index]?.id?.videoId}`;
+      response = `https://www.youtube.com/watch?v=${result.data.items[index].id.videoId}`;
       break;
     case /^(youtube|exact|zoek exact|geef video over)/.test(text):
       youtube = google.youtube({
@@ -96,7 +96,7 @@ app.event("app_mention", async ({ context, event }) => {
         part: "id,snippet",
         q: text,
       });
-      response = `https://www.youtube.com/watch?v=${result.data.items[0]?.id?.videoId}`;
+      response = `https://www.youtube.com/watch?v=${result.data.items[0].id.videoId}`;
       break;
     case /^(kick)/.test(text):
 

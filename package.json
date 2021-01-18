@@ -1,23 +1,29 @@
 {
-    "name": "slakbot",
-    "version": "1.0.0",
-    "main": "index.js",
-    "license": "MIT",
-    "scripts": {
-        "start": "nodemon --exec babel-node index.js",
-        "build": "babel index.js --out-file compiled.index.js"
-    },
-    "dependencies": {
-        "@slack/bolt": "^2.4.1",
-        "dotenv": "^8.2.0",
-        "googleapis": "^67.0.0",
-        "stripe": "^8.111.0"
-    },
-    "devDependencies": {
-        "@babel/cli": "^7.12.10",
-        "@babel/core": "^7.12.10",
-        "@babel/node": "^7.12.10",
-        "@babel/preset-env": "^7.12.11",
-        "nodemon": "^2.0.7"
-    }
+  "name": "slakbot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon --exec babel-node index.js",
+    "build": "rollup index.js --file compiled.index.js --format cjs",
+    "start:node": "node compiled.index.js"
+  },
+  "dependencies": {
+    "@slack/bolt": "^2.4.1",
+    "dotenv": "^8.2.0",
+    "googleapis": "^67.0.0",
+    "stripe": "^8.111.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/node": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "babel-plugin-external-helpers": "6.8.0",
+    "babel-preset-es2015": "6.14.0",
+    "babelrc-rollup": "^3.0.0",
+    "nodemon": "^2.0.7",
+    "rollup": "0.35.10",
+    "rollup-plugin-babel": "^2.6.1"
+  }
 }

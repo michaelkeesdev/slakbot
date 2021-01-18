@@ -171,7 +171,7 @@ _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
       switch (_context2.prev = _context2.next) {
         case 0:
           _context2.next = 2;
-          return app.start(process.env.PORT || 80);
+          return app.start(process.env.PORT || 8080);
 
         case 2:
           console.log("⚡️ Slakbot is running!");

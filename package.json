@@ -4,7 +4,8 @@
     "main": "index.js",
     "license": "MIT",
     "scripts": {
-        "start": "nodemon --exec babel-node index.js"
+        "start": "nodemon --exec babel-node index.js",
+        "build": "babel index.js --out-file compiled.index.js"
     },
     "dependencies": {
         "@slack/bolt": "^2.4.1",

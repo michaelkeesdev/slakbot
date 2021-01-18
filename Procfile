@@ -1,1 +1,1 @@
-web: npm run build && npm run start:node
+web: rollup index.js --file compiled.index.js --format cjs && npm run start:node

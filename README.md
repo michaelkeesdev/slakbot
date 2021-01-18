@@ -1,2 +1,9 @@
 # slakbot
-Slakbot
+
+.env
+
+```
+SLACK_SIGNING_SECRET=""
+SLACK_BOT_TOKEN=""
+YOUTUBE_API_KEY=""
+```

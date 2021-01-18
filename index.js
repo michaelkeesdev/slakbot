@@ -15,6 +15,7 @@ import {
 import { SLUIP_IDS } from "./messages/sluip";
 
 import "dotenv/config";
+import regeneratorRuntime from "regenerator-runtime";
 
 const app = new App({
   signingSecret: process.env.SLACK_SIGNING_SECRET,

@@ -1,6 +1,5 @@
 import { App } from "@slack/bolt";
 import { google } from "googleapis";
-import { logger } from "heroku-logger";
 
 import {
   HOW_MUCH,
@@ -33,8 +32,6 @@ const getRandom = (length) => {
 app.event("app_mention", async ({ context, event }) => {
   const token = context.botToken;
   const channel = event.channel;
-
-  logger.info('app_mention', { token: token, context: context })
 
   const text = event.text.replace(`<@${context.botUserId}>`, "").trim();
 
@@ -114,6 +111,5 @@ app.event("app_mention", async ({ context, event }) => {
 
 (async () => {
   await app.start(process.env.PORT || 8080);
-  logger.info('Starting server', { port: 8080 });
   console.log("⚡️ Slakbot is running!");
 })();

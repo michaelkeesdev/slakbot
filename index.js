@@ -115,7 +115,8 @@ app.event("app_mention", async ({ context, event }) => {
       let index = getRandom(50);
       response = `https://www.youtube.com/watch?v=${result.data.items[index].id.videoId}`;
       break;
-    case /^9gag/.test(text):
+    case /^(9gag)/.test(text):
+      console.log("9gag called");
       response = memes();
       break;
     default:
@@ -132,7 +133,9 @@ async function memes() {
     // number of posts, section and number of comments
     // can pass a custom http client as the last Scraper argument
     const scraper = new Scraper(10, "hot", 3);
+    console.log("scraper", JSON.stringify(scraper));
     const posts = await scraper.scrap();
+    console.log("posts", JSON.stringify(posts));
     return posts[0].content;
   } catch (err) {
     console.error(err);

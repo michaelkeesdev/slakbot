@@ -8,6 +8,13 @@
     "start:node": "babel-node -- index.js"
   },
   "dependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/node": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@rollup/plugin-babel": "^5.2.2",
+    "babel-plugin-external-helpers": "6.8.0",
+    "babel-preset-es2015": "6.14.0",
     "@rollup/plugin-commonjs": "^17.0.0",
     "@slack/bolt": "^2.4.1",
     "dotenv": "^8.2.0",

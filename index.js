@@ -116,23 +116,17 @@ app.event("app_mention", async ({ context, event }) => {
 });
 
 async function memes() {
-  try {
-    // number of posts, section and number of comments
-    // can pass a custom http client as the last Scraper argument
     const scraper = new Scraper(10, "hot", 3);
     const posts = await scraper.scrap();
     return posts[0].content;
-  } catch (err) {
-    console.error(err);
-  }
 }
 
 (async () => {
   await app.start(process.env.PORT || 8080);
 
-  //const response = await memes();
+  const response = await memes();
 
-  //console.log("res", response);
+  console.log("res", response);
 
   console.log("⚡️ Slakbot is running!");
 })();

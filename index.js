@@ -45,7 +45,7 @@ app.event("app_mention", async ({ context, event }) => {
   switch (true) {
     case /^gag/.test(text):
       response = "het werkt ni jong";
-      response = await memes();
+      //response = await memes();
       break;
     case /^(versie|-v|--version)/.test(text):
       response = "1.0.0";

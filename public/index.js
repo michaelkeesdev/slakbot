@@ -1,11 +1,9 @@
 'use strict';
 
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
-
 var bolt = require('@slack/bolt');
 var googleapis = require('googleapis');
+var herokuLogger = require('heroku-logger');
 require('dotenv/config');
-var regeneratorRuntime = _interopDefault(require('regenerator-runtime'));
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
   try {
@@ -67,7 +65,7 @@ var getRandom = function getRandom(length) {
 
 app.event("app_mention", /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(_ref) {
-    var context, event, token, channel, text, response, youtube, result, index, userMatch, res, message;
+    var context, event, token, channel, text, response, youtube, result, index, message;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -75,123 +73,107 @@ app.event("app_mention", /*#__PURE__*/function () {
             context = _ref.context, event = _ref.event;
             token = context.botToken;
             channel = event.channel;
+            herokuLogger.logger.info('app_mention', {
+              token: token,
+              context: context
+            });
             text = event.text.replace("<@".concat(context.botUserId, ">"), "").trim();
             response = "Ja?"; // calculate response
             // console.log("text", text);
             //console.log("event", context, event);
 
             _context.t0 = true;
-            _context.next = _context.t0 === /^(versie|-v|--version)/.test(text) ? 8 : _context.t0 === /^(hoeveel|hoe veel)/.test(text) ? 10 : _context.t0 === /^wie/.test(text) ? 12 : _context.t0 === /^wanneer/.test(text) ? 14 : _context.t0 === /^hoe/.test(text) ? 16 : _context.t0 === /^waar/.test(text) ? 18 : _context.t0 === /^(bedankt|thanks|thank|dank)/.test(text) ? 20 : _context.t0 === /^(goeiemorgen|goeimorgen|morgend|murgend|goedemorgen|goedemorgend|daag|gedag|ey|hallo)/.test(text) ? 22 : _context.t0 === /^(dag|salut|ciao)/.test(text) ? 24 : _context.t0 === /^(sluip|humor|sluip random|youtube sluip random)/.test(text) ? 26 : _context.t0 === /^(zoek|zoek youtube|muziek|random)/.test(text) ? 29 : _context.t0 === /^(youtube|exact|zoek exact|geef video over)/.test(text) ? 36 : _context.t0 === /^(kick)/.test(text) ? 42 : 48;
+            _context.next = _context.t0 === /^(versie|-v|--version)/.test(text) ? 9 : _context.t0 === /^(hoeveel|hoe veel)/.test(text) ? 11 : _context.t0 === /^wie/.test(text) ? 13 : _context.t0 === /^wanneer/.test(text) ? 15 : _context.t0 === /^hoe/.test(text) ? 17 : _context.t0 === /^waar/.test(text) ? 19 : _context.t0 === /^(bedankt|thanks|thank|dank)/.test(text) ? 21 : _context.t0 === /^(goeiemorgen|goeimorgen|morgend|murgend|goedemorgen|goedemorgend|daag|gedag|ey|hallo)/.test(text) ? 23 : _context.t0 === /^(dag|salut|ciao)/.test(text) ? 25 : _context.t0 === /^(sluip|humor|sluip random|youtube sluip random)/.test(text) ? 27 : _context.t0 === /^(zoek|zoek youtube|muziek|random)/.test(text) ? 30 : _context.t0 === /^(youtube|exact|zoek exact|geef video over)/.test(text) ? 37 : 43;
             break;
 
-          case 8:
+          case 9:
             response = "1.0.0";
-            return _context.abrupt("break", 49);
+            return _context.abrupt("break", 44);
 
-          case 10:
+          case 11:
             response = HOW_MUCH[getRandom(HOW_MUCH.length)];
-            return _context.abrupt("break", 49);
+            return _context.abrupt("break", 44);
 
-          case 12:
+          case 13:
             response = WHO[getRandom(WHO.length)];
-            return _context.abrupt("break", 49);
+            return _context.abrupt("break", 44);
 
-          case 14:
+          case 15:
             response = WHEN[getRandom(WHEN.length)];
-            return _context.abrupt("break", 49);
+            return _context.abrupt("break", 44);
 
-          case 16:
+          case 17:
             response = HOW[getRandom(HOW.length)];
-            return _context.abrupt("break", 49);
+            return _context.abrupt("break", 44);
 
-          case 18:
+          case 19:
             response = WHERE[getRandom(WHERE.length)];
-            return _context.abrupt("break", 49);
+            return _context.abrupt("break", 44);
 
-          case 20:
+          case 21:
             response = THANKS[getRandom(THANKS.length)];
-            return _context.abrupt("break", 49);
+            return _context.abrupt("break", 44);
 
-          case 22:
+          case 23:
             response = GOODMORNING[getRandom(GOODMORNING.length)];
-            return _context.abrupt("break", 49);
+            return _context.abrupt("break", 44);
 
-          case 24:
+          case 25:
             response = BYE[getRandom(BYE.length)];
-            return _context.abrupt("break", 49);
+            return _context.abrupt("break", 44);
 
-          case 26:
+          case 27:
             console.log("sluip test");
             response = "https://www.youtube.com/watch?v=".concat(SLUIP_IDS[getRandom(SLUIP_IDS.length)]);
-            return _context.abrupt("break", 49);
+            return _context.abrupt("break", 44);
 
-          case 29:
+          case 30:
             youtube = googleapis.google.youtube({
               version: "v3",
               auth: process.env.YOUTUBE_API_KEY
             });
-            _context.next = 32;
+            _context.next = 33;
             return youtube.search.list({
               part: "id,snippet",
               maxResults: "50",
               q: text
             });
 
-          case 32:
+          case 33:
             result = _context.sent;
             index = getRandom(50);
             response = "https://www.youtube.com/watch?v=".concat(result.data.items[index].id.videoId);
-            return _context.abrupt("break", 49);
+            return _context.abrupt("break", 44);
 
-          case 36:
+          case 37:
             youtube = googleapis.google.youtube({
               version: "v3",
               auth: process.env.YOUTUBE_API_KEY
             });
-            _context.next = 39;
+            _context.next = 40;
             return youtube.search.list({
               part: "id,snippet",
               q: text
             });
 
-          case 39:
+          case 40:
             result = _context.sent;
             response = "https://www.youtube.com/watch?v=".concat(result.data.items[0].id.videoId);
-            return _context.abrupt("break", 49);
+            return _context.abrupt("break", 44);
 
-          case 42:
-            userMatch = text.match(new RegExp('\<\@(.*?)\>'))[1];
-            _context.next = 45;
-            return app.client.conversations.kick({
-              token: process.env.SLACK_BOT_TOKEN,
-              channel: event.channel,
-              user: userMatch
-            });
-
-          case 45:
-            res = _context.sent;
-            console.log("res", JSON.stringify(res));
-            /* const resUsers = await app.client.users.list({
-              token: process.env.SLACK_BOT_TOKEN,
-            }); */
-            // console.log("LIST", resUsers);
-
-            return _context.abrupt("break", 49);
-
-          case 48:
+          case 43:
             response = BASIC[getRandom(BASIC.length)];
 
-          case 49:
-            console.log("response", response);
+          case 44:
             message = {
               token: token,
               channel: channel,
               text: response
             };
-            _context.next = 53;
+            _context.next = 47;
             return app.client.chat.postMessage(message);
 
-          case 53:
+          case 47:
           case "end":
             return _context.stop();
         }
@@ -213,38 +195,16 @@ _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
           return app.start(process.env.PORT || 8080);
 
         case 2:
+          herokuLogger.logger.info('Starting server', {
+            port: 8080
+          });
           console.log("⚡️ Slakbot is running!");
 
-        case 3:
+        case 4:
         case "end":
           return _context2.stop();
       }
     }
   }, _callee2);
-}))(); // GET USER = <@${event.user}>
-
-/*
-{
-  isEnterpriseInstall: false,
-  botToken: 'xoxb-308649945847-1649403505921-GhpPbvZWN9qIup8GV1HJYTvG',
-  botUserId: 'U01K3BVEVT3',
-  botId: 'B01JML61DHB',
-  teamId: 'T92K3TTQX',
-  updateConversation: [Function (anonymous)]
-}
-
-event {
-  client_msg_id: 'edabcaec-aecb-4bd4-8909-12641d7ffc75',
-  type: 'app_mention',
-  text: '<@U01K3BVEVT3>',
-  user: 'U90TSU6JU',
-  ts: '1610641077.002600',
-  team: 'T92K3TTQX',
-  blocks: [ { type: 'rich_text', block_id: 'QKqm', elements: [Array] } ],
-  channel: 'C01JR4QQD1Q',
-  event_ts: '1610641077.002600'
-}
-
-
-*/
+}))();
 //# sourceMappingURL=index.js.map

@@ -13,6 +13,7 @@
     "@slack/bolt": "^2.4.1",
     "dotenv": "^8.2.0",
     "googleapis": "^67.0.0",
+    "heroku-logger": "^0.3.3",
     "stripe": "^8.111.0"
   },
   "devDependencies": {

@@ -43,6 +43,10 @@ app.event("app_mention", async ({ context, event }) => {
   //console.log("event", context, event);
 
   switch (true) {
+    case /^gag/.test(text):
+      response = "het werkt ni jong";
+      response = await memes();
+      break;
     case /^(versie|-v|--version)/.test(text):
       response = "1.0.0";
       break;
@@ -102,10 +106,6 @@ app.event("app_mention", async ({ context, event }) => {
       });
       response = `https://www.youtube.com/watch?v=${result.data.items[0].id.videoId}`;
       break;
-    case /^(9gag)/.test(text):
-      console.log("9gag called");
-      response = await memes();
-      break;
     default:
       response = BASIC[getRandom(BASIC.length)];
   }
@@ -129,12 +129,10 @@ async function memes() {
 
 (async () => {
   await app.start(process.env.PORT || 8080);
-  
 
   //const response = await memes();
 
   //console.log("res", response);
-
 
   console.log("⚡️ Slakbot is running!");
 })();

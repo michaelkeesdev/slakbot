@@ -102,19 +102,6 @@ app.event("app_mention", async ({ context, event }) => {
       });
       response = `https://www.youtube.com/watch?v=${result.data.items[0].id.videoId}`;
       break;
-    case /^(plaats)/.test(text):
-      let youtube = google.maps({
-        version: "v3",
-        auth: process.env.YOUTUBE_API_KEY,
-      });
-      let result = await youtube.search.list({
-        part: "id,snippet",
-        maxResults: "50",
-        q: text,
-      });
-      let index = getRandom(50);
-      response = `https://www.youtube.com/watch?v=${result.data.items[index].id.videoId}`;
-      break;
     case /^(9gag)/.test(text):
       console.log("9gag called");
       response = memes();
@@ -144,5 +131,12 @@ async function memes() {
 
 (async () => {
   await app.start(process.env.PORT || 8080);
+  
+
+  const response = memes();
+
+  console.log("res", response);
+
+
   console.log("⚡️ Slakbot is running!");
 })();

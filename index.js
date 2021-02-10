@@ -104,7 +104,7 @@ app.event("app_mention", async ({ context, event }) => {
       break;
     case /^(9gag)/.test(text):
       console.log("9gag called");
-      response = memes();
+      response = await memes();
       break;
     default:
       response = BASIC[getRandom(BASIC.length)];
@@ -120,9 +120,7 @@ async function memes() {
     // number of posts, section and number of comments
     // can pass a custom http client as the last Scraper argument
     const scraper = new Scraper(10, "hot", 3);
-    console.log("scraper", JSON.stringify(scraper));
     const posts = await scraper.scrap();
-    console.log("posts", JSON.stringify(posts));
     return posts[0].content;
   } catch (err) {
     console.error(err);
@@ -133,9 +131,9 @@ async function memes() {
   await app.start(process.env.PORT || 8080);
   
 
-  const response = memes();
+  //const response = await memes();
 
-  console.log("res", response);
+  //console.log("res", response);
 
 
   console.log("⚡️ Slakbot is running!");

@@ -1,5 +1,8 @@
 import { App } from "@slack/bolt";
 import { google } from "googleapis";
+const NineGag = require("9gag");
+const Scraper = NineGag.Scraper;
+const Downloader = NineGag.Downloader;
 
 import {
   HOW_MUCH,
@@ -14,7 +17,6 @@ import {
 } from "./messages/messages";
 
 import { SLUIP_IDS } from "./messages/sluip";
-
 
 import "dotenv/config";
 
@@ -100,6 +102,22 @@ app.event("app_mention", async ({ context, event }) => {
       });
       response = `https://www.youtube.com/watch?v=${result.data.items[0].id.videoId}`;
       break;
+    case /^(plaats)/.test(text):
+      let youtube = google.maps({
+        version: "v3",
+        auth: process.env.YOUTUBE_API_KEY,
+      });
+      let result = await youtube.search.list({
+        part: "id,snippet",
+        maxResults: "50",
+        q: text,
+      });
+      let index = getRandom(50);
+      response = `https://www.youtube.com/watch?v=${result.data.items[index].id.videoId}`;
+      break;
+    case /^9gag/.test(text):
+      response = memes();
+      break;
     default:
       response = BASIC[getRandom(BASIC.length)];
   }
@@ -108,6 +126,18 @@ app.event("app_mention", async ({ context, event }) => {
 
   await app.client.chat.postMessage(message);
 });
+
+async function memes() {
+  try {
+    // number of posts, section and number of comments
+    // can pass a custom http client as the last Scraper argument
+    const scraper = new Scraper(10, "hot", 3);
+    const posts = await scraper.scrap();
+    return posts[0].content;
+  } catch (err) {
+    console.error(err);
+  }
+}
 
 (async () => {
   await app.start(process.env.PORT || 8080);

@@ -43,14 +43,14 @@ app.event("app_mention", async ({ context, event }) => {
   //console.log("event", context, event);
 
   switch (true) {
-    case /^(foto)/.test(text):
+    case /^foto/.test(text):
       response = "het werkt ni jong";
       //response = await memes();
       break;
     case /^(versie|-v|--version)/.test(text):
       response = "1.0.0";
       break;
-    case /^(hoeveel|hoe veel)/.test(text):
+    case /^(hoeveel|hoe veel|veel)/.test(text):
       response = HOW_MUCH[getRandom(HOW_MUCH.length)];
       break;
     case /^wie/.test(text):

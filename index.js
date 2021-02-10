@@ -43,7 +43,7 @@ app.event("app_mention", async ({ context, event }) => {
   //console.log("event", context, event);
 
   switch (true) {
-    case /^gag/.test(text):
+    case /^(foto)/.test(text):
       response = "het werkt ni jong";
       //response = await memes();
       break;

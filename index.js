@@ -99,29 +99,9 @@ app.event("app_mention", async ({ context, event }) => {
       });
       response = `https://www.youtube.com/watch?v=${result.data.items[0].id.videoId}`;
       break;
-    case /^(kick)/.test(text):
-
-      const userMatch = text.match(new RegExp('\<\@(.*?)\>'))[1];
-
-      const res = await app.client.conversations.kick({
-        token: process.env.SLACK_BOT_TOKEN,
-        channel: event.channel,
-        user: userMatch
-      })
-      console.log("res", JSON.stringify(res));
-
-      /* const resUsers = await app.client.users.list({
-        token: process.env.SLACK_BOT_TOKEN,
-      }); */
-
-      // console.log("LIST", resUsers);
-    
-      break;
     default:
       response = BASIC[getRandom(BASIC.length)];
   }
-
-  console.log("response", response);
 
   const message = { token, channel, text: response };
 
@@ -132,30 +112,3 @@ app.event("app_mention", async ({ context, event }) => {
   await app.start(process.env.PORT || 8080);
   console.log("⚡️ Slakbot is running!");
 })();
-
-// GET USER = <@${event.user}>
-
-/*
-{
-  isEnterpriseInstall: false,
-  botToken: 'xoxb-308649945847-1649403505921-GhpPbvZWN9qIup8GV1HJYTvG',
-  botUserId: 'U01K3BVEVT3',
-  botId: 'B01JML61DHB',
-  teamId: 'T92K3TTQX',
-  updateConversation: [Function (anonymous)]
-}
-
-event {
-  client_msg_id: 'edabcaec-aecb-4bd4-8909-12641d7ffc75',
-  type: 'app_mention',
-  text: '<@U01K3BVEVT3>',
-  user: 'U90TSU6JU',
-  ts: '1610641077.002600',
-  team: 'T92K3TTQX',
-  blocks: [ { type: 'rich_text', block_id: 'QKqm', elements: [Array] } ],
-  channel: 'C01JR4QQD1Q',
-  event_ts: '1610641077.002600'
-}
-
-
-*/

@@ -71,6 +71,9 @@ app.event("app_mention", async ({ context, event }) => {
     case /^waar/.test(text):
       response = WHERE[getRandom(WHERE.length)];
       break;
+      case /^waar blijven/.test(text):
+      response = "in uw kot";
+      break;
     case /^(bedankt|thanks|thank|dank)/.test(text):
       response = THANKS[getRandom(THANKS.length)];
       break;

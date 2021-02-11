@@ -41,67 +41,40 @@ const getRandomElement = (list) => {
   return list[getRandom(list.length)];
 };
 
-const doAction = async (action) => {
-  switch (action) {
-    case "NINE_GAG":
-      return get9gagPost();
-      break;
-    case "HOW_MUCH":
-      return getRandomElement(HOW_MUCH);
-      break;
-    case "WHO":
-      return getRandomElement(WHO);
-      break;
-    case "WHEN":
-      return getRandomElement(WHEN);
-      break;
-    case "HOW":
-      return getRandomElement(HOW);
-      break;
-    case "WHERE":
-      return getRandomElement(WHERE);
-      break;
-    case "THANKS":
-      return getRandomElement(THANKS);
-      break;
-    case "BYE":
-      return getRandomElement(BYE);
-      break;
-    case "GOODMORNING":
-      return getRandomElement(GOODMORNING);
-      break;
-    case "SLUIP":
-      return getRandomElement(SLUIP_IDS);
-      break;
-    case "YOUTUBE_EXACT":
-      return `https://www.youtube.com/watch?v=${
-        SLUIP_IDS[getRandom(SLUIP_IDS.length)]
-      }`;
-      break;
-    case "YOUTUBE_RANDOM":
-      let youtube = google.youtube({
-        version: "v3",
-        auth: process.env.YOUTUBE_API_KEY,
-      });
-      let result = await youtube.search.list({
-        part: "id,snippet",
-        maxResults: "50",
-        q: text,
-      });
-      let index = getRandom(50);
-      response = `https://www.youtube.com/watch?v=${result.data.items[index].id.videoId}`;
-      break;
-  }
-};
+const getRandomYoutube = async (text) => {
+  let youtube = google.youtube({
+    version: "v3",
+    auth: process.env.YOUTUBE_API_KEY,
+  });
+  let result = await youtube.search.list({
+    part: "id,snippet",
+    maxResults: "50",
+    q: text,
+  });
+  let index = getRandom(50);
+  return `https://www.youtube.com/watch?v=${result.data.items[index].id.videoId}`;
+}
+
+const getExactYoutube = async (text) => {
+  youtube = google.youtube({
+    version: "v3",
+    auth: process.env.YOUTUBE_API_KEY,
+  });
+  result = await youtube.search.list({
+    part: "id,snippet",
+    q: text,
+  });
+  return `https://www.youtube.com/watch?v=${result.data.items[0].id.videoId}`;
+}
 
 const matches = [
-  { names: ["9gag", "ninegag"], action: "NINE_GAG" },
-  { names: ["hoeveel", "hoe veel", "hoe veel"], action: "HOW_MUCH" },
-  { names: ["wie"], action: "WHO" },
-  { names: ["wanneer"], action: "WHEN" },
-  { names: ["waar"], action: "WHERE" },
-  { names: ["hoe"], action: "HOW" },
-  { names: ["bedankt", "thanks", "thank", "dank"], action: "THANKS" },
+  { names: ["9gag", "ninegag"], action: async () => await get9gagPost() },
+  { names: ["hoeveel", "hoe veel", "hoe veel"], action: () => getRandomElement(HOW_MUCH) },
+  { names: ["wie"], action: () => getRandomElement(WHO)  },
+  { names: ["wanneer"], action: () => getRandomElement(WHEN)  },
+  { names: ["waar"], action: () => getRandomElement(WHERE) },
+  { names: ["hoe"], action: () => getRandomElement(HOW)  },
+  { names: ["bedankt", "thanks", "thank", "dank"], action: () => getRandomElement(THANKS)  },
   {
     names: [
       "goeiemorgen",
@@ -115,20 +88,20 @@ const matches = [
       "ey",
       "hallo",
     ],
-    action: "GOODMORNING",
+    action: () => getRandomElement(GOODMORNING)
   },
-  { names: ["dag", "salut", "ciao"], action: "BYE" },
+  { names: ["dag", "salut", "ciao"], action: () => getRandomElement(BYE)  },
   {
     names: ["sluip", "humor", "sluip random", "youtube sluip random"],
-    action: "SLUIP",
+    action: () => getRandomElement(SLUIP_IDS) ,
   },
   {
     names: ["zoek", "zoek youtube", "muziek", "random"],
-    action: "YOUTUBE_RANDOM",
+    action: async () => await getRandomYoutube(),
   },
   {
     names: ["youtube", "exact", "zoek exact", "geef video over"],
-    action: "YOUTUBE_EXACT",
+    action: async () => await getExactYoutube(),
   },
 ];
 
@@ -141,7 +114,7 @@ app.event("app_mention", async ({ context, event }) => {
   const fuse = new Fuse(matches, { keys: ["names"] });
   const result = fuse.search(text);
 
-  let response = await doAction(result[0]?.item?.action);
+  let response = await result[0]?.item?.action();
 
   switch (true && !response) {
     case text.split(" of ").length > 1:

@@ -46,7 +46,7 @@ app.event("app_mention", async ({ context, event }) => {
   //console.log("event", context, event);
 
   switch (true) {
-    case text.split("of").length > 0:
+    case text.split("of").length > 1:
       response = text.split("of")[getRandom(text.split("of").length)]
       break;
     case /^foto/.test(text):

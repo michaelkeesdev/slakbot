@@ -105,25 +105,32 @@ const matches = [
   },
 ];
 
+const getResponse = async (text) => {
+  const fuse = new Fuse(matches, { keys: ["names"] });
+  const result = fuse.search(text);
+
+  let response = await result[0]?.item?.action();
+
+  if(!response) {
+    switch (true) {
+      case text.split(" of ").length > 1:
+        response = text.split("of")[getRandom(text.split("of").length)];
+        break;
+      default:
+        response = BASIC[getRandom(BASIC.length)];
+    }
+  }
+  
+  return response;
+}
+
 app.event("app_mention", async ({ context, event }) => {
   const token = context.botToken;
   const channel = event.channel;
 
   const text = event.text.replace(`<@${context.botUserId}>`, "").trim();
 
-  const fuse = new Fuse(matches, { keys: ["names"] });
-  const result = fuse.search(text);
-
-  let response = await result[0]?.item?.action();
-
-  switch (true && !response) {
-    case text.split(" of ").length > 1:
-      response = text.split("of")[getRandom(text.split("of").length)];
-      break;
-    default:
-      response = BASIC[getRandom(BASIC.length)];
-  }
-
+  const response = await getResponse(text);
   const message = { token, channel, text: response };
 
   await app.client.chat.postMessage(message);

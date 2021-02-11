@@ -26,15 +26,15 @@ const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
 });
 
-const ninegag = new Ninegag(10, "hot", 3);
+const ninegag = new Ninegag(10, "hot", "girl", 3);
 
 const getRandom = (length) => {
   return Math.floor(Math.random() * length);
 };
 
 const get9gagPost = async () => {
-  const posts = await ninegag.scrap();
-  return posts[getRandom(posts.length)]?.content;
+  let result = await ninegag.scrap();
+  return result[0]?.data?.posts[getRandom(result[0]?.data?.posts?.length)]?.images?.image700?.url;
 };
 
 const getRandomElement = (list) => {
@@ -53,28 +53,33 @@ const getRandomYoutube = async (text) => {
   });
   let index = getRandom(50);
   return `https://www.youtube.com/watch?v=${result.data.items[index].id.videoId}`;
-}
+};
 
 const getExactYoutube = async (text) => {
   youtube = google.youtube({
     version: "v3",
     auth: process.env.YOUTUBE_API_KEY,
   });
-  result = await youtube.search.list({
+  let result = await youtube.search.list({
     part: "id,snippet",
     q: text,
   });
   return `https://www.youtube.com/watch?v=${result.data.items[0].id.videoId}`;
-}
+};
 
 const matches = [
-  { names: ["9gag", "ninegag"], action: async () => await get9gagPost() },
-  { names: ["hoeveel", "hoe veel", "hoe veel"], action: () => getRandomElement(HOW_MUCH) },
-  { names: ["wie"], action: () => getRandomElement(WHO)  },
-  { names: ["wanneer"], action: () => getRandomElement(WHEN)  },
-  { names: ["waar"], action: () => getRandomElement(WHERE) },
-  { names: ["hoe"], action: () => getRandomElement(HOW)  },
-  { names: ["bedankt", "thanks", "thank", "dank"], action: () => getRandomElement(THANKS)  },
+  {
+    names: ["hoeveel", "hoe veel", "hoe veel"],
+    action: async () => getRandomElement(HOW_MUCH),
+  },
+  { names: ["wie"], action: async () => getRandomElement(WHO) },
+  { names: ["wanneer"], action: async () => getRandomElement(WHEN) },
+  { names: ["waar"], action: async () => getRandomElement(WHERE) },
+  { names: ["hoe"], action: async () => getRandomElement(HOW) },
+  {
+    names: ["bedankt", "thanks", "thank", "dank"],
+    action: async () => getRandomElement(THANKS),
+  },
   {
     names: [
       "goeiemorgen",
@@ -88,30 +93,37 @@ const matches = [
       "ey",
       "hallo",
     ],
-    action: () => getRandomElement(GOODMORNING)
+    action: async () => getRandomElement(GOODMORNING),
   },
-  { names: ["dag", "salut", "ciao"], action: () => getRandomElement(BYE)  },
+  {
+    names: ["dag", "salut", "ciao"],
+    action: async () => getRandomElement(BYE),
+  },
   {
     names: ["sluip", "humor", "sluip random", "youtube sluip random"],
-    action: () => getRandomElement(SLUIP_IDS) ,
+    action: async () =>
+      `https://www.youtube.com/watch?v=${getRandomElement(SLUIP_IDS)}`,
   },
   {
     names: ["zoek", "zoek youtube", "muziek", "random"],
-    action: async () => await getRandomYoutube(),
+    action: async (text) => await getRandomYoutube(text),
   },
   {
     names: ["youtube", "exact", "zoek exact", "geef video over"],
-    action: async () => await getExactYoutube(),
+    action: async (text) => await getExactYoutube(text),
   },
+  { names: ["9gag", "ninegag", "grietje", "wufke", "slet"], action: async () => await get9gagPost() },
 ];
 
 const getResponse = async (text) => {
   const fuse = new Fuse(matches, { keys: ["names"] });
   const result = fuse.search(text);
 
-  let response = await result[0]?.item?.action();
+  console.log("result", JSON.stringify(result));
 
-  if(!response) {
+  let response = await result[0]?.item?.action(text);
+
+  if (!response) {
     switch (true) {
       case text.split(" of ").length > 1:
         response = text.split("of")[getRandom(text.split("of").length)];
@@ -120,9 +132,9 @@ const getResponse = async (text) => {
         response = BASIC[getRandom(BASIC.length)];
     }
   }
-  
+
   return response;
-}
+};
 
 app.event("app_mention", async ({ context, event }) => {
   const token = context.botToken;
@@ -138,5 +150,7 @@ app.event("app_mention", async ({ context, event }) => {
 
 (async () => {
   await app.start(process.env.PORT || 8080);
+
+  console.log("test", await getResponse("ninegag"));
   console.log("⚡️ Slakbot is running!");
 })();

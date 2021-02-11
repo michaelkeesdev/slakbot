@@ -37,12 +37,18 @@ app.event("app_mention", async ({ context, event }) => {
 
   const text = event.text.replace(`<@${context.botUserId}>`, "").trim();
 
+  if (text.split("of").length > 0) {
+  }
+
   let response = "Ja?"; // calculate response
 
   // console.log("text", text);
   //console.log("event", context, event);
 
   switch (true) {
+    case text.split("of").length > 0:
+      response = text.split("of")[getRandom(possibleAnswers.length)]
+      break;
     case /^foto/.test(text):
       //response = "het werkt ni jong";
       response = await memes();

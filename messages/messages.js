@@ -132,4 +132,15 @@ export const BASIC = [
   "Yep.",
   "Excuseer? Pak van wel",
   "Kheb er geen idee van maar het zal wel",
+  "Zeker en vast",
+  "Ik hoop dat ge erin stikt",
+  "Ge bent een vieze slet dus nee",
+  "Hou uw kutbek slonzige slet",
+  "Jij wel xxx",
+  "Sterf.",
+  "Jazeker slet",
+  "Kan he",
+  "Pffffff vermoeiend",
+  "Ik wil dood.",
+  "Ja joepie"
 ];

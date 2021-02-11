@@ -68,11 +68,11 @@ app.event("app_mention", async ({ context, event }) => {
     case /^hoe/.test(text):
       response = HOW[getRandom(HOW.length)];
       break;
+    case /^waar blijven/.test(text):
+      response = "in uw kot";
+      break;
     case /^waar/.test(text):
       response = WHERE[getRandom(WHERE.length)];
-      break;
-      case /^waar blijven/.test(text):
-      response = "in uw kot";
       break;
     case /^(bedankt|thanks|thank|dank)/.test(text):
       response = THANKS[getRandom(THANKS.length)];
@@ -87,9 +87,8 @@ app.event("app_mention", async ({ context, event }) => {
       break;
     case /^(sluip|humor|sluip random|youtube sluip random)/.test(text):
       console.log("sluip test");
-      response = `https://www.youtube.com/watch?v=${
-        SLUIP_IDS[getRandom(SLUIP_IDS.length)]
-      }`;
+      response = `https://www.youtube.com/watch?v=${SLUIP_IDS[getRandom(SLUIP_IDS.length)]
+        }`;
       break;
     case /^(zoek|zoek youtube|muziek|random)/.test(text):
       let youtube = google.youtube({
@@ -125,9 +124,9 @@ app.event("app_mention", async ({ context, event }) => {
 });
 
 async function memes() {
-    const scraper = new Scraper(10, "hot", 3);
-    const posts = await scraper.scrap();
-    return posts[0].content;
+  const scraper = new Scraper(10, "hot", 3);
+  const posts = await scraper.scrap();
+  return posts[0].content;
 }
 
 (async () => {

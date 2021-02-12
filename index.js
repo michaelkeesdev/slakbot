@@ -26,14 +26,14 @@ const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
 });
 
-const ninegag = new Ninegag(10, "hot", "girl", 3);
+const ninegag = new Ninegag(100, "hot", "default");
 
 const getRandom = (length) => {
   return Math.floor(Math.random() * length);
 };
 
-const get9gagPost = async () => {
-  let result = await ninegag.scrap();
+const get9gagPost = async (group) => {
+  let result = await ninegag.scrap(group);
   return result[0]?.data?.posts[getRandom(result[0]?.data?.posts?.length)]?.images?.image700?.url;
 };
 
@@ -112,7 +112,8 @@ const matches = [
     names: ["youtube", "exact", "zoek exact", "geef video over"],
     action: async (text) => await getExactYoutube(text),
   },
-  { names: ["9gag", "ninegag", "grietje", "wufke", "slet"], action: async () => await get9gagPost() },
+  { names: ["grietje", "wufke", "slet"], action: async () => await get9gagPost("girl") },
+  { names: ["9gag", "ninegag", "meme", "foto"], action: async () => await get9gagPost() },
 ];
 
 const getResponse = async (text) => {

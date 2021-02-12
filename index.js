@@ -26,7 +26,7 @@ const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
 });
 
-const ninegag = new Ninegag(100, "hot", "default");
+const ninegag = new Ninegag(50, "hot", "default");
 
 const getRandom = (length) => {
   return Math.floor(Math.random() * length);

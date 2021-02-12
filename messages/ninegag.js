@@ -15,7 +15,9 @@ class Ninegag {
   }
 
   postsUrl(group) {
-    return BASE_POSTS_URL + group ? group : this.group  + '/type/' + this.section;
+    const g = group ? group : this.group;
+
+    return BASE_POSTS_URL + g + '/type/' + this.section;
   }
 
   /**

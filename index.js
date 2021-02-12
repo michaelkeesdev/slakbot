@@ -20,6 +20,11 @@ import { SLUIP_IDS } from "./messages/sluip";
 import { Ninegag } from "./messages/ninegag";
 
 import "dotenv/config";
+import { WEETJES } from "./messages/weetjes";
+
+import { HttpClient } from '../httpClient';
+
+const httpClient = new HttpClient();
 
 const app = new App({
   signingSecret: process.env.SLACK_SIGNING_SECRET,
@@ -67,11 +72,17 @@ const getExactYoutube = async (text) => {
   return `https://www.youtube.com/watch?v=${result.data.items[0].id.videoId}`;
 };
 
+const getNewsPosts = async () => {
+  let response = await this.httpClient.get("https://api.smartocto.com/api/brands/tentacles?i=h4xmfyj9c6jpezbbzufqgmu378wgd8e3");
+  return response?.headerTests[getRandom(headerTests.length)].title;
+}
+ 
 const matches = [
   {
     names: ["hoeveel", "hoe veel", "hoe veel"],
     action: async () => getRandomElement(HOW_MUCH),
   },
+  { names: ["weetje", "wistje", "zeg eens iets"], action: async () => getRandomElement(WEETJES) },
   { names: ["wie"], action: async () => getRandomElement(WHO) },
   { names: ["wanneer"], action: async () => getRandomElement(WHEN) },
   { names: ["waar"], action: async () => getRandomElement(WHERE) },
@@ -114,6 +125,8 @@ const matches = [
   },
   { names: ["grietje", "wufke", "slet"], action: async () => await get9gagPost("girl") },
   { names: ["9gag", "ninegag", "meme", "foto"], action: async () => await get9gagPost() },
+  { names: ["nieuws", "vandaag gebeurd", "news", "vandaag", "nieuw", "hln", "gazet"], action: async () => getNewsPosts() },
+
 ];
 
 const getResponse = async (text) => {

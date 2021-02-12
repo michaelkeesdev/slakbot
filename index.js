@@ -22,7 +22,7 @@ import { Ninegag } from "./messages/ninegag";
 import "dotenv/config";
 import { WEETJES } from "./messages/weetjes";
 
-import { HttpClient } from '../httpClient';
+import { HttpClient } from './httpClient';
 
 const httpClient = new HttpClient();
 
@@ -73,8 +73,9 @@ const getExactYoutube = async (text) => {
 };
 
 const getNewsPosts = async () => {
-  let response = await this.httpClient.get("https://api.smartocto.com/api/brands/tentacles?i=h4xmfyj9c6jpezbbzufqgmu378wgd8e3");
-  return response?.headerTests[getRandom(headerTests.length)].title;
+  let response = await httpClient.get("https://api.smartocto.com/api/brands/tentacles?i=h4xmfyj9c6jpezbbzufqgmu378wgd8e3");
+  console.log("response", response?.headerTests);
+  return response?.headerTests[getRandom(response?.headerTests.length)].title;
 }
  
 const matches = [
@@ -164,7 +165,6 @@ app.event("app_mention", async ({ context, event }) => {
 
 (async () => {
   await app.start(process.env.PORT || 8080);
-
-  console.log("test", await getResponse("ninegag"));
+  // console.log("weetje", await getResponse("nieuws"));
   console.log("⚡️ Slakbot is running!");
 })();

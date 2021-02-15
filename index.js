@@ -180,12 +180,12 @@ const getResponse = async (text, context) => {
   return response;
 };
 
-app.event("message", async ({event}) => {
+app.event("message", async ({event, context}) => {
   console.log("event", event);
-  if(event?.event?.text === 'hoer') {
-    const token = context.botToken;
-    const channel = event.channel;
-    const user = event?.event?.user;
+  if(event?.text === 'hoer') {
+    const token = context?.botToken;
+    const channel = event?.channel;
+    const user = event?.user;
 
     const response = `zelf hoer <@${user}>`;
     const message = { token, channel, text: response };

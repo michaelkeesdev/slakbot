@@ -15,9 +15,7 @@ import {
   BYE,
 } from "./messages/messages";
 
-import {
-	SLACKBOT_CALL
-} from "./messages/slackbot"
+import { IDS } from "./messages/slackbot";
 
 import { SLUIP_IDS } from "./messages/sluip";
 
@@ -26,7 +24,7 @@ import { Ninegag } from "./messages/ninegag";
 import "dotenv/config";
 import { WEETJES } from "./messages/weetjes";
 
-import { HttpClient } from './httpClient';
+import { HttpClient } from "./httpClient";
 
 const httpClient = new HttpClient();
 
@@ -43,7 +41,8 @@ const getRandom = (length) => {
 
 const get9gagPost = async (group) => {
   let result = await ninegag.scrap(group);
-  return result[0]?.data?.posts[getRandom(result[0]?.data?.posts?.length)]?.images?.image700?.url;
+  return result[0]?.data?.posts[getRandom(result[0]?.data?.posts?.length)]
+    ?.images?.image700?.url;
 };
 
 const getRandomElement = (list) => {
@@ -77,17 +76,29 @@ const getExactYoutube = async (text) => {
 };
 
 const getNewsPosts = async () => {
-  let response = await httpClient.get("https://api.smartocto.com/api/brands/tentacles?i=h4xmfyj9c6jpezbbzufqgmu378wgd8e3");
+  let response = await httpClient.get(
+    "https://api.smartocto.com/api/brands/tentacles?i=h4xmfyj9c6jpezbbzufqgmu378wgd8e3"
+  );
   console.log("response", response?.headerTests);
   return response?.headerTests[getRandom(response?.headerTests.length)].title;
-}
- 
+};
+
 const matches = [
+  {
+    names: ["tag"],
+    action: async (text, context) => {
+      const randomId = getRandomElement(IDS);
+      return `<@${randomId}> `;
+    },
+  },
   {
     names: ["hoeveel", "hoe veel", "hoe veel"],
     action: async () => getRandomElement(HOW_MUCH),
   },
-  { names: ["weetje", "wistje", "zeg eens iets"], action: async () => getRandomElement(WEETJES) },
+  {
+    names: ["weetje", "wistje", "zeg eens iets"],
+    action: async () => getRandomElement(WEETJES),
+  },
   { names: ["wie"], action: async () => getRandomElement(WHO) },
   { names: ["wanneer"], action: async () => getRandomElement(WHEN) },
   { names: ["waar"], action: async () => getRandomElement(WHERE) },
@@ -128,13 +139,26 @@ const matches = [
     names: ["youtube", "exact", "zoek exact", "geef video over"],
     action: async (text) => await getExactYoutube(text),
   },
-  { names: ["grietje", "wufke", "slet"], action: async () => await get9gagPost("girl") },
-  { names: ["9gag", "ninegag", "meme", "foto"], action: async () => await get9gagPost() },
-  { names: ["nieuws", "vandaag gebeurd", "news", "vandaag", "nieuw", "hln", "gazet"], action: async () => getNewsPosts() },
-  { names: ["slackbot"], action: async (text, context) => { 
-    // const randomId = getRandomElement(context?.authed_users);
-    return `<@USLACKBOT> hallo`
-  } },
+  {
+    names: ["grietje", "wufke", "slet"],
+    action: async () => await get9gagPost("girl"),
+  },
+  {
+    names: ["9gag", "ninegag", "meme", "foto"],
+    action: async () => await get9gagPost(),
+  },
+  {
+    names: [
+      "nieuws",
+      "vandaag gebeurd",
+      "news",
+      "vandaag",
+      "nieuw",
+      "hln",
+      "gazet",
+    ],
+    action: async () => getNewsPosts(),
+  },
 ];
 
 const getResponse = async (text, context) => {

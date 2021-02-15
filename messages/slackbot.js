@@ -1,5 +1,3 @@
-export const SLACKBOT_CALL = [
-  "<@USLACKBOT> hey",
-  "<@USLACKBOT> hoer",
-  "<@USLACKBOT> slet",
+export const IDS = [
+  "UHB8YS8MU",
 ];

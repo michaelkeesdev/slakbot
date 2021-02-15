@@ -14,7 +14,7 @@ import {
   BYE,
 } from "./app/messages";
 
-import { UserService } from "./app/users";
+import { UserService, Users } from "./app/users";
 
 import { SLUIP_IDS } from "./app/sluip";
 
@@ -95,7 +95,7 @@ const getExactMatches = (matches, text) => {
 const matches = [
   {
     names: ["tag", "wie"],
-    action: async () => userService.getRandomUser()
+    action: async () => `<@${userService.getRandomUser()}>`
   },
   {
     names: ["hoeveel", "hoe veel", "hoe veel"],
@@ -193,15 +193,24 @@ const getResponse = async (text, context) => {
 
 app.event("message", async ({ event, context }) => {
   console.log("message", event, context);
-  if (event?.text === "hoer") {
-    const token = context?.botToken;
-    const channel = event?.channel;
-    const user = event?.user;
+  const token = context?.botToken;
+  const channel = event?.channel;
+  const user = event?.user;
 
-    const response = `zelf hoer <@${user}>`;
-    const message = { token, channel, text: response };
-    await app.client.chat.postMessage(message);
+  let response = ""
+  if(user === userService.getActiveUser()) {
+    response = `ge suckt <@${user}>`;
+    userService.setActiveUser(null);
   }
+  if(user === Users.getJoa()) {
+    response = `zwegt <@${Users.getJoa()}>`;
+  }
+  if (event?.text === "hoer") {
+    response = `zelf hoer <@${user}>`;
+  }
+  const message = { token, channel, text: response };
+
+  await app.client.chat.postMessage(message);
 });
 
 app.event("app_mention", async ({ context, event }) => {

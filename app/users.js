@@ -1,15 +1,17 @@
 class Users {
-  static getCrabbe() { return "<@UHB8YS8MU>"; }
-  static getDennis() { return "<@U9213H10B>"; }
-  static getJappeh() { return "<@U911D6401>"; }
-  static getJerre() { return "<@U015DQ39T2N>"; }
-  static getKees() { return "<@U90TSU6JU>"; }
-  static getJoa() { return "<@U91HHN2JE>"; }
-  static getKees() { return "<@U90TSU6JU>"; }
-  static getRits() { return "<@U92KLC4CX>"; }
+  static getCrabbe() { return "UHB8YS8MU"; }
+  static getDennis() { return "U9213H10B"; }
+  static getJappeh() { return "U911D6401"; }
+  static getJerre() { return "U015DQ39T2N"; }
+  static getKees() { return "U90TSU6JU"; }
+  static getJoa() { return "U91HHN2JE"; }
+  static getKees() { return "U90TSU6JU"; }
+  static getRits() { return "U92KLC4CX"; }
 }
 
 class UserService {
+  activeUser;
+
   getAllUsers() {
     return [ 
       Users.getCrabbe(), 
@@ -24,8 +26,19 @@ class UserService {
 
   getRandomUser() {
     let users = this.getAllUsers();
-    return users[Math.floor(Math.random() * users.length)];
+    let user = users[Math.floor(Math.random() * users.length)];
+    this.activeUser = user;
+    return user;
   }
+
+  getActiveUser() {
+    return this.activeUser;
+  }
+
+  setActiveUser(user) {
+    this.activeUser = user;
+  }
+
 }
 
-export { UserService };
+export { UserService, Users };

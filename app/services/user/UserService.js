@@ -41,4 +41,4 @@ class UserService {
 
 }
 
-export { UserService, Users };
+export { UserService };

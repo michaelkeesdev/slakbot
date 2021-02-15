@@ -1,0 +1,32 @@
+export const GOODMORNING_TRIGGER = [
+    "goeiemorgen",
+    "goeimorgen",
+    "morgend",
+    "murgend",
+    "goedemorgen",
+    "goedemorgend",
+    "daag",
+    "gedag",
+    "ey",
+    "hallo",
+]
+
+export const GOODMORNING_ANSWER = [
+    "Dag.",
+    "Da bepaal ik wel?",
+    "Goeiemorgen.",
+    "Hallo, prettige werkdag",
+    "Hey x",
+    "Gegroet",
+    "Hallo, veel coodplezier vandaag",
+    "Morgend.",
+    "Ben ff jat kaffe halen",
+    "Goedemorgen op deze prachtige dag.",
+    "Zwegt :error:",
+    "Begint er es aan",
+    "Waarkt es",
+    "Goeiemorgen ;)",
+    "Hallo!",
+    "Moet gij nie werken ipv hier te lullen tegen een program",
+    "Xoxo",
+]

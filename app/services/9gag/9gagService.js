@@ -1,5 +1,5 @@
-
-import { HttpClient } from '../httpClient';
+import { sample } from 'lodash';
+import { HttpClient } from '../../../httpClient';
 
 const BASE_POSTS_URL = 'https://9gag.com/v1/group-posts/group/';
 
@@ -32,10 +32,20 @@ class Ninegag {
       let response = await this.httpClient.get(this.postsUrl(group));
       result = result.concat(response);
     }
-    return result.slice(0, this.postCount);
+    let posts = result.slice(0, this.postCount)[0]?.data?.posts
+    return sample(posts)?.images?.image700?.url;
   }
 }
 
-export { Ninegag };
+class NineGagService {
+  get9gagBasic = async () => {
+    return await new Ninegag(50, "hot", "default").scrap();
+  };
 
+  get9gagGirl = async () => {
+    return await new Ninegag(50, "hot", "default").scrap("girl");
+  };
+  
+}
 
+export { NineGagService };

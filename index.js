@@ -192,7 +192,7 @@ const getResponse = async (text, context) => {
 };
 
 app.event("message", async ({ event, context }) => {
-  console.log("message", event, context);
+  console.log("message", event);
   const token = context?.botToken;
   const channel = event?.channel;
   const user = event?.user;

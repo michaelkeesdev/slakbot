@@ -133,7 +133,7 @@ const matches = [
   { names: ["nieuws", "vandaag gebeurd", "news", "vandaag", "nieuw", "hln", "gazet"], action: async () => getNewsPosts() },
   { names: ["slackbot"], action: async (text, context) => { 
     // const randomId = getRandomElement(context?.authed_users);
-    return `<@${context?.botUserId}> hallo`
+    return `<@${USLACKBOT}> hallo`
   } },
 ];
 

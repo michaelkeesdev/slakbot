@@ -15,7 +15,7 @@ import {
   BYE,
 } from "./messages/messages";
 
-import { IDS } from "./messages/slackbot";
+import { UserService } from "./messages/users";
 
 import { SLUIP_IDS } from "./messages/sluip";
 
@@ -27,6 +27,7 @@ import { WEETJES } from "./messages/weetjes";
 import { HttpClient } from "./httpClient";
 
 const httpClient = new HttpClient();
+const userService = new UserService();
 
 const app = new App({
   signingSecret: process.env.SLACK_SIGNING_SECRET,
@@ -87,8 +88,7 @@ const matches = [
   {
     names: ["tag"],
     action: async (text, context) => {
-      const randomId = getRandomElement(IDS);
-      return `<@${randomId}> `;
+      return userService.getRandomUser();
     },
   },
   {

@@ -197,7 +197,7 @@ app.event("message", async ({ event, context }) => {
   const channel = event?.channel;
   const user = event?.user;
 
-  let response = ""
+  let response;
   if(user === userService.getActiveUser()) {
     response = `ge suckt <@${user}>`;
     userService.setActiveUser(null);
@@ -208,9 +208,10 @@ app.event("message", async ({ event, context }) => {
   if (event?.text === "hoer") {
     response = `zelf hoer <@${user}>`;
   }
-  const message = { token, channel, text: response };
-
-  await app.client.chat.postMessage(message);
+  if(response) {
+    const message = { token, channel, text: response };
+    await app.client.chat.postMessage(message);
+  }
 });
 
 app.event("app_mention", async ({ context, event }) => {

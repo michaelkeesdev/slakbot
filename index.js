@@ -15,6 +15,10 @@ import {
   BYE,
 } from "./messages/messages";
 
+import {
+	SLACKBOT_CALL
+} from "./messages/slackbot"
+
 import { SLUIP_IDS } from "./messages/sluip";
 
 import { Ninegag } from "./messages/ninegag";
@@ -127,7 +131,7 @@ const matches = [
   { names: ["grietje", "wufke", "slet"], action: async () => await get9gagPost("girl") },
   { names: ["9gag", "ninegag", "meme", "foto"], action: async () => await get9gagPost() },
   { names: ["nieuws", "vandaag gebeurd", "news", "vandaag", "nieuw", "hln", "gazet"], action: async () => getNewsPosts() },
-
+  { names: ["slackbot"], action: async () => getRandomElement(SLACKBOT_CALL) },
 ];
 
 const getResponse = async (text) => {

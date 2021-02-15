@@ -132,8 +132,8 @@ const matches = [
   { names: ["9gag", "ninegag", "meme", "foto"], action: async () => await get9gagPost() },
   { names: ["nieuws", "vandaag gebeurd", "news", "vandaag", "nieuw", "hln", "gazet"], action: async () => getNewsPosts() },
   { names: ["slackbot"], action: async (text, context) => { 
-    const randomId = getRandomElement(context?.authed_users);
-    return `<@${randomId || context?.botUserId}> hallo`
+    // const randomId = getRandomElement(context?.authed_users);
+    return `<@${context?.botUserId}> hallo`
   } },
 ];
 
@@ -165,6 +165,7 @@ app.event("app_mention", async ({ context, event }) => {
   const text = event.text.replace(`<@${context.botUserId}>`, "").trim();
 
   console.log("context: ", JSON.stringify(context));
+  console.log("context: ", JSON.stringify(event));
 
   const response = await getResponse(text, context);
   const message = { token, channel, text: response };

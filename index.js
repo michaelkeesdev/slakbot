@@ -79,7 +79,6 @@ const getNewsPosts = async () => {
   let response = await httpClient.get(
     "https://api.smartocto.com/api/brands/tentacles?i=h4xmfyj9c6jpezbbzufqgmu378wgd8e3"
   );
-  console.log("response", response?.headerTests);
   return response?.headerTests[getRandom(response?.headerTests.length)].title;
 };
 
@@ -87,7 +86,7 @@ const getExactMatches = (matches, text) => {
   return matches
     .flatMap((match) => {
       return match?.names?.map((name) => {
-        return text?.match(new RegExp(`/^${name}/`)) && match;
+        return text?.match(new RegExp(`^${name}`)) && match;
       });
     })
     .filter((match) => match);
@@ -96,7 +95,7 @@ const getExactMatches = (matches, text) => {
 const matches = [
   {
     names: ["tag", "wie"],
-    action: async (text, context) => userService.getRandomUser(),
+    action: async () => userService.getRandomUser()
   },
   {
     names: ["hoeveel", "hoe veel", "hoe veel"],
@@ -172,9 +171,12 @@ const getResponse = async (text, context) => {
   const fuzzyMatches = fuse.search(text);
   const exactMatches = getExactMatches(matches, text);
 
-  let response = exactMatches
-    ? await exactMatches[0]?.item?.action(text, context)
-    : await fuzzyMatches[0]?.item?.action(text, context);
+  let response = "";
+  if(exactMatches) {
+    response = await exactMatches[0]?.action(text, context)
+  } else {
+    response = await fuzzyMatches[0]?.item?.action(text, context);
+  }
 
   if (!response) {
     switch (true) {
@@ -190,7 +192,7 @@ const getResponse = async (text, context) => {
 };
 
 app.event("message", async ({ event, context }) => {
-  console.log("event", event);
+  console.log("message", event, context);
   if (event?.text === "hoer") {
     const token = context?.botToken;
     const channel = event?.channel;
@@ -203,13 +205,11 @@ app.event("message", async ({ event, context }) => {
 });
 
 app.event("app_mention", async ({ context, event }) => {
+  console.log("app_mention", context, event);
   const token = context.botToken;
   const channel = event.channel;
 
   const text = event.text.replace(`<@${context.botUserId}>`, "").trim();
-
-  console.log("context: ", JSON.stringify(context));
-  console.log("context: ", JSON.stringify(event));
 
   const response = await getResponse(text, context);
   const message = { token, channel, text: response };
@@ -220,7 +220,7 @@ app.event("app_mention", async ({ context, event }) => {
 (async () => {
   await app.start(process.env.PORT || 8080);
 
-  console.log("test", await getResponse("weetje"));
+  // console.log("test", await getResponse("wie beste codeur?"));
 
   console.log("⚡️ Slakbot is running!");
 })();

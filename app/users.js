@@ -10,7 +10,7 @@ class Users {
 }
 
 class UserService {
-  activeUser;
+  activeUser = "";
 
   getAllUsers() {
     return [ 

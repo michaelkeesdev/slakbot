@@ -191,7 +191,7 @@ const getResponse = async (text, context) => {
   return response;
 };
 
-app.event("message", async ({ event, context }) => {
+app.event("message.channels", async ({ event, context }) => {
   console.log("message", event, context);
   const token = context?.botToken;
   const channel = event?.channel;
@@ -201,9 +201,6 @@ app.event("message", async ({ event, context }) => {
   if(user === userService.getActiveUser()) {
     response = `ge suckt <@${user}>`;
     userService.setActiveUser(null);
-  }
-  if(user === Users.getJoa()) {
-    response = `zwegt <@${Users.getJoa()}>`;
   }
   if (event?.text === "hoer") {
     response = `zelf hoer <@${user}>`;

@@ -131,16 +131,19 @@ const matches = [
   { names: ["grietje", "wufke", "slet"], action: async () => await get9gagPost("girl") },
   { names: ["9gag", "ninegag", "meme", "foto"], action: async () => await get9gagPost() },
   { names: ["nieuws", "vandaag gebeurd", "news", "vandaag", "nieuw", "hln", "gazet"], action: async () => getNewsPosts() },
-  { names: ["slackbot"], action: async () => getRandomElement(SLACKBOT_CALL) },
+  { names: ["slackbot"], action: async (text, context) => { 
+    const randomId = getRandomElement(context?.authed_users);
+    return `<@${randomId || context?.botUserId}> hallo`
+  } },
 ];
 
-const getResponse = async (text) => {
+const getResponse = async (text, context) => {
   const fuse = new Fuse(matches, { keys: ["names"] });
   const result = fuse.search(text);
 
   console.log("result", JSON.stringify(result));
 
-  let response = await result[0]?.item?.action(text);
+  let response = await result[0]?.item?.action(text, context);
 
   if (!response) {
     switch (true) {
@@ -161,7 +164,9 @@ app.event("app_mention", async ({ context, event }) => {
 
   const text = event.text.replace(`<@${context.botUserId}>`, "").trim();
 
-  const response = await getResponse(text);
+  console.log("context: ", JSON.stringify(context));
+
+  const response = await getResponse(text, context);
   const message = { token, channel, text: response };
 
   await app.client.chat.postMessage(message);

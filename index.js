@@ -12,16 +12,16 @@ import {
   THANKS,
   GOODMORNING,
   BYE,
-} from "./messages/messages";
+} from "./app/messages";
 
-import { UserService } from "./messages/users";
+import { UserService } from "./app/users";
 
-import { SLUIP_IDS } from "./messages/sluip";
+import { SLUIP_IDS } from "./app/sluip";
 
-import { Ninegag } from "./messages/ninegag";
+import { Ninegag } from "./app/ninegag";
 
 import "dotenv/config";
-import { WEETJES } from "./messages/weetjes";
+import { WEETJES } from "./app/weetjes";
 
 import { HttpClient } from "./httpClient";
 
@@ -83,12 +83,20 @@ const getNewsPosts = async () => {
   return response?.headerTests[getRandom(response?.headerTests.length)].title;
 };
 
+const getExactMatches = (matches, text) => {
+  return matches
+    .flatMap((match) => {
+      return match?.names?.map((name) => {
+        return text?.match(name) && match;
+      });
+    })
+    .filter((match) => match);
+};
+
 const matches = [
   {
-    names: ["tag","wie"],
-    action: async (text, context) => {
-      return userService.getRandomUser();
-    },
+    names: ["tag", "wie"],
+    action: async (text, context) => userService.getRandomUser(),
   },
   {
     names: ["hoeveel", "hoe veel", "hoe veel"],
@@ -161,11 +169,12 @@ const matches = [
 
 const getResponse = async (text, context) => {
   const fuse = new Fuse(matches, { keys: ["names"] });
-  const result = fuse.search(text);
+  const fuzzyMatches = fuse.search(text);
+  const exactMatches = getExactMatches(matches, text);
 
-  console.log("result", JSON.stringify(result));
-
-  let response = await result[0]?.item?.action(text, context);
+  let response = exactMatches
+    ? await exactMatches[0]?.item?.action(text, context)
+    : await fuzzyMatches[0]?.item?.action(text, context);
 
   if (!response) {
     switch (true) {
@@ -180,9 +189,9 @@ const getResponse = async (text, context) => {
   return response;
 };
 
-app.event("message", async ({event, context}) => {
+app.event("message", async ({ event, context }) => {
   console.log("event", event);
-  if(event?.text === 'hoer') {
+  if (event?.text === "hoer") {
     const token = context?.botToken;
     const channel = event?.channel;
     const user = event?.user;
@@ -190,7 +199,7 @@ app.event("message", async ({event, context}) => {
     const response = `zelf hoer <@${user}>`;
     const message = { token, channel, text: response };
     await app.client.chat.postMessage(message);
-  } 
+  }
 });
 
 app.event("app_mention", async ({ context, event }) => {
@@ -210,8 +219,8 @@ app.event("app_mention", async ({ context, event }) => {
 
 (async () => {
   await app.start(process.env.PORT || 8080);
-  
-  console.log("tag", await getResponse("tag"));
-  
+
+  console.log("test", await getResponse("weetje"));
+
   console.log("⚡️ Slakbot is running!");
 })();

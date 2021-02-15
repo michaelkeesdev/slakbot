@@ -1,10 +1,10 @@
 class UserService {
-  getRandomUser = () => {
+  getRandomUser() {
     let users = getAllUsers();
     return users[Math.floor(Math.random() * users.length)];
   }
 
-  getAllUsers = () => {
+  getAllUsers() {
     return [ 
       Users.getCrabbe(), 
       Users.getDennis(),

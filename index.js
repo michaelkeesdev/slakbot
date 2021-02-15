@@ -182,6 +182,18 @@ const getResponse = async (text, context) => {
   return response;
 };
 
+app.event("message.channels", async ({context, event}) => {
+  if(event?.event?.text === 'hoer') {
+    const token = context.botToken;
+    const channel = event.channel;
+    const user = event?.event?.user;
+
+    const response = `zelf hoer <@${user}>`;
+    const message = { token, channel, text: response };
+    await app.client.chat.postMessage(message);
+  } 
+});
+
 app.event("app_mention", async ({ context, event }) => {
   const token = context.botToken;
   const channel = event.channel;

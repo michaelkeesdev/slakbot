@@ -180,8 +180,7 @@ const getResponse = async (text, context) => {
   return response;
 };
 
-app.event("message.channels", async ({context, event}) => {
-  console.log("context", context);
+app.event("message", async ({event}) => {
   console.log("event", event);
   if(event?.event?.text === 'hoer') {
     const token = context.botToken;

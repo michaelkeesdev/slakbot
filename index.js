@@ -87,7 +87,7 @@ const getExactMatches = (matches, text) => {
   return matches
     .flatMap((match) => {
       return match?.names?.map((name) => {
-        return text?.match(name) && match;
+        return text?.match(new RegExp(`/^${name}/`)) && match;
       });
     })
     .filter((match) => match);

@@ -19,7 +19,7 @@ class Maggie {
         if (!response) {
             switch (true) {
                 case maggieBrein.needsToDecide(text):
-                    response = maggieMond.makeDecision(text);
+                    response = maggieMond.speakDecision(text);
                     break;
                 default:
                     response = maggieMond.sayBasicMessage();

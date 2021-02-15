@@ -39,7 +39,7 @@ class MaggieMond {
   sayRandomYoutube(text) { return youtubeService.getRandomYoutube(text); }
   sayExactYoutube(text) { return youtubeService.getExactYoutube(text); }
 
-  makeDecision(text) { return decisionService.makeDecision(text) }
+  speakDecision(text) { return decisionService.makeDecision(text) }
 }
 
 export { MaggieMond };

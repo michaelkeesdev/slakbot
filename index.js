@@ -6,7 +6,6 @@ import Fuse from "fuse.js";
 import {
   HOW_MUCH,
   BASIC,
-  WHO,
   WHEN,
   HOW,
   WHERE,
@@ -86,7 +85,7 @@ const getNewsPosts = async () => {
 
 const matches = [
   {
-    names: ["tag"],
+    names: ["tag","wie"],
     action: async (text, context) => {
       return userService.getRandomUser();
     },
@@ -99,7 +98,6 @@ const matches = [
     names: ["weetje", "wistje", "zeg eens iets"],
     action: async () => getRandomElement(WEETJES),
   },
-  { names: ["wie"], action: async () => getRandomElement(WHO) },
   { names: ["wanneer"], action: async () => getRandomElement(WHEN) },
   { names: ["waar"], action: async () => getRandomElement(WHERE) },
   { names: ["hoe"], action: async () => getRandomElement(HOW) },

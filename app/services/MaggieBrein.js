@@ -5,7 +5,7 @@ import { BASIC_FOLLOWUP_TRIGGER } from "./../answers/questions/BasicFollowUpQues
 import { BYE_TRIGGER } from "./../answers/Bye";
 import { GOODMORNING_TRIGGER } from "./../answers/Goodmorning";
 import { HOW_TRIGGER } from "./../answers/How";
-import { JOKE_TRIGGER } from "../answers/Joke";
+import { JOKE_TRIGGER } from "./../answers/Joke";
 import { THANKS_TRIGGER } from "./../answers/Thanks";
 import { HOWMUCH_TRIGGER } from "./../answers/Howmuch";
 import { SLUIP_TRIGGER } from "./../answers/youtube/Sluip";

@@ -1,15 +1,15 @@
 
 import { sample } from 'lodash';
 
-import { BASIC_ANSWER } from "../answers/Basic.js";
-import { BYE_ANSWER } from "../answers/Bye";
-import { GOODMORNING_ANSWER } from "../answers/GoodMorning";
-import { HOW_ANSWER } from "../answers/How";
-import { THANKS_ANSWER } from "../answers/Thanks";
-import { HOWMUCH_ANSWER } from "../answers/Howmuch";
-import { WEETJES_ANSWER } from "../answers/Weetjes";
-import { WHEN_ANSWER } from "../answers/When";
-import { WHERE_ANSWER } from "../answers/Where";
+import { BASIC_ANSWER } from "./../answers/Basic.js";
+import { BYE_ANSWER } from "./../answers/Bye";
+import { GOODMORNING_ANSWER } from "./../answers/GoodMorning";
+import { HOW_ANSWER } from "./../answers/How";
+import { THANKS_ANSWER } from "./../answers/Thanks";
+import { HOWMUCH_ANSWER } from "./../answers/Howmuch";
+import { WEETJES_ANSWER } from "./../answers/Weetjes";
+import { WHEN_ANSWER } from "./../answers/When";
+import { WHERE_ANSWER } from "./../answers/Where";
 
 import { UserService } from "./user/UserService";
 import { NineGagService } from "./9gag/9gagService";

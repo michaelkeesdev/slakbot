@@ -10,7 +10,7 @@ const app = new App({
 
 const maggie = new Maggie();
 
-app.event("message", async ({ event, context }) => {
+/*app.event("message", async ({ event, context }) => {
   console.log("message", event);
   const token = context?.botToken;
   const channel = event?.channel;
@@ -28,7 +28,7 @@ app.event("message", async ({ event, context }) => {
     const message = { token, channel, text: response };
     await app.client.chat.postMessage(message);
   }
-});
+});*/
 
 app.event("app_mention", async ({ context, event }) => {
   console.log("app_mention", context, event);

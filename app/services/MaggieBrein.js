@@ -66,7 +66,7 @@ class MaggieBrein {
                     "hln",
                     "gazet",
                 ],
-                action: async () => maggieMond.readTheNews(),
+                action: async () => await maggieMond.readTheNews(),
             },
         ];
     }

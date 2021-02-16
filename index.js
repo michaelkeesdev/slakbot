@@ -17,15 +17,21 @@ app.event("message", async ({ event, context }) => {
   const channel = event?.channel;
   const user = event?.user;
 
-  /* HILARISCHE SHIT
+  // HILARISCHE SHIT
   
   if(event?.user === "U01NEE5JYSY") {
-    const message = { token, channel, text: `waddist <@U01K3BVEVT3> ?` };
-    await app.client.chat.postMessage(message);
+    const response = await maggie.getResponse(text, context);
+    const message = { token, channel, text: response };
+    setTimeout(() => {
+      await app.client.chat.postMessage(message);
+    }, 1000);
   } else if(event?.user === "U01K3BVEVT3") {
-    const message = { token, channel, text: `ja jong <@U01NEE5JYSY> ?` };
-    await app.client.chat.postMessage(message);
-  } */
+    const response = await maggie.getResponse(text, context);
+    const message = { token, channel, text: response };
+    setTimeout(() => {
+      await app.client.chat.postMessage(message);
+    }, 1000);
+  } 
   
   
   /* let response;

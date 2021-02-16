@@ -14,7 +14,6 @@ import { WHERE_TRIGGER } from "./../answers/Where";
 
 import { DecisionService } from "./decision/DecisionService";
 import { MaggieMond } from "./MaggieMond";
-import { BASIC } from "../../messages/messages";
 
 const decisionService = new DecisionService();
 const maggieMond = new MaggieMond();
@@ -31,7 +30,7 @@ class MaggieBrein {
         return this.matches
           .flatMap((match) => {
             return match?.names?.map((name) => {
-              return text?.match(new RegExp(`^${name}`)) && match;
+                return text?.match(new RegExp(`^${name}`)) && match;
             });
           })
           .filter((match) => match);

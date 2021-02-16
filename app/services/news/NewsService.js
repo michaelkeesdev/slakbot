@@ -1,9 +1,5 @@
 import { sample } from 'lodash';
-<<<<<<< HEAD
 import { HttpClient } from './../../../httpClient';
-=======
-import { HttpClient } from '../../../httpClient';
->>>>>>> d404bf9378316670f3b51cbc379f5a56ee9d32b7
 
 class NewsService {
     getNewsPosts = async () => {

@@ -17,6 +17,10 @@ app.event("message", async ({ event, context }) => {
   const channel = event?.channel;
   const user = event?.user;
 
+  if(event?.subtype === "slackbot_response") {
+    const message = { token, channel, text: "waddist slackbot?" };
+    await app.client.chat.postMessage(message);
+  }
   /* let response;
   if (user === userService.getActiveUser()) {
     response = `ge suckt <@${user}>`;

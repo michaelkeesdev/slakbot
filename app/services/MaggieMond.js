@@ -1,7 +1,7 @@
 
 import { sample } from 'lodash';
 
-import { BASIC_FOLLOWUP_QUESTION } from "./../answers/BasicFollowUpQuestion.js";
+import { BASIC_FOLLOWUP_QUESTION } from "./../answers/questions/BasicFollowUpQuestion";
 
 import { BASIC_ANSWER } from "./../answers/Basic.js";
 import { BYE_ANSWER } from "./../answers/Bye";

@@ -12,12 +12,14 @@ import { WHEN_ANSWER } from "./../answers/When";
 import { WHERE_ANSWER } from "./../answers/Where";
 
 import { UserService } from "./user/UserService";
+import { NewsService } from "./news/NewsService";
 import { NineGagService } from "./9gag/9gagService";
 import { YoutubeService } from "./google/YoutubeService";
 import { DecisionService } from "./decision/DecisionService";
 
 const userService = new UserService();
 const ninegagService = new NineGagService();
+const newsService = new NewsService();
 const youtubeService = new YoutubeService();
 const decisionService = new DecisionService();
 
@@ -38,6 +40,7 @@ class MaggieMond {
   saySluip() { return youtubeService.getSluip(); }
   sayRandomYoutube(text) { return youtubeService.getRandomYoutube(text); }
   sayExactYoutube(text) { return youtubeService.getExactYoutube(text); }
+  readTheNews() { return newsService.getNewsPosts(); }
 
   speakDecision(text) { return decisionService.makeDecision(text) }
 }

@@ -19,7 +19,7 @@ app.event("message", async ({ event, context }) => {
 
   // HILARISCHE SHIT
   
-  if(event?.user === "U01NEE5JYSY") {
+  /* if(event?.user === "U01NEE5JYSY") {
     const response = await maggie.getResponse(event?.text, context);
     const message = { token, channel, text: response };
     setTimeout(async () => {
@@ -31,7 +31,7 @@ app.event("message", async ({ event, context }) => {
     setTimeout(async () => {
       await app.client.chat.postMessage(message);
     }, 1000);
-  } 
+  }  */ 
   
   
   /* let response;

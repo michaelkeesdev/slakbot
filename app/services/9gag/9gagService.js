@@ -1,5 +1,5 @@
 import { sample } from 'lodash';
-import { HttpClient } from '../../../httpClient';
+import { HttpClient } from './../../../httpClient';
 
 const BASE_POSTS_URL = 'https://9gag.com/v1/group-posts/group/';
 

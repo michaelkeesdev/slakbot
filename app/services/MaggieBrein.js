@@ -1,5 +1,7 @@
 import Fuse from "fuse.js";
 
+import { BASIC_FOLLOWUP_TRIGGER } from "./../answers/questions/BasicFollowUpQuestion";
+
 import { BYE_TRIGGER } from "./../answers/Bye";
 import { GOODMORNING_TRIGGER } from "./../answers/Goodmorning";
 import { HOW_TRIGGER } from "./../answers/How";
@@ -12,6 +14,7 @@ import { WHERE_TRIGGER } from "./../answers/Where";
 
 import { DecisionService } from "./decision/DecisionService";
 import { MaggieMond } from "./MaggieMond";
+import { BASIC } from "../../messages/messages";
 
 const decisionService = new DecisionService();
 const maggieMond = new MaggieMond();
@@ -36,6 +39,7 @@ class MaggieBrein {
 
     getSimpeleMaggieMatches() {
         return [
+            { names: BASIC_FOLLOWUP_TRIGGER, action: () => maggieMond.askBasicFollowUpQuestion(), },
             { names: BYE_TRIGGER, action: () => maggieMond.sayBye(), },
             { names: GOODMORNING_TRIGGER, action: () => maggieMond.sayGoodMorning(), },
             { names: HOW_TRIGGER, action: () => maggieMond.sayHow(), },

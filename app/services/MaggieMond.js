@@ -1,6 +1,8 @@
 
 import { sample } from 'lodash';
 
+import { BASIC_FOLLOWUP_QUESTION } from "./../answers/BasicFollowUpQuestion.js";
+
 import { BASIC_ANSWER } from "./../answers/Basic.js";
 import { BYE_ANSWER } from "./../answers/Bye";
 import { GOODMORNING_ANSWER } from "./../answers/Goodmorning";
@@ -24,6 +26,8 @@ const youtubeService = new YoutubeService();
 const decisionService = new DecisionService();
 
 class MaggieMond {
+  askBasicFollowUpQuestion() { return sample(BASIC_FOLLOWUP_QUESTION); }
+
   sayBasicMessage() { return sample(BASIC_ANSWER); }
   sayBye() { return sample(BYE_ANSWER); }
   sayGoodMorning() { return sample(GOODMORNING_ANSWER); }

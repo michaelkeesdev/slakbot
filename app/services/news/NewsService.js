@@ -1,5 +1,5 @@
 import { sample } from 'lodash';
-import { HttpClient } from '../httpClient';
+import { HttpClient } from './../../../httpClient';
 
 class NewsService {
     getNewsPosts = async () => {

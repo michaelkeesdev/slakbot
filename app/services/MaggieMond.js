@@ -7,6 +7,7 @@ import { BASIC_ANSWER } from "./../answers/Basic.js";
 import { BYE_ANSWER } from "./../answers/Bye";
 import { GOODMORNING_ANSWER } from "./../answers/Goodmorning";
 import { HOW_ANSWER } from "./../answers/How";
+import { JOKE_ANSWER } from "./../answers/Joke";
 import { THANKS_ANSWER } from "./../answers/Thanks";
 import { HOWMUCH_ANSWER } from "./../answers/Howmuch";
 import { WEETJES_ANSWER } from "./../answers/Weetjes";
@@ -33,6 +34,7 @@ class MaggieMond {
   sayGoodMorning() { return sample(GOODMORNING_ANSWER); }
   sayHow() { return sample(HOW_ANSWER); }
   sayHowMuch() { return sample(HOWMUCH_ANSWER); }
+  sayJoke() { return sample(JOKE_ANSWER); }
   sayThanks() { return sample(THANKS_ANSWER); }
   sayWeetje() { return sample(WEETJES_ANSWER); }
   sayWhen() { return sample(WHEN_ANSWER); }

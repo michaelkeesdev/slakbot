@@ -17,13 +17,17 @@ app.event("message", async ({ event, context }) => {
   const channel = event?.channel;
   const user = event?.user;
 
+  /* HILARISCHE SHIT
+  
   if(event?.user === "U01NEE5JYSY") {
     const message = { token, channel, text: `waddist <@U01K3BVEVT3> ?` };
     await app.client.chat.postMessage(message);
   } else if(event?.user === "U01K3BVEVT3") {
     const message = { token, channel, text: `ja jong <@U01NEE5JYSY> ?` };
     await app.client.chat.postMessage(message);
-  }
+  } */
+  
+  
   /* let response;
   if (user === userService.getActiveUser()) {
     response = `ge suckt <@${user}>`;

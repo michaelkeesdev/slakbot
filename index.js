@@ -17,8 +17,11 @@ app.event("message", async ({ event, context }) => {
   const channel = event?.channel;
   const user = event?.user;
 
-  if(event?.subtype === "slackbot_response") {
-    const message = { token, channel, text: "waddist @slackbot?" };
+  if(event?.user === "U01NEE5JYSY") {
+    const message = { token, channel, text: `waddist <@U01K3BVEVT3> ?` };
+    await app.client.chat.postMessage(message);
+  } else if(event?.user === "U01K3BVEVT3") {
+    const message = { token, channel, text: `ja jong <@U01NEE5JYSY> ?` };
     await app.client.chat.postMessage(message);
   }
   /* let response;

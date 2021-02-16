@@ -7,6 +7,8 @@ class Users {
   static getJoa() { return "U91HHN2JE"; }
   static getKees() { return "U90TSU6JU"; }
   static getRits() { return "U92KLC4CX"; }
+  static getFlip() { return "U01NEE5JYSY"; }
+  static getMaggie() { return  "U01K3BVEVT3"; }
 }
 
 class UserService {

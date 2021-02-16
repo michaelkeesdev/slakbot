@@ -20,13 +20,13 @@ app.event("message", async ({ event, context }) => {
   // HILARISCHE SHIT
   
   if(event?.user === "U01NEE5JYSY") {
-    const response = await maggie.getResponse(text, context);
+    const response = await maggie.getResponse(event?.text, context);
     const message = { token, channel, text: response };
     setTimeout(async () => {
       await app.client.chat.postMessage(message);
     }, 1000);
   } else if(event?.user === "U01K3BVEVT3") {
-    const response = await maggie.getResponse(text, context);
+    const response = await maggie.getResponse(event?.text, context);
     const message = { token, channel, text: response };
     setTimeout(async () => {
       await app.client.chat.postMessage(message);

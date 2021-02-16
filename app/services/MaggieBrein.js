@@ -1,6 +1,6 @@
 import Fuse from "fuse.js";
 
-import { BYE_TRIGGER } from "././answers/Bye";
+import { BYE_TRIGGER } from "./../answers/Bye";
 import { GOODMORNING_TRIGGER } from "./../answers/Goodmorning";
 import { HOW_TRIGGER } from "./../answers/How";
 import { THANKS_TRIGGER } from "./../answers/Thanks";

@@ -1,5 +1,4 @@
 export const BASIC_FOLLOWUP_TRIGGER = [
-    "?",
     "Mag ik iets vragen?",
     "Vraagje"
   ];

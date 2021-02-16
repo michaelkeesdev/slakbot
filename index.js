@@ -10,25 +10,26 @@ const app = new App({
 
 const maggie = new Maggie();
 
-/*app.event("message", async ({ event, context }) => {
-  console.log("message", event);
+app.event("message", async ({ event, context }) => {
+  console.log("message event", event);
+  console.log("message context", context);
   const token = context?.botToken;
   const channel = event?.channel;
   const user = event?.user;
 
-  let response;
+  /* let response;
   if (user === userService.getActiveUser()) {
     response = `ge suckt <@${user}>`;
     userService.setActiveUser(null);
   }
   if (event?.text === "hoer") {
     response = `zelf hoer <@${user}>`;
-  }
-  if (response) {
+  } */
+  /* if (response) {
     const message = { token, channel, text: response };
     await app.client.chat.postMessage(message);
-  }
-});*/
+  } */
+});
 
 app.event("app_mention", async ({ context, event }) => {
   console.log("app_mention", context, event);

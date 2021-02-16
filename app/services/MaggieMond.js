@@ -3,7 +3,7 @@ import { sample } from 'lodash';
 
 import { BASIC_ANSWER } from "./../answers/Basic.js";
 import { BYE_ANSWER } from "./../answers/Bye";
-import { GOODMORNING_ANSWER } from "./../answers/GoodMorning";
+import { GOODMORNING_ANSWER } from "./../answers/Goodmorning";
 import { HOW_ANSWER } from "./../answers/How";
 import { THANKS_ANSWER } from "./../answers/Thanks";
 import { HOWMUCH_ANSWER } from "./../answers/Howmuch";

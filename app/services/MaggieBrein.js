@@ -25,11 +25,11 @@ const tokenizer = new TokenizerService();
 class MaggieBrein {
     matches = this.getSimpeleMaggieMatches();
 
-    getFuzzyMatches = (text) => {
-        let fuse = new Fuse(this.matches, { keys: ["names"] });
-        //const or = tokens?.map((token) => { return { names: token }})
-        //return fuse.search({$or: or});
-        return fuse.search(text);
+    getFuzzyMatches = (tokens) => {
+        let fuse = new Fuse(this.matches, { keys: ["names"], includeScore: true });
+        const or = tokens?.map((token) => { return { names: token }})
+        return fuse.search({$or: or});
+        // return fuse.search(text);
     }
     
     getExactMatches = (tokens) => {
@@ -85,6 +85,7 @@ class MaggieBrein {
                 return await maggieMond.sayCurrentWeather(city);
             }},
             { names: BASIC_FOLLOWUP_TRIGGER, action: () => maggieMond.askBasicFollowUpQuestion(), },
+            { names: ["?"], action: () => maggieMond.sayBasicMessage(), },
         ];
     }
 

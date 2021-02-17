@@ -45,7 +45,6 @@ class MaggieBrein {
 
     getSimpeleMaggieMatches() {
         return [
-            { names: BASIC_FOLLOWUP_TRIGGER, action: () => maggieMond.askBasicFollowUpQuestion(), },
             { names: BYE_TRIGGER, action: () => maggieMond.sayBye(), },
             { names: GOODMORNING_TRIGGER, action: () => maggieMond.sayGoodMorning(), },
             { names: HOW_TRIGGER, action: () => maggieMond.sayHow(), },
@@ -85,7 +84,7 @@ class MaggieBrein {
                 const city = text?.replace('weer', '');
                 return await maggieMond.sayCurrentWeather(city);
             }},
-
+            { names: BASIC_FOLLOWUP_TRIGGER, action: () => maggieMond.askBasicFollowUpQuestion(), },
         ];
     }
 

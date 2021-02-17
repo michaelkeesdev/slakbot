@@ -15,11 +15,11 @@ class Maggie {
         console.log("fuzzyMatches", JSON.stringify(fuzzyMatches));
 
         let response = "";
-        if (fuzzyMatches) {
-            response = await fuzzyMatches[0]?.item?.action(text, context); 
-        } else if(exactMatches) {
+        if(exactMatches) {
             response = await exactMatches[0]?.action(text, context);
-        }
+        } else if (fuzzyMatches) {
+            response = await fuzzyMatches[0]?.item?.action(text, context); 
+        } 
 
         if (!response) {
             switch (true) {

@@ -25,14 +25,18 @@ const tokenizer = new TokenizerService();
 class MaggieBrein {
     matches = this.getSimpeleMaggieMatches();
 
-    getFuzzyMatches = (tokens) => {
+    getFuzzyMatches = (text) => {
         let fuse = new Fuse(this.matches, { keys: ["names"] });
-        const or = tokens?.map((token) => { return { names: token }})
-        return fuse.search({$or: or});
+        //const or = tokens?.map((token) => { return { names: token }})
+        //return fuse.search({$or: or});
+        return fuse.search(text);
     }
     
     getExactMatches = (tokens) => {
-        return this.matches.filter(match => tokens.some((token) => match.names.includes(token)));
+        return this.matches.filter(match => tokens.some((token) => {
+           const nameTokens = match?.names?.flatMap((name) => this.getTokens(name));
+           return nameTokens.includes(token)
+        }));
     };
 
     getTokens = (text) => {

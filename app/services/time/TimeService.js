@@ -8,8 +8,8 @@ class TimeService {
     numberUtil = new NumberUtil();
 
     getRandomTime(text) {
-        let hh = this.numberUtil.generateRandom(6, 24);
-        let mm = this.numberUtil.generateRandom(0, 60);
+        let hh = this.numberUtil.generateRandom(6, 23);
+        let mm = this.numberUtil.generateRandom(0, 59);
 
         if (hh < 10) hh = "0" + hh;
         if (mm < 10) mm = "0" + mm;

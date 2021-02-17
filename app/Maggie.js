@@ -11,11 +11,14 @@ class Maggie {
         const exactMatches = maggieBrein.getExactMatches(tokens);
         const fuzzyMatches = maggieBrein.getFuzzyMatches(tokens);
 
+        console.log("exactMatches", exactMatches);
+        console.log("fuzzyMatches", JSON.stringify(fuzzyMatches));
+
         let response = "";
-        if (exactMatches) {
-            response = await exactMatches[0]?.action(text, context)
-        } else if(fuzzyMatches) {
-            response = await fuzzyMatches[0]?.item?.action(text, context);
+        if (fuzzyMatches) {
+            response = await fuzzyMatches[0]?.item?.action(text, context); 
+        } else if(exactMatches) {
+            response = await exactMatches[0]?.action(text, context);
         }
 
         if (!response) {

@@ -73,6 +73,7 @@ class MaggieBrein {
                 ],
                 action: async () => await maggieMond.readTheNews(),
             },
+            { names: ["cijfers euromillions", "euro millions", "euromillions", "geef euromillions", "wat zijn de euromillions"], action: () => maggieMond.tellNextEuroMillionsDraw(), },
         ];
     }
 

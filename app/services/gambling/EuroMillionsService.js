@@ -16,7 +16,9 @@ class EuroMillionsService {
         weekdays[5] = "vrijdag";
         weekdays[6] = "zaterdag";
 
-        if (today <= 2 || today > 5) {
+        if (today == 2 || today == 5) {
+            return "vandaag";
+        } else if (today < 2 || today > 5) {
             return weekdays[2];
         } else {
             return weekdays[5];

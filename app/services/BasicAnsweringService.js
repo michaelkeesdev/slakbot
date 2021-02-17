@@ -9,8 +9,8 @@ import { WEETJES_ANSWER } from './../answers/weetjes/Weetjes';
 import { WEETJES_PREFIX } from './../answers/weetjes/Weetjesprefix';
 import { BASIC_SUFFIX } from '../answers/basic/BasicSuffix';
 
-const PREFIX_PID = 3;
-const SUFFIX_PID = 10;
+const PREFIX_PID = 5;
+const SUFFIX_PID = 5;
 const WEETJE_PID = 50;
 
 

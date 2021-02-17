@@ -22,7 +22,7 @@ import { DecisionService } from "./decision/DecisionService";
 import { EuroMillionsService } from './gambling/EuroMillionsService';
 import { WeatherService } from './weather/WeatherService';
 import { TimeService } from './time/TimeService';
-
+import { HttpClient } from '../../httpClient';
 
 const httpClient = new HttpClient();
 const userService = new UserService();

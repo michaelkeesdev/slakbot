@@ -3,5 +3,5 @@ export const BASIC_SUFFIX = [
     ":simple_smile:",
     ":joy:",
     "Allee tot ziens he.",
-    "De groeten,"
+    "De groeten."
 ];

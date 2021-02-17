@@ -5,5 +5,6 @@ export const BASIC_PHRASE = [
     "Lol.",
     "Wat?",
     "Ik wil hier liever niet op antwoorden maar...",
-    "Even denken..."
+    "Even denken...",
+    "Ah hm..."
   ];

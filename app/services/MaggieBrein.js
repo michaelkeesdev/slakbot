@@ -9,7 +9,7 @@ import { JOKE_TRIGGER } from "./../answers/Joke";
 import { THANKS_TRIGGER } from "./../answers/Thanks";
 import { HOWMUCH_TRIGGER } from "./../answers/Howmuch";
 import { SLUIP_TRIGGER } from "./../answers/youtube/Sluip";
-import { WEETJES_TRIGGER } from "./../answers/Weetjes";
+import { WEETJES_TRIGGER } from "./../answers/weetjes/Weetjes";
 import { WHEN_TRIGGER } from "./../answers/When";
 import { WHERE_TRIGGER } from "./../answers/Where";
 

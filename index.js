@@ -64,7 +64,10 @@ app.event("app_mention", async ({ context, event }) => {
 (async () => {
   await app.start(process.env.PORT || 8080);
 
+  //for (let i = 0 ; i < 100 ; i++) {  
+    //await maggie.getResponse("al deployed?")
   console.log("test", await maggie.getResponse("al deployed?"));
+  //}
 
   console.log("⚡️ Slakbot is running!");
 })();

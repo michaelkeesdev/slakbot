@@ -9,7 +9,7 @@ import { HOW_ANSWER } from "./../answers/How";
 import { JOKE_ANSWER } from "./../answers/Joke";
 import { THANKS_ANSWER } from "./../answers/Thanks";
 import { HOWMUCH_ANSWER } from "./../answers/Howmuch";
-import { WEETJES_ANSWER } from "./../answers/Weetjes";
+import { WEETJES_ANSWER } from "../answers/weetjes/Weetjes";
 import { WHEN_ANSWER } from "./../answers/When";
 import { WHERE_ANSWER } from "./../answers/Where";
 

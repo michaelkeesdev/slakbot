@@ -20,13 +20,17 @@ import { NineGagService } from "./9gag/9gagService";
 import { YoutubeService } from "./google/YoutubeService";
 import { DecisionService } from "./decision/DecisionService";
 import { EuroMillionsService } from './gambling/EuroMillionsService';
+import { WeatherService } from './weather/WeatherService';
+import { HttpClient } from '../../httpClient';
 
+const httpClient = new HttpClient();
 const userService = new UserService();
 const ninegagService = new NineGagService();
-const newsService = new NewsService();
 const youtubeService = new YoutubeService();
 const decisionService = new DecisionService();
 const euroMillionsService = new EuroMillionsService();
+const weatherService = new WeatherService(httpClient);
+const newsService = new NewsService(httpClient);
 
 class MaggieMond {
   askBasicFollowUpQuestion() { return sample(BASIC_FOLLOWUP_QUESTION); }
@@ -53,6 +57,8 @@ class MaggieMond {
   speakDecision(text) { return decisionService.makeDecision(text) }
 
   tellNextEuroMillionsDraw() { return euroMillionsService.getNextDraw(); }
+
+  sayCurrentWeather(city) { return weatherService.getCurrentWeather(city); }
 }
 
 export { MaggieMond };

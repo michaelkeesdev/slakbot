@@ -57,12 +57,11 @@ class MaggieMond {
   sayRandomYoutube(text) { return youtubeService.getRandomYoutube(text); }
   sayExactYoutube(text) { return youtubeService.getExactYoutube(text); }
   readTheNews() { return newsService.getNewsPosts(); }
+  sayCurrentWeather(city) { return weatherService.getCurrentWeather(city); }
 
   speakDecision(text) { return decisionService.makeDecision(text) }
 
   tellNextEuroMillionsDraw() { return euroMillionsService.getNextDraw(); }
-
-  sayCurrentWeather(city) { return weatherService.getCurrentWeather(city); }
 }
 
 export { MaggieMond };

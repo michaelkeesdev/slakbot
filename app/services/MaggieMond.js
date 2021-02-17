@@ -20,6 +20,7 @@ import { NineGagService } from "./9gag/9gagService";
 import { YoutubeService } from "./google/YoutubeService";
 import { DecisionService } from "./decision/DecisionService";
 import { EuroMillionsService } from './gambling/EuroMillionsService';
+import { TimeService } from './time/TimeService';
 
 const userService = new UserService();
 const ninegagService = new NineGagService();
@@ -27,6 +28,7 @@ const newsService = new NewsService();
 const youtubeService = new YoutubeService();
 const decisionService = new DecisionService();
 const euroMillionsService = new EuroMillionsService();
+const timeService = new TimeService();
 
 class MaggieMond {
   askBasicFollowUpQuestion() { return sample(BASIC_FOLLOWUP_QUESTION); }
@@ -45,6 +47,7 @@ class MaggieMond {
   sayRandomUser() { return userService.getRandomUser(); }
   showMeme() { return ninegagService.get9gagBasic(); }
   showGirl() { return ninegagService.get9gagGirl(); }
+  sayTime(text) { return timeService.getRandomTime(text); }
   saySluip() { return youtubeService.getSluip(); }
   sayRandomYoutube(text) { return youtubeService.getRandomYoutube(text); }
   sayExactYoutube(text) { return youtubeService.getExactYoutube(text); }
@@ -53,6 +56,7 @@ class MaggieMond {
   speakDecision(text) { return decisionService.makeDecision(text) }
 
   tellNextEuroMillionsDraw() { return euroMillionsService.getNextDraw(); }
+
 }
 
 export { MaggieMond };

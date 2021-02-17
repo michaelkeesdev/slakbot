@@ -1,7 +1,12 @@
+import { NumberUtil } from "../../util/NumberUtil";
+
 class EuroMillionsService {
+
+    numberUtil = new NumberUtil();
+
     getNextDraw() {
-        let n = this.generate(5,50);
-        let s = this.generate(2,12);
+        let n = this.numberUtil.generateRandomList(5, 1, 50);
+        let s = this.numberUtil.generateRandomList(2, 1, 12);
         let nextDraw = this.getNextEuroMillionsDrawDay();
         return `De winnende cijfers van ${nextDraw} zijn: ${n[0]}, ${n[1]}, ${n[2]}, ${n[3]} en ${n[4]}. De sterren zijn ${s[0]} en ${s[1]}.`
     }
@@ -24,18 +29,6 @@ class EuroMillionsService {
             return weekdays[5];
         }
 
-    }
-
-    generate(amount, maxNumber) {
-        let numbers = [], random;
-        do  {
-            random = Math.floor(Math.random() * maxNumber)  + 1
-            if (!numbers.includes(random)) {
-                numbers.push(random);
-            }
-        } while (numbers.length < amount);
-
-        return numbers.sort((a,b) => a - b);
     }
 }
 

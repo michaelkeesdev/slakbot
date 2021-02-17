@@ -21,7 +21,8 @@ import { YoutubeService } from "./google/YoutubeService";
 import { DecisionService } from "./decision/DecisionService";
 import { EuroMillionsService } from './gambling/EuroMillionsService';
 import { WeatherService } from './weather/WeatherService';
-import { HttpClient } from '../../httpClient';
+import { TimeService } from './time/TimeService';
+
 
 const httpClient = new HttpClient();
 const userService = new UserService();
@@ -29,8 +30,10 @@ const ninegagService = new NineGagService();
 const youtubeService = new YoutubeService();
 const decisionService = new DecisionService();
 const euroMillionsService = new EuroMillionsService();
+
 const weatherService = new WeatherService(httpClient);
 const newsService = new NewsService(httpClient);
+const timeService = new TimeService();
 
 class MaggieMond {
   askBasicFollowUpQuestion() { return sample(BASIC_FOLLOWUP_QUESTION); }
@@ -49,6 +52,7 @@ class MaggieMond {
   sayRandomUser() { return userService.getRandomUser(); }
   showMeme() { return ninegagService.get9gagBasic(); }
   showGirl() { return ninegagService.get9gagGirl(); }
+  sayTime(text) { return timeService.getRandomTime(text); }
   saySluip() { return youtubeService.getSluip(); }
   sayRandomYoutube(text) { return youtubeService.getRandomYoutube(text); }
   sayExactYoutube(text) { return youtubeService.getExactYoutube(text); }

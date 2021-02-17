@@ -15,27 +15,29 @@ import { WHERE_TRIGGER } from "./../answers/Where";
 
 import { DecisionService } from "./decision/DecisionService";
 import { MaggieMond } from "./MaggieMond";
+import { TokenizerService } from "./tokenizer/Tokenizer";
+import { result } from "lodash";
 
 const decisionService = new DecisionService();
 const maggieMond = new MaggieMond();
+const tokenizer = new TokenizerService();
 
 class MaggieBrein {
     matches = this.getSimpeleMaggieMatches();
 
-    getFuzzyMatches = (text) => {
+    getFuzzyMatches = (tokens) => {
         let fuse = new Fuse(this.matches, { keys: ["names"] });
-        return fuse.search(text);
+        const or = tokens?.map((token) => { return { names: token }})
+        return fuse.search({$or: or});
     }
     
-    getExactMatches = (text) => {
-        return this.matches
-          .flatMap((match) => {
-            return match?.names?.map((name) => {
-                return text?.match(new RegExp(`^${name}`)) && match;
-            });
-          })
-          .filter((match) => match);
+    getExactMatches = (tokens) => {
+        return this.matches.filter(match => tokens.some((token) => match.names.includes(token)));
     };
+
+    getTokens = (text) => {
+        return tokenizer.tokenize(text);
+    }
 
     getSimpeleMaggieMatches() {
         return [

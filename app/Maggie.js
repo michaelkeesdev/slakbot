@@ -6,13 +6,15 @@ const maggieBrein = new MaggieBrein();
 
 class Maggie {
     getResponse = async (text, context) => {
-        const exactMatches = maggieBrein.getExactMatches(text);
-        const fuzzyMatches = maggieBrein.getFuzzyMatches(text)
+        const tokens = maggieBrein.getTokens(text);
+
+        const exactMatches = maggieBrein.getExactMatches(tokens);
+        const fuzzyMatches = maggieBrein.getFuzzyMatches(tokens);
 
         let response = "";
         if (exactMatches) {
             response = await exactMatches[0]?.action(text, context)
-        } else {
+        } else if(fuzzyMatches) {
             response = await fuzzyMatches[0]?.item?.action(text, context);
         }
 

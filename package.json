@@ -23,6 +23,7 @@
     "fuzzy-search": "^3.2.1",
     "googleapis": "^67.0.0",
     "lodash": "^4.17.20",
+    "nlp-tokenizer": "^1.0.0",
     "node-fetch": "^2.6.1"
   },
   "devDependencies": {

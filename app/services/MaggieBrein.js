@@ -75,6 +75,11 @@ class MaggieBrein {
                 action: async () => await maggieMond.readTheNews(),
             },
             { names: ["cijfers euromillions", "euro millions", "euromillions", "geef euromillions", "wat zijn de euromillions"], action: () => maggieMond.tellNextEuroMillionsDraw(), },
+            { names: ["weer"], action: async (text) => { 
+                const city = text?.replace('weer', '');
+                return await maggieMond.sayCurrentWeather(city);
+            }},
+
         ];
     }
 

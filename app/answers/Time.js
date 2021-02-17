@@ -4,6 +4,6 @@ export const TIME_ANSWER = [
     `Sowieso voor %hh%u`,
     `Rond een uur of %hh%`,
     `Exact om %hh%:%mm%`,
-    `Om %hh% en %mm% op de klok`,
+    `Om %hh%:%mm% op de klok`,
     `Wanneer de klok %hh%:%mm% tikt`
 ];

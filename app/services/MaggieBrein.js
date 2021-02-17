@@ -34,8 +34,8 @@ class MaggieBrein {
     
     getExactMatches = (tokens) => {
         return this.matches.filter(match => tokens.some((token) => {
-           const nameTokens = match?.names?.flatMap((name) => this.getTokens(name));
-           return nameTokens.includes(token)
+           //const nameTokens = match?.names?.flatMap((name) => this.getTokens(name));
+           return match.names.includes(token)
         }));
     };
 

@@ -7,8 +7,10 @@ import { BASIC_DONT_KNOW_ANSWER } from './../answers/basic/BasicDontKnow';
 import { BASIC_PHRASE } from './../answers/basic/BasicPhrase';
 import { WEETJES_ANSWER } from './../answers/weetjes/Weetjes';
 import { WEETJES_PREFIX } from './../answers/weetjes/Weetjesprefix';
+import { BASIC_SUFFIX } from '../answers/basic/BasicSuffix';
 
 const PREFIX_PID = 3;
+const SUFFIX_PID = 10;
 const WEETJE_PID = 50;
 
 
@@ -54,10 +56,15 @@ class BasicAnweringService {
     }
 
     addMoreTextToResponse(responseBuilder) {
-        let textType = Math.floor(Math.random() * WEETJE_PID);
+        let weetje = Math.floor(Math.random() * WEETJE_PID);
+        let suffix = Math.floor(Math.random() * SUFFIX_PID);
 
-        if (textType === 1) {
+        if (weetje === 1) {
             responseBuilder.append(" ").append(sample(WEETJES_PREFIX)).append(StringUtil.firstCharToLower(sample(WEETJES_ANSWER)));
+        } 
+        
+        if (suffix === 1) {
+            responseBuilder.append(" ").append(sample(BASIC_SUFFIX));
         }
     }
 }

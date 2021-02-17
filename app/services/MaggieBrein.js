@@ -16,7 +16,6 @@ import { WHERE_TRIGGER } from "./../answers/Where";
 import { DecisionService } from "./decision/DecisionService";
 import { MaggieMond } from "./MaggieMond";
 import { TokenizerService } from "./tokenizer/Tokenizer";
-import { result } from "lodash";
 
 const decisionService = new DecisionService();
 const maggieMond = new MaggieMond();

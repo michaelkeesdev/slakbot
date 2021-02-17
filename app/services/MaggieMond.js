@@ -3,7 +3,6 @@ import { sample } from 'lodash';
 
 import { BASIC_FOLLOWUP_QUESTION } from "./../answers/questions/BasicFollowUpQuestion";
 
-import { BASIC_ANSWER } from "./../answers/Basic.js";
 import { BYE_ANSWER } from "./../answers/Bye";
 import { GOODMORNING_ANSWER } from "./../answers/Goodmorning";
 import { HOW_ANSWER } from "./../answers/How";
@@ -14,6 +13,7 @@ import { WEETJES_ANSWER } from "./../answers/Weetjes";
 import { WHEN_ANSWER } from "./../answers/When";
 import { WHERE_ANSWER } from "./../answers/Where";
 
+import { BasicAnweringService } from "./BasicAnsweringService"
 import { UserService } from "./user/UserService";
 import { NewsService } from "./news/NewsService";
 import { NineGagService } from "./9gag/9gagService";
@@ -23,6 +23,8 @@ import { EuroMillionsService } from './gambling/EuroMillionsService';
 import { WeatherService } from './weather/WeatherService';
 import { TimeService } from './time/TimeService';
 import { HttpClient } from '../../httpClient';
+
+const basicAnweringService = new BasicAnweringService();
 
 const httpClient = new HttpClient();
 const userService = new UserService();
@@ -38,7 +40,7 @@ const timeService = new TimeService();
 class MaggieMond {
   askBasicFollowUpQuestion() { return sample(BASIC_FOLLOWUP_QUESTION); }
 
-  sayBasicMessage() { return sample(BASIC_ANSWER); }
+  giveBasicAnswer() { return basicAnweringService.buildAnswerPhrase(); }
   sayBye() { return sample(BYE_ANSWER); }
   sayGoodMorning() { return sample(GOODMORNING_ANSWER); }
   sayHow() { return sample(HOW_ANSWER); }

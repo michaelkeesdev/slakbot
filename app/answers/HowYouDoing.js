@@ -1,6 +1,7 @@
 export const HOW_YOU_DOING_TRIGGER = [
     "hoe gaat het", 
     "alles goed",
+    "alles ok",
     "cva met u",
     "cva"
 ]
@@ -16,8 +17,7 @@ export const HOW_YOU_DOING_ANSWER = [
     "Top",
     "Perfect",
     "Slecht",
-    "Best goed",
-    "Best oke",
+    "Goed",
     "Moeilijk, ik ben moe",
     "Heel goed vandaag",
     "Matig, maar ok",

@@ -47,7 +47,7 @@ class MaggieBrein {
         return [
             { names: BYE_TRIGGER, action: () => maggieMond.sayBye(), },
             { names: GOODMORNING_TRIGGER, action: () => maggieMond.sayGoodMorning(), },
-            { names: HOW_TRIGGER, action: () => maggieMond.sayHow(), },
+            //{ names: HOW_TRIGGER, action: () => maggieMond.sayHow(), },
             { names: HOW_YOU_DOING_TRIGGER, action: () => maggieMond.sayHowYouDoing(), },
             { names: JOKE_TRIGGER, action: () => maggieMond.sayJoke(), },
             { names: HOWMUCH_TRIGGER, action: () => maggieMond.sayHowMuch(), },

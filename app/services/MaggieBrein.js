@@ -9,14 +9,14 @@ import { JOKE_TRIGGER } from "./../answers/Joke";
 import { THANKS_TRIGGER } from "./../answers/Thanks";
 import { HOWMUCH_TRIGGER } from "./../answers/Howmuch";
 import { SLUIP_TRIGGER } from "./../answers/youtube/Sluip";
-import { WEETJES_TRIGGER } from "./../answers/Weetjes";
+import { WEETJES_TRIGGER } from "./../answers/weetjes/Weetjes";
 import { WHEN_TRIGGER } from "./../answers/When";
 import { WHERE_TRIGGER } from "./../answers/Where";
 
 import { DecisionService } from "./decision/DecisionService";
 import { MaggieMond } from "./MaggieMond";
 import { TokenizerService } from "./tokenizer/Tokenizer";
-import { result } from "lodash";
+import { HOW_YOU_DOING_TRIGGER } from "./../answers/HowYouDoing";
 
 const decisionService = new DecisionService();
 const maggieMond = new MaggieMond();
@@ -47,7 +47,8 @@ class MaggieBrein {
         return [
             { names: BYE_TRIGGER, action: () => maggieMond.sayBye(), },
             { names: GOODMORNING_TRIGGER, action: () => maggieMond.sayGoodMorning(), },
-            { names: HOW_TRIGGER, action: () => maggieMond.sayHow(), },
+            //{ names: HOW_TRIGGER, action: () => maggieMond.sayHow(), },
+            { names: HOW_YOU_DOING_TRIGGER, action: () => maggieMond.sayHowYouDoing(), },
             { names: JOKE_TRIGGER, action: () => maggieMond.sayJoke(), },
             { names: HOWMUCH_TRIGGER, action: () => maggieMond.sayHowMuch(), },
             { names: SLUIP_TRIGGER, action: async () => maggieMond.saySluip(), },

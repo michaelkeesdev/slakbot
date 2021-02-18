@@ -2,7 +2,8 @@ export const THANKS_TRIGGER = [
     "bedankt", 
     "thanks",
     "thank",
-    "dank"
+    "dank",
+    "merci"
 ]
 
 export const THANKS_ANSWER = [

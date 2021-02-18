@@ -77,5 +77,10 @@ app.event("app_mention", async ({ context, event }) => {
   ]
   console.log("test", await maggie.getResponse("@Maggie tegen wanneer af", { botUserId: "Maggie"}));
 
+  //for (let i = 0 ; i < 100 ; i++) {  
+    //await maggie.getResponse("al deployed?")
+  //console.log("test", await maggie.getResponse("cva"));
+  //}
+
   console.log("⚡️ Slakbot is running!");
 })();

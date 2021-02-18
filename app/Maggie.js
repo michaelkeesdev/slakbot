@@ -29,7 +29,7 @@ class Maggie {
                     response = maggieMond.speakDecision(text);
                     break;
                 default:
-                    response = maggieMond.sayBasicMessage();
+                    response = maggieMond.giveBasicAnswer();
             }
         }
 

@@ -8,6 +8,7 @@ import { BASIC_PHRASE } from './../answers/basic/BasicPhrase';
 import { WEETJES_ANSWER } from './../answers/weetjes/Weetjes';
 import { WEETJES_PREFIX } from './../answers/weetjes/Weetjesprefix';
 import { BASIC_SUFFIX } from '../answers/basic/BasicSuffix';
+import { HOW_YOU_DOING_PREFIX, HOW_YOU_DOING_SUFFIX, HOW_YOU_DOING_ANSWER } from '../answers/HowYouDoing';
 
 const PREFIX_PID = 5;
 const SUFFIX_PID = 5;
@@ -20,6 +21,14 @@ class BasicAnweringService {
         this.buildStartOfAnswer(responseBuilder);
         this.addAnswerToResponse(responseBuilder);
         this.addMoreTextToResponse(responseBuilder);       
+        return responseBuilder.toString();
+    };
+
+    buildAnswerToHowYouDoingPhrase = () => {
+        let responseBuilder = new StringBuilder();
+        this.addHowYouDoingPrefixToResponse(responseBuilder);
+        this.addHowYouDoingAnswerToResponse(responseBuilder);
+        this.addHowYouDoingSuffixToResponse(responseBuilder);       
         return responseBuilder.toString();
     };
 
@@ -53,6 +62,18 @@ class BasicAnweringService {
                 responseBuilder.append(sample(BASIC_PHRASE));
                 break;
         }
+    }
+
+    addHowYouDoingPrefixToResponse(responseBuilder) {
+        responseBuilder.append(sample(HOW_YOU_DOING_PREFIX));
+    }
+
+    addHowYouDoingAnswerToResponse(responseBuilder) {
+        responseBuilder.append(" ").append(StringUtil.firstCharToLower(sample(HOW_YOU_DOING_ANSWER)));
+    }
+
+    addHowYouDoingSuffixToResponse(responseBuilder) {
+        responseBuilder.append(", ").append(sample(HOW_YOU_DOING_SUFFIX));
     }
 
     addMoreTextToResponse(responseBuilder) {

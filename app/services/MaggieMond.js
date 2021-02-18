@@ -45,6 +45,7 @@ class MaggieMond {
   sayGoodMorning() { return sample(GOODMORNING_ANSWER); }
   sayHow() { return sample(HOW_ANSWER); }
   sayHowMuch() { return sample(HOWMUCH_ANSWER); }
+  sayHowYouDoing() { return basicAnweringService.buildAnswerToHowYouDoingPhrase(); }
   sayJoke() { return sample(JOKE_ANSWER); }
   sayThanks() { return sample(THANKS_ANSWER); }
   sayWeetje() { return sample(WEETJES_ANSWER); }

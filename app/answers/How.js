@@ -1,5 +1,5 @@
 export const HOW_TRIGGER = [
-    "hoe"
+    //"hoe"
 ]
 
 export const HOW_ANSWER = [

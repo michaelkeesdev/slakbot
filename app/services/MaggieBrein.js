@@ -16,6 +16,7 @@ import { WHERE_TRIGGER } from "./../answers/Where";
 import { DecisionService } from "./decision/DecisionService";
 import { MaggieMond } from "./MaggieMond";
 import { TokenizerService } from "./tokenizer/Tokenizer";
+import { HOW_YOU_DOING_TRIGGER } from "./../answers/HowYouDoing";
 
 const decisionService = new DecisionService();
 const maggieMond = new MaggieMond();
@@ -47,6 +48,7 @@ class MaggieBrein {
             { names: BYE_TRIGGER, action: () => maggieMond.sayBye(), },
             { names: GOODMORNING_TRIGGER, action: () => maggieMond.sayGoodMorning(), },
             { names: HOW_TRIGGER, action: () => maggieMond.sayHow(), },
+            { names: HOW_YOU_DOING_TRIGGER, action: () => maggieMond.sayHowYouDoing(), },
             { names: JOKE_TRIGGER, action: () => maggieMond.sayJoke(), },
             { names: HOWMUCH_TRIGGER, action: () => maggieMond.sayHowMuch(), },
             { names: SLUIP_TRIGGER, action: async () => maggieMond.saySluip(), },

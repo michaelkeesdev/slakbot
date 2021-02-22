@@ -75,7 +75,7 @@ app.event("app_mention", async ({ context, event }) => {
     "@Maggie wanneer?",
     "@Maggie wa uur?",
   ]
-  console.log("test", await maggie.getResponse("@Maggie tegen wanneer af", { botUserId: "Maggie"}));
+  console.log("test", await maggie.getResponse("<@Maggie> nu terug de oude denk he?", { botUserId: "Maggie"}));
 
   //for (let i = 0 ; i < 100 ; i++) {  
     //await maggie.getResponse("al deployed?")

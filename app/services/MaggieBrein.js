@@ -17,80 +17,150 @@ import { DecisionService } from "./decision/DecisionService";
 import { MaggieMond } from "./MaggieMond";
 import { TokenizerService } from "./tokenizer/Tokenizer";
 import { HOW_YOU_DOING_TRIGGER } from "./../answers/HowYouDoing";
+import { flatMap } from "lodash";
+import { NumberUtil } from "../util/NumberUtil";
 
 const decisionService = new DecisionService();
 const maggieMond = new MaggieMond();
 const tokenizer = new TokenizerService();
 
 class MaggieBrein {
-    matches = this.getSimpeleMaggieMatches();
+  matches = this.getSimpeleMaggieMatches();
 
-    getFuzzyMatches = (tokens) => {
-        let fuse = new Fuse(this.matches, { keys: ["names"], includeScore: true });
-        const or = tokens?.map((token) => { return { names: token }})
-        return fuse.search({$or: or});
-        // return fuse.search(text);
-    }
-    
-    getExactMatches = (tokens) => {
-        return this.matches.filter(match => tokens.some((token) => {
-           //const nameTokens = match?.names?.flatMap((name) => this.getTokens(name));
-           return match.names.includes(token)
-        }));
-    };
+  getFuzzyMatch = async (tokens) => {
+    const tokenizedMatches = this.matches?.flatMap((match) =>
+      match?.names?.flatMap((name) => ({ ...match, names: this.getTokens(name) }))
+    );
+    let fuse = new Fuse(tokenizedMatches, {
+      keys: ["names"],
+      includeScore: true,
+      isCaseSensitive: false,
+      ignoreLocation: true,
+    });
+    const searchTokensPromises = tokens.map( async(token) => {
+      return new Promise((resolve, reject) => {
+        const matched = fuse.search({ names: token });
+        matched ? resolve(matched) : reject([]);
+      });
+    });
+    const result = await Promise.all(searchTokensPromises);
+    const flatten = flatMap(result);
+    const reduced = flatten.reduce(function(results, match) {
+        const matchedResults = results[match.refIndex]?.values || [];
+        matchedResults.push({ ...match, score: parseFloat(match.score)});
+        results[match.refIndex] = { ...results[match.refIndex], values: matchedResults };
+        results[match.refIndex]["score"] = results[match.refIndex]?.score ? results[match.refIndex]?.score + match?.score : match?.score;
+        results[match.refIndex]["avgScore"] = results[match.refIndex].score / matchedResults?.length;
+        return results;
+    }, {})
+    console.log("reduced", reduced);
+    const reducedKeys = Object.keys(reduced);
+    const sorted = reducedKeys.sort((k1, k2) => reduced[k1]?.score - reduced[k2]?.score);
+    const sortedList = sorted.map((sort) => reduced[sort]);
+    const filtered = sortedList.filter((sort) => sort?.score < 0.1);
+    console.log("filtered", filtered[0].values[0].item);
+    return filtered[0].values[0].item;
+  };
 
-    getTokens = (text) => {
-        return tokenizer.tokenize(text);
-    }
+  getExactMatches = async (tokens) => {
+    return this.matches.filter((match) =>
+      tokens.some((token) => {
+        //const nameTokens = match?.names?.flatMap((name) => this.getTokens(name));
+        return match.names.includes(token);
+      })
+    );
+  };
 
-    getSimpeleMaggieMatches() {
-        return [
-            { names: BYE_TRIGGER, action: () => maggieMond.sayBye(), },
-            { names: GOODMORNING_TRIGGER, action: () => maggieMond.sayGoodMorning(), },
-            //{ names: HOW_TRIGGER, action: () => maggieMond.sayHow(), },
-            { names: HOW_YOU_DOING_TRIGGER, action: () => maggieMond.sayHowYouDoing(), },
-            { names: JOKE_TRIGGER, action: () => maggieMond.sayJoke(), },
-            { names: HOWMUCH_TRIGGER, action: () => maggieMond.sayHowMuch(), },
-            { names: SLUIP_TRIGGER, action: async () => maggieMond.saySluip(), },
-            { names: THANKS_TRIGGER, action: () => maggieMond.sayThanks(), },
-            { names: WEETJES_TRIGGER, action: () => maggieMond.sayWeetje(), },
-            { names: WHEN_TRIGGER, action: () => maggieMond.sayWhen(), },
-            { names: WHERE_TRIGGER, action: () => maggieMond.sayWhere(), },
-            { names: ["tag", "wie"], action: () => `<@${maggieMond.sayRandomUser()}>` },
-            { names: ["hoelaat", "om hoelaat", "wa uur", "tegen wa uur", "tegen hoelaat", "rond hoelaat"], action: (text) => maggieMond.sayTime(text), },
-            {
-                names: ["zoek", "zoek youtube", "muziek", "random"],
-                action: async (text) => await maggieMond.sayRandomYoutube(text),
-            },
-            {
-                names: ["youtube", "exact", "zoek exact", "geef video over"],
-                action: async (text) => await maggieMond.sayExactYoutube(text),
-            },
-            { names: ["grietje", "wufke", "slet"], action: async () => await maggieMond.showGirl(), },
-            { names: ["9gag", "ninegag", "meme", "foto"], action: async () => await maggieMond.showMeme(), },
-            {
-                names: [
-                    "nieuws",
-                    "vandaag gebeurd",
-                    "news",
-                    "vandaag",
-                    "nieuw",
-                    "hln",
-                    "gazet",
-                ],
-                action: async () => await maggieMond.readTheNews(),
-            },
-            { names: ["cijfers euromillions", "euro millions", "euromillions", "geef euromillions", "wat zijn de euromillions"], action: () => maggieMond.tellNextEuroMillionsDraw(), },
-            { names: ["weer"], action: async (text) => { 
-                const city = text?.replace('weer', '');
-                return await maggieMond.sayCurrentWeather(city);
-            }},
-            { names: BASIC_FOLLOWUP_TRIGGER, action: () => maggieMond.askBasicFollowUpQuestion(), },
-            { names: ["?"], action: () => maggieMond.sayBasicMessage(), },
-        ];
-    }
+  getTokens = (text) => {
+    return tokenizer.tokenize(text);
+  };
 
-    needsToDecide(text) { return decisionService.needsToDecide(text) }
+  getSimpeleMaggieMatches() {
+    return [
+      { names: BYE_TRIGGER, action: () => maggieMond.sayBye() },
+      { names: GOODMORNING_TRIGGER, action: () => maggieMond.sayGoodMorning() },
+      //{ names: HOW_TRIGGER, action: () => maggieMond.sayHow(), },
+      {
+        names: HOW_YOU_DOING_TRIGGER,
+        action: () => maggieMond.sayHowYouDoing(),
+      },
+      { names: JOKE_TRIGGER, action: () => maggieMond.sayJoke() },
+      { names: HOWMUCH_TRIGGER, action: () => maggieMond.sayHowMuch() },
+      { names: SLUIP_TRIGGER, action: async () => maggieMond.saySluip() },
+      { names: THANKS_TRIGGER, action: () => maggieMond.sayThanks() },
+      { names: WEETJES_TRIGGER, action: () => maggieMond.sayWeetje() },
+      { names: WHEN_TRIGGER, action: () => maggieMond.sayWhen() },
+      { names: WHERE_TRIGGER, action: () => maggieMond.sayWhere() },
+      {
+        names: ["tag", "wie"],
+        action: () => `<@${maggieMond.sayRandomUser()}>`,
+      },
+      {
+        names: [
+          "hoelaat",
+          "om hoelaat",
+          "wa uur",
+          "tegen wa uur",
+          "tegen hoelaat",
+          "rond hoelaat",
+        ],
+        action: (text) => maggieMond.sayTime(text),
+      },
+      {
+        names: ["zoek", "zoek youtube", "muziek", "random"],
+        action: async (text) => await maggieMond.sayRandomYoutube(text),
+      },
+      {
+        names: ["youtube", "exact", "zoek exact", "geef video over"],
+        action: async (text) => await maggieMond.sayExactYoutube(text),
+      },
+      {
+        names: ["grietje", "wufke", "slet"],
+        action: async () => await maggieMond.showGirl(),
+      },
+      {
+        names: ["9gag", "ninegag", "meme", "foto"],
+        action: async () => await maggieMond.showMeme(),
+      },
+      {
+        names: [
+          "nieuws",
+          "vandaag gebeurd",
+          "news",
+          "vandaag",
+          "nieuw",
+          "hln",
+          "gazet",
+        ],
+        action: async () => await maggieMond.readTheNews(),
+      },
+      {
+        names: [
+          "cijfers euromillions",
+          "euro millions",
+          "euromillions",
+          "geef euromillions",
+          "wat zijn de euromillions",
+        ],
+        action: () => maggieMond.tellNextEuroMillionsDraw(),
+      },
+      {
+        names: ["weer"],
+        action: async (text) => {
+          const city = text?.replace("weer", "");
+          return await maggieMond.sayCurrentWeather(city);
+        },
+      },
+      {
+        names: BASIC_FOLLOWUP_TRIGGER,
+        action: () => maggieMond.askBasicFollowUpQuestion(),
+      },
+    ];
+  }
+
+  needsToDecide(text) {
+    return decisionService.needsToDecide(text);
+  }
 }
 
 export { MaggieBrein };

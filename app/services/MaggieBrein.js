@@ -67,6 +67,8 @@ class MaggieBrein {
                 action: async (text) => await maggieMond.sayExactYoutube(text),
             },
             { names: ["grietje", "wufke", "slet"], action: async () => await maggieMond.showGirl(), },
+            { names: ["cosplay"], action: async () => await maggieMond.showCosplay(), },
+            { names: ["nsfw"], action: async () => await maggieMond.showNsfw(), },
             { names: ["9gag", "ninegag", "meme", "foto"], action: async () => await maggieMond.showMeme(), },
             {
                 names: [

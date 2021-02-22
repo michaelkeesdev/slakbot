@@ -62,7 +62,7 @@ class MaggieBrein {
       results[match.refIndex]["score"] = results[match.refIndex]?.score ? results[match.refIndex]?.score + match?.score : match?.score;
       results[match.refIndex]["avgScore"] = results[match.refIndex].score / matchedResults?.length;
       results[match.refIndex]["distanceScore"] = tokens?.length - matchedResults?.length;
-      results[match.refIndex]["finalScore"] = results[match.refIndex].avgScore + results[match.refIndex].distanceScore;
+      results[match.refIndex]["finalScore"] = results[match.refIndex].avgScore + ( results[match.refIndex].distanceScore * results[match.refIndex].avgScore);
       return results;
     }, {});
     const reducedKeys = Object.keys(reduced);
@@ -70,9 +70,10 @@ class MaggieBrein {
       (k1, k2) => reduced[k1]?.finalScore - reduced[k2]?.finalScore
     );
     const sortedList = sorted.map((sort) => reduced[sort]);
-    const filtered = sortedList.filter((sort) => sort?.finalScore < 1.2);
-    // console.log("filtered", JSON.stringify(filtered));
-    return filtered[0].values[0].item;
+    console.log("sortedList", JSON.stringify(sortedList))
+    const filtered = sortedList.filter((sort) => sort?.finalScore < 0.001);
+    console.log("filtered", JSON.stringify(filtered));
+    return filtered?.length ? filtered[0].values[0].item : null;
   };
 
   getExactMatches = (tokens) => {
@@ -92,7 +93,7 @@ class MaggieBrein {
     return [
       { names: BYE_TRIGGER, action: () => maggieMond.sayBye() },
       { names: GOODMORNING_TRIGGER, action: () => maggieMond.sayGoodMorning() },
-      //{ names: HOW_TRIGGER, action: () => maggieMond.sayHow(), },
+      { names: HOW_TRIGGER, action: () => maggieMond.sayHow(), },
       {
         names: HOW_YOU_DOING_TRIGGER,
         action: () => maggieMond.sayHowYouDoing(),

@@ -52,7 +52,10 @@ app.event("app_mention", async ({ context, event }) => {
   console.log("app_mention", context, event);
   const token = context.botToken;
   const channel = event.channel;
-  const response = await maggie.getResponse(event?.text, context);
+
+  const text = event.text.replace(`<@${context.botUserId}>`, "").trim();
+
+  const response = await maggie.getResponse(text, context);
   const message = { token, channel, text: response };
 
   await app.client.chat.postMessage(message);
@@ -61,25 +64,9 @@ app.event("app_mention", async ({ context, event }) => {
 (async () => {
   await app.start(process.env.PORT || 8080);
 
-  const tests = [
-    "@Maggie bedankt",
-    "@Maggie dag",
-    "@Maggie klaar me werken?",
-    "@Maggie mag ik iets vragen?",
-    "@Maggie vraagje?",
-    "@Maggie?",
-    "@Maggie nu terug de oude denk he?",
-    "@Maggie deployed?",
-    "@Maggie sorry",
-    "@Maggie hoeveel?",
-    "@Maggie wanneer?",
-    "@Maggie wa uur?",
-  ]
-  console.log("test", await maggie.getResponse("@Maggie tegen wanneer af", { botUserId: "Maggie"}));
-
   //for (let i = 0 ; i < 100 ; i++) {  
     //await maggie.getResponse("al deployed?")
-  //console.log("test", await maggie.getResponse("cva"));
+  console.log("test", await maggie.getResponse("cva"));
   //}
 
   console.log("⚡️ Slakbot is running!");

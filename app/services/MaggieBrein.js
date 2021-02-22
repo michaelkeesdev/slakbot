@@ -25,11 +25,11 @@ const tokenizer = new TokenizerService();
 class MaggieBrein {
     matches = this.getSimpeleMaggieMatches();
 
-    getFuzzyMatches = (tokens) => {
-        let fuse = new Fuse(this.matches, { keys: ["names"], includeScore: true });
-        const or = tokens?.map((token) => { return { names: token }})
-        return fuse.search({$or: or});
-        // return fuse.search(text);
+    getFuzzyMatches = (text) => {
+        let fuse = new Fuse(this.matches, { keys: ["names"] });
+        //const or = tokens?.map((token) => { return { names: token }})
+        //return fuse.search({$or: or});
+        return fuse.search(text);
     }
     
     getExactMatches = (tokens) => {
@@ -67,6 +67,8 @@ class MaggieBrein {
                 action: async (text) => await maggieMond.sayExactYoutube(text),
             },
             { names: ["grietje", "wufke", "slet"], action: async () => await maggieMond.showGirl(), },
+            { names: ["cosplay"], action: async () => await maggieMond.showCosplay(), },
+            { names: ["nsfw"], action: async () => await maggieMond.showNsfw(), },
             { names: ["9gag", "ninegag", "meme", "foto"], action: async () => await maggieMond.showMeme(), },
             {
                 names: [
@@ -86,7 +88,6 @@ class MaggieBrein {
                 return await maggieMond.sayCurrentWeather(city);
             }},
             { names: BASIC_FOLLOWUP_TRIGGER, action: () => maggieMond.askBasicFollowUpQuestion(), },
-            { names: ["?"], action: () => maggieMond.sayBasicMessage(), },
         ];
     }
 

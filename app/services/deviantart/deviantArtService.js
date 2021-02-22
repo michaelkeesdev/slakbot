@@ -23,7 +23,8 @@ class DeviantArt {
         access_token: resp.data.access_token,
         offset: offset ,
         limit: 1,
-        topic: topic
+        topic: topic,
+        mature_content: true,
       }
     });
     return resp2.data.results[0].url;

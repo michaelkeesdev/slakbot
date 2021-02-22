@@ -1,0 +1,773 @@
+[
+  {
+    "values": [
+      {
+        "item": { "names": ["wa", "uur"] },
+        "refIndex": 42,
+        "score": 1.4901161193847656e-8
+      },
+      {
+        "item": { "names": ["wa", "uur"] },
+        "refIndex": 42,
+        "score": 1.4901161193847656e-8
+      }
+    ],
+    "score": 2.9802322387695312e-8,
+    "avgScore": 1.4901161193847656e-8,
+    "distanceScore": 1,
+    "finalScore": 1.0000000149011612
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["tegen", "wa", "uur"] },
+        "refIndex": 43,
+        "score": 1.4901161193847656e-8
+      },
+      {
+        "item": { "names": ["tegen", "wa", "uur"] },
+        "refIndex": 43,
+        "score": 1.4901161193847656e-8
+      }
+    ],
+    "score": 2.9802322387695312e-8,
+    "avgScore": 1.4901161193847656e-8,
+    "distanceScore": 1,
+    "finalScore": 1.0000000149011612
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["mag", "ik", "iets", "vragen", "?"] },
+        "refIndex": 76,
+        "score": 0.5049752469181039
+      },
+      {
+        "item": { "names": ["mag", "ik", "iets", "vragen", "?"] },
+        "refIndex": 76,
+        "score": 1.4901161193847656e-8
+      }
+    ],
+    "score": 0.5049752618192651,
+    "avgScore": 0.25248763090963255,
+    "distanceScore": 1,
+    "finalScore": 1.2524876309096324
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["wat", "zijn", "de", "euromillions"] },
+        "refIndex": 74,
+        "score": 0.03162277660168379
+      },
+      {
+        "item": { "names": ["wat", "zijn", "de", "euromillions"] },
+        "refIndex": 74,
+        "score": 0.5773502691896257
+      }
+    ],
+    "score": 0.6089730457913095,
+    "avgScore": 0.30448652289565475,
+    "distanceScore": 1,
+    "finalScore": 1.3044865228956548
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["ben", "je", "daar", "?"] },
+        "refIndex": 78,
+        "score": 0.7071067811865476
+      },
+      {
+        "item": { "names": ["ben", "je", "daar", "?"] },
+        "refIndex": 78,
+        "score": 1.4901161193847656e-8
+      }
+    ],
+    "score": 0.7071067960877088,
+    "avgScore": 0.3535533980438544,
+    "distanceScore": 1,
+    "finalScore": 1.3535533980438543
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["vandaag", "gebeurd"] },
+        "refIndex": 64,
+        "score": 0.7071067811865476
+      },
+      {
+        "item": { "names": ["vandaag", "gebeurd"] },
+        "refIndex": 64,
+        "score": 0.6027713773341707
+      }
+    ],
+    "score": 1.3098781585207182,
+    "avgScore": 0.6549390792603591,
+    "distanceScore": 1,
+    "finalScore": 1.654939079260359
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["wa", "is", "updog"] },
+        "refIndex": 21,
+        "score": 1.4901161193847656e-8
+      }
+    ],
+    "score": 1.4901161193847656e-8,
+    "avgScore": 1.4901161193847656e-8,
+    "distanceScore": 2,
+    "finalScore": 2.000000014901161
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["wat", "is", "updog"] },
+        "refIndex": 20,
+        "score": 0.03162277660168379
+      }
+    ],
+    "score": 0.03162277660168379,
+    "avgScore": 0.03162277660168379,
+    "distanceScore": 2,
+    "finalScore": 2.031622776601684
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["wanneer"] },
+        "refIndex": 36,
+        "score": 0.03162277660168379
+      }
+    ],
+    "score": 0.03162277660168379,
+    "avgScore": 0.03162277660168379,
+    "distanceScore": 2,
+    "finalScore": 2.031622776601684
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["waar"] },
+        "refIndex": 37,
+        "score": 0.03162277660168379
+      }
+    ],
+    "score": 0.03162277660168379,
+    "avgScore": 0.03162277660168379,
+    "distanceScore": 2,
+    "finalScore": 2.031622776601684
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["murgend"] },
+        "refIndex": 6,
+        "score": 0.5773502691896257
+      }
+    ],
+    "score": 0.5773502691896257,
+    "avgScore": 0.5773502691896257,
+    "distanceScore": 2,
+    "finalScore": 2.5773502691896257
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["cijfers", "euromillions"] },
+        "refIndex": 70,
+        "score": 0.5773502691896257
+      }
+    ],
+    "score": 0.5773502691896257,
+    "avgScore": 0.5773502691896257,
+    "distanceScore": 2,
+    "finalScore": 2.5773502691896257
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["euro", "millions"] },
+        "refIndex": 71,
+        "score": 0.5773502691896257
+      }
+    ],
+    "score": 0.5773502691896257,
+    "avgScore": 0.5773502691896257,
+    "distanceScore": 2,
+    "finalScore": 2.5773502691896257
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["euromillions"] },
+        "refIndex": 72,
+        "score": 0.5773502691896257
+      }
+    ],
+    "score": 0.5773502691896257,
+    "avgScore": 0.5773502691896257,
+    "distanceScore": 2,
+    "finalScore": 2.5773502691896257
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["geef", "euromillions"] },
+        "refIndex": 73,
+        "score": 0.5773502691896257
+      }
+    ],
+    "score": 0.5773502691896257,
+    "avgScore": 0.5773502691896257,
+    "distanceScore": 2,
+    "finalScore": 2.5773502691896257
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["dag"] },
+        "refIndex": 0,
+        "score": 0.7071067811865476
+      }
+    ],
+    "score": 0.7071067811865476,
+    "avgScore": 0.7071067811865476,
+    "distanceScore": 2,
+    "finalScore": 2.7071067811865475
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["salut"] },
+        "refIndex": 1,
+        "score": 0.7071067811865476
+      }
+    ],
+    "score": 0.7071067811865476,
+    "avgScore": 0.7071067811865476,
+    "distanceScore": 2,
+    "finalScore": 2.7071067811865475
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["daag"] },
+        "refIndex": 9,
+        "score": 0.7071067811865476
+      }
+    ],
+    "score": 0.7071067811865476,
+    "avgScore": 0.7071067811865476,
+    "distanceScore": 2,
+    "finalScore": 2.7071067811865475
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["hallo"] },
+        "refIndex": 12,
+        "score": 0.7071067811865476
+      }
+    ],
+    "score": 0.7071067811865476,
+    "avgScore": 0.7071067811865476,
+    "distanceScore": 2,
+    "finalScore": 2.7071067811865475
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["hoe", "gaat", "het"] },
+        "refIndex": 13,
+        "score": 0.7071067811865476
+      }
+    ],
+    "score": 0.7071067811865476,
+    "avgScore": 0.7071067811865476,
+    "distanceScore": 2,
+    "finalScore": 2.7071067811865475
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["alles", "goed"] },
+        "refIndex": 14,
+        "score": 0.7071067811865476
+      }
+    ],
+    "score": 0.7071067811865476,
+    "avgScore": 0.7071067811865476,
+    "distanceScore": 2,
+    "finalScore": 2.7071067811865475
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["alles", "ok"] },
+        "refIndex": 15,
+        "score": 0.7071067811865476
+      }
+    ],
+    "score": 0.7071067811865476,
+    "avgScore": 0.7071067811865476,
+    "distanceScore": 2,
+    "finalScore": 2.7071067811865475
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["whats", "updog"] },
+        "refIndex": 18,
+        "score": 0.7071067811865476
+      }
+    ],
+    "score": 0.7071067811865476,
+    "avgScore": 0.7071067811865476,
+    "distanceScore": 2,
+    "finalScore": 2.7071067811865475
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["what", "'", "s", "updog"] },
+        "refIndex": 19,
+        "score": 0.7071067811865476
+      }
+    ],
+    "score": 0.7071067811865476,
+    "avgScore": 0.7071067811865476,
+    "distanceScore": 2,
+    "finalScore": 2.7071067811865475
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["sluip", "random"] },
+        "refIndex": 26,
+        "score": 0.7071067811865476
+      }
+    ],
+    "score": 0.7071067811865476,
+    "avgScore": 0.7071067811865476,
+    "distanceScore": 2,
+    "finalScore": 2.7071067811865475
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["youtube", "sluip", "random"] },
+        "refIndex": 27,
+        "score": 0.7071067811865476
+      }
+    ],
+    "score": 0.7071067811865476,
+    "avgScore": 0.7071067811865476,
+    "distanceScore": 2,
+    "finalScore": 2.7071067811865475
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["dank"] },
+        "refIndex": 31,
+        "score": 0.7071067811865476
+      }
+    ],
+    "score": 0.7071067811865476,
+    "avgScore": 0.7071067811865476,
+    "distanceScore": 2,
+    "finalScore": 2.7071067811865475
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["weetje"] },
+        "refIndex": 33,
+        "score": 0.7071067811865476
+      }
+    ],
+    "score": 0.7071067811865476,
+    "avgScore": 0.7071067811865476,
+    "distanceScore": 2,
+    "finalScore": 2.7071067811865475
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["wistje"] },
+        "refIndex": 34,
+        "score": 0.7071067811865476
+      }
+    ],
+    "score": 0.7071067811865476,
+    "avgScore": 0.7071067811865476,
+    "distanceScore": 2,
+    "finalScore": 2.7071067811865475
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["tag"] },
+        "refIndex": 38,
+        "score": 0.7071067811865476
+      }
+    ],
+    "score": 0.7071067811865476,
+    "avgScore": 0.7071067811865476,
+    "distanceScore": 2,
+    "finalScore": 2.7071067811865475
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["wie"] },
+        "refIndex": 39,
+        "score": 0.7071067811865476
+      }
+    ],
+    "score": 0.7071067811865476,
+    "avgScore": 0.7071067811865476,
+    "distanceScore": 2,
+    "finalScore": 2.7071067811865475
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["random"] },
+        "refIndex": 49,
+        "score": 0.7071067811865476
+      }
+    ],
+    "score": 0.7071067811865476,
+    "avgScore": 0.7071067811865476,
+    "distanceScore": 2,
+    "finalScore": 2.7071067811865475
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["wufke"] },
+        "refIndex": 55,
+        "score": 0.7071067811865476
+      }
+    ],
+    "score": 0.7071067811865476,
+    "avgScore": 0.7071067811865476,
+    "distanceScore": 2,
+    "finalScore": 2.7071067811865475
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["vandaag"] },
+        "refIndex": 66,
+        "score": 0.7071067811865476
+      }
+    ],
+    "score": 0.7071067811865476,
+    "avgScore": 0.7071067811865476,
+    "distanceScore": 2,
+    "finalScore": 2.7071067811865475
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["gazet"] },
+        "refIndex": 69,
+        "score": 0.7071067811865476
+      }
+    ],
+    "score": 0.7071067811865476,
+    "avgScore": 0.7071067811865476,
+    "distanceScore": 2,
+    "finalScore": 2.7071067811865475
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["weer"] },
+        "refIndex": 75,
+        "score": 0.7071067811865476
+      }
+    ],
+    "score": 0.7071067811865476,
+    "avgScore": 0.7071067811865476,
+    "distanceScore": 2,
+    "finalScore": 2.7071067811865475
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["ciao"] },
+        "refIndex": 2,
+        "score": 0.714142842854285
+      }
+    ],
+    "score": 0.714142842854285,
+    "avgScore": 0.714142842854285,
+    "distanceScore": 2,
+    "finalScore": 2.714142842854285
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["cva", "met", "u"] },
+        "refIndex": 16,
+        "score": 0.714142842854285
+      }
+    ],
+    "score": 0.714142842854285,
+    "avgScore": 0.714142842854285,
+    "distanceScore": 2,
+    "finalScore": 2.714142842854285
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["cva"] },
+        "refIndex": 17,
+        "score": 0.714142842854285
+      }
+    ],
+    "score": 0.714142842854285,
+    "avgScore": 0.714142842854285,
+    "distanceScore": 2,
+    "finalScore": 2.714142842854285
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["thanks"] },
+        "refIndex": 29,
+        "score": 0.714142842854285
+      }
+    ],
+    "score": 0.714142842854285,
+    "avgScore": 0.714142842854285,
+    "distanceScore": 2,
+    "finalScore": 2.714142842854285
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["thank"] },
+        "refIndex": 30,
+        "score": 0.714142842854285
+      }
+    ],
+    "score": 0.714142842854285,
+    "avgScore": 0.714142842854285,
+    "distanceScore": 2,
+    "finalScore": 2.714142842854285
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["exact"] },
+        "refIndex": 51,
+        "score": 0.714142842854285
+      }
+    ],
+    "score": 0.714142842854285,
+    "avgScore": 0.714142842854285,
+    "distanceScore": 2,
+    "finalScore": 2.714142842854285
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["zoek", "exact"] },
+        "refIndex": 52,
+        "score": 0.714142842854285
+      }
+    ],
+    "score": 0.714142842854285,
+    "avgScore": 0.714142842854285,
+    "distanceScore": 2,
+    "finalScore": 2.714142842854285
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["9gag"] },
+        "refIndex": 59,
+        "score": 0.714142842854285
+      }
+    ],
+    "score": 0.714142842854285,
+    "avgScore": 0.714142842854285,
+    "distanceScore": 2,
+    "finalScore": 2.714142842854285
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["vraagje"] },
+        "refIndex": 77,
+        "score": 0.714142842854285
+      }
+    ],
+    "score": 0.714142842854285,
+    "avgScore": 0.714142842854285,
+    "distanceScore": 2,
+    "finalScore": 2.714142842854285
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["gedag"] },
+        "refIndex": 10,
+        "score": 0.7211102550927979
+      }
+    ],
+    "score": 0.7211102550927979,
+    "avgScore": 0.7211102550927979,
+    "distanceScore": 2,
+    "finalScore": 2.721110255092798
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["bedankt"] },
+        "refIndex": 28,
+        "score": 0.7211102550927979
+      }
+    ],
+    "score": 0.7211102550927979,
+    "avgScore": 0.7211102550927979,
+    "distanceScore": 2,
+    "finalScore": 2.721110255092798
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["news"] },
+        "refIndex": 65,
+        "score": 0.7211102550927979
+      }
+    ],
+    "score": 0.7211102550927979,
+    "avgScore": 0.7211102550927979,
+    "distanceScore": 2,
+    "finalScore": 2.721110255092798
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["hoelaat"] },
+        "refIndex": 40,
+        "score": 0.7280109889280518
+      }
+    ],
+    "score": 0.7280109889280518,
+    "avgScore": 0.7280109889280518,
+    "distanceScore": 2,
+    "finalScore": 2.7280109889280517
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["om", "hoelaat"] },
+        "refIndex": 41,
+        "score": 0.7280109889280518
+      }
+    ],
+    "score": 0.7280109889280518,
+    "avgScore": 0.7280109889280518,
+    "distanceScore": 2,
+    "finalScore": 2.7280109889280517
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["tegen", "hoelaat"] },
+        "refIndex": 44,
+        "score": 0.7280109889280518
+      }
+    ],
+    "score": 0.7280109889280518,
+    "avgScore": 0.7280109889280518,
+    "distanceScore": 2,
+    "finalScore": 2.7280109889280517
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["rond", "hoelaat"] },
+        "refIndex": 45,
+        "score": 0.7280109889280518
+      }
+    ],
+    "score": 0.7280109889280518,
+    "avgScore": 0.7280109889280518,
+    "distanceScore": 2,
+    "finalScore": 2.7280109889280517
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["nsfw"] },
+        "refIndex": 58,
+        "score": 0.7280109889280518
+      }
+    ],
+    "score": 0.7280109889280518,
+    "avgScore": 0.7280109889280518,
+    "distanceScore": 2,
+    "finalScore": 2.7280109889280517
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["cosplay"] },
+        "refIndex": 57,
+        "score": 0.7348469228349535
+      }
+    ],
+    "score": 0.7348469228349535,
+    "avgScore": 0.7348469228349535,
+    "distanceScore": 2,
+    "finalScore": 2.7348469228349535
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["ninegag"] },
+        "refIndex": 60,
+        "score": 0.7348469228349535
+      }
+    ],
+    "score": 0.7348469228349535,
+    "avgScore": 0.7348469228349535,
+    "distanceScore": 2,
+    "finalScore": 2.7348469228349535
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["nieuws"] },
+        "refIndex": 63,
+        "score": 0.7348469228349535
+      }
+    ],
+    "score": 0.7348469228349535,
+    "avgScore": 0.7348469228349535,
+    "distanceScore": 2,
+    "finalScore": 2.7348469228349535
+  },
+  {
+    "values": [
+      {
+        "item": { "names": ["nieuw"] },
+        "refIndex": 67,
+        "score": 0.7348469228349535
+      }
+    ],
+    "score": 0.7348469228349535,
+    "avgScore": 0.7348469228349535,
+    "distanceScore": 2,
+    "finalScore": 2.7348469228349535
+  }
+]

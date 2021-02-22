@@ -34,12 +34,14 @@ class MaggieBrein {
         names: this.getTokens(name),
       }))
     );
+   
     let fuse = new Fuse(tokenizedMatches, {
       keys: ["names"],
       includeScore: true,
       isCaseSensitive: false,
-      ignoreLocation: true,
+      ignoreLocation: false,
     });
+
     const searchTokensPromises = tokens.map(async (token) => {
       return new Promise((resolve, reject) => {
         const matched = fuse.search({ names: token });
@@ -50,26 +52,26 @@ class MaggieBrein {
     const flatten = flatMap(result);
     const reduced = flatten.reduce(function (results, match) {
       const matchedResults = results[match.refIndex]?.values || [];
-      matchedResults.push({ ...match, score: parseFloat(match.score) });
+      matchedResults.push(match);
+
       results[match.refIndex] = {
         ...results[match.refIndex],
         values: matchedResults,
       };
-      results[match.refIndex]["score"] = results[match.refIndex]?.score
-        ? results[match.refIndex]?.score + match?.score
-        : match?.score;
-      results[match.refIndex]["avgScore"] =
-        results[match.refIndex].score / matchedResults?.length;
+
+      results[match.refIndex]["score"] = results[match.refIndex]?.score ? results[match.refIndex]?.score + match?.score : match?.score;
+      results[match.refIndex]["avgScore"] = results[match.refIndex].score / matchedResults?.length;
+      results[match.refIndex]["distanceScore"] = tokens?.length - matchedResults?.length;
+      results[match.refIndex]["finalScore"] = results[match.refIndex].avgScore + results[match.refIndex].distanceScore;
       return results;
     }, {});
-    console.log("reduced", reduced);
     const reducedKeys = Object.keys(reduced);
     const sorted = reducedKeys.sort(
-      (k1, k2) => reduced[k1]?.score - reduced[k2]?.score
+      (k1, k2) => reduced[k1]?.finalScore - reduced[k2]?.finalScore
     );
     const sortedList = sorted.map((sort) => reduced[sort]);
-    const filtered = sortedList.filter((sort) => sort?.score < 0.1);
-    console.log("filtered", filtered[0].values[0].item);
+    const filtered = sortedList.filter((sort) => sort?.finalScore < 1.2);
+    // console.log("filtered", JSON.stringify(filtered));
     return filtered[0].values[0].item;
   };
 

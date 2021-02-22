@@ -5,6 +5,7 @@ const maggieMond = new MaggieMond();
 const maggieBrein = new MaggieBrein();
 
 class Maggie {
+
     getResponse = async (textInput, context) => {
         const text = textInput?.replace(`<@${context?.botUserId}>`, "").trim();
         
@@ -18,7 +19,7 @@ class Maggie {
             response = await fuzzyMatch?.action(text, context); 
         } else if(exactMatches) {
             response = await exactMatches[0]?.action(text, context);
-        } 
+        }
 
         if (!response) {
             switch (true) {

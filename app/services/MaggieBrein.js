@@ -29,7 +29,10 @@ class MaggieBrein {
 
   getFuzzyMatch = async (tokens) => {
     const tokenizedMatches = this.matches?.flatMap((match) =>
-      match?.names?.flatMap((name) => ({ ...match, names: this.getTokens(name) }))
+      match?.names?.flatMap((name) => ({
+        ...match,
+        names: this.getTokens(name),
+      }))
     );
     let fuse = new Fuse(tokenizedMatches, {
       keys: ["names"],
@@ -37,7 +40,7 @@ class MaggieBrein {
       isCaseSensitive: false,
       ignoreLocation: true,
     });
-    const searchTokensPromises = tokens.map( async(token) => {
+    const searchTokensPromises = tokens.map(async (token) => {
       return new Promise((resolve, reject) => {
         const matched = fuse.search({ names: token });
         matched ? resolve(matched) : reject([]);
@@ -45,24 +48,32 @@ class MaggieBrein {
     });
     const result = await Promise.all(searchTokensPromises);
     const flatten = flatMap(result);
-    const reduced = flatten.reduce(function(results, match) {
-        const matchedResults = results[match.refIndex]?.values || [];
-        matchedResults.push({ ...match, score: parseFloat(match.score)});
-        results[match.refIndex] = { ...results[match.refIndex], values: matchedResults };
-        results[match.refIndex]["score"] = results[match.refIndex]?.score ? results[match.refIndex]?.score + match?.score : match?.score;
-        results[match.refIndex]["avgScore"] = results[match.refIndex].score / matchedResults?.length;
-        return results;
-    }, {})
+    const reduced = flatten.reduce(function (results, match) {
+      const matchedResults = results[match.refIndex]?.values || [];
+      matchedResults.push({ ...match, score: parseFloat(match.score) });
+      results[match.refIndex] = {
+        ...results[match.refIndex],
+        values: matchedResults,
+      };
+      results[match.refIndex]["score"] = results[match.refIndex]?.score
+        ? results[match.refIndex]?.score + match?.score
+        : match?.score;
+      results[match.refIndex]["avgScore"] =
+        results[match.refIndex].score / matchedResults?.length;
+      return results;
+    }, {});
     console.log("reduced", reduced);
     const reducedKeys = Object.keys(reduced);
-    const sorted = reducedKeys.sort((k1, k2) => reduced[k1]?.score - reduced[k2]?.score);
+    const sorted = reducedKeys.sort(
+      (k1, k2) => reduced[k1]?.score - reduced[k2]?.score
+    );
     const sortedList = sorted.map((sort) => reduced[sort]);
     const filtered = sortedList.filter((sort) => sort?.score < 0.1);
     console.log("filtered", filtered[0].values[0].item);
     return filtered[0].values[0].item;
   };
 
-  getExactMatches = async (tokens) => {
+  getExactMatches = (tokens) => {
     return this.matches.filter((match) =>
       tokens.some((token) => {
         //const nameTokens = match?.names?.flatMap((name) => this.getTokens(name));
@@ -118,6 +129,11 @@ class MaggieBrein {
         names: ["grietje", "wufke", "slet"],
         action: async () => await maggieMond.showGirl(),
       },
+      {
+        names: ["cosplay"],
+        action: async () => await maggieMond.showCosplay(),
+      },
+      { names: ["nsfw"], action: async () => await maggieMond.showNsfw() },
       {
         names: ["9gag", "ninegag", "meme", "foto"],
         action: async () => await maggieMond.showMeme(),

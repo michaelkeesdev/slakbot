@@ -23,12 +23,14 @@ import { EuroMillionsService } from './gambling/EuroMillionsService';
 import { WeatherService } from './weather/WeatherService';
 import { TimeService } from './time/TimeService';
 import { HttpClient } from '../../httpClient';
+import {DeviantArtService} from "./deviantart/deviantArtService";
 
 const basicAnweringService = new BasicAnweringService();
 
 const httpClient = new HttpClient();
 const userService = new UserService();
 const ninegagService = new NineGagService();
+const deviantArtService = new DeviantArtService();
 const youtubeService = new YoutubeService();
 const decisionService = new DecisionService();
 const euroMillionsService = new EuroMillionsService();
@@ -55,6 +57,8 @@ class MaggieMond {
   sayRandomUser() { return userService.getRandomUser(); }
   showMeme() { return ninegagService.get9gagBasic(); }
   showGirl() { return ninegagService.get9gagGirl(); }
+  showCosplay() { return deviantArtService.getDeviant('cosplay'); }
+  showNsfw() { return deviantArtService.getDeviant('nude-art'); }
   sayTime(text) { return timeService.getRandomTime(text); }
   saySluip() { return youtubeService.getSluip(); }
   sayRandomYoutube(text) { return youtubeService.getRandomYoutube(text); }

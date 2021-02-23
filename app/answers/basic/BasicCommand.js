@@ -5,5 +5,8 @@ export const BASIC_COMMAND = [
     "en zegt hem dat",
     "en zegt em",
     "en noem hem",
-    "en noemt em"
+    "en noemt em",
+    "en zegt dat em moet",
+    "en zeg dat em moet",
+    "en zegt dat hij moet"
 ];

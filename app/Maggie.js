@@ -5,21 +5,21 @@ const maggieMond = new MaggieMond();
 const maggieBrein = new MaggieBrein();
 
 class Maggie {
-    getResponse = async (text, context) => {
+
+    getResponse = async (textInput, context) => {
+        const text = textInput?.replace(`<@${context?.botUserId}>`, "").trim();
+        
         const tokens = maggieBrein.getTokens(text);
 
-        const exactMatches = maggieBrein.getExactMatches(tokens);
-        const fuzzyMatches = maggieBrein.getFuzzyMatches(tokens);
-
-        console.log("exactMatches", exactMatches);
-        console.log("fuzzyMatches", JSON.stringify(fuzzyMatches));
+        const exactMatches = await maggieBrein.getExactMatches(tokens);
+        const fuzzyMatch = await maggieBrein.getFuzzyMatch(tokens);
 
         let response = "";
-        if(exactMatches) {
+        if (fuzzyMatch) {
+            response = await fuzzyMatch?.action(text, context); 
+        } else if(exactMatches) {
             response = await exactMatches[0]?.action(text, context);
-        } else if (fuzzyMatches) {
-            response = await fuzzyMatches[0]?.item?.action(text, context); 
-        } 
+        }
 
         if (!response) {
             switch (true) {

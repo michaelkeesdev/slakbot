@@ -9,9 +9,11 @@ import { WEETJES_ANSWER } from './../answers/weetjes/Weetjes';
 import { WEETJES_PREFIX } from './../answers/weetjes/Weetjesprefix';
 import { BASIC_SUFFIX } from '../answers/basic/BasicSuffix';
 import { HOW_YOU_DOING_PREFIX, HOW_YOU_DOING_SUFFIX, HOW_YOU_DOING_ANSWER } from '../answers/HowYouDoing';
+import { EMOJIS } from '../answers/basic/EmojiApp';
 
 const PREFIX_PID = 5;
 const SUFFIX_PID = 5;
+const EMOJI_PID = 2;
 const WEETJE_PID = 50;
 
 
@@ -79,6 +81,7 @@ class BasicAnweringService {
     addMoreTextToResponse(responseBuilder) {
         let weetje = Math.floor(Math.random() * WEETJE_PID);
         let suffix = Math.floor(Math.random() * SUFFIX_PID);
+        let emoji = Math.floor(Math.random() * EMOJI_PID);
 
         if (weetje === 1) {
             responseBuilder.append(" ").append(sample(WEETJES_PREFIX)).append(StringUtil.firstCharToLower(sample(WEETJES_ANSWER)));
@@ -86,6 +89,9 @@ class BasicAnweringService {
         
         if (suffix === 1) {
             responseBuilder.append(" ").append(sample(BASIC_SUFFIX));
+        }
+        if(emoji === 1) {
+            responseBuilder.append(" ").append(sample(EMOJIS));
         }
     }
 }

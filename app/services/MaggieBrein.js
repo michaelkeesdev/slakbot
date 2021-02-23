@@ -121,11 +121,11 @@ class MaggieBrein {
         action: (text) => maggieMond.sayTime(text),
       },
       {
-        names: ["zoek", "zoek youtube", "muziek", "random"],
+        names: ["youtube random", "zoek youtube", "muziek"],
         action: async (text) => await maggieMond.sayRandomYoutube(text),
       },
       {
-        names: ["youtube", "exact", "zoek exact", "geef video over"],
+        names: ["youtube exact", "geef video over"],
         action: async (text) => await maggieMond.sayExactYoutube(text),
       },
       {
@@ -146,8 +146,6 @@ class MaggieBrein {
           "nieuws",
           "vandaag gebeurd",
           "news",
-          "vandaag",
-          "nieuw",
           "hln",
           "gazet",
         ],
@@ -155,11 +153,9 @@ class MaggieBrein {
       },
       {
         names: [
-          "cijfers euromillions",
+          "euromillions",
           "euro millions",
           "euromillions",
-          "geef euromillions",
-          "wat zijn de euromillions",
         ],
         action: () => maggieMond.tellNextEuroMillionsDraw(),
       },

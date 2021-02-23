@@ -1,8 +1,8 @@
 export const JOKE_TRIGGER = [
     "Whats updog", 
     "What's updog",
-    "Wat is updog",
-    "Wa is updog"
+    "Wat updog",
+    "updog"
 ]
 
 export const JOKE_ANSWER = [

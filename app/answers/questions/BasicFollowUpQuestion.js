@@ -1,8 +1,7 @@
 export const BASIC_FOLLOWUP_TRIGGER = [
-    "mag ik iets vragen",
+    "mag iets vragen",
     "vraagje",
     "vraag",
-    "ben je daar"
   ];
 
 export const BASIC_FOLLOWUP_QUESTION = [

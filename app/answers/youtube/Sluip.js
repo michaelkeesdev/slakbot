@@ -1,8 +1,6 @@
 export const SLUIP_TRIGGER = [
   "sluip", 
-  "humor",
-  "sluip random",
-  "youtube sluip random"
+  "sluipschutters"
 ]
 
 export const SLUIP_IDS = [

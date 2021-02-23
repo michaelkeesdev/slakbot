@@ -16,8 +16,10 @@ class BirthdayService {
                 let birthday = "";
                 switch (user) {
                     case Users.getCrabbe():
+                        birthday = "2 december";
                         break;
                     case Users.getDennis():
+                        birthday = "29 januari"
                         break;
                     case Users.getJappeh():
                         birthday = "27 augustus";

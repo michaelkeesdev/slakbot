@@ -163,6 +163,10 @@ class MaggieBrein {
         },
       },
       {
+        names: ["maand"],
+        action: async () => await maggieMond.sayMonth(),
+      },
+      {
         names: BASIC_FOLLOWUP_TRIGGER,
         action: () => maggieMond.askBasicFollowUpQuestion(),
       },

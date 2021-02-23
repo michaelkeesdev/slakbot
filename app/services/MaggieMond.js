@@ -24,6 +24,7 @@ import { TimeService } from './time/TimeService';
 import { HttpClient } from '../../httpClient';
 import {DeviantArtService} from "./deviantart/deviantArtService";
 import { HowMuchService } from './HowMuchService';
+import { MONTH_ANSWERS } from '../answers/Month';
 
 const basicAnweringService = new BasicAnweringService();
 
@@ -54,6 +55,7 @@ class MaggieMond {
   sayWeetje() { return sample(WEETJES_ANSWER); }
   sayWhen() { return sample(WHEN_ANSWER); }
   sayWhere() { return sample(WHERE_ANSWER); }
+  sayMonth() { return sample(MONTH_ANSWERS); }
 
   sayRandomUser() { return userService.getRandomUser(); }
   showMeme() { return ninegagService.get9gagBasic(); }

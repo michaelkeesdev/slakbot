@@ -20,6 +20,7 @@ class BirthdayService {
                     case Users.getDennis():
                         break;
                     case Users.getJappeh():
+                        birthday = "27 augustus";
                         break;
                     case Users.getJerre():
                         break;

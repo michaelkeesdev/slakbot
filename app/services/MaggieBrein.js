@@ -112,11 +112,7 @@ class MaggieBrein {
       {
         names: [
           "hoelaat",
-          "om hoelaat",
-          "wa uur",
-          "tegen wa uur",
-          "tegen hoelaat",
-          "rond hoelaat",
+          "uur",
         ],
         action: (text) => maggieMond.sayTime(text),
       },

@@ -1,5 +1,5 @@
 export const HOW_YOU_DOING_TRIGGER = [
-    "hoe gaat het", 
+    "hoe gaat", 
     "alles goed",
     "cva"
 ]

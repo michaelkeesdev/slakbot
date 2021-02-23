@@ -31,6 +31,7 @@ class BirthdayService {
                         birthday = "8 mei";
                         break;
                     case Users.getRits():
+                        birthday = "2 januari";
                         break;
                     default:
                         birthday = "ken ik ni";

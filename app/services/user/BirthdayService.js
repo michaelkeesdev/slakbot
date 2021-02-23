@@ -35,6 +35,9 @@ class BirthdayService {
                     case Users.getRits():
                         birthday = "2 januari";
                         break;
+                    case Users.getMaggie():
+                        birthday = "28 april";
+                        break;
                     default:
                         birthday = "ken ik ni";
                         break;

@@ -8,7 +8,6 @@ import { GOODMORNING_ANSWER } from "./../answers/Goodmorning";
 import { HOW_ANSWER } from "./../answers/How";
 import { JOKE_ANSWER } from "./../answers/Joke";
 import { THANKS_ANSWER } from "./../answers/Thanks";
-import { HOWMUCH_ANSWER } from "./../answers/Howmuch";
 import { WEETJES_ANSWER } from "../answers/weetjes/Weetjes";
 import { WHEN_ANSWER } from "./../answers/When";
 import { WHERE_ANSWER } from "./../answers/Where";
@@ -24,6 +23,7 @@ import { WeatherService } from './weather/WeatherService';
 import { TimeService } from './time/TimeService';
 import { HttpClient } from '../../httpClient';
 import {DeviantArtService} from "./deviantart/deviantArtService";
+import { HowMuchService } from './HowMuchService';
 
 const basicAnweringService = new BasicAnweringService();
 
@@ -34,6 +34,7 @@ const deviantArtService = new DeviantArtService();
 const youtubeService = new YoutubeService();
 const decisionService = new DecisionService();
 const euroMillionsService = new EuroMillionsService();
+const howMuchService = new HowMuchService();
 
 const weatherService = new WeatherService(httpClient);
 const newsService = new NewsService(httpClient);
@@ -46,7 +47,7 @@ class MaggieMond {
   sayBye() { return sample(BYE_ANSWER); }
   sayGoodMorning() { return sample(GOODMORNING_ANSWER); }
   sayHow() { return sample(HOW_ANSWER); }
-  sayHowMuch() { return sample(HOWMUCH_ANSWER); }
+  sayHowMuch() { return  howMuchService.giveNumber() }
   sayHowYouDoing() { return basicAnweringService.buildAnswerToHowYouDoingPhrase(); }
   sayJoke() { return sample(JOKE_ANSWER); }
   sayThanks() { return sample(THANKS_ANSWER); }

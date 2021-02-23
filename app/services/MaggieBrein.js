@@ -106,8 +106,12 @@ class MaggieBrein {
       { names: WHEN_TRIGGER, action: () => maggieMond.sayWhen() },
       { names: WHERE_TRIGGER, action: () => maggieMond.sayWhere() },
       {
-        names: ["tag", "wie"],
-        action: () => `<@${maggieMond.sayRandomUser()}>`,
+        names: ["wie"],
+        action: () => maggieMond.sayRandomUser(),
+      },
+      {
+        names: ["tag"],
+        action: (text) => maggieMond.tagUser(text),
       },
       {
         names: ["verjaardag", "jarig", "jaardag", "verjaardagen"],

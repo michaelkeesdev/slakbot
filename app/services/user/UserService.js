@@ -30,7 +30,11 @@ class UserService {
     let users = this.getAllUsers();
     let user = users[Math.floor(Math.random() * users.length)];
     this.activeUser = user;
-    return user;
+    return `<@${user}>`;
+  }
+
+  tagUser(text) {
+    return this.extractUsersFromText(text).map(user => `<@${user}>`).join(" ");
   }
 
   extractUsersFromText(text) {

@@ -61,6 +61,8 @@ class MaggieMond {
   sayMonth() { return sample(MONTH_ANSWERS); }
 
   sayRandomUser() { return userService.getRandomUser(); }
+  tagUser(text) { return userService.tagUser(text); }
+
   showMeme() { return ninegagService.get9gagBasic(); }
   showGirl() { return ninegagService.get9gagGirl(); }
   showCosplay() { return deviantArtService.getDeviant('cosplay'); }

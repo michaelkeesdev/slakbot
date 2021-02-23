@@ -110,7 +110,7 @@ class MaggieBrein {
         action: () => `<@${maggieMond.sayRandomUser()}>`,
       },
       {
-        names: ["verjaardag", "jarig", "jaardag"],
+        names: ["verjaardag", "jarig", "jaardag", "verjaardagen"],
         action: (text) => maggieMond.sayBirthDay(text),
       },
       {

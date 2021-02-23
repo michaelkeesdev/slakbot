@@ -1,5 +1,5 @@
 export const HOW_TRIGGER = [
-    //"hoe"
+    "hoe"
 ]
 
 export const HOW_ANSWER = [
@@ -12,6 +12,6 @@ export const HOW_ANSWER = [
     "Geloof in jezelf",
     "Hoe, hoe, ge zijt zelf een hoer",
     "Ik weet het zelf eigenlijk niet",
-    "Moet mij nie betrekken?",
+    "Moet mij nie betrekken",
   ];
   

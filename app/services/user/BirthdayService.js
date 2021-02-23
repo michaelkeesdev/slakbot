@@ -10,8 +10,9 @@ class BirthdayService {
         let responseBuilder = new StringBuilder();
         let users = this.userService.extractUsersFromText(text);
 
-        if (users !== null && users != []) {
-            users.forEach(user => {               
+        if (users.length > 0) {
+            users.forEach(user => {   
+                console.log("hoer");            
                 let birthday = "";
                 switch (user) {
                     case Users.getCrabbe():
@@ -42,7 +43,8 @@ class BirthdayService {
                 }
             })
         } else {
-            return "jaardag van wie slet?"
+            console.log("hoer");            
+            return responseBuilder.append("jaardag van wie slet?");
         }
         return responseBuilder.toString();
     }

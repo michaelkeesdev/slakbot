@@ -64,10 +64,21 @@ app.event("app_mention", async ({ context, event }) => {
 (async () => {
   await app.start(process.env.PORT || 8080);
 
-  //for (let i = 0 ; i < 100 ; i++) {  
-    //await maggie.getResponse("al deployed?")
-  console.log("test", await maggie.getResponse("verjaardag U91HHN2JE en U90TSU6JU en U92KLC4CX"));
-  //}
-
+  const tests = [
+    "@Maggie bedankt",
+    "@Maggie dag",
+    "@Maggie klaar me werken?",
+    "@Maggie mag ik iets vragen?",
+    "@Maggie vraagje?",
+    "@Maggie?",
+    "@Maggie nu terug de oude denk he?",
+    "@Maggie deployed?",
+    "@Maggie sorry",
+    "@Maggie hoeveel?",
+    "@Maggie wanneer?",
+    "@Maggie wa uur?",
+  ]
+  console.log("test", await maggie.getResponse("<@Maggie> vraagje", { botUserId: "Maggie"}));
+  console.log("test", await maggie.getResponse("verjaardag hoer"));
   console.log("⚡️ Slakbot is running!");
 })();

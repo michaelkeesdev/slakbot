@@ -1,7 +1,6 @@
 export const WEETJES_TRIGGER = [
     "weetje",
-    "wistje", 
-    "zeg eens iets"
+    "wistje",
 ]
 
 export const WEETJES_ANSWER = [

@@ -39,7 +39,7 @@ class BirthdayService {
                 if (birthday !== "") {
                     responseBuilder.append("is op ").append(birthday).append(". ");
                 } else {
-                    responseBuilder.append("ken ik nog ni");
+                    responseBuilder.append("ken ik nog ni").append(". ");
                 }
             })
         } else {

@@ -34,6 +34,9 @@ class UserService {
   }
 
   extractUsersFromText(text) {
+    if (text.includes("iedereen")) {
+      return this.getAllUsers();
+    }
     return this.getAllUsers().filter(user => this.textIncludesUser(text, user));
   }
 

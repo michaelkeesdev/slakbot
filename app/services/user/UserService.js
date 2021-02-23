@@ -42,11 +42,11 @@ class UserService {
     if (users.length > 0) {
       responseBuilder.append(users.map(user => `<@${user}>`).join(" "));
 
-
+      let alreadyMatched = false; 
       BASIC_COMMAND.forEach(command => {
-        if (text.split(` ${command} `).length > 1) {
-            responseBuilder.append(" ").append(text.split(` ${command} `)[1]);
-            return responseBuilder.toString()
+        if (text.split(` ${command} `).length > 1 && !alreadyMatched) {
+            alreadyMatched = true;
+            return responseBuilder.append(" ").append(text.split(` ${command} `)[1]).toString();
         }  else {
           return responseBuilder.toString();
         }

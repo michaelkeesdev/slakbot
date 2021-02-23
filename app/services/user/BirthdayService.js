@@ -43,7 +43,6 @@ class BirthdayService {
                 }
             })
         } else {
-            console.log("hoer");            
             return responseBuilder.append("jaardag van wie slet?");
         }
         return responseBuilder.toString();

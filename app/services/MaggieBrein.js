@@ -111,7 +111,7 @@ class MaggieBrein {
       },
       {
         names: ["verjaardag", "jarig", "jaardag"],
-        action: (text) => `<@${maggieMond.sayBirthDay(text)}>`,
+        action: (text) => maggieMond.sayBirthDay(text),
       },
       {
         names: [

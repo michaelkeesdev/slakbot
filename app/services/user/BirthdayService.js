@@ -43,7 +43,7 @@ class BirthdayService {
                 }
             })
         } else {
-            return responseBuilder.append("jaardag van wie slet?");
+            responseBuilder.append("jaardag van wie slet?");
         }
         return responseBuilder.toString();
     }

@@ -1,3 +1,6 @@
+import { StringBuilder } from './../../util/StringBuilder';
+import { BASIC_COMMAND } from './../../answers/basic/BasicCommand';
+
 class Users {
   static getCrabbe() { return "UHB8YS8MU"; }
   static getDennis() { return "U9213H10B"; }
@@ -34,10 +37,26 @@ class UserService {
   }
 
   tagUser(text) {
+    let responseBuilder = new StringBuilder();
     let users = this.extractUsersFromText(text)
     if (users.length > 0) {
-      return users.map(user => `<@${user}>`).join(" ")
-    } else return "wie?"
+      responseBuilder.append(users.map(user => `<@${user}>`).join(" "));
+
+
+      BASIC_COMMAND.forEach(command => {
+        if (text.split(` ${command} `).length > 1) {
+            responseBuilder.append(" ").append(text.split(` ${command} `)[1]);
+            return responseBuilder.toString()
+        }  else {
+          return responseBuilder.toString();
+        }
+      });
+
+    } else {
+      responseBuilder.append("wie?");
+    }
+
+    return responseBuilder.toString();
   }
 
   extractUsersFromText(text) {

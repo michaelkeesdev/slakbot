@@ -34,7 +34,10 @@ class UserService {
   }
 
   tagUser(text) {
-    return this.extractUsersFromText(text).map(user => `<@${user}>`).join(" ");
+    let users = this.extractUsersFromText(text)
+    if (users.length > 0) {
+      return users.map(user => `<@${user}>`).join(" ")
+    } else return "wie?"
   }
 
   extractUsersFromText(text) {

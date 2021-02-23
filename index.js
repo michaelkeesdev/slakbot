@@ -66,7 +66,7 @@ app.event("app_mention", async ({ context, event }) => {
 
   //for (let i = 0 ; i < 100 ; i++) {  
     //await maggie.getResponse("al deployed?")
-  console.log("test", await maggie.getResponse("cva"));
+  console.log("test", await maggie.getResponse("verjaardag U91HHN2JE en U90TSU6JU en U92KLC4CX"));
   //}
 
   console.log("⚡️ Slakbot is running!");

@@ -8,21 +8,21 @@ class Users {
   static getKees() { return "U90TSU6JU"; }
   static getRits() { return "U92KLC4CX"; }
   static getFlip() { return "U01NEE5JYSY"; }
-  static getMaggie() { return  "U01K3BVEVT3"; }
+  static getMaggie() { return "U01K3BVEVT3"; }
 }
 
 class UserService {
   activeUser = "";
 
   getAllUsers() {
-    return [ 
-      Users.getCrabbe(), 
+    return [
+      Users.getCrabbe(),
       Users.getDennis(),
       Users.getJappeh(),
       Users.getJerre(),
       Users.getJoa(),
       Users.getKees(),
-      Users.getRits() 
+      Users.getRits()
     ];
   }
 
@@ -31,6 +31,14 @@ class UserService {
     let user = users[Math.floor(Math.random() * users.length)];
     this.activeUser = user;
     return user;
+  }
+
+  extractUsersFromText(text) {
+    return this.getAllUsers().filter(user => this.textIncludesUser(text, user));
+  }
+
+  textIncludesUser(text, user) {
+    return text.includes(user);
   }
 
   getActiveUser() {
@@ -43,4 +51,4 @@ class UserService {
 
 }
 
-export { UserService };
+export { Users, UserService };

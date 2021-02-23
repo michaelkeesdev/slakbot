@@ -57,6 +57,7 @@ class MaggieBrein {
             { names: WHEN_TRIGGER, action: () => maggieMond.sayWhen(), },
             { names: WHERE_TRIGGER, action: () => maggieMond.sayWhere(), },
             { names: ["tag", "wie"], action: () => `<@${maggieMond.sayRandomUser()}>` },
+            { names: ["verjaardag", "jarig"], action: (text) => maggieMond.sayBirthDay(text), },
             { names: ["hoelaat", "om hoelaat", "wa uur", "tegen wa uur", "tegen hoelaat", "rond hoelaat"], action: (text) => maggieMond.sayTime(text), },
             {
                 names: ["zoek", "zoek youtube", "muziek", "random"],

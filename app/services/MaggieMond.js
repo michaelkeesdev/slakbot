@@ -15,6 +15,7 @@ import { WHERE_ANSWER } from "./../answers/Where";
 
 import { BasicAnweringService } from "./BasicAnsweringService"
 import { UserService } from "./user/UserService";
+import { BirthdayService } from "./user/BirthdayService"
 import { NewsService } from "./news/NewsService";
 import { NineGagService } from "./9gag/9gagService";
 import { YoutubeService } from "./google/YoutubeService";
@@ -23,12 +24,13 @@ import { EuroMillionsService } from './gambling/EuroMillionsService';
 import { WeatherService } from './weather/WeatherService';
 import { TimeService } from './time/TimeService';
 import { HttpClient } from '../../httpClient';
-import {DeviantArtService} from "./deviantart/deviantArtService";
+import { DeviantArtService } from "./deviantart/deviantArtService";
 
 const basicAnweringService = new BasicAnweringService();
 
 const httpClient = new HttpClient();
 const userService = new UserService();
+const birthdayService = new BirthdayService();
 const ninegagService = new NineGagService();
 const deviantArtService = new DeviantArtService();
 const youtubeService = new YoutubeService();
@@ -44,6 +46,7 @@ class MaggieMond {
 
   giveBasicAnswer() { return basicAnweringService.buildAnswerPhrase(); }
   sayBye() { return sample(BYE_ANSWER); }
+  sayBirthDay(text) { return birthdayService.getBirthday(text); }
   sayGoodMorning() { return sample(GOODMORNING_ANSWER); }
   sayHow() { return sample(HOW_ANSWER); }
   sayHowMuch() { return sample(HOWMUCH_ANSWER); }

@@ -79,6 +79,6 @@ app.event("app_mention", async ({ context, event }) => {
     "@Maggie wa uur?",
   ]
   console.log("test", await maggie.getResponse("<@Maggie> vraagje", { botUserId: "Maggie"}));
-  console.log("test", await maggie.getResponse("jawel"));
+  console.log("test", await maggie.getResponse("welk land"));
   console.log("⚡️ Slakbot is running!");
 })();

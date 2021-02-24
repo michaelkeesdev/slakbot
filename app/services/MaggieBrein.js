@@ -20,6 +20,7 @@ import { HOW_YOU_DOING_TRIGGER } from "./../answers/HowYouDoing";
 import { flatMap } from "lodash";
 import { NumberUtil } from "../util/NumberUtil";
 import { WEL_NIET_TRIGGER } from "../answers/basic/BasicWelNiet";
+import { COUNTRY_TRIGGER } from "../answers/Countries";
 
 const decisionService = new DecisionService();
 const maggieMond = new MaggieMond();
@@ -93,6 +94,7 @@ class MaggieBrein {
   getSimpeleMaggieMatches() {
     return [
       { names: BYE_TRIGGER, action: () => maggieMond.sayBye() },
+      { names: [COUNTRY_TRIGGER], action: () => maggieMond.sayCountry(), },
       { names: GOODMORNING_TRIGGER, action: () => maggieMond.sayGoodMorning() },
       { names: HOW_TRIGGER, action: () => maggieMond.sayHow(), },
       {

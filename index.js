@@ -64,21 +64,7 @@ app.event("app_mention", async ({ context, event }) => {
 (async () => {
   await app.start(process.env.PORT || 8080);
 
-  const tests = [
-    "@Maggie bedankt",
-    "@Maggie dag",
-    "@Maggie klaar me werken?",
-    "@Maggie mag ik iets vragen?",
-    "@Maggie vraagje?",
-    "@Maggie?",
-    "@Maggie nu terug de oude denk he?",
-    "@Maggie deployed?",
-    "@Maggie sorry",
-    "@Maggie hoeveel?",
-    "@Maggie wanneer?",
-    "@Maggie wa uur?",
-  ]
-  console.log("test", await maggie.getResponse("<@Maggie> vraagje", { botUserId: "Maggie"}));
-  console.log("test", await maggie.getResponse("jawel"));
+  // console.log("test", await maggie.getResponse("<@Maggie> vraagje", { botUserId: "Maggie"}));
+  console.log("weer", await maggie.getResponse("pollution Edegem"));
   console.log("⚡️ Slakbot is running!");
 })();

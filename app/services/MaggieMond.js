@@ -74,6 +74,7 @@ class MaggieMond {
   sayExactYoutube(text) { return youtubeService.getExactYoutube(text); }
   readTheNews() { return newsService.getNewsPosts(); }
   sayCurrentWeather(city) { return weatherService.getCurrentWeather(city); }
+  sayCurrentWeatherPollution(city) { return weatherService.getCurrentPolution(city); }
 
   speakDecision(text) { return decisionService.makeDecision(text) }
 

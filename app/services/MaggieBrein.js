@@ -71,9 +71,7 @@ class MaggieBrein {
       (k1, k2) => reduced[k1]?.finalScore - reduced[k2]?.finalScore
     );
     const sortedList = sorted.map((sort) => reduced[sort]);
-    console.log("sortedList", JSON.stringify(sortedList))
     const filtered = sortedList.filter((sort) => sort?.finalScore < 0.001);
-    console.log("filtered", JSON.stringify(filtered));
     return filtered?.length ? filtered[0].values[0].item : null;
   };
 
@@ -170,6 +168,13 @@ class MaggieBrein {
         action: async (text) => {
           const city = text?.replace("weer", "");
           return await maggieMond.sayCurrentWeather(city);
+        },
+      },
+      {
+        names: ["pollution"],
+        action: async (text) => {
+          const city = text?.replace("pollution", "");
+          return await maggieMond.sayCurrentWeatherPollution(city);
         },
       },
       {

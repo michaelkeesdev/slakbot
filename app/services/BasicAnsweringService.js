@@ -39,7 +39,7 @@ class BasicAnweringService {
         let responseBuilder = new StringBuilder();
         let wel = Math.floor(Math.random() * 5);
 
-        if (wel === 8) {
+        if (wel === 1) {
             responseBuilder.append(sample(BASIC_WEL));
         } else {
             responseBuilder.append(sample(BASIC_NIET));

@@ -27,9 +27,11 @@ import { HttpClient } from '../../httpClient';
 import { DeviantArtService } from "./deviantart/deviantArtService";
 import { HowMuchService } from './HowMuchService';
 import { MONTH_ANSWERS } from '../answers/Month';
+import { HowService } from './hoe/HowService';
 
 const basicAnweringService = new BasicAnweringService();
 
+const howService = new HowService();
 const httpClient = new HttpClient();
 const userService = new UserService();
 const birthdayService = new BirthdayService();
@@ -52,7 +54,7 @@ class MaggieMond {
   sayBirthDay(text) { return birthdayService.getBirthday(text); }
   sayCountry() { return sample(COUNTRY_LIST).name; }
   sayGoodMorning() { return sample(GOODMORNING_ANSWER); }
-  sayHow() { return sample(HOW_ANSWER); }
+  sayHow() { return howService.getHowAnswer(); }
   sayHowMuch() { return  howMuchService.giveNumber() }
   sayHowYouDoing() { return basicAnweringService.buildAnswerToHowYouDoingPhrase(); }
   sayJoke() { return sample(JOKE_ANSWER); }

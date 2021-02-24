@@ -3,13 +3,10 @@ export const HOW_TRIGGER = [
 ]
 
 export const HOW_ANSWER = [
-    "Goed opletten",
-    "Met mijn kut",
-    "Gewoon je best doen",
-    "Door toeval",
-    "Door aan de mama van @Parno te vragen",
-    "Door veel te trainen",
-    "Geloof in jezelf",
+    "Door %noun% van %user% te %verb%",
+    "Met de hulp van %user%",
+    "Ik weet het niet. %user% weet jij het?",
+    "Moet ge aan %user% vragen",
     "Hoe, hoe, ge zijt zelf een hoer",
     "Ik weet het zelf eigenlijk niet",
     "Moet mij nie betrekken",

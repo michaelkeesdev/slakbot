@@ -29,6 +29,7 @@ import { HowMuchService } from './HowMuchService';
 import { MONTH_ANSWERS } from '../answers/Month';
 import { HowService } from './hoe/HowService';
 import { WhyService } from './why/WhyService';
+import { NOUNS } from '../answers/words/RandomNouns';
 
 const basicAnweringService = new BasicAnweringService();
 
@@ -67,6 +68,7 @@ class MaggieMond {
   sayWhere() { return sample(WHERE_ANSWER); }
   sayMonth() { return sample(MONTH_ANSWERS); }
   sayWhy() { return whyService.getWhyAnswer() }
+  sayWhat() { return sample(NOUNS) }
 
   sayRandomUser() { return userService.getRandomUser(); }
   tagUser(text) { return userService.tagUser(text); }

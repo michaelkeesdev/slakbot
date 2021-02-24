@@ -114,6 +114,10 @@ class MaggieBrein {
         action: () => maggieMond.sayRandomUser(),
       },
       {
+        names: ["wat"],
+        action: () => maggieMond.sayWhat(),
+      },
+      {
         names: ["tag"],
         action: (text) => maggieMond.tagUser(text),
       },

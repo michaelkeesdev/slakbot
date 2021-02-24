@@ -28,10 +28,12 @@ import { DeviantArtService } from "./deviantart/deviantArtService";
 import { HowMuchService } from './HowMuchService';
 import { MONTH_ANSWERS } from '../answers/Month';
 import { HowService } from './hoe/HowService';
+import { WhyService } from './why/WhyService';
 
 const basicAnweringService = new BasicAnweringService();
 
 const howService = new HowService();
+const whyService = new WhyService();
 const httpClient = new HttpClient();
 const userService = new UserService();
 const birthdayService = new BirthdayService();
@@ -64,6 +66,7 @@ class MaggieMond {
   sayWhen() { return sample(WHEN_ANSWER); }
   sayWhere() { return sample(WHERE_ANSWER); }
   sayMonth() { return sample(MONTH_ANSWERS); }
+  sayWhy() { return whyService.getWhyAnswer() }
 
   sayRandomUser() { return userService.getRandomUser(); }
   tagUser(text) { return userService.tagUser(text); }

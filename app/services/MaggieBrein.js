@@ -5,6 +5,7 @@ import { BASIC_FOLLOWUP_TRIGGER } from "./../answers/questions/BasicFollowUpQues
 import { BYE_TRIGGER } from "./../answers/Bye";
 import { GOODMORNING_TRIGGER } from "./../answers/Goodmorning";
 import { HOW_TRIGGER } from "./../answers/How";
+import { WHY_TRIGGER } from "./../answers/Why";
 import { JOKE_TRIGGER } from "./../answers/Joke";
 import { THANKS_TRIGGER } from "./../answers/Thanks";
 import { HOWMUCH_TRIGGER } from "./../answers/Howmuch";
@@ -94,6 +95,7 @@ class MaggieBrein {
       { names: BYE_TRIGGER, action: () => maggieMond.sayBye() },
       { names: [COUNTRY_TRIGGER], action: () => maggieMond.sayCountry(), },
       { names: GOODMORNING_TRIGGER, action: () => maggieMond.sayGoodMorning() },
+      { names: WHY_TRIGGER, action: () => maggieMond.sayWhy(), },
       { names: HOW_TRIGGER, action: () => maggieMond.sayHow(), },
       {
         names: HOW_YOU_DOING_TRIGGER,

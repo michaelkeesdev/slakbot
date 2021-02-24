@@ -7,7 +7,7 @@ export const HOW_ANSWER = [
     "Met de hulp van %user%",
     "Ik weet het niet. %user% weet jij het?",
     "Hoe, hoe, ge zijt zelf een hoer",
-    "Ik weet het zelf eigenlijk niet",
+    "Weet ni",
     "Moet mij nie betrekken",
   ];
   

@@ -3,7 +3,7 @@ export const HOW_TRIGGER = [
 ]
 
 export const HOW_ANSWER = [
-    "Je moet een %noun% %verb%",
+    "Je moet %noun% %verb%",
     "Met %noun% van %user%",
     "Door %noun% van %user% te %verb%",
     "Met de hulp van %user%",

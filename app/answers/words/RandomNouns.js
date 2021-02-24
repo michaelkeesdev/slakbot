@@ -14,5 +14,13 @@ export const NOUNS = [
     "het huis",
     "het bed",
     "de baas",
-    "de tuin"
+    "de tuin",
+    "de tafel",
+    "het kantoor",
+    "de wagen",
+    "de opa",
+    "de oma",
+    "de teddybeer",
+    "de jat kaf",
+    "het toilet"
 ]

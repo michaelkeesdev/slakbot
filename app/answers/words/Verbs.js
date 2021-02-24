@@ -14,5 +14,10 @@ export const VERBS = [
     "zuigen",
     "ruiken",
     "kletsen",
-    "balken"
+    "balken",
+    "gooien",
+    "werken",
+    "vierendelen",
+    "hakken",
+    "kakken"
 ]

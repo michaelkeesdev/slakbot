@@ -14,7 +14,7 @@ class HowService {
 
         let how = { 
             "%noun%": noun, 
-            "%user%": ${user},
+            "%user%": user,
             "%verb%": verb,
         }
 

@@ -64,7 +64,7 @@ app.event("app_mention", async ({ context, event }) => {
 (async () => {
   await app.start(process.env.PORT || 8080);
 
-  // console.log("test", await maggie.getResponse("<@Maggie> vraagje", { botUserId: "Maggie"}));
-  console.log("weer", await maggie.getResponse("pollution Edegem"));
+  //console.log("test", await maggie.getResponse("<@Maggie> vraagje", { botUserId: "Maggie"}));
+
   console.log("⚡️ Slakbot is running!");
 })();

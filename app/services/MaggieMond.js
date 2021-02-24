@@ -4,6 +4,7 @@ import { sample } from 'lodash';
 import { BASIC_FOLLOWUP_QUESTION } from "./../answers/questions/BasicFollowUpQuestion";
 
 import { BYE_ANSWER } from "./../answers/Bye";
+import { COUNTRY_LIST } from "./../answers/Countries"
 import { GOODMORNING_ANSWER } from "./../answers/Goodmorning";
 import { HOW_ANSWER } from "./../answers/How";
 import { JOKE_ANSWER } from "./../answers/Joke";
@@ -49,6 +50,7 @@ class MaggieMond {
   giveBasicAnswer() { return basicAnweringService.buildAnswerPhrase(); }
   sayBye() { return sample(BYE_ANSWER); }
   sayBirthDay(text) { return birthdayService.getBirthday(text); }
+  sayCountry() { return sample(COUNTRY_LIST).name; }
   sayGoodMorning() { return sample(GOODMORNING_ANSWER); }
   sayHow() { return sample(HOW_ANSWER); }
   sayHowMuch() { return  howMuchService.giveNumber() }

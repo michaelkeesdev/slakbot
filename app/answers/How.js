@@ -4,6 +4,10 @@ export const HOW_TRIGGER = [
 
 export const HOW_ANSWER = [
     "Door %noun% van %user% te %verb%",
-
+    "Met de hulp van %user%",
+    "Ik weet het niet. %user% weet jij het?",
+    "Hoe, hoe, ge zijt zelf een hoer",
+    "Ik weet het zelf eigenlijk niet",
+    "Moet mij nie betrekken",
   ];
   

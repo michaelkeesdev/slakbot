@@ -77,6 +77,7 @@ class MaggieMond {
   readTheNews() { return newsService.getNewsPosts(); }
   sayCurrentWeather(city) { return weatherService.getCurrentWeather(city); }
   sayCurrentWeatherPollution(city) { return weatherService.getCurrentPolution(city); }
+  sayForecastWeather(city) { return weatherService.getAllWeatherInfo(city); }
 
   speakDecision(text) { return decisionService.makeDecision(text) }
 

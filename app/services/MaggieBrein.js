@@ -180,6 +180,13 @@ class MaggieBrein {
         },
       },
       {
+        names: ["weer voorspelling", "voorspelling"],
+        action: async (text) => {
+          const city = text?.replace("voorspelling", "").replace("weer", "");
+          return await maggieMond.sayForecastWeather(city);
+        },
+      },
+      {
         names: ["maand"],
         action: async () => await maggieMond.sayMonth(),
       },

@@ -35,7 +35,7 @@ class ImageRecognitionService {
     }
     const res = await this.vision.images.annotate(req);
 
-    console.log("res", res);
+    console.log("res", res.responses);
 
     const tags = res?.data?.responses[0].labelAnnotations
     let responseBuilder = new StringBuilder();

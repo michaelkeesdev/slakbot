@@ -71,7 +71,7 @@ app.event("app_mention", async ({ context, event }) => {
       permalink_public: 'https://slack-files.com/T92K3TTQX-F01Q0EPQ324-c18e7c6a17'
     }
   ]
-  console.log("test", await maggie.getResponse("<@Maggie> doenbaar", { botUserId: "Maggie"}, files));
+  // console.log("test", await maggie.getResponse("<@Maggie> doenbaar", { botUserId: "Maggie"}, files));
 
   console.log("⚡️ Slakbot is running!");
 })();

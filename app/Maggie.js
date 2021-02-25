@@ -51,7 +51,7 @@ class Maggie {
         if(maggieBrein?.messages?.every(m => m.text === maggieBrein.messages[0].text)) {
             return textInput;
         } 
-        if(maggieBrein?.messages?.every(m => m.user === maggieBrein.messages[0].text)) {
+        if(maggieBrein?.messages?.every(m => m.user === maggieBrein.messages[0].user)) {
             return "ff monoloog"
         }
         return null;

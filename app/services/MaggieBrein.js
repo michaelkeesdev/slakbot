@@ -221,7 +221,7 @@ class MaggieBrein {
 
   pushMessage(message) {
     if(this.messages > MAX_MESSAGES_MEM) {
-      this.messages.splice(0, 1);
+      this.messages.shift();
     }
     this.messages.push(message);
     console.log("MESSAGES: ", this.messages)

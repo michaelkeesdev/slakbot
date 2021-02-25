@@ -23,7 +23,7 @@ class ImageRecognitionService {
       header
     );
 
-    console.log("response", response);
+    console.log("response", JSON.stringify(response));
 
     const tags = response?.result?.tags;
     let responseBuilder = new StringBuilder();

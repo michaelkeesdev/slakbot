@@ -3,13 +3,7 @@ import { HttpClient } from "../../../httpClient";
 import { ADJECTIVES } from "../../answers/words/Adjectives";
 import { StringBuilder } from "../../util/StringBuilder";
 
-
-export const RECOGNITION_PREFIX = [
-  "wat een",
-  "och",
-  "oh",
-  "ja duidelijk een"
-]
+export const RECOGNITION_PREFIX = ["wat een", "och", "oh", "ja duidelijk een"];
 class ImageRecognitionService {
   httpClient;
 
@@ -29,15 +23,18 @@ class ImageRecognitionService {
       header
     );
 
+    console.log("response", response);
+
     const tags = response?.result?.tags;
     let responseBuilder = new StringBuilder();
 
-    responseBuilder.append(sample(RECOGNITION_PREFIX));
-    responseBuilder.append(" ").append(sample(ADJECTIVES));
-    responseBuilder.append(" ").append(tags[0].tag?.nl);
-    responseBuilder.append(" ").append(tags[1].tag?.nl);
-
-    return responseBuilder.toString();
+    if (tags) {
+      responseBuilder.append(sample(RECOGNITION_PREFIX));
+      responseBuilder.append(" ").append(sample(ADJECTIVES));
+      responseBuilder.append(" ").append(tags[0].tag?.nl);
+      responseBuilder.append(" ").append(tags[1].tag?.nl);
+    }
+    return responseBuilder.toString() ? responseBuilder.toString() : null;
   };
 }
 

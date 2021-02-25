@@ -10,7 +10,7 @@ class ImageRecognitionService {
 
   constructor() {
     this.vision = google.vision({
-      version: "v1",
+      version: "v1p2beta1",
       auth: process.env.YOUTUBE_API_KEY,
     });
   }
@@ -37,6 +37,8 @@ class ImageRecognitionService {
 
     const tags = res?.data?.responses[0].labelAnnotations
     let responseBuilder = new StringBuilder();
+
+    console.log("tags", tags);
 
     if (tags) {
       responseBuilder.append(sample(RECOGNITION_PREFIX));

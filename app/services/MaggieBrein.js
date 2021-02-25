@@ -22,6 +22,7 @@ import { flatMap } from "lodash";
 import { NumberUtil } from "../util/NumberUtil";
 import { WEL_NIET_TRIGGER } from "../answers/basic/BasicWelNiet";
 import { COUNTRY_TRIGGER } from "../answers/Countries";
+import {SORRY_TRIGGER} from "../answers/Sorry";
 
 const decisionService = new DecisionService();
 const maggieMond = new MaggieMond();
@@ -120,6 +121,10 @@ class MaggieBrein {
       {
         names: ["tag"],
         action: (text) => maggieMond.tagUser(text),
+      },
+      {
+        names: SORRY_TRIGGER,
+        action: (text) => maggieMond.saySorry(),
       },
       {
         names: ["verjaardag", "jarig", "jaardag", "verjaardagen"],

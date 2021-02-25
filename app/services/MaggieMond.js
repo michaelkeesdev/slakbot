@@ -12,6 +12,7 @@ import { THANKS_ANSWER } from "./../answers/Thanks";
 import { WEETJES_ANSWER } from "../answers/weetjes/Weetjes";
 import { WHEN_ANSWER } from "./../answers/When";
 import { WHERE_ANSWER } from "./../answers/Where";
+import { SORRY_ANSWER } from "./../answers/Sorry";
 
 import { BasicAnweringService } from "./BasicAnsweringService"
 import { UserService } from "./user/UserService";
@@ -92,6 +93,8 @@ class MaggieMond {
 
   tellNextEuroMillionsDraw() { return euroMillionsService.getNextDraw(); }
   recognize(imageUrl) { return recognitionService.get(imageUrl) }
+
+  saySorry() {return sample(SORRY_ANSWER)}
 }
 
 export { MaggieMond };

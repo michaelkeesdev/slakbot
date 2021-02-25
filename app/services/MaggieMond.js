@@ -95,6 +95,8 @@ class MaggieMond {
   recognize(imageUrl) { return recognitionService.get(imageUrl) }
 
   saySorry() {return sample(SORRY_ANSWER)}
+
+  sayMonologue() { return sample(MONOLOGUE)}
 }
 
 export { MaggieMond };

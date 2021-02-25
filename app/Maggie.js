@@ -52,7 +52,7 @@ class Maggie {
             return textInput;
         } 
         if(maggieBrein?.messages?.every(m => m.user === maggieBrein.messages[0].user)) {
-            return "ff monoloog"
+            return maggieMond.sayMonologue();
         }
         return null;
     }

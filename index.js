@@ -73,7 +73,7 @@ app.event("app_mention", async ({ context, event }) => {
       "thumb_960": "https://files.slack.com/files-pri/T92K3TTQX-F01Q0RMNN6L/screenshot_2021-02-25_at_08.39.29.png",
     }
   ]
-   console.log("test", await maggie.getResponse("<@Maggie> doenbaar", { botUserId: "Maggie"}, files));
+   // console.log("test", await maggie.getResponse("<@Maggie> doenbaar", { botUserId: "Maggie"}, files));
 
   console.log("⚡️ Slakbot is running!");
 })();

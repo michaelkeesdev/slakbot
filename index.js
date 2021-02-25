@@ -67,9 +67,10 @@ app.event("app_mention", async ({ context, event }) => {
 
   const files = [
     {
-      name: 'screenshot_2021-02-25_at_08.39.29.png',
-      permalink: 'https://dajjjmm.slack.com/files/U90TSU6JU/F01PAVB3LP4/screenshot_2021-02-25_at_08.39.29.png',
-      permalink_public: 'https://slack-files.com/T92K3TTQX-F01Q0EPQ324-c18e7c6a17'
+      "permalink": "https://dajjjmm.slack.com/files/U90TSU6JU/F01PB55GHR8/screenshot_2021-02-23_at_16.58.14.png",
+      "permalink_public": "https://slack-files.com/T92K3TTQX-F01PB55GHR8-8d1a3bb529",
+      "thumb_360": "https://files.slack.com/files-tmb/T92K3TTQX-F01PB55GHR8-1fec514622/screenshot_2021-02-23_at_16.58.14_360.png",
+      "thumb_960": "https://files.slack.com/files-pri/T92K3TTQX-F01Q0RMNN6L/screenshot_2021-02-25_at_08.39.29.png",
     }
   ]
    console.log("test", await maggie.getResponse("<@Maggie> doenbaar", { botUserId: "Maggie"}, files));

@@ -48,11 +48,20 @@ class Maggie {
     getMessageResponse = async (message, user) => {
         maggieBrein.pushMessage({ text: message, user });
 
-        if(maggieBrein?.messages?.every(m => m.text === maggieBrein.messages[0].text)) {
-            return textInput;
+        const duplicateSize = 3;
+        const monoloqueSize = 7;
+
+        if(maggieBrein?.messages.length >= duplicateSize) {
+            const messagesFilter = maggieBrein?.messages.slice(0, duplicateSize);
+            if(messagesFilter?.every(m => m.text === maggieBrein.messages[0].text)) {
+                return message;
+            }
         } 
-        if(maggieBrein?.messages?.every(m => m.user === maggieBrein.messages[0].user)) {
-            return maggieMond.sayMonologue();
+        if(maggieBrein?.messages?.length > monoloqueSize) {
+            const messagesFilter = maggieBrein?.messages.slice(0, monoloqueSize);
+            if(messagesFilter?.every(m => m.user === maggieBrein.messages[0].user)) {
+                return maggieMond.sayMonologue();
+            }
         }
         return null;
     }

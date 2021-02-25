@@ -15,9 +15,13 @@ app.event("message", async ({ event, context }) => {
   console.log("message context", context);
   const token = context?.botToken;
   const channel = event?.channel;
-  const user = event?.user;
 
-  maggie.getMessageResponse()
+  const response = await maggie.getMessageResponse(event?.text, event?.user);
+
+  if(response){
+    const message = { token, channel, text: response };
+    await app.client.chat.postMessage(message);
+  }
 });
 
 app.event("app_mention", async ({ context, event }) => {

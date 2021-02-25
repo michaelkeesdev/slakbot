@@ -28,7 +28,7 @@ const decisionService = new DecisionService();
 const maggieMond = new MaggieMond();
 const tokenizer = new TokenizerService();
 
-const MAX_MESSAGES_MEM = 5;
+const MAX_MESSAGES_MEM = 10;
 
 class MaggieBrein {
   matches = this.getSimpeleMaggieMatches();

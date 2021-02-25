@@ -55,7 +55,7 @@ class Maggie {
             const startIndex = maggieBrein?.messages.length - duplicateSize;
             const endIndex = maggieBrein?.messages.length - 1;
             const messagesFilter = maggieBrein?.messages.slice(startIndex, endIndex);
-            if(messagesFilter?.every(m => m.text === maggieBrein.messages[startIndex].text)) {
+            if(messagesFilter?.every(m => m.text === messagesFilter[0].text)) {
                 return message;
             }
         } 
@@ -65,7 +65,7 @@ class Maggie {
             const endIndex = maggieBrein?.messages.length - 1;
             const messagesFilter = maggieBrein?.messages.slice(startIndex, endIndex);
             console.log("monologue filter", messagesFilter);
-            if(messagesFilter?.every(m => m.user === maggieBrein.messages[startIndex].user)) {
+            if(messagesFilter?.every(m => m.user === messagesFilter[0].user)) {
                 return maggieMond.sayMonologue();
             }
         }

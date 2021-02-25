@@ -28,8 +28,11 @@ const decisionService = new DecisionService();
 const maggieMond = new MaggieMond();
 const tokenizer = new TokenizerService();
 
+const MAX_MESSAGES_MEM = 5;
+
 class MaggieBrein {
   matches = this.getSimpeleMaggieMatches();
+  messages = [];
 
   getFuzzyMatch = async (tokens) => {
     const tokenizedMatches = this.matches?.flatMap((match) =>
@@ -215,6 +218,13 @@ class MaggieBrein {
   needsToDecide(text) {
     return decisionService.needsToDecide(text);
   }
+
+  pushMessage(message) {
+    if(this.messages > MAX_MESSAGES_MEM) {
+      this.messages.splice(0, 1);
+    }
+    this.messages.push(message);
+  } 
 }
 
 export { MaggieBrein };

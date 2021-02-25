@@ -6,7 +6,8 @@ const maggieBrein = new MaggieBrein();
 
 class Maggie {
 
-    getResponse = async (textInput, context, files) => {
+
+    getMentionResponse = async (textInput, context, files) => {
         const text = textInput?.replace(`<@${context?.botUserId}>`, "").trim();
         let imageUrl;
         if(files?.length > 0){
@@ -43,6 +44,18 @@ class Maggie {
 
         return response;
     };
+
+    getMessageResponse = async (message, user) => {
+        maggieBrein.pushMessage({ text: message, user });
+
+        if(maggieBrein?.messages?.every(m => m.text === maggieBrein.messages[0].text)) {
+            return textInput;
+        } 
+        if(maggieBrein?.messages?.every(m => m.user === maggieBrein.messages[0].text)) {
+            return "ff monoloog"
+        }
+        return null;
+    }
 }
 
 export { Maggie };

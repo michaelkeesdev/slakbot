@@ -17,35 +17,7 @@ app.event("message", async ({ event, context }) => {
   const channel = event?.channel;
   const user = event?.user;
 
-  // HILARISCHE SHIT
-  
-  /* if(event?.user === "U01NEE5JYSY") {
-    const response = await maggie.getResponse(event?.text, context);
-    const message = { token, channel, text: response };
-    setTimeout(async () => {
-      await app.client.chat.postMessage(message);
-    }, 1000);
-  } else if(event?.user === "U01K3BVEVT3") {
-    const response = await maggie.getResponse(event?.text, context);
-    const message = { token, channel, text: response };
-    setTimeout(async () => {
-      await app.client.chat.postMessage(message);
-    }, 1000);
-  }  */ 
-  
-  
-  /* let response;
-  if (user === userService.getActiveUser()) {
-    response = `ge suckt <@${user}>`;
-    userService.setActiveUser(null);
-  }
-  if (event?.text === "hoer") {
-    response = `zelf hoer <@${user}>`;
-  } */
-  /* if (response) {
-    const message = { token, channel, text: response };
-    await app.client.chat.postMessage(message);
-  } */
+  maggie.getMessageResponse()
 });
 
 app.event("app_mention", async ({ context, event }) => {
@@ -56,7 +28,7 @@ app.event("app_mention", async ({ context, event }) => {
   const text = event.text.replace(`<@${context.botUserId}>`, "").trim();
   const files = event?.files ? event.files : [];
 
-  const response = await maggie.getResponse(text, context, files);
+  const response = await maggie.getMentionResponse(text, context, files);
   const message = { token, channel, text: response };
 
   await app.client.chat.postMessage(message);

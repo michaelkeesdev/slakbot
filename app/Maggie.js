@@ -52,14 +52,20 @@ class Maggie {
         const monoloqueSize = 7;
 
         if(maggieBrein?.messages.length >= duplicateSize) {
-            const messagesFilter = maggieBrein?.messages.slice(maggieBrein?.messages.length - duplicateSize, maggieBrein?.messages.length - 1);
-            if(messagesFilter?.every(m => m.text === maggieBrein.messages[0].text)) {
+            const startIndex = maggieBrein?.messages.length - duplicateSize;
+            const endIndex = maggieBrein?.messages.length - 1;
+            const messagesFilter = maggieBrein?.messages.slice(startIndex, endIndex);
+            if(messagesFilter?.every(m => m.text === maggieBrein.messages[startIndex].text)) {
                 return message;
             }
         } 
         if(maggieBrein?.messages?.length > monoloqueSize) {
-            const messagesFilter = maggieBrein?.messages.slice(maggieBrein?.messages.length - monoloqueSize, maggieBrein?.messages.length - 1);
-            if(messagesFilter?.every(m => m.user === maggieBrein.messages[0].user)) {
+            console.log("monologue test", maggieBrein?.messages?.length);
+            const startIndex = maggieBrein?.messages.length - monoloqueSize;
+            const endIndex = maggieBrein?.messages.length - 1;
+            const messagesFilter = maggieBrein?.messages.slice(startIndex, endIndex);
+            console.log("monologue filter", messagesFilter);
+            if(messagesFilter?.every(m => m.user === maggieBrein.messages[startIndex].user)) {
                 return maggieMond.sayMonologue();
             }
         }

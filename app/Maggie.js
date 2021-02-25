@@ -10,7 +10,7 @@ class Maggie {
         const text = textInput?.replace(`<@${context?.botUserId}>`, "").trim();
         let imageUrl;
         if(files){
-            const keys = files[0].permalink_public.replace("https://slack-files.com/", "").split("-");
+            const keys = files[0]?.permalink_public?.replace("https://slack-files.com/", "")?.split("-");
             imageUrl = `https://files-origin.slack.com/files-pri/${keys[0]}-${keys[1]}/${files[0].name}?pub_secret=${keys[2]}`;
         }
         console.log("files", JSON.stringify(files));

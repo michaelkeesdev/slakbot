@@ -68,10 +68,11 @@ app.event("app_mention", async ({ context, event }) => {
   const files = [
     {
       name: 'screenshot_2021-02-25_at_08.39.29.png',
+      permalink: 'https://dajjjmm.slack.com/files/U90TSU6JU/F01PAVB3LP4/screenshot_2021-02-25_at_08.39.29.png',
       permalink_public: 'https://slack-files.com/T92K3TTQX-F01Q0EPQ324-c18e7c6a17'
     }
   ]
-  // console.log("test", await maggie.getResponse("<@Maggie> doenbaar", { botUserId: "Maggie"}, files));
+   // console.log("test", await maggie.getResponse("<@Maggie> doenbaar", { botUserId: "Maggie"}, files));
 
   console.log("⚡️ Slakbot is running!");
 })();

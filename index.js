@@ -49,14 +49,24 @@ app.event("app_mention", async ({ context, event }) => {
 (async () => {
   await app.start(process.env.PORT || 8080);
 
-  const files = [
-    {
-      "permalink": "https://dajjjmm.slack.com/files/U90TSU6JU/F01PB55GHR8/screenshot_2021-02-23_at_16.58.14.png",
-      "permalink_public": "https://slack-files.com/T92K3TTQX-F01PB55GHR8-8d1a3bb529",
-      "thumb_360": "https://files.slack.com/files-tmb/T92K3TTQX-F01PB55GHR8-1fec514622/screenshot_2021-02-23_at_16.58.14_360.png",
-      "thumb_960": "https://files.slack.com/files-pri/T92K3TTQX-F01Q0RMNN6L/screenshot_2021-02-25_at_08.39.29.png",
-    }
+  const messages = [
+    {text: "hallo", user: "1"},
+    {text: "hallo", user: "1"},
+    {text: "hallo", user: "1"},
+    {text: "niks", user: "1"},
+    {text: "hallo", user: "1"},
+    {text: "hallo", user: "1"},
+    {text: "hallo", user: "1"},
+    {text: "ni", user: "1"},
+    {text: "ok", user: "1"},
   ]
+
+  if(messages.length >= 7) {
+    const messagesFilter = messages.slice(messages.length - 7, messages.length - 1);
+    if(messagesFilter?.every(m => m.user === messages[0].user)) {
+        console.log("message",  messages[0].text);
+    }
+  } 
    // console.log("test", await maggie.getResponse("<@Maggie> doenbaar", { botUserId: "Maggie"}, files));
 
   console.log("⚡️ Slakbot is running!");

@@ -32,6 +32,7 @@ import { HowService } from './hoe/HowService';
 import { WhyService } from './why/WhyService';
 import { NOUNS } from '../answers/words/RandomNouns';
 import { ImageRecognitionService } from './recognition/ImageRecognition';
+import { MONOLOGUE } from '../answers/Monologue';
 
 const basicAnweringService = new BasicAnweringService();
 
@@ -96,7 +97,7 @@ class MaggieMond {
 
   saySorry() {return sample(SORRY_ANSWER)}
 
-  sayMonologue() { return sample(MONOLOGUE)}
+  sayMonologue() { console.log("sayMonologue"); return sample(MONOLOGUE)}
 }
 
 export { MaggieMond };

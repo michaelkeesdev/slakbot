@@ -224,6 +224,7 @@ class MaggieBrein {
       this.messages.splice(0, 1);
     }
     this.messages.push(message);
+    console.log("MESSAGES: ", this.messages)
   } 
 }
 

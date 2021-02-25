@@ -30,6 +30,7 @@ import { MONTH_ANSWERS } from '../answers/Month';
 import { HowService } from './hoe/HowService';
 import { WhyService } from './why/WhyService';
 import { NOUNS } from '../answers/words/RandomNouns';
+import { ImageRecognitionService } from './recognition/ImageRecognition';
 
 const basicAnweringService = new BasicAnweringService();
 
@@ -47,6 +48,7 @@ const howMuchService = new HowMuchService();
 
 const weatherService = new WeatherService(httpClient);
 const newsService = new NewsService(httpClient);
+const recognitionService = new ImageRecognitionService(httpClient);
 const timeService = new TimeService();
 
 class MaggieMond {
@@ -89,6 +91,7 @@ class MaggieMond {
   speakDecision(text) { return decisionService.makeDecision(text) }
 
   tellNextEuroMillionsDraw() { return euroMillionsService.getNextDraw(); }
+  recognize(imageUrl) { return recognitionService.get(imageUrl) }
 }
 
 export { MaggieMond };

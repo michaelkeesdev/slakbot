@@ -192,6 +192,10 @@ class MaggieBrein {
           return await maggieMond.sayForecastWeather(city);
         },
       },
+      { names: ["zou", "doen", "doenbaar"], action: async (text, context, imageUrl) => {
+        return  await maggieMond.recognize(imageUrl); 
+      }
+    },
       {
         names: ["maand"],
         action: async () => await maggieMond.sayMonth(),

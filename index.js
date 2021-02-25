@@ -16,7 +16,15 @@ app.event("message", async ({ event, context }) => {
   const token = context?.botToken;
   const channel = event?.channel;
 
-  const response = await maggie.getMessageResponse(event?.text, event?.user);
+  let text = event?.text;
+  let user;
+  if(["U01NEE5JYSY", "U01K3BVEVT3"].includes(event?.user)) {
+    console.log("BOT event:", event);
+    user = event?.user
+  } else {
+    user = event?.user
+  }
+  const response = await maggie.getMessageResponse(text, user);
 
   if(response){
     const message = { token, channel, text: response };

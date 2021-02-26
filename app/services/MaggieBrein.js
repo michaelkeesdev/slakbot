@@ -19,8 +19,6 @@ import { MaggieMond } from "./MaggieMond";
 import { TokenizerService } from "./tokenizer/Tokenizer";
 import { HOW_YOU_DOING_TRIGGER } from "./../answers/HowYouDoing";
 import { flatMap } from "lodash";
-import { NumberUtil } from "../util/NumberUtil";
-import { WEL_NIET_TRIGGER } from "../answers/basic/BasicWelNiet";
 import { COUNTRY_TRIGGER } from "../answers/Countries";
 import { SORRY_TRIGGER } from "../answers/Sorry";
 import { HOER_TRIGGER } from "../answers/Hoer";
@@ -123,7 +121,6 @@ class MaggieBrein {
       { names: SLUIP_TRIGGER, action: async () => maggieMond.saySluip() },
       { names: THANKS_TRIGGER, action: () => maggieMond.sayThanks() },
       { names: WEETJES_TRIGGER, action: () => maggieMond.sayWeetje() },
-      { names: WEL_NIET_TRIGGER, action: () => maggieMond.sayWelNiet() },
       { names: WHEN_TRIGGER, action: () => maggieMond.sayWhen() },
       { names: WHERE_TRIGGER, action: () => maggieMond.sayWhere() },
       {

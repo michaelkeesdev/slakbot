@@ -10,7 +10,6 @@ import { WEETJES_PREFIX } from './../answers/weetjes/Weetjesprefix';
 import { BASIC_SUFFIX } from '../answers/basic/BasicSuffix';
 import { HOW_YOU_DOING_PREFIX, HOW_YOU_DOING_SUFFIX, HOW_YOU_DOING_ANSWER } from '../answers/HowYouDoing';
 import { EMOJIS } from '../answers/basic/EmojiApp';
-import { BASIC_WEL, BASIC_NIET } from '../answers/basic/BasicWelNiet';
 
 const PREFIX_PID = 6;
 const SUFFIX_PID = 6;
@@ -32,18 +31,6 @@ class BasicAnweringService {
         this.addHowYouDoingPrefixToResponse(responseBuilder);
         this.addHowYouDoingAnswerToResponse(responseBuilder);
         this.addHowYouDoingSuffixToResponse(responseBuilder);
-        return responseBuilder.toString();
-    };
-
-    buildAnswerToWelNietPhrase = () => {
-        let responseBuilder = new StringBuilder();
-        let wel = Math.floor(Math.random() * 5);
-
-        if (wel === 1) {
-            responseBuilder.append(sample(BASIC_WEL));
-        } else {
-            responseBuilder.append(sample(BASIC_NIET));
-        }
         return responseBuilder.toString();
     };
 

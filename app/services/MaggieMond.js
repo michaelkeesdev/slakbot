@@ -70,7 +70,6 @@ class MaggieMond {
   sayJoke() { return sample(JOKE_ANSWER); }
   sayThanks() { return sample(THANKS_ANSWER); }
   sayWeetje() { return sample(WEETJES_ANSWER); }
-  sayWelNiet() { return basicAnweringService.buildAnswerToWelNietPhrase(); }
   sayWhen() { return sample(WHEN_ANSWER); }
   sayWhere() { return sample(WHERE_ANSWER); }
   sayMonth() { return sample(MONTH_ANSWERS); }

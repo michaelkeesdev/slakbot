@@ -20,5 +20,6 @@ export const BASIC_DONT_KNOW_ANSWER = [
     "vraag straks ff bezig",
     "ff werken dan antwoord ik",
     "secondje, stuur u straks xxx",
-    "w8 ff"
+    "w8 ff",
+    "meh"
   ];

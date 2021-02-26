@@ -29,5 +29,9 @@ export const BASIC_DISAGREE_ANSWER = [
     "Nee, domme vraag",
     "Is niet",
     "Sws niet",
-    "Kan nooit"
+    "Kan nooit",
+    "nee XDDDDDD",
+    "nee lol XD",
+    "nee :s",
+    "HAHAHAHHAH. Nee."
   ];

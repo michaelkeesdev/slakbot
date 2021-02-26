@@ -56,7 +56,7 @@ class BasicAnweringService {
             responseBuilder.append(" ").append(sample(BASIC_DISAGREE_ANSWER));
         }
         // 8-9 Maggie weet ni
-        if (decision >= 8) {
+        if (decision == 8 || decision == 9) {
             responseBuilder.clear();
             responseBuilder.append(sample(BASIC_DONT_KNOW_ANSWER));
         }

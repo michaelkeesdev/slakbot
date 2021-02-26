@@ -1,3 +1,4 @@
+import { HOER_TRIGGER } from "./answers/Hoer";
 import { MaggieBrein } from "./services/MaggieBrein";
 import { MaggieMond } from "./services/MaggieMond";
 
@@ -38,6 +39,9 @@ class Maggie {
           response = maggieMond.giveBasicAnswer();
       }
     }
+
+    maggieBrein.pushMessage({ text: response, user: this.id});
+
     return response;
   };
 
@@ -56,6 +60,7 @@ class Maggie {
     return responses;
   };
 
+  // TODO: MOVE logic TO MaggieBrein
   isDuplicateAnswer = (messages, size) => {
     const startIndex = messages?.length - size;
     const endIndex = messages?.length - 1;
@@ -81,6 +86,11 @@ class Maggie {
         isMatchFn: () => messages?.length >= SIZE_MONOLOGUE,
         getMessage: () => { if(this.isMonologueAnswer(messages, SIZE_MONOLOGUE)) { return maggieMond.sayMonologue() }},
         pid: PID_MONOLOGUE,
+      },
+      {
+        isMatchFn: () => HOER_TRIGGER.includes(messages[messages.length - 1]?.text),
+        getMessage: () => { return maggieMond.sayHoer() },
+        pid: 5,
       },
     ];
     return matches.filter((match) => match?.isMatchFn());

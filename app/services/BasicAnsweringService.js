@@ -47,12 +47,12 @@ class BasicAnweringService {
         let decision = Math.floor(Math.random() * 11);
         console.log(decision < 5);
 
-        // 0-4 Maggie agrees
-        if (decision < 5) {
+        // 0-1-2-3 Maggie agrees
+        if (decision < 4) {
             responseBuilder.append(" ").append(sample(BASIC_AGREE_ANSWER));
         }
-        // 5-8 Maggie disagrees
-        if (decision >= 5 && decision < 8) {
+        // 4-5-6-7 Maggie disagrees
+        if (decision >= 4 && decision < 8) {
             responseBuilder.append(" ").append(sample(BASIC_DISAGREE_ANSWER));
         }
         // 8-9 Maggie weet ni

@@ -21,7 +21,7 @@ app.event("message", async ({ event, context }) => {
   const messages = await maggie.getMessageResponses(text, user);
 
   if(messages?.length){
-    messages.forEach( async (message) => {
+    messages.map( async (message) => {
       const postMessage = { token, channel, text: message };
       await app.client.chat.postMessage(postMessage);
     });

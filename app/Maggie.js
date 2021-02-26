@@ -4,9 +4,9 @@ import { MaggieMond } from "./services/MaggieMond";
 const maggieMond = new MaggieMond();
 const maggieBrein = new MaggieBrein();
 
-const SIZE_DUPLICATE = 4;
+const SIZE_DUPLICATE = 3;
 const SIZE_MONOLOGUE = 7;
-const PID_DUPLICATE = 1;
+const PID_DUPLICATE = 3;
 const PID_MONOLOGUE = 5;
 
 class Maggie {
@@ -17,16 +17,8 @@ class Maggie {
     let imageUrl;
     if (files?.length > 0) {
       imageUrl = files[0]?.thumb_960;
-      /* const splitted = files[0]?.permalink.split('/');
-            const name = splitted[splitted.length -1];
-            const keys = files[0]?.permalink_public?.replace("https://slack-files.com/", "")?.split("-");
-            imageUrl = `https://files-origin.slack.com/files-pri/${keys[0]}-${keys[1]}/${name}?pub_secret=${keys[2]}`; */
     }
-    console.log("files", JSON.stringify(files));
-    console.log("imageUrl", imageUrl);
-
     const tokens = maggieBrein.getTokens(text);
-
     const exactMatches = await maggieBrein.getExactMatches(tokens);
     const fuzzyMatch = await maggieBrein.getFuzzyMatch(tokens);
 
@@ -55,9 +47,9 @@ class Maggie {
     const matches = this.getMessageMatches(latestMessages);
     const responses = matches.reduce((result, match) => {
       const message = match.getMessage();
-      maggieBrein.pushMessage({ text: message, user: this.id });
-      if(Math.floor(Math.random() * match.pid) === 1) {
+      if(Math.floor(Math.random() * match.pid) === 1 && message) {
         result.push(message);
+        maggieBrein.pushMessage({ text: message, user: this.id });
       }
       return result;
     }, [])
@@ -68,7 +60,7 @@ class Maggie {
     const startIndex = messages?.length - size;
     const endIndex = messages?.length - 1;
     const messagesBag = messages?.slice(startIndex, endIndex);
-    return messagesBag?.every((m) => m.text === messagesBag[0].text);
+    return messagesBag?.every((m) => m.text === messagesBag[0].text && m.user !== this.id);
   };
 
   isMonologueAnswer = (messages, size) => {
@@ -82,12 +74,12 @@ class Maggie {
     const matches = [
       {
         isMatchFn: () => messages?.length >= SIZE_DUPLICATE,
-        getMessage: () => this.isDuplicateAnswer(messages, SIZE_DUPLICATE) && messages[messages?.length - 1]?.text,
+        getMessage: () => { if(this.isDuplicateAnswer(messages, SIZE_DUPLICATE)) { return messages[messages?.length - 1]?.text }},
         pid: PID_DUPLICATE,
       },
       {
         isMatchFn: () => messages?.length >= SIZE_MONOLOGUE,
-        getMessage: () => this.isMonologueAnswer(messages, SIZE_MONOLOGUE) && maggieMond.sayMonologue(),
+        getMessage: () => { if(this.isMonologueAnswer(messages, SIZE_MONOLOGUE)) { return maggieMond.sayMonologue() }},
         pid: PID_MONOLOGUE,
       },
     ];

@@ -50,7 +50,7 @@ export const USERS = [{
 }, {
     id: "U01K3BVEVT3",
     tagName: "Maggie",
-    shortNames: ["Maggie"],
+    shortNames: ["Maggie", "ikzelf"],
     firstName: "Maggie",
     lastName: "De Block",
     birthday: ""

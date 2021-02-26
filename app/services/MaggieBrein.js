@@ -22,13 +22,19 @@ import { flatMap } from "lodash";
 import { NumberUtil } from "../util/NumberUtil";
 import { WEL_NIET_TRIGGER } from "../answers/basic/BasicWelNiet";
 import { COUNTRY_TRIGGER } from "../answers/Countries";
-import {SORRY_TRIGGER} from "../answers/Sorry";
+import { SORRY_TRIGGER } from "../answers/Sorry";
+import { HOER_TRIGGER } from "../answers/Hoer";
 
 const decisionService = new DecisionService();
 const maggieMond = new MaggieMond();
 const tokenizer = new TokenizerService();
 
 const MAX_MESSAGES_MEM = 10;
+
+const SIZE_DUPLICATE = 3;
+const SIZE_MONOLOGUE = 7;
+const PID_DUPLICATE = 3;
+const PID_MONOLOGUE = 5;
 
 class MaggieBrein {
   matches = this.getSimpeleMaggieMatches();
@@ -41,7 +47,7 @@ class MaggieBrein {
         names: this.getTokens(name),
       }))
     );
-   
+
     let fuse = new Fuse(tokenizedMatches, {
       keys: ["names"],
       includeScore: true,
@@ -66,10 +72,17 @@ class MaggieBrein {
         values: matchedResults,
       };
 
-      results[match.refIndex]["score"] = results[match.refIndex]?.score ? results[match.refIndex]?.score + match?.score : match?.score;
-      results[match.refIndex]["avgScore"] = results[match.refIndex].score / matchedResults?.length;
-      results[match.refIndex]["distanceScore"] = tokens?.length - matchedResults?.length;
-      results[match.refIndex]["finalScore"] = results[match.refIndex].avgScore + ( results[match.refIndex].distanceScore * results[match.refIndex].avgScore);
+      results[match.refIndex]["score"] = results[match.refIndex]?.score
+        ? results[match.refIndex]?.score + match?.score
+        : match?.score;
+      results[match.refIndex]["avgScore"] =
+        results[match.refIndex].score / matchedResults?.length;
+      results[match.refIndex]["distanceScore"] =
+        tokens?.length - matchedResults?.length;
+      results[match.refIndex]["finalScore"] =
+        results[match.refIndex].avgScore +
+        results[match.refIndex].distanceScore *
+          results[match.refIndex].avgScore;
       return results;
     }, {});
     const reducedKeys = Object.keys(reduced);
@@ -97,10 +110,10 @@ class MaggieBrein {
   getSimpeleMaggieMatches() {
     return [
       { names: BYE_TRIGGER, action: () => maggieMond.sayBye() },
-      { names: [COUNTRY_TRIGGER], action: () => maggieMond.sayCountry(), },
+      { names: [COUNTRY_TRIGGER], action: () => maggieMond.sayCountry() },
       { names: GOODMORNING_TRIGGER, action: () => maggieMond.sayGoodMorning() },
-      { names: WHY_TRIGGER, action: () => maggieMond.sayWhy(), },
-      { names: HOW_TRIGGER, action: () => maggieMond.sayHow(), },
+      { names: WHY_TRIGGER, action: () => maggieMond.sayWhy() },
+      { names: HOW_TRIGGER, action: () => maggieMond.sayHow() },
       {
         names: HOW_YOU_DOING_TRIGGER,
         action: () => maggieMond.sayHowYouDoing(),
@@ -134,10 +147,7 @@ class MaggieBrein {
         action: (text) => maggieMond.sayBirthDay(text),
       },
       {
-        names: [
-          "hoelaat",
-          "uur",
-        ],
+        names: ["hoelaat", "uur"],
         action: (text) => maggieMond.sayTime(text),
       },
       {
@@ -162,21 +172,11 @@ class MaggieBrein {
         action: async () => await maggieMond.showMeme(),
       },
       {
-        names: [
-          "nieuws",
-          "vandaag gebeurd",
-          "news",
-          "hln",
-          "gazet",
-        ],
+        names: ["nieuws", "vandaag gebeurd", "news", "hln", "gazet"],
         action: async () => await maggieMond.readTheNews(),
       },
       {
-        names: [
-          "euromillions",
-          "euro millions",
-          "euromillions",
-        ],
+        names: ["euromillions", "euro millions", "euromillions"],
         action: () => maggieMond.tellNextEuroMillionsDraw(),
       },
       {
@@ -200,10 +200,12 @@ class MaggieBrein {
           return await maggieMond.sayForecastWeather(city);
         },
       },
-      { names: ["zou", "doen", "doenbaar"], action: async (text, context, imageUrl) => {
-        return  await maggieMond.recognize(imageUrl); 
-      }
-    },
+      {
+        names: ["zou", "doen", "doenbaar"],
+        action: async (text, context, imageUrl) => {
+          return await maggieMond.recognize(imageUrl);
+        },
+      },
       {
         names: ["maand"],
         action: async () => await maggieMond.sayMonth(),
@@ -215,17 +217,66 @@ class MaggieBrein {
     ];
   }
 
-  needsToDecide(text) {
-    return decisionService.needsToDecide(text);
-  }
+  getMessageMatches = (messages) => {
+    const matches = [
+      {
+        isMatchFn: () => messages?.length >= SIZE_DUPLICATE,
+        getMessage: () => {
+          if (this.isDuplicateAnswer(messages, SIZE_DUPLICATE)) {
+            return messages[messages?.length - 1]?.text;
+          }
+        },
+        pid: PID_DUPLICATE,
+      },
+      {
+        isMatchFn: () => messages?.length >= SIZE_MONOLOGUE,
+        getMessage: () => {
+          if (this.isMonologueAnswer(messages, SIZE_MONOLOGUE)) {
+            return maggieMond.sayMonologue();
+          }
+        },
+        pid: PID_MONOLOGUE,
+      },
+      {
+        isMatchFn: () =>
+          HOER_TRIGGER.includes(messages[messages.length - 1]?.text),
+        getMessage: () => {
+          return maggieMond.sayHoer();
+        },
+        pid: 5,
+      },
+    ];
+    return matches.filter((match) => match?.isMatchFn());
+  };
+
+  // TODO: MOVE logic TO MaggieBrein
+  isDuplicateAnswer = (messages, size) => {
+    const startIndex = messages?.length - size;
+    const endIndex = messages?.length - 1;
+    const messagesBag = messages?.slice(startIndex, endIndex);
+    return messagesBag?.every(
+      (m) => m.text === messagesBag[0].text && m.user !== this.id
+    );
+  };
+
+  isMonologueAnswer = (messages, size) => {
+    const startIndex = messages.length - size;
+    const endIndex = messages.length - 1;
+    const messagesBag = messages.slice(startIndex, endIndex);
+    return messagesBag?.every((m) => m.user === messagesBag[0].user);
+  };
 
   pushMessage(message) {
-    if(this.messages?.length > MAX_MESSAGES_MEM) {
+    if (this.messages?.length > MAX_MESSAGES_MEM) {
       this.messages.shift();
     }
     this.messages.push(message);
-    console.log("MESSAGES: ", this.messages)
-  } 
+    console.log("MESSAGES: ", this.messages);
+  }
+
+  needsToDecide(text) {
+    return decisionService.needsToDecide(text);
+  }
 }
 
 export { MaggieBrein };

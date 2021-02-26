@@ -14,19 +14,19 @@ class UserService {
     let user = this.getRandomUser();
     let nameRoll = Math.floor(Math.random() * 10);
 
-    if (nameRoll < 6) {
+    if (nameRoll < 5) {
       return user.tagName;
     }
 
-    if (nameRoll > 5 && nameRoll < 8 ) {
+    if (nameRoll == 5 || nameRoll == 6 ) {
       return user.shortNames[Math.floor(Math.random() * user.shortNames.length)];
     }
 
-    if (nameRoll == 8) {
+    if (nameRoll == 7) {
       return user.lastName;
     }
 
-    if (nameRoll == 9) {
+    if (nameRoll == 8 || nameRoll == 9) {
       return user.firstName.concat(" ").concat(user.lastName);
     }
 

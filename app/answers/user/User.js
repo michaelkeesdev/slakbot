@@ -16,7 +16,7 @@ export const USERS = [{
     id: "U911D6401",
     tagName: "Jappeh",
     shortNames: ["Djap", "Japn", "Jappe", "Jappeh"],
-    firstName: "Jasper ",
+    firstName: "Jasper",
     lastName: "Van Grieken",
     birthDay: "27 augustus"
 }, {

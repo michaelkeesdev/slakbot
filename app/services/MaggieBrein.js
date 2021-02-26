@@ -220,7 +220,7 @@ class MaggieBrein {
   }
 
   pushMessage(message) {
-    if(this.messages > MAX_MESSAGES_MEM) {
+    if(this.messages?.length > MAX_MESSAGES_MEM) {
       this.messages.shift();
     }
     this.messages.push(message);

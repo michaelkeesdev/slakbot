@@ -1,7 +1,7 @@
 export const USERS = [{
     id: "UHB8YS8MU",
     tagName: "Crabbe",
-    shortNames: ["Crab", "Crabbe"],
+    shortNames: ["Crab", "Crabbe", "Michel"],
     firstName: "Michiel",
     lastName: "Crabbé",
     birthDay: "2 december"
@@ -15,7 +15,7 @@ export const USERS = [{
 }, {
     id: "U911D6401",
     tagName: "Jappeh",
-    shortNames: ["Djap", "Japn", "Jappe", "Jappeh"],
+    shortNames: ["Djap", "Japn", "Jappe", "Jappeh", "d'jap'n", "Jap"],
     firstName: "Jasper",
     lastName: "Van Grieken",
     birthDay: "27 augustus"
@@ -36,14 +36,14 @@ export const USERS = [{
 }, {
     id: "U90TSU6JU",
     tagName: "Kees",
-    shortNames: ["Kees"],
+    shortNames: ["Kees", "Slet"],
     firstName: "Michaël",
     lastName: "Kees",
     birthDay: "8 mei"
 }, {
     id: "U92KLC4CX",
     tagName: "Rits",
-    shortNames: ["Ries", "Rits", "Rats"],
+    shortNames: ["Ries", "Rits", "Rats", "Maurats", "Oplichter"],
     firstName: "Maurice",
     lastName: "Dalderup",
     birthDay: "2 januari"

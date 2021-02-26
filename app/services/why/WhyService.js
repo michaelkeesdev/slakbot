@@ -7,12 +7,14 @@ import { UserService } from './../user/UserService';
 class WhyService {
 
     getWhyAnswer() {
-        let noun = sample(NOUNS);
+        let noun1 = sample(NOUNS);
+        let noun2 = sample(NOUNS);
         let user = new UserService().getRandomUserRandomName();
         let verb = sample(VERBS);
 
         let why = { 
-            "%noun%": noun, 
+            "%noun1%": noun1, 
+            "%noun2%": noun2, 
             "%user%": user,
             "%verb%": verb,
         }

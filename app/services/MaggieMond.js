@@ -74,7 +74,7 @@ class MaggieMond {
   sayWhy() { return whyService.getWhyAnswer() }
   sayWhat() { return sample(NOUNS) }
 
-  sayRandomUser() { return userService.getRandomUser(); }
+  sayRandomUser() { return userService.getRandomUserRandomName(); }
   tagUser(text) { return userService.tagUser(text); }
 
   showMeme() { return ninegagService.get9gagBasic(); }

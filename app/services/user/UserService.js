@@ -1,46 +1,54 @@
 import { StringBuilder } from './../../util/StringBuilder';
 import { BASIC_COMMAND } from './../../answers/basic/BasicCommand';
-
-class Users {
-  static getCrabbe() { return "UHB8YS8MU"; }
-  static getDennis() { return "U9213H10B"; }
-  static getJappeh() { return "U911D6401"; }
-  static getJerre() { return "U015DQ39T2N"; }
-  static getKees() { return "U90TSU6JU"; }
-  static getJoa() { return "U91HHN2JE"; }
-  static getKees() { return "U90TSU6JU"; }
-  static getRits() { return "U92KLC4CX"; }
-  static getFlip() { return "U01NEE5JYSY"; }
-  static getMaggie() { return "U01K3BVEVT3"; }
-}
+import { sample } from 'lodash';
+import { USERS } from '../../answers/user/User';
 
 class UserService {
   activeUser = "";
 
-  getAllUsers() {
-    return [
-      Users.getCrabbe(),
-      Users.getDennis(),
-      Users.getJappeh(),
-      Users.getJerre(),
-      Users.getJoa(),
-      Users.getKees(),
-      Users.getRits()
-    ];
+  getRandomUser() {
+    return sample(USERS);
   }
 
-  getRandomUser() {
-    let users = this.getAllUsers();
-    let user = users[Math.floor(Math.random() * users.length)];
-    this.activeUser = user;
-    return `<@${user}>`;
+  getRandomUserRandomName() {
+    let user = this.getRandomUser();
+    let nameRoll = Math.floor(Math.random() * 10);
+
+    if (nameRoll < 6) {
+      return user.tagName;
+    }
+
+    if (nameRoll > 5 && nameRoll < 8 ) {
+      return user.shortNames[Math.floor(Math.random() * user.shortNames.length)];
+    }
+
+    if (nameRoll == 8) {
+      return user.lastName;
+    }
+
+    if (nameRoll == 9) {
+      return user.firstName.concat(" ").concat(user.lastName);
+    }
+
+    return sample(USERS);
+  }
+
+  extractUsersFromText(text) {
+    if (text.includes("iedereen")) {
+      return USERS;
+    }
+    return USERS.filter(user => this.textIncludesUser(text, user));
+  }
+
+  textIncludesUser(text, user) {
+    return text.includes(user.id);
   }
 
   tagUser(text) {
     let responseBuilder = new StringBuilder();
     let users = this.extractUsersFromText(text)
     if (users.length > 0) {
-      responseBuilder.append(users.map(user => `<@${user}>`).join(" "));
+      responseBuilder.append(users.map(user => `<@${user.id}>`).join(" "));
 
       let alreadyMatched = false; 
       BASIC_COMMAND.forEach(command => {
@@ -58,26 +66,6 @@ class UserService {
 
     return responseBuilder.toString();
   }
-
-  extractUsersFromText(text) {
-    if (text.includes("iedereen")) {
-      return this.getAllUsers();
-    }
-    return this.getAllUsers().filter(user => this.textIncludesUser(text, user));
-  }
-
-  textIncludesUser(text, user) {
-    return text.includes(user);
-  }
-
-  getActiveUser() {
-    return this.activeUser;
-  }
-
-  setActiveUser(user) {
-    this.activeUser = user;
-  }
-
 }
 
-export { Users, UserService };
+export { UserService };

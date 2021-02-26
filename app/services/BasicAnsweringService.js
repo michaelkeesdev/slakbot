@@ -12,9 +12,9 @@ import { HOW_YOU_DOING_PREFIX, HOW_YOU_DOING_SUFFIX, HOW_YOU_DOING_ANSWER } from
 import { EMOJIS } from '../answers/basic/EmojiApp';
 import { BASIC_WEL, BASIC_NIET } from '../answers/basic/BasicWelNiet';
 
-const PREFIX_PID = 5;
-const SUFFIX_PID = 5;
-const EMOJI_PID = 2;
+const PREFIX_PID = 6;
+const SUFFIX_PID = 6;
+const EMOJI_PID = 5;
 const WEETJE_PID = 50;
 
 
@@ -57,18 +57,18 @@ class BasicAnweringService {
     }
 
     addAnswerToResponse(responseBuilder) {
-        let decision = Math.floor(Math.random() * 3);
+        let decision = Math.floor(Math.random() * 10);
         switch(decision) {
-            case 0:
-                // 0 Maggie agrees
+            case decision < 5:
+                // 0-4 Maggie agrees
                 responseBuilder.append(" ").append(sample(BASIC_AGREE_ANSWER));
                 break;
-            case 1:
-                // 1 Maggie disagrees
+            case decision >= 5 && decision < 8:
+                // 5-8 Maggie disagrees
                 responseBuilder.append(" ").append(sample(BASIC_DISAGREE_ANSWER));
                 break;
-            case 2:    
-                // 2 Maggie weet ni
+            case decision >= 8:    
+                // 8-9 Maggie weet ni
                 responseBuilder.clear();
                 responseBuilder.append(sample(BASIC_DONT_KNOW_ANSWER));
                 break;

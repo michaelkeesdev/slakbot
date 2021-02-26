@@ -4,10 +4,10 @@ export const BASIC_SUFFIX = [
     "De groeten.",
     "Maggie out :v: ",
     "Over en out",
-    "Ik moet nu trouwens even weg, tot ziens!",
+    "Ff weg nu",
     "Slet.",
-    "Hoer",
-    "Laat mij nu eens me rust.",
-    "Ik ben nu even moe, ik ga een dutje doen",
+    "Hoer.",
+    "En laat me nu doen",
+    "Ff moe nu, dutje",
     "lit fam yolo sweg yuuuuuuuw"
 ];

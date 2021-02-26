@@ -9,4 +9,16 @@ export const BASIC_DONT_KNOW_ANSWER = [
     "Pffffff vermoeiend.",
     "Ik wil dood.",
     "Joepie!",
+    "Zou beter zwijgen",
+    "Weet ik ni",
+    "Domme vraag",
+    "Ga ni op antwoorden",
+    "Wa?",
+    "lol",
+    "KEKW",
+    "ff kaf",
+    "vraag straks ff bezig",
+    "ff werken dan antwoord ik",
+    "secondje, stuur u straks xxx",
+    "w8 ff"
   ];

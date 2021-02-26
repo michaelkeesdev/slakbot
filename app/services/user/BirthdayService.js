@@ -12,39 +12,8 @@ class BirthdayService {
 
         if (users.length > 0) {
             users.forEach(user => {   
-                console.log("hoer");            
-                let birthday = "";
-                switch (user) {
-                    case Users.getCrabbe():
-                        birthday = "2 december";
-                        break;
-                    case Users.getDennis():
-                        birthday = "29 januari"
-                        break;
-                    case Users.getJappeh():
-                        birthday = "27 augustus";
-                        break;
-                    case Users.getJerre():
-                        break;
-                    case Users.getJoa():
-                        birthday = "30 oktober";
-                        break;
-                    case Users.getKees():
-                        birthday = "8 mei";
-                        break;
-                    case Users.getRits():
-                        birthday = "2 januari";
-                        break;
-                    case Users.getMaggie():
-                        birthday = "28 april";
-                        break;
-                    default:
-                        birthday = "ken ik ni";
-                        break;
-                }
-                responseBuilder.append("De verjaardag van ").append(`<@${user}>`).append(" ");
-                if (birthday !== "") {
-                    responseBuilder.append("is op ").append(birthday).append(". ");
+                if (user.birthday !== "") {
+                    responseBuilder.append("De verjaardag van ").append(user.firstName + " " + user.lastName).append(" is op ").append(user.birthDay).append(". ");
                 } else {
                     responseBuilder.append("ken ik nog ni").append(". ");
                 }

@@ -9,7 +9,7 @@ class HowService {
 
     getHowAnswer() {
         let noun = sample(NOUNS);
-        let user = new UserService().getRandomUser();
+        let user = new UserService().getRandomUserRandomName();
         let verb = sample(VERBS);
 
         let how = { 

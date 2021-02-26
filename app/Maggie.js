@@ -4,88 +4,87 @@ import { MaggieMond } from "./services/MaggieMond";
 const maggieMond = new MaggieMond();
 const maggieBrein = new MaggieBrein();
 
+const SIZE_DUPLICATE = 3;
+const SIZE_MONOLOGUE = 7;
+const PID_DUPLICATE = 3;
+const PID_MONOLOGUE = 5;
+
 class Maggie {
-    id = "U01NEE5JYSY";
+  id = "U01NEE5JYSY";
 
+  getMentionResponse = async (textInput, context, files) => {
+    const text = textInput?.replace(`<@${context?.botUserId}>`, "").trim();
+    let imageUrl;
+    if (files?.length > 0) {
+      imageUrl = files[0]?.thumb_960;
+    }
+    const tokens = maggieBrein.getTokens(text);
+    const exactMatches = await maggieBrein.getExactMatches(tokens);
+    const fuzzyMatch = await maggieBrein.getFuzzyMatch(tokens);
 
-    getMentionResponse = async (textInput, context, files) => {
-        const text = textInput?.replace(`<@${context?.botUserId}>`, "").trim();
-        let imageUrl;
-        if(files?.length > 0){
-            imageUrl = files[0]?.thumb_960;
-            /* const splitted = files[0]?.permalink.split('/');
-            const name = splitted[splitted.length -1];
-            const keys = files[0]?.permalink_public?.replace("https://slack-files.com/", "")?.split("-");
-            imageUrl = `https://files-origin.slack.com/files-pri/${keys[0]}-${keys[1]}/${name}?pub_secret=${keys[2]}`; */
-        }
-        console.log("files", JSON.stringify(files));
-        console.log("imageUrl", imageUrl);
-
-        const tokens = maggieBrein.getTokens(text);
-
-        const exactMatches = await maggieBrein.getExactMatches(tokens);
-        const fuzzyMatch = await maggieBrein.getFuzzyMatch(tokens);
-
-        let response = "";
-        if (fuzzyMatch) {
-            response = await fuzzyMatch?.action(text, context, imageUrl); 
-        } else if(exactMatches) {
-            response = await exactMatches[0]?.action(text, context, imageUrl);
-        }
-
-        if (!response) {
-            switch (true) {
-                case maggieBrein.needsToDecide(text):
-                    response = maggieMond.speakDecision(text);
-                    break;
-                default:
-                    response = maggieMond.giveBasicAnswer();
-            }
-        }
-
-        return response;
-    };
-
-    getMessageResponse = async (message, user) => {
-        maggieBrein.pushMessage({ text: message, user });
-
-        const duplicateSize = 4;
-        const monoloqueSize = 7;
-
-        const PID_DUPLICATE = 1;
-        const PID_MONOLOGUE = 5;
-
-        let response;
-
-        if(maggieBrein?.messages.length >= duplicateSize) {
-            const startIndex = maggieBrein?.messages.length - duplicateSize;
-            const endIndex = maggieBrein?.messages.length - 1;
-            const messagesFilter = maggieBrein?.messages.slice(startIndex, endIndex);
-            if(messagesFilter?.every(m => m.text === messagesFilter[0].text)) {
-                response = (Math.floor(Math.random() * PID_DUPLICATE) === 1) && message;
-            }
-        } 
-        if(maggieBrein?.messages?.length > monoloqueSize) {
-            console.log("monologue test", maggieBrein?.messages?.length);
-            
-            const startIndex = maggieBrein?.messages.length - monoloqueSize;
-            const endIndex = maggieBrein?.messages.length - 1;
-            const messagesFilter = maggieBrein?.messages.slice(startIndex, endIndex);
-
-            console.log("monologue filter", messagesFilter);
-
-            if(messagesFilter?.every(m => m.user === messagesFilter[0].user)) {
-                response = (Math.floor(Math.random() * PID_MONOLOGUE) === 1) && maggieMond.sayMonologue();
-            }
-        }
-        if(response) {
-            maggieBrein.pushMessage({ text: response, user: this.id})
-            return response;
-        }
-        return null;
+    let response = "";
+    if (fuzzyMatch) {
+      response = await fuzzyMatch?.action(text, context, imageUrl);
+    } else if (exactMatches) {
+      response = await exactMatches[0]?.action(text, context, imageUrl);
     }
 
-    
+    if (!response) {
+      switch (true) {
+        case maggieBrein.needsToDecide(text):
+          response = maggieMond.speakDecision(text);
+          break;
+        default:
+          response = maggieMond.giveBasicAnswer();
+      }
+    }
+    return response;
+  };
+
+  getMessageResponses = async (message, user) => {
+    maggieBrein.pushMessage({ text: message, user });
+    const latestMessages = maggieBrein?.messages;
+    const matches = this.getMessageMatches(latestMessages);
+    const responses = matches.reduce((result, match) => {
+      const message = match.getMessage();
+      if(Math.floor(Math.random() * match.pid) === 1 && message) {
+        result.push(message);
+        maggieBrein.pushMessage({ text: message, user: this.id });
+      }
+      return result;
+    }, [])
+    return responses;
+  };
+
+  isDuplicateAnswer = (messages, size) => {
+    const startIndex = messages?.length - size;
+    const endIndex = messages?.length - 1;
+    const messagesBag = messages?.slice(startIndex, endIndex);
+    return messagesBag?.every((m) => m.text === messagesBag[0].text && m.user !== this.id);
+  };
+
+  isMonologueAnswer = (messages, size) => {
+    const startIndex = messages.length - size;
+    const endIndex = messages.length - 1;
+    const messagesBag = messages.slice(startIndex, endIndex);
+    return messagesBag?.every((m) => m.user === messagesBag[0].user);
+  };
+
+  getMessageMatches = (messages) => {
+    const matches = [
+      {
+        isMatchFn: () => messages?.length >= SIZE_DUPLICATE,
+        getMessage: () => { if(this.isDuplicateAnswer(messages, SIZE_DUPLICATE)) { return messages[messages?.length - 1]?.text }},
+        pid: PID_DUPLICATE,
+      },
+      {
+        isMatchFn: () => messages?.length >= SIZE_MONOLOGUE,
+        getMessage: () => { if(this.isMonologueAnswer(messages, SIZE_MONOLOGUE)) { return maggieMond.sayMonologue() }},
+        pid: PID_MONOLOGUE,
+      },
+    ];
+    return matches.filter((match) => match?.isMatchFn());
+  };
 }
 
 export { Maggie };

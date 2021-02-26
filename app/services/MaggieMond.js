@@ -99,7 +99,7 @@ class MaggieMond {
 
   saySorry() {return sample(SORRY_ANSWER)}
 
-  sayMonologue() { console.log("sayMonologue"); return sample(MONOLOGUE)}
+  sayMonologue() { return sample(MONOLOGUE) }
 }
 
 export { MaggieMond };

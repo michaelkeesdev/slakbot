@@ -27,14 +27,14 @@ export const USERS = [{
     lastName: "Peeters",
     birthDay: ""
 },  {
-    id: "U90TSU6JU",
+    id: "U91HHN2JE",
     tagName: "Joa",
     shortNames: ["Joa"],
     firstName: "Joachim",
     lastName: "Geerts",
     birthDay: "30 oktober"
 }, {
-    id: "U91HHN2JE",
+    id: "U90TSU6JU",
     tagName: "Kees",
     shortNames: ["Kees"],
     firstName: "Michaël",

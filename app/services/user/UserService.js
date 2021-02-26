@@ -37,11 +37,11 @@ class UserService {
     if (text.includes("iedereen")) {
       return USERS;
     }
-    return USERS.filter(user => this.textIncludesUser(text, user));
+    return USERS.filter(user => this.textIncludesUser(text.toLowerCase(), user));
   }
 
   textIncludesUser(text, user) {
-    return text.includes(user.id) || text.includes(user.tagName) || user.shortNames.some( shortName => text.includes(shortName));
+    return text.includes(user.id) || text.includes(user.tagName) || user.shortNames.some(shortName => text.includes(shortName.toLowerCase()));
   }
 }
 

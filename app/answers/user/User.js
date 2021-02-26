@@ -32,7 +32,7 @@ export const USERS = [{
     shortNames: ["Joa"],
     firstName: "Joachim",
     lastName: "Geerts",
-    birthDay: "27 augustus"
+    birthDay: "30 oktober"
 }, {
     id: "U91HHN2JE",
     tagName: "Kees",

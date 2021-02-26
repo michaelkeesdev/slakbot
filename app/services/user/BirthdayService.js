@@ -1,4 +1,4 @@
-import { Users, UserService } from "./UserService";
+import { UserService } from "./UserService";
 import { StringBuilder } from './../../util/StringBuilder';
 
 class BirthdayService {

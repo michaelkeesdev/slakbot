@@ -1,3 +1,4 @@
+import { HOER_TRIGGER } from "./answers/Hoer";
 import { MaggieBrein } from "./services/MaggieBrein";
 import { MaggieMond } from "./services/MaggieMond";
 
@@ -87,7 +88,7 @@ class Maggie {
         pid: PID_MONOLOGUE,
       },
       {
-        isMatchFn: () => ['hoer'].includes(messages[messages.length - 1]?.text),
+        isMatchFn: () => HOER_TRIGGER.includes(messages[messages.length - 1]?.text),
         getMessage: () => { return maggieMond.sayHoer() },
         pid: 5,
       },

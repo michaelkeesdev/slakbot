@@ -38,6 +38,9 @@ class Maggie {
           response = maggieMond.giveBasicAnswer();
       }
     }
+
+    maggieBrein.pushMessage({ text: response, user: this.id});
+    
     return response;
   };
 

@@ -23,7 +23,7 @@ class BasicAnweringService {
         let responseBuilder = new StringBuilder();
         this.buildStartOfAnswer(responseBuilder);
         this.addAnswerToResponse(responseBuilder);
-        this.addMoreTextToResponse(responseBuilder);       
+        this.addMoreTextToResponse(responseBuilder);
         return responseBuilder.toString();
     };
 
@@ -31,7 +31,7 @@ class BasicAnweringService {
         let responseBuilder = new StringBuilder();
         this.addHowYouDoingPrefixToResponse(responseBuilder);
         this.addHowYouDoingAnswerToResponse(responseBuilder);
-        this.addHowYouDoingSuffixToResponse(responseBuilder);       
+        this.addHowYouDoingSuffixToResponse(responseBuilder);
         return responseBuilder.toString();
     };
 
@@ -43,13 +43,13 @@ class BasicAnweringService {
             responseBuilder.append(sample(BASIC_WEL));
         } else {
             responseBuilder.append(sample(BASIC_NIET));
-        }  
+        }
         return responseBuilder.toString();
     };
 
     buildStartOfAnswer(responseBuilder) {
         let wantsToTalk = Math.floor(Math.random() * PREFIX_PID);
-        switch(wantsToTalk) {
+        switch (wantsToTalk) {
             case 1:
                 // Some text
                 responseBuilder.append(sample(BASIC_PHRASE));
@@ -58,24 +58,20 @@ class BasicAnweringService {
 
     addAnswerToResponse(responseBuilder) {
         let decision = Math.floor(Math.random() * 10);
-        switch(decision) {
-            case decision < 5:
-                // 0-4 Maggie agrees
-                responseBuilder.append(" ").append(sample(BASIC_AGREE_ANSWER));
-                break;
-            case decision >= 5 && decision < 8:
-                // 5-8 Maggie disagrees
-                responseBuilder.append(" ").append(sample(BASIC_DISAGREE_ANSWER));
-                break;
-            case decision >= 8:    
-                // 8-9 Maggie weet ni
-                responseBuilder.clear();
-                responseBuilder.append(sample(BASIC_DONT_KNOW_ANSWER));
-                break;
-            default:
-                responseBuilder.clear();
-                responseBuilder.append(sample(BASIC_PHRASE));
-                break;
+        console.log(decision < 5);
+
+        // 0-4 Maggie agrees
+        if (decision < 5) {
+            responseBuilder.append(" ").append(sample(BASIC_AGREE_ANSWER));
+        }
+        // 5-8 Maggie disagrees
+        if (decision >= 5 && decision < 8) {
+            responseBuilder.append(" ").append(sample(BASIC_DISAGREE_ANSWER));
+        }
+        // 8-9 Maggie weet ni
+        if (decision >= 8) {
+            responseBuilder.clear();
+            responseBuilder.append(sample(BASIC_DONT_KNOW_ANSWER));
         }
     }
 
@@ -98,12 +94,12 @@ class BasicAnweringService {
 
         if (weetje === 1) {
             responseBuilder.append(" ").append(sample(WEETJES_PREFIX)).append(StringUtil.firstCharToLower(sample(WEETJES_ANSWER)));
-        } 
-        
+        }
+
         if (suffix === 1) {
             responseBuilder.append(" ").append(sample(BASIC_SUFFIX));
         }
-        if(emoji === 1) {
+        if (emoji === 1) {
             responseBuilder.append(" ").append(sample(EMOJIS));
         }
     }

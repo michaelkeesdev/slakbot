@@ -40,7 +40,7 @@ class Maggie {
     }
 
     maggieBrein.pushMessage({ text: response, user: this.id});
-    
+
     return response;
   };
 
@@ -59,6 +59,7 @@ class Maggie {
     return responses;
   };
 
+  // TODO: MOVE logic TO MaggieBrein
   isDuplicateAnswer = (messages, size) => {
     const startIndex = messages?.length - size;
     const endIndex = messages?.length - 1;
@@ -84,6 +85,11 @@ class Maggie {
         isMatchFn: () => messages?.length >= SIZE_MONOLOGUE,
         getMessage: () => { if(this.isMonologueAnswer(messages, SIZE_MONOLOGUE)) { return maggieMond.sayMonologue() }},
         pid: PID_MONOLOGUE,
+      },
+      {
+        isMatchFn: () => ['hoer'].includes(messages[messages.length - 1]?.text),
+        getMessage: () => { return maggieMond.sayHoer() },
+        pid: 5,
       },
     ];
     return matches.filter((match) => match?.isMatchFn());

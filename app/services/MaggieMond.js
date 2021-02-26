@@ -33,6 +33,7 @@ import { WhyService } from './why/WhyService';
 import { NOUNS } from '../answers/words/RandomNouns';
 import { ImageRecognitionService } from './recognition/ImageRecognition';
 import { MONOLOGUE } from '../answers/Monologue';
+import { HOER } from '../answers/Hoer';
 import { TagService } from './user/TagService';
 
 const basicAnweringService = new BasicAnweringService();
@@ -100,6 +101,7 @@ class MaggieMond {
   saySorry() {return sample(SORRY_ANSWER)}
 
   sayMonologue() { return sample(MONOLOGUE) }
+  sayHoer() { return sample(HOER) }
 }
 
 export { MaggieMond };

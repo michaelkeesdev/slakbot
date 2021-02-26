@@ -5,6 +5,7 @@ const maggieMond = new MaggieMond();
 const maggieBrein = new MaggieBrein();
 
 class Maggie {
+    id = "U01NEE5JYSY";
 
 
     getMentionResponse = async (textInput, context, files) => {

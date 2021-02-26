@@ -17,13 +17,7 @@ app.event("message", async ({ event, context }) => {
   const channel = event?.channel;
 
   let text = event?.text;
-  let user;
-  if(["U01NEE5JYSY", "U01K3BVEVT3"].includes(event?.user)) {
-    console.log("BOT event:", event);
-    user = event?.user
-  } else {
-    user = event?.user
-  }
+  let user = event?.user;
   const response = await maggie.getMessageResponse(text, user);
 
   if(response){

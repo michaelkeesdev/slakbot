@@ -10,4 +10,11 @@ export const BASIC_COMMAND = [
     "en noem hem",
     "en noemt em",
     "en zeg",
+    "en vraag of dat em",
+    "en vraag of dat hij",
+    "en vraag of em",
+    "en vraag of hij",
+    "en vraag of",
+    "en vraag of",
+    "en vraag"
 ];

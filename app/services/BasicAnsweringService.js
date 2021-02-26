@@ -45,7 +45,6 @@ class BasicAnweringService {
 
     addAnswerToResponse(responseBuilder) {
         let decision = Math.floor(Math.random() * 11);
-        console.log(decision < 5);
 
         // 0-1-2-3 Maggie agrees
         if (decision < 4) {

@@ -18,7 +18,7 @@ class UserService {
       return user.tagName;
     }
 
-    if (nameRoll == 5 || nameRoll == 6 ) {
+    if (nameRoll == 5 || nameRoll == 6) {
       return user.shortNames[Math.floor(Math.random() * user.shortNames.length)];
     }
 
@@ -37,34 +37,11 @@ class UserService {
     if (text.includes("iedereen")) {
       return USERS;
     }
-    return USERS.filter(user => this.textIncludesUser(text, user));
+    return USERS.filter(user => this.textIncludesUserTag(text, user));
   }
 
-  textIncludesUser(text, user) {
+  textIncludesUserTag(text, user) {
     return text.includes(user.id);
-  }
-
-  tagUser(text) {
-    let responseBuilder = new StringBuilder();
-    let users = this.extractUsersFromText(text)
-    if (users.length > 0) {
-      responseBuilder.append(users.map(user => `<@${user.id}>`).join(" "));
-
-      let alreadyMatched = false; 
-      BASIC_COMMAND.forEach(command => {
-        if (text.split(` ${command} `).length > 1 && !alreadyMatched) {
-            alreadyMatched = true;
-            return responseBuilder.append(" ").append(text.split(` ${command} `)[1]).toString();
-        }  else {
-          return responseBuilder.toString();
-        }
-      });
-
-    } else {
-      responseBuilder.append("wie?");
-    }
-
-    return responseBuilder.toString();
   }
 }
 

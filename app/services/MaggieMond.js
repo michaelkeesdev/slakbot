@@ -33,6 +33,7 @@ import { WhyService } from './why/WhyService';
 import { NOUNS } from '../answers/words/RandomNouns';
 import { ImageRecognitionService } from './recognition/ImageRecognition';
 import { MONOLOGUE } from '../answers/Monologue';
+import { TagService } from './user/TagService';
 
 const basicAnweringService = new BasicAnweringService();
 
@@ -52,6 +53,7 @@ const weatherService = new WeatherService(httpClient);
 const newsService = new NewsService(httpClient);
 const recognitionService = new ImageRecognitionService(httpClient);
 const timeService = new TimeService();
+const tagService = new TagService();
 
 class MaggieMond {
   askBasicFollowUpQuestion() { return sample(BASIC_FOLLOWUP_QUESTION); }
@@ -75,7 +77,7 @@ class MaggieMond {
   sayWhat() { return sample(NOUNS) }
 
   sayRandomUser() { return userService.getRandomUserRandomName(); }
-  tagUser(text) { return userService.tagUser(text); }
+  tagUser(text) { return tagService.tagUserAndAddTextCommand(text); }
 
   showMeme() { return ninegagService.get9gagBasic(); }
   showGirl() { return ninegagService.get9gagGirl(); }

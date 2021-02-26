@@ -1,16 +1,17 @@
+import { UserService } from "./UserService";
 import { StringBuilder } from './../../util/StringBuilder';
 import { BASIC_COMMAND } from './../../answers/basic/BasicCommand';
-import { sample } from 'lodash';
-import { USERS } from '../../answers/user/User';
 
 class TagService {
+
+    userService = new UserService();
 
     tagUserAndAddTextCommand(text) {
         let responseBuilder = new StringBuilder();
 
-        let users = extractUsersFromText(text);
+        let users = this.userService.extractUsersFromText(text);
 
-        if (user.length > 0) {
+        if (users.length > 0) {
             responseBuilder.append(this.tagUsers(users));
 
             let alreadyMatched = false;
@@ -41,17 +42,6 @@ class TagService {
 
     tagUser(user) {
         return `<@${user.id}>`;
-    }
-
-    extractUsersFromText(text) {
-        if (text.includes("iedereen")) {
-            return USERS;
-        }
-        return USERS.filter(user => this.textIncludesUserTag(text, user));
-    }
-
-    textIncludesUserTag(text, user) {
-        return text.includes(user.id);
     }
 }
 

@@ -62,6 +62,9 @@ app.event("app_mention", async ({ context, event }) => {
     }
   } 
    // console.log("test", await maggie.getResponse("<@Maggie> doenbaar", { botUserId: "Maggie"}, files));
+   console.log("test", await maggie.getMentionResponse("tag UHB8YS8MU en zeg ge suckt", "maggie"));
+
+
 
   console.log("⚡️ Slakbot is running!");
 })();

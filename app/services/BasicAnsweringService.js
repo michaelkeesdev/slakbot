@@ -61,7 +61,7 @@ class BasicAnweringService {
         }
         // 10 just prefix
         if (decision == 10) {
-            responseBuilder.append(" ");
+            responseBuilder.append(" ").append(sample(BASIC_PHRASE));
         }
     }
 

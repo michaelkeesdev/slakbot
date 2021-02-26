@@ -57,7 +57,7 @@ class BasicAnweringService {
     }
 
     addAnswerToResponse(responseBuilder) {
-        let decision = Math.floor(Math.random() * 10);
+        let decision = Math.floor(Math.random() * 11);
         console.log(decision < 5);
 
         // 0-4 Maggie agrees
@@ -72,6 +72,10 @@ class BasicAnweringService {
         if (decision >= 8) {
             responseBuilder.clear();
             responseBuilder.append(sample(BASIC_DONT_KNOW_ANSWER));
+        }
+        // 10 just prefix
+        if (decision == 10) {
+            responseBuilder.append(" ");
         }
     }
 

@@ -11,13 +11,13 @@ const app = new App({
 const maggie = new Maggie();
 
 app.event("message", async ({ event, context }) => {
-  console.log("message event", event);
-  console.log("message context", context);
   const token = context?.botToken;
   const channel = event?.channel;
 
   let text = event?.text;
   let user = event?.user;
+  console.log("message event", `${user}: ${text}`);
+
   const response = await maggie.getMessageResponse(text, user);
 
   if(response){

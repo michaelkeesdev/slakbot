@@ -52,26 +52,40 @@ class Maggie {
         const duplicateSize = 4;
         const monoloqueSize = 7;
 
+        const PID_DUPLICATE = 1;
+        const PID_MONOLOGUE = 5;
+
+        let response;
+
         if(maggieBrein?.messages.length >= duplicateSize) {
             const startIndex = maggieBrein?.messages.length - duplicateSize;
             const endIndex = maggieBrein?.messages.length - 1;
             const messagesFilter = maggieBrein?.messages.slice(startIndex, endIndex);
             if(messagesFilter?.every(m => m.text === messagesFilter[0].text)) {
-                return message;
+                response = (Math.floor(Math.random() * PID_DUPLICATE) === 1) && message;
             }
         } 
         if(maggieBrein?.messages?.length > monoloqueSize) {
             console.log("monologue test", maggieBrein?.messages?.length);
+            
             const startIndex = maggieBrein?.messages.length - monoloqueSize;
             const endIndex = maggieBrein?.messages.length - 1;
             const messagesFilter = maggieBrein?.messages.slice(startIndex, endIndex);
+
             console.log("monologue filter", messagesFilter);
+
             if(messagesFilter?.every(m => m.user === messagesFilter[0].user)) {
-                return maggieMond.sayMonologue();
+                response = (Math.floor(Math.random() * PID_MONOLOGUE) === 1) && maggieMond.sayMonologue();
             }
+        }
+        if(response) {
+            maggieBrein.pushMessage({ text: response, user: this.id})
+            return response;
         }
         return null;
     }
+
+    
 }
 
 export { Maggie };

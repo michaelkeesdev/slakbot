@@ -30,9 +30,9 @@ const tokenizer = new TokenizerService();
 const MAX_MESSAGES_MEM = 10;
 
 const SIZE_DUPLICATE = 3;
-const SIZE_MONOLOGUE = 7;
+const SIZE_MONOLOGUE = 12;
 const PID_DUPLICATE = 3;
-const PID_MONOLOGUE = 5;
+const PID_MONOLOGUE = 10;
 
 class MaggieBrein {
   matches = this.getSimpeleMaggieMatches();
@@ -249,8 +249,10 @@ class MaggieBrein {
   // TODO: MOVE logic TO MaggieBrein
   isDuplicateAnswer = (messages, size) => {
     const startIndex = messages?.length - size;
-    const endIndex = messages?.length - 1;
+    const endIndex = messages?.length;
     const messagesBag = messages?.slice(startIndex, endIndex);
+
+    console.log("messagesBag", messagesBag);
     return messagesBag?.every(
       (m) => m.text === messagesBag[0].text && m.user !== this.id
     );
@@ -258,7 +260,7 @@ class MaggieBrein {
 
   isMonologueAnswer = (messages, size) => {
     const startIndex = messages.length - size;
-    const endIndex = messages.length - 1;
+    const endIndex = messages.length;
     const messagesBag = messages.slice(startIndex, endIndex);
     return messagesBag?.every((m) => m.user === messagesBag[0].user);
   };

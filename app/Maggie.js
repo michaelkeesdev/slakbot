@@ -48,6 +48,7 @@ class Maggie {
   getMessageResponses = async (message, user) => {
     maggieBrein.pushMessage({ text: message, user });
     const latestMessages = maggieBrein?.messages;
+    console.log("latest", latestMessages);
     const matches = maggieBrein.getMessageMatches(latestMessages);
     const responses = matches.reduce((result, match) => {
       const message = match.getMessage();

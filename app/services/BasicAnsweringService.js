@@ -16,7 +16,6 @@ const SUFFIX_PID = 6;
 const EMOJI_PID = 20;
 const WEETJE_PID = 50;
 
-
 class BasicAnweringService {
     buildAnswerPhrase = () => {
         let responseBuilder = new StringBuilder();

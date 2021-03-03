@@ -13,7 +13,7 @@ import { EMOJIS } from '../answers/basic/EmojiApp';
 
 const PREFIX_PID = 6;
 const SUFFIX_PID = 6;
-const EMOJI_PID = 5;
+const EMOJI_PID = 20;
 const WEETJE_PID = 50;
 
 

@@ -15,6 +15,7 @@ const PREFIX_PID = 6;
 const SUFFIX_PID = 6;
 const EMOJI_PID = 20;
 const WEETJE_PID = 50;
+const NOTHING_TO_SAY_PID = 100;
 
 class BasicAnweringService {
     buildAnswerPhrase = () => {
@@ -22,7 +23,7 @@ class BasicAnweringService {
         this.buildStartOfAnswer(responseBuilder);
         this.addAnswerToResponse(responseBuilder);
         this.addMoreTextToResponse(responseBuilder);
-        return responseBuilder.toString();
+        return (this.returnEmptyResponse() !== 1) && responseBuilder.toString();
     };
 
     buildAnswerToHowYouDoingPhrase = () => {
@@ -32,6 +33,10 @@ class BasicAnweringService {
         this.addHowYouDoingSuffixToResponse(responseBuilder);
         return responseBuilder.toString();
     };
+
+    returnEmptyResponse() {
+        return Math.floor(Math.random() * NOTHING_TO_SAY_PID);
+    }
 
     buildStartOfAnswer(responseBuilder) {
         let wantsToTalk = Math.floor(Math.random() * PREFIX_PID);

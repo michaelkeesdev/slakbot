@@ -9,8 +9,8 @@ export const SYSTEM_OPINION_PREFIX = [
 export const HUMAN_OPINION_PREFIX = [
     "Als ge het aan mij persoonlijk ligt zou ik zeggen",
     "Volgens de mens in mij is het zo",
-    "Wat ik als mens er van denk is,",
-    "Maar luistert naar mij, ik denk,",
+    "Wat ik als mens er van denk is",
+    "Maar luistert naar mij, ik denk",
     "Ik persoonlijk denk",
     "Als ik even mijn eigen mening mag toevoegen, ik denk", 
     "Maar dat is mijn systeem dat dat zegt, ik als mens denk",

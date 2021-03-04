@@ -15,7 +15,7 @@ import { OpinionService } from './OpinionService';
 
 const PREFIX_PID = 6;
 const SUFFIX_PID = 6;
-const OPINION_PID = 5;
+const OPINION_PID = 2;
 const EMOJI_PID = 20;
 const WEETJE_PID = 50;
 const NOTHING_TO_SAY_PID = 100;

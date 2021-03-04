@@ -29,7 +29,9 @@ class BasicAnweringService {
         this.addAnswerToResponse(responseBuilder, true);
         this.randomizeResponse(responseBuilder);
         this.addMoreTextToResponse(responseBuilder);
-        return (this.returnEmptyResponse() !== 1) && responseBuilder.toString();
+        if(this.returnEmptyResponse() !== 1) {
+            return responseBuilder.toString();
+        }
     };
 
     buildAnswerToHowYouDoingPhrase = () => {

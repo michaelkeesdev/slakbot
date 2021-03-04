@@ -2,7 +2,8 @@ export const FOOD_TRIGGER = [
     'gerecht',
     'maal',
     'wat_eten',
-    'spijs'
+    'spijs',
+    'suggestie'
 ]
 
 export const FOOD_TRIGGER_SUFFIX_INCLUDE = [

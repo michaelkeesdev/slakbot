@@ -17,8 +17,8 @@ class NewsService {
         const articleKeys = Object.keys(response);
         const articleKey = sample(articleKeys);
         return `
-          ${respones[articleKey]?.original_title} \n 
-          ${'https://www.hbvl.be/'+respones[articleKey]?.url}
+          ${response[articleKey]?.original_title} \n 
+          ${'https://www.hbvl.be/'+response[articleKey]?.url}
           `;
       };
 }

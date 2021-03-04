@@ -3,7 +3,7 @@ export const SYSTEM_ANSWER_PREFIX = [
     "Mijn code zegt",
     "Mijn computer zegt",
     "Ik heb ook even in mijn database gekeken en die zegt",
-    "ERROR ERROR systeem komt tussen en zegt ",
+    "ERROR ERROR systeem komt tussen en zegt",
 ];
 
 export const SYSTEM_ANSWER = [

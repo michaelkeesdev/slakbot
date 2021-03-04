@@ -123,7 +123,7 @@ class BasicAnweringService {
         let emoji = Math.floor(Math.random() * EMOJI_PID);
 
         if (weetje === 1) {
-            responseBuilder.append(" ").append(sample(WEETJES_PREFIX)).append(StringUtil.firstCharToLower(sample(WEETJES_ANSWER)));
+            responseBuilder.appendFullStopIfNone().append(" ").append(sample(WEETJES_PREFIX)).append(StringUtil.firstCharToLower(sample(WEETJES_ANSWER)));
         }
 
         if (suffix === 1) {

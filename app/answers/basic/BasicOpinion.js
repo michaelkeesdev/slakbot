@@ -7,7 +7,7 @@ export const SYSTEM_OPINION_PREFIX = [
 ];
 
 export const HUMAN_OPINION_PREFIX = [
-    "Als ge het aan mij persoonlijk ligt zou ik zeggen",
+    "Persoonlijk zou ik zeggen",
     "Volgens de mens in mij is het zo",
     "Wat ik als mens er van denk is",
     "Maar luistert naar mij, ik denk",

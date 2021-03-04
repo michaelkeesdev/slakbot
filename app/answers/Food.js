@@ -1,4 +1,10 @@
 export const FOOD = [
+    "kip met appelmoes",
+    "kip met puree",
+    "kip abrikoos"
+];
+
+export const FOOD_V2 = [
 "Poire belle Hélène", 
 "Caesar sandwich", 
 "Portie gemengd", 

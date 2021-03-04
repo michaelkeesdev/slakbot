@@ -4,7 +4,6 @@ class HttpClient {
   async get(url, headers) {
     const res = await fetch(url, { headers });
     let data = res;
-    console.log('res',res);
     if(headers["Content-Type"] !== 'text/html') {
       data  = await res.json();
     }

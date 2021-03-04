@@ -1,3 +1,5 @@
+import { StringUtil } from './StringUtil';
+
 class StringBuilder {
     strings;
 
@@ -15,8 +17,9 @@ class StringBuilder {
 
     appendFullStopIfNone() {
         if (!StringUtil.lastCharEqualsOneOf(this.toString(), [".", "?", "!"])) {
-            responseBuilder.append(".")
+            this.append(".")
         }
+        return this;
     }
 
     clear() {

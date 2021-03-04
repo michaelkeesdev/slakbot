@@ -45,9 +45,7 @@ class FoodService {
       return `${NOTHING_FOUND}.. ${sample(BASIC_SUFFIX)}`;
     } else {
       const url = recipe
-        .replace(',', '')
-        .replace('\'', '')
-        .replace('.', '')
+        .replace(/[^\w\s]/ig)
         .split(' ')
         .join('-')
         .trim()

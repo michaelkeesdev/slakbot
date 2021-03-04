@@ -22,6 +22,7 @@ import { flatMap } from "lodash";
 import { COUNTRY_TRIGGER } from "../answers/Countries";
 import { SORRY_TRIGGER } from "../answers/Sorry";
 import { HOER_TRIGGER } from "../answers/Hoer";
+import { FOOD_TRIGGER, FOOD_TRIGGER_SUFFIX_INCLUDE } from "../answers/food/Food";
 
 const decisionService = new DecisionService();
 const maggieMond = new MaggieMond();
@@ -208,8 +209,10 @@ class MaggieBrein {
         action: async () => await maggieMond.sayMonth(),
       },
       {
-        names: ["gerecht", "spijs", "maal"],
-        action: async () => await maggieMond.sayFood(text),
+        names: FOOD_TRIGGER,
+        action: async (text) => {
+          return await maggieMond.sayFood(text) 
+        },
       },
       {
         names: BASIC_FOLLOWUP_TRIGGER,

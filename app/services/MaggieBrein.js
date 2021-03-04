@@ -208,6 +208,10 @@ class MaggieBrein {
         action: async () => await maggieMond.sayMonth(),
       },
       {
+        names: ["gerecht", "spijs", "maal"],
+        action: async () => await maggieMond.sayFood(text),
+      },
+      {
         names: BASIC_FOLLOWUP_TRIGGER,
         action: () => maggieMond.askBasicFollowUpQuestion(),
       },

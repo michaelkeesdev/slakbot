@@ -19,6 +19,7 @@ import { UserService } from "./user/UserService";
 import { BirthdayService } from "./user/BirthdayService"
 import { NewsService } from "./news/NewsService";
 import { NineGagService } from "./9gag/9gagService";
+import { FoodService } from "./food/FoodService";
 import { YoutubeService } from "./google/YoutubeService";
 import { DecisionService } from "./decision/DecisionService";
 import { EuroMillionsService } from './gambling/EuroMillionsService';
@@ -53,6 +54,7 @@ const howMuchService = new HowMuchService();
 const weatherService = new WeatherService(httpClient);
 const newsService = new NewsService(httpClient);
 const recognitionService = new ImageRecognitionService(httpClient);
+const foodService = new FoodService(httpClient);
 const timeService = new TimeService();
 const tagService = new TagService();
 
@@ -91,6 +93,7 @@ class MaggieMond {
   sayCurrentWeather(city) { return weatherService.getCurrentWeather(city); }
   sayCurrentWeatherPollution(city) { return weatherService.getCurrentPolution(city); }
   sayForecastWeather(city) { return weatherService.getAllWeatherInfo(city); }
+  sayFood(suggest) { return foodService.getRecaipie(suggest); }
 
   speakDecision(text) { return decisionService.makeDecision(text) }
 

@@ -44,7 +44,14 @@ class FoodService {
     if (!recipe) {
       return `${NOTHING_FOUND}.. ${sample(BASIC_SUFFIX)}`;
     } else {
-      const url = recipe.split(' ').join('-').trim().toLowerCase()
+      const url = recipe
+        .replace(',', '')
+        .replace('\'', '')
+        .replace('.', '')
+        .split(' ')
+        .join('-')
+        .trim()
+        .toLowerCase();
       return `${recipe}\n https://dagelijksekost.een.be/gerechten/${url}`;
     }
   };

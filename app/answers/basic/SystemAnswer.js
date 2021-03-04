@@ -26,5 +26,5 @@ export const SYSTEM_ANSWER_SUFFIX = [
     "Ma luistert maar naar mij",
     "Maar ik weet het beter.",
     "Mja die computer weet het ook niet altijd he",
-    "Het systeem is ook maar een computer."
+    "Ma kijk, het systeem is ook maar een computer."
 ];

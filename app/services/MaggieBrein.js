@@ -209,7 +209,10 @@ class MaggieBrein {
       },
       {
         names: ["gerecht", "spijs", "maal"],
-        action: async () => await maggieMond.sayFood(text),
+        action: async (text) => {
+          const suggest = text?.replace("gerecht", "").replace("maal", "").replace("spijs", "");
+          return await maggieMond.sayFood(suggest) 
+        },
       },
       {
         names: BASIC_FOLLOWUP_TRIGGER,

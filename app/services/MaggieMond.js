@@ -36,6 +36,7 @@ import { ImageRecognitionService } from './recognition/ImageRecognition';
 import { MONOLOGUE } from '../answers/Monologue';
 import { HOER } from '../answers/Hoer';
 import { TagService } from './user/TagService';
+import { TokenizerService } from './tokenizer/Tokenizer';
 
 const basicAnweringService = new BasicAnweringService();
 
@@ -51,10 +52,11 @@ const decisionService = new DecisionService();
 const euroMillionsService = new EuroMillionsService();
 const howMuchService = new HowMuchService();
 
+const tokenizer = new TokenizerService();
 const weatherService = new WeatherService(httpClient);
 const newsService = new NewsService(httpClient);
 const recognitionService = new ImageRecognitionService(httpClient);
-const foodService = new FoodService(httpClient);
+const foodService = new FoodService(httpClient, tokenizer);
 const timeService = new TimeService();
 const tagService = new TagService();
 

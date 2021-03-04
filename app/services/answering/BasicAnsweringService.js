@@ -127,7 +127,7 @@ class BasicAnweringService {
         }
 
         if (suffix === 1) {
-            responseBuilder.append(" ").append(sample(BASIC_SUFFIX));
+            responseBuilder.appendFullStopIfNone().append(" ").append(sample(BASIC_SUFFIX));
         }
         if (emoji === 1) {
             responseBuilder.append(" ").append(sample(EMOJIS));

@@ -12,11 +12,7 @@ class SystemAnswerService {
     appendSystemAnswer(responseBuilder) {
         let addOpinionSuffix = Math.floor(Math.random() * SUFFIX_PID);
 
-        if (!StringUtil.lastCharEqualsOneOf(responseBuilder.toString(), [".", "?", "!"])) {
-            responseBuilder.append(".")
-        }
-
-        responseBuilder.append(" ").append(sample(SYSTEM_ANSWER_PREFIX));
+        responseBuilder.appendFullStopIfNone().append(" ").append(sample(SYSTEM_ANSWER_PREFIX));
         responseBuilder.append(" ").append(this.getSystemAnswer());
 
         if (addOpinionSuffix == 1) {

@@ -17,7 +17,7 @@ class SystemAnswerService {
         }
 
         responseBuilder.append(" ").append(sample(SYSTEM_ANSWER_PREFIX));
-        responseBuilder.append(" ").append(this.getSystemOpinion());
+        responseBuilder.append(" ").append(this.getSystemAnswer());
 
         if (addOpinionSuffix == 1) {
             responseBuilder.append(" ").append(sample(SYSTEM_ANSWER_SUFFIX));
@@ -27,7 +27,7 @@ class SystemAnswerService {
         return responseBuilder;
     }
 
-    getSystemOpinion() {
+    getSystemAnswer() {
         let noun = sample(NOUNS);
         let user = userService.getRandomUserRandomName();
 

@@ -258,8 +258,6 @@ class MaggieBrein {
     const startIndex = messages?.length - size;
     const endIndex = messages?.length;
     const messagesBag = messages?.slice(startIndex, endIndex);
-
-    console.log("messagesBag", messagesBag);
     return messagesBag?.every(
       (m) => m.text === messagesBag[0].text && m.user !== this.id
     );
@@ -277,7 +275,6 @@ class MaggieBrein {
       this.messages.shift();
     }
     this.messages.push(message);
-    console.log("MESSAGES: ", this.messages);
   }
 
   needsToDecide(text) {

@@ -6,7 +6,6 @@ class WeatherService {
   }
 
   getCurrentWeather = async (city) => {
-    console.log("CITY", city);
     let response = await this.httpClient.get(
       `https://api.openweathermap.org/data/2.5/weather?q=${
         city ? city : "Antwerp"

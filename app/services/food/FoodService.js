@@ -15,9 +15,6 @@ class FoodService {
   }
 
   getRecaipie = async (text) => {
-
-    
-
     let recipes = FOOD;
     if (text) {
       const prefixRegexp = new RegExp(`(?:^|\\W)(.*?)(${FOOD_TRIGGER.join('|')})(?:$|\\W)`, 'ig');
@@ -30,9 +27,12 @@ class FoodService {
         suggestKeys.every((s) => {
           const excludeRegexp = new RegExp(`(?:^|\\W)(${FOOD_TRIGGER_SUFFIX_EXCLUDE.join('|')})(?:$|\\W)`, 'ig');
           const includeRegexp = new RegExp(`(?:^|\\W)(${FOOD_TRIGGER_SUFFIX_INCLUDE.join('|')})(?:$|\\W)`, 'ig');
-          
+          const andRegexp = new RegExp(`(?:^|\\W)(en)(?:$|\\W)`, 'ig');
+
           if(s.match(excludeRegexp) || s.match(includeRegexp)) {
-            including = !s.match(excludeRegexp);
+            if(!s.match(andRegexp)){
+              including = !s.match(excludeRegexp);
+            }
             return true;
           } else {
             return including ? food.includes(s.trim()) : !food.includes(s.trim());
@@ -44,7 +44,8 @@ class FoodService {
     if (!recipe) {
       return `${NOTHING_FOUND}.. ${sample(BASIC_SUFFIX)}`;
     } else {
-      return recipe;
+      const url = recipe.split(' ').join('-').trim().toLowerCase()
+      return `${recipe}\n https://dagelijksekost.een.be/gerechten/${url}`;
     }
   };
 }

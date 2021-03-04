@@ -45,7 +45,7 @@ app.event("app_mention", async ({ context, event }) => {
 (async () => {
   await app.start(process.env.PORT || 8080);
 
-  console.log("test", await maggie.getMentionResponse('gerecht met kip appel'))
+  console.log("test", await maggie.getMentionResponse('nieuws vandaag'))
 
   console.log("⚡️ Slakbot is running!");
 })();

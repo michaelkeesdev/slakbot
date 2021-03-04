@@ -14,6 +14,7 @@ class NewsService {
         let response = await this.httpClient.get(
           "https://tt.onthe.io/qRBhM0Zc7FKK/ht.json"
         );
+        console.log("response", response);
         const articleKeys = Object.keys(response);
         const articleKey = sample(articleKeys);
         return `${'https://www.hbvl.be/'+response[articleKey]?.url}`;

@@ -14,7 +14,7 @@ import { WEETJES_TRIGGER } from "./../answers/weetjes/Weetjes";
 import { WHEN_TRIGGER } from "./../answers/When";
 import { WHERE_TRIGGER } from "./../answers/Where";
 
-import { DecisionService } from "./decision/DecisionService";
+import { DecisionService } from "./answering/DecisionService";
 import { MaggieMond } from "./MaggieMond";
 import { TokenizerService } from "./tokenizer/Tokenizer";
 import { HOW_YOU_DOING_TRIGGER } from "./../answers/HowYouDoing";

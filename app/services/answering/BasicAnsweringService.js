@@ -10,17 +10,16 @@ import { WEETJES_PREFIX } from '../../answers/weetjes/Weetjesprefix';
 import { BASIC_SUFFIX } from '../../answers/basic/BasicSuffix';
 import { HOW_YOU_DOING_PREFIX, HOW_YOU_DOING_SUFFIX, HOW_YOU_DOING_ANSWER } from '../../answers/HowYouDoing';
 import { EMOJIS } from '../../answers/basic/EmojiApp';
-import { BASIC_OPINION, BASIC_OPINION_PREFIX, BASIC_OPINION_SUFFIX, HUMAN_OPINION_PREFIX, SYSTEM_OPINION_PREFIX } from '../../answers/basic/BasicOpinion';
-import { OpinionService } from './OpinionService';
+import { SystemAnswerService } from './SystemAnswerService';
 
 const PREFIX_PID = 6;
 const SUFFIX_PID = 6;
-const OPINION_PID = 2;
+const SYSTEM_ANSWER_PID = 5;
 const EMOJI_PID = 20;
 const WEETJE_PID = 50;
 const NOTHING_TO_SAY_PID = 100;
 
-const opinionService = new OpinionService();
+const systemAnswerService = new SystemAnswerService();
 
 class BasicAnweringService {
     buildAnswerPhrase = () => {
@@ -60,7 +59,7 @@ class BasicAnweringService {
     }
 
     disagree(responseBuilder) {
-        responseBuilder.append(" ").append(sample(BASIC_AGREE_ANSWER));
+        responseBuilder.append(" ").append(sample(BASIC_DISAGREE_ANSWER));
     }
 
     dontKnow(responseBuilder) {
@@ -96,12 +95,12 @@ class BasicAnweringService {
     }
 
     randomizeResponse(responseBuilder) {
-        let randomizeIntoOpinion = Math.floor(Math.random() * OPINION_PID);
+        let randomizeIntoSystemAnswer = Math.floor(Math.random() * SYSTEM_ANSWER_PID);
     
-        if (randomizeIntoOpinion == 1) {
-            opinionService.clearAndAppendSystemOpinionPrefix(responseBuilder);
+        if (randomizeIntoSystemAnswer == 1) {
+            responseBuilder.clear();
             this.addAnswerToResponse(responseBuilder, false);
-            opinionService.appendHumanOpinion(responseBuilder);
+            systemAnswerService.appendSystemAnswer(responseBuilder);
         }
 
     }

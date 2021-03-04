@@ -14,13 +14,13 @@ import { WHEN_ANSWER } from "./../answers/When";
 import { WHERE_ANSWER } from "./../answers/Where";
 import { SORRY_ANSWER } from "./../answers/Sorry";
 
-import { BasicAnweringService } from "./BasicAnsweringService"
+import { BasicAnweringService } from "./answering/BasicAnsweringService"
 import { UserService } from "./user/UserService";
 import { BirthdayService } from "./user/BirthdayService"
 import { NewsService } from "./news/NewsService";
 import { NineGagService } from "./9gag/9gagService";
 import { YoutubeService } from "./google/YoutubeService";
-import { DecisionService } from "./decision/DecisionService";
+import { DecisionService } from "./answering/DecisionService";
 import { EuroMillionsService } from './gambling/EuroMillionsService';
 import { WeatherService } from './weather/WeatherService';
 import { TimeService } from './time/TimeService';

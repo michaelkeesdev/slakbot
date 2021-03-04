@@ -24,7 +24,6 @@ export const BASIC_DISAGREE_ANSWER = [
     "Nooope",
     "Nee wtf",
     "Zal wel ni",
-    "Kans is klein",
     "Tf zegt ge, nee",
     "Nee, domme vraag",
     "Is niet",

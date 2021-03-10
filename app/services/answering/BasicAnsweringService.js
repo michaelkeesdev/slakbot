@@ -14,7 +14,7 @@ import { SystemAnswerService } from './SystemAnswerService';
 
 const PREFIX_PID = 6;
 const SUFFIX_PID = 6;
-const SYSTEM_ANSWER_PID = 8;
+const SYSTEM_ANSWER_PID = 20;
 const EMOJI_PID = 20;
 const WEETJE_PID = 50;
 const NOTHING_TO_SAY_PID = 100;

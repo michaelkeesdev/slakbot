@@ -20,8 +20,8 @@ app.event("message", async ({ event, context }) => {
 
   const messages = await maggie.getMessageResponses(text, user);
 
-  if(messages?.length){
-    messages.map( async (message) => {
+  if (messages?.length) {
+    messages.map(async (message) => {
       const postMessage = { token, channel, text: message };
       await app.client.chat.postMessage(postMessage);
     });
@@ -45,7 +45,7 @@ app.event("app_mention", async ({ context, event }) => {
 (async () => {
   await app.start(process.env.PORT || 8080);
 
-  console.log("test", await maggie.getMentionResponse('nieuws vandaag'))
+  console.log("test", await maggie.getMentionResponse("grietje"));
 
   console.log("⚡️ Slakbot is running!");
 })();

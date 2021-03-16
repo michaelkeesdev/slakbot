@@ -41,7 +41,10 @@ class Ninegag {
       response = await this.httpClient.get(
         this.postsUrl(group, response?.data?.nextCursor)
       );
-      posts = posts.concat(response?.data?.posts);
+      const filterPosts = response?.data?.posts.filter(
+        (post) => !post?.images?.image700?.url?.includes("thumbnail-facebook")
+      );
+      posts = posts.concat(filterPosts);
     }
     return sample(posts)?.images?.image700?.url;
   }
@@ -50,15 +53,11 @@ class Ninegag {
 class NineGagService {
   get9gagBasic = async () => {
     // group-posts/group/default/type/hot
-    const res = await new Ninegag(50, "hot", "default").scrap();
-    console.log("res", res);
-    return res;
+    return await new Ninegag(50, "hot", "default").scrap();
   };
 
   get9gagGirl = async () => {
-    const res = await new Ninegag(60, "hot", "default").scrap("girl");
-    console.log("res", res);
-    return res;
+    return await new Ninegag(60, "hot", "default").scrap("girl");
   };
 }
 

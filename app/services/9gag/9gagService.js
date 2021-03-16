@@ -49,7 +49,10 @@ class Ninegag {
 
 class NineGagService {
   get9gagBasic = async () => {
-    return await new Ninegag(50, "hot", "default").scrap();
+    // group-posts/group/default/type/hot
+    const res = await new Ninegag(50, "hot", "default").scrap();
+    console.log("res", res);
+    return res;
   };
 
   get9gagGirl = async () => {

@@ -18,7 +18,7 @@ class TagService {
             BASIC_COMMAND.forEach(command => {
                 if (text.split(` ${command} `).length > 1 && !alreadyMatched) {
                     alreadyMatched = true;
-                    return responseBuilder.append(" ").append(text.split(` ${command} `)[1]).toString();
+                    return responseBuilder.append(text.split(` ${command} `)[1]).toString();
                 }
             });
     

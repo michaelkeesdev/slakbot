@@ -37,6 +37,8 @@ import { MONOLOGUE } from '../answers/Monologue';
 import { HOER } from '../answers/Hoer';
 import { TagService } from './user/TagService';
 import { TokenizerService } from './tokenizer/Tokenizer';
+import { MolService } from './tv/molService';
+
 
 const basicAnweringService = new BasicAnweringService();
 
@@ -59,6 +61,7 @@ const recognitionService = new ImageRecognitionService(httpClient);
 const foodService = new FoodService(httpClient, tokenizer);
 const timeService = new TimeService();
 const tagService = new TagService();
+const molService = new MolService();
 
 class MaggieMond {
   askBasicFollowUpQuestion() { return sample(BASIC_FOLLOWUP_QUESTION); }
@@ -106,6 +109,7 @@ class MaggieMond {
 
   sayMonologue() { return sample(MONOLOGUE) }
   sayHoer() { return sample(HOER) }
+  sayMolName() { return molService.giveRandomName(); }
 }
 
 export { MaggieMond };

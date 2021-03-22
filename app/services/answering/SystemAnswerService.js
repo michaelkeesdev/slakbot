@@ -1,10 +1,10 @@
 import { sample } from 'lodash';
-import { SYSTEM_ANSWER_PREFIX, SYSTEM_ANSWER, SYSTEM_ANSWER_SUFFIX } from './../../answers/basic/SystemAnswer';
+import { SYSTEM_ANSWER_PREFIX, SYSTEM_ANSWER, SYSTEM_ANSWER_SUFFIX } from '../../answers/basic/ExplanationAnswer';
 import { NOUNS } from '../../answers/words/RandomNouns';
 import { StringUtil } from './../../util/StringUtil';
 import { UserService } from './../user/UserService';
 
-const SUFFIX_PID = 2;
+const SUFFIX_PID = 8;
 
 const userService = new UserService();
 

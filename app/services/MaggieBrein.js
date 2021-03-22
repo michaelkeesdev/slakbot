@@ -218,6 +218,10 @@ class MaggieBrein {
         names: BASIC_FOLLOWUP_TRIGGER,
         action: () => maggieMond.askBasicFollowUpQuestion(),
       },
+      {
+        names: ["wie mol"],
+        action: async () => maggieMond.sayMolName(),
+      },
     ];
   }
 

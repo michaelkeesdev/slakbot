@@ -1,4 +1,4 @@
-export const MOL_2021_NAMES = [
+export const MOL_NAMES = [
     "Lottiepoes",
     "Bami",
     "Jasmien",

@@ -1,9 +1,9 @@
 import { sample } from "lodash";
-import { MOL_2021_NAMES } from "../../answers/mol2021/Names";
+import { MOL_NAMES } from "./../../answers/mol/Names";
 
 class MolService {
     giveRandomName() {
-        return sample(MOL_2021_NAMES);
+        return sample(MOL_NAMES);
     }
 }
 

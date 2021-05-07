@@ -31,6 +31,7 @@ import { MONTH_ANSWERS } from "../answers/Month";
 import { HowService } from "./hoe/HowService";
 import { WhyService } from "./why/WhyService";
 import { NOUNS } from "../answers/words/RandomNouns";
+import { COLOURS } from "../answers/words/Colours";
 import { ImageRecognitionService } from "./recognition/ImageRecognition";
 import { MONOLOGUE } from "../answers/Monologue";
 import { HOER } from "../answers/Hoer";
@@ -185,6 +186,9 @@ class MaggieMond {
   }
   sayMolName() {
     return molService.giveRandomName();
+  }
+  sayColour() {
+    return sample(COLOURS);
   }
 }
 

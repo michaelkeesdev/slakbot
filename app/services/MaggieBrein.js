@@ -222,6 +222,10 @@ class MaggieBrein {
         names: ["wie mol"],
         action: async () => maggieMond.sayMolName(),
       },
+      {
+        names: ["kleur"],
+        action: () => maggieMond.sayColour(),
+      },
     ];
   }
 

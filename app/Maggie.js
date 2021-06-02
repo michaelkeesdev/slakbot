@@ -40,7 +40,7 @@ class Maggie {
       }
     }
 
-    maggieBrein.pushMessage({ text: response, user: this.id});
+    maggieBrein.pushMessage({ text: response, user: this.id });
 
     return response;
   };
@@ -49,21 +49,24 @@ class Maggie {
     maggieBrein.pushMessage({ text: message, user });
     const latestMessages = maggieBrein?.messages;
     console.log("latest", latestMessages);
-    const matches = maggieBrein.getMessageMatches(latestMessages);
-    const responses = matches.reduce((result, match) => {
-      const message = match.getMessage();
-      if(Math.floor(Math.random() * match.pid) === 1 && message) {
-        result.push(message);
-        maggieBrein.pushMessage({ text: message, user: this.id });
-      }
-      return result;
-    }, [])
-    return responses;
+
+    const random = Math.floor(Math.random() * 60);
+    if (random === 1) {
+      const randomMessage = maggieMond.giveBasicAnswer();
+      return [randomMessage];
+    } else {
+      const matches = maggieBrein.getMessageMatches(latestMessages);
+      const responses = matches.reduce((result, match) => {
+        const message = match.getMessage();
+        if (Math.floor(Math.random() * match.pid) === 1 && message) {
+          result.push(message);
+          maggieBrein.pushMessage({ text: message, user: this.id });
+        }
+        return result;
+      }, []);
+      return responses;
+    }
   };
-
-
-
-  
 }
 
 export { Maggie };

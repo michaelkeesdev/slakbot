@@ -22,7 +22,10 @@ import { flatMap } from "lodash";
 import { COUNTRY_TRIGGER } from "../answers/Countries";
 import { SORRY_TRIGGER } from "../answers/Sorry";
 import { HOER_TRIGGER } from "../answers/Hoer";
-import { FOOD_TRIGGER, FOOD_TRIGGER_SUFFIX_INCLUDE } from "../answers/food/Food";
+import {
+  FOOD_TRIGGER,
+  FOOD_TRIGGER_SUFFIX_INCLUDE,
+} from "../answers/food/Food";
 
 const decisionService = new DecisionService();
 const maggieMond = new MaggieMond();
@@ -31,7 +34,7 @@ const tokenizer = new TokenizerService();
 const MAX_MESSAGES_MEM = 10;
 
 const SIZE_DUPLICATE = 3;
-const SIZE_MONOLOGUE = 12;
+const SIZE_MONOLOGUE = 8;
 const PID_DUPLICATE = 3;
 const PID_MONOLOGUE = 10;
 
@@ -211,7 +214,7 @@ class MaggieBrein {
       {
         names: FOOD_TRIGGER,
         action: async (text) => {
-          return await maggieMond.sayFood(text) 
+          return await maggieMond.sayFood(text);
         },
       },
       {

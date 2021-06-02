@@ -54,5 +54,12 @@ export const USERS = [{
     firstName: "Maggie",
     lastName: "De Block",
     birthday: ""
+}, {
+    id: "UAZK6493N",
+    tagName: "Harden",
+    shortNames: ["Durme"],
+    firstName: "Hadrien",
+    lastName: "Van Durme",
+    birthday: ""
 }]
 

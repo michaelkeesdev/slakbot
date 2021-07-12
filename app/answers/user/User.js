@@ -36,7 +36,7 @@ export const USERS = [{
 }, {
     id: "U90TSU6JU",
     tagName: "Kees",
-    shortNames: ["Kees", "Slet"],
+    shortNames: ["Kees", "Slet", "Molly", "Mollie"],
     firstName: "Michaël",
     lastName: "Kees",
     birthDay: "8 mei"

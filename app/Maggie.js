@@ -13,8 +13,8 @@ const SIZE_MONOLOGUE = 7;
 const PID_DUPLICATE = 3;
 const PID_MONOLOGUE = 5;
 
-const MIN_TIMEOUT = 3;
-const MAX_TIMEOUT = 50;
+const MIN_TIMEOUT = 50;
+const MAX_TIMEOUT = 300;
 const RESPONSE_DURING_TIMEOUT_PID = 3;
 
 class Maggie {

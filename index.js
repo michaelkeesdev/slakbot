@@ -47,7 +47,7 @@ app.event("app_mention", async ({ context, event }) => {
 (async () => {
   await app.start(process.env.PORT || 8080);
 
-  console.log("in hoek", await maggie.getMentionResponse("zwijg hoer", null, null, "U91HHN2JE"));
+  console.log("in hoek", await maggie.getMentionResponse("bol af", null, null, "U91HHN2JE"));
 
   console.log("test", await maggie.getMentionResponse("test"));
   console.log("test", await maggie.getMentionResponse("test"));

@@ -193,6 +193,7 @@ class MaggieMond {
   }
 
   goInTimeout() {
+    console.log("go timeout");
     return sample(TIMEOUT_ANSWER);
   }
 

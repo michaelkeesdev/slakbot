@@ -6,7 +6,7 @@ export const TIMEOUT_TRIGGER = [
     "zwijgt eens",
     "klep houden",
     "klep",
-    "bol af",
+    "bol het af",
     "ga weg",
     "ga in de hoek staan",
     "ga in hoek",

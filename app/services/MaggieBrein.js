@@ -4,7 +4,7 @@ import { BASIC_FOLLOWUP_TRIGGER } from "./../answers/questions/BasicFollowUpQues
 
 import { BYE_TRIGGER } from "./../answers/Bye";
 import { GOODMORNING_TRIGGER } from "./../answers/Goodmorning";
-import { TIMEOUT_TRIGGER } from "../answers/Timeout";
+import { TIMEOUT_TRIGGER, TIMEOUT_STOP_TRIGGER } from "../answers/Timeout";
 import { HOW_TRIGGER } from "./../answers/How";
 import { WHY_TRIGGER } from "./../answers/Why";
 import { JOKE_TRIGGER } from "./../answers/Joke";
@@ -234,6 +234,10 @@ class MaggieBrein {
       {
         names: [TIMEOUT_TRIGGER],
         action: () => maggieMond.goInTimeout(),
+      },
+      {
+        names: [TIMEOUT_STOP_TRIGGER],
+        action: () => maggieMond.askForStopTimeout(),
       },
     ];
   }

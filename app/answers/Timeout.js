@@ -13,7 +13,7 @@ export const TIMEOUT_TRIGGER = [
     "in de hoek",
     "laat ons eens praten",
     "trap het af"
-]
+];
 
 export const TIMEOUT_ANSWER = [
     "Ok sorry :(",
@@ -34,3 +34,38 @@ export const TIMEOUT_ANSWER = [
     "Ik mag niks zeggen",
     "Ik moet zwijgen sorry"
   ];
+
+  export const TIMEOUT_STOP_TRIGGER = [
+    "kom terug",
+    "uit hoek",
+    "uit de hoek",
+    "kom maar terug",
+    "kom eens terug"
+  ];
+
+  export const TIMEOUT_STOP_POSITIVE = [
+    "ok",
+    "ja",
+    "is goed",
+    "doe maar",
+    "goed",
+    "jaja"
+  ];
+
+  export const TIMEOUT_STOP_NEGATIVE = [
+    "nee lol",
+    "nee",
+    "nee?",
+    "denk het niet",
+    "dacht het niet",
+    "meje",
+    "denk ni",
+    "nah"
+  ];
+
+  export const TIMEOUT_STOP_ANSWER = [
+    "mag ik terugkomen %user%?",
+    "mag dat %user%",
+    "moet ik aan %user% vragen.. %user% mag ik terug praten?"
+  ];
+  

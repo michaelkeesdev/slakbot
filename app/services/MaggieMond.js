@@ -12,7 +12,7 @@ import { WEETJES_ANSWER } from "../answers/weetjes/Weetjes";
 import { WHEN_ANSWER } from "./../answers/When";
 import { WHERE_ANSWER } from "./../answers/Where";
 import { SORRY_ANSWER } from "./../answers/Sorry";
-import { TIMEOUT_ANSWER } from "../answers/Timeout";
+import { TIMEOUT_ANSWER, TIMEOUT_STOP_PLACEHOLDER } from "../answers/Timeout";
 
 import { BasicAnweringService } from "./answering/BasicAnsweringService";
 import { UserService } from "./user/UserService";
@@ -194,6 +194,10 @@ class MaggieMond {
 
   goInTimeout() {
     return sample(TIMEOUT_ANSWER);
+  }
+
+  askForStopTimeout() {
+    return sample(TIMEOUT_STOP_PLACEHOLDER);
   }
 }
 

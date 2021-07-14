@@ -49,34 +49,15 @@ app.event("app_mention", async ({ context, event }) => {
 
   console.log("test", await maggie.getMentionResponse("zwijg hoer", null, null, "U91HHN2JE"));
 
-  console.log("test", await maggie.getMentionResponse("test hoer"));
-  console.log("test", await maggie.getMentionResponse("test hoer"));
-  console.log("test", await maggie.getMentionResponse("test hoer"));
-  console.log("test", await maggie.getMentionResponse("test hoer"));
-  console.log("test", await maggie.getMentionResponse("test hoer"));
-  console.log("test", await maggie.getMentionResponse("test hoer"));
-  console.log("test", await maggie.getMentionResponse("test hoer"));
-  console.log("test", await maggie.getMentionResponse("test hoer"));
-  console.log("test", await maggie.getMentionResponse("test hoer"));
-  console.log("test", await maggie.getMentionResponse("test hoer"));
-  console.log("test", await maggie.getMentionResponse("test hoer"));
-  console.log("test", await maggie.getMentionResponse("test hoer"));
-  console.log("test", await maggie.getMentionResponse("test hoer"));
-  console.log("test", await maggie.getMentionResponse("test hoer"));
-  console.log("test", await maggie.getMentionResponse("test hoer"));
-  console.log("test", await maggie.getMentionResponse("test hoer"));
-  console.log("test", await maggie.getMentionResponse("test hoer"));
-  console.log("test", await maggie.getMentionResponse("test hoer"));
-  console.log("test", await maggie.getMentionResponse("test hoer"));
-  console.log("test", await maggie.getMentionResponse("test hoer"));
-  console.log("test", await maggie.getMentionResponse("test hoer"));
-  console.log("test", await maggie.getMentionResponse("test hoer"));
-  console.log("test", await maggie.getMentionResponse("test hoer"));
-  console.log("test", await maggie.getMentionResponse("test hoer"));
+  console.log("test", await maggie.getMentionResponse("test"));
+  console.log("test", await maggie.getMentionResponse("test"));
+  console.log("test", await maggie.getMentionResponse("test"));
+  console.log("test", await maggie.getMentionResponse("test"));
+  console.log("test", await maggie.getMentionResponse("test"));
 
 
-
-
+  console.log("test", await maggie.getMentionResponse("kom terug"));
+  console.log("test", await maggie.getMessageResponses("nee", "U91HHN2JE"));
 
   console.log("⚡️ Slakbot is running!");
 })();

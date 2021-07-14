@@ -1,6 +1,7 @@
 import { sample } from "lodash";
 
-import { TIMEOUT_ANSWER, DURING_TIMEOUT_ANSWER } from "./answers/Timeout";
+import { TIMEOUT_ANSWER, DURING_TIMEOUT_ANSWER, TIMEOUT_STOP_ANSWER, TIMEOUT_STOP_POSITIVE, TIMEOUT_STOP_NEGATIVE, TIMEOUT_STOP_TRIGGER } from "./answers/Timeout";
+import { THANKS_ANSWER } from "./answers/Thanks";
 
 import { MaggieBrein } from "./services/MaggieBrein";
 import { MaggieMond } from "./services/MaggieMond";
@@ -21,6 +22,7 @@ class Maggie {
   id = "U01NEE5JYSY";
   timeoutUser;
   timeoutMessageAmount = 0;
+  askForStopTimeoutInProgress = false;
 
   getMentionResponse = async (textInput, context, files, user) => {
     if (!this.isMaggieInHoekForTimeout()) {
@@ -55,13 +57,19 @@ class Maggie {
         this.setMaggieInHoekForTimeout(user);
       }
 
+
+
       maggieBrein.pushMessage({ text: response, user: this.id });
 
       return response;
     } else {
-        let response = this.getTalkAboutTimeoutAnswer();
-        maggieBrein.pushMessage({ text: response, user: this.id });
-        return response;
+      let response;
+      if (TIMEOUT_STOP_TRIGGER.includes(textInput) && this.isMaggieInHoekForTimeout()) {
+        response = this.askForStopTimeout();
+      } else {
+        response = this.getTalkAboutTimeoutAnswer();
+      }
+      return response;
     }
   };
 
@@ -87,6 +95,10 @@ class Maggie {
         }, []);
         return responses;
       }
+    } else {
+      if (user === this.timeoutUser) {
+        return this.handleTimeoutStopAnswer(message);
+      }
     }
   };
 
@@ -95,14 +107,12 @@ class Maggie {
     let max = Math.floor(MAX_TIMEOUT);
     this.timeoutUser = userWhoSetMaggieInHoek;
     this.timeoutMessageAmount = Math.floor(Math.random() * (max - min) + min);
-    console.log("new timeout:", this.timeoutMessageAmount);
   }
 
   isMaggieInHoekForTimeout() {
     if (this.timeoutMessageAmount > 0) {
       this.timeoutMessageAmount--;
     }
-    console.log("new reduced timeout:", this.timeoutMessageAmount);
     return this.timeoutMessageAmount > 0;
   }
 
@@ -110,15 +120,40 @@ class Maggie {
     let willAnswerAboutTimeout = Math.floor(Math.random() * RESPONSE_DURING_TIMEOUT_PID);
     if (willAnswerAboutTimeout == 1) {
 
-    let customTimeoutResponse = {
-    "%user%": "<@"+ this.timeoutUser + ">",
-    };
+      let customTimeoutResponse = {
+        "%user%": "<@" + this.timeoutUser + ">",
+      };
       let duringTimeoutAnswer = sample(DURING_TIMEOUT_ANSWER).replace(/%\w+%/g, function (all) {
         return customTimeoutResponse[all] || all;
       });
       return duringTimeoutAnswer;
     }
   }
+
+  askForStopTimeout() {
+    let timeoutStopUser = {
+      "%user%": "<@" + this.timeoutUser + ">",
+    };
+
+    let timeoutStopQuestion = sample(TIMEOUT_STOP_ANSWER).replace(/%\w+%/g, function (all) {
+      return timeoutStopUser[all] || all;
+    });
+
+    this.askForStopTimeoutInProgress = true;
+
+    return timeoutStopQuestion;
+  }
+
+  handleTimeoutStopAnswer(message) {
+    let response = "";
+    if (TIMEOUT_STOP_POSITIVE.includes(message)) {
+      this.timeoutMessageAmount = 0;
+      response = sample(THANKS_ANSWER);
+    } else if (TIMEOUT_STOP_NEGATIVE.includes(message)) {
+      response = this.getTalkAboutTimeoutAnswer();
+    }
+    return response;
+  } 
 }
 
 export { Maggie };

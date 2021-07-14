@@ -64,7 +64,7 @@ class Maggie {
       if (TIMEOUT_STOP_TRIGGER.includes(textInput) && this.isMaggieInHoekForTimeout(0)) {
         response = this.askForStopTimeout();
       } else {
-        if (user === this.timeoutUser) {
+        if (user === this.timeoutUser  && this.askForStopTimeoutInProgress) {
           return this.handleTimeoutStopAnswer(textInput);
         } else {
           response = this.getTalkAboutTimeoutAnswer();

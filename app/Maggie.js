@@ -97,7 +97,7 @@ class Maggie {
         return responses;
       }
     } else {
-      if (user === this.timeoutUser) {
+      if (user === this.timeoutUser && this.askForStopTimeoutInProgress) {
         return this.handleTimeoutStopAnswer(message);
       }
     }
@@ -155,6 +155,7 @@ class Maggie {
     } else if (TIMEOUT_STOP_NEGATIVE.includes(message)) {
       response = sample(TIMEOUT_STOP_NEGATIVE_ANSWER);
     }
+    this.askForStopTimeoutInProgress = false;
     return response;
   } 
 }

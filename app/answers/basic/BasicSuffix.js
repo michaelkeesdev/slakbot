@@ -8,6 +8,5 @@ export const BASIC_SUFFIX = [
     "Slet.",
     "Hoer.",
     "En laat me nu doen",
-    "Ff moe nu, dutje",
-    "lit fam yolo sweg yuuuuuuuw"
+    "Ff moe nu, dutje"
 ];

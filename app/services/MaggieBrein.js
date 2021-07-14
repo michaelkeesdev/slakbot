@@ -4,6 +4,7 @@ import { BASIC_FOLLOWUP_TRIGGER } from "./../answers/questions/BasicFollowUpQues
 
 import { BYE_TRIGGER } from "./../answers/Bye";
 import { GOODMORNING_TRIGGER } from "./../answers/Goodmorning";
+import { EXCUSES_TRIGGER } from "./../answers/Excuses";
 import { HOW_TRIGGER } from "./../answers/How";
 import { WHY_TRIGGER } from "./../answers/Why";
 import { JOKE_TRIGGER } from "./../answers/Joke";
@@ -228,6 +229,10 @@ class MaggieBrein {
       {
         names: ["kleur"],
         action: () => maggieMond.sayColour(),
+      },
+      {
+        names: [EXCUSES_TRIGGER],
+        action: () => maggieMond.giveExcuses(),
       },
     ];
   }

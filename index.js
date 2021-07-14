@@ -47,17 +47,19 @@ app.event("app_mention", async ({ context, event }) => {
 (async () => {
   await app.start(process.env.PORT || 8080);
 
-  console.log("test", await maggie.getMentionResponse("zwijg hoer", null, null, "U91HHN2JE"));
+  console.log("in hoek", await maggie.getMentionResponse("zwijg hoer", null, null, "U91HHN2JE"));
 
   console.log("test", await maggie.getMentionResponse("test"));
   console.log("test", await maggie.getMentionResponse("test"));
   console.log("test", await maggie.getMentionResponse("test"));
   console.log("test", await maggie.getMentionResponse("test"));
-  console.log("test", await maggie.getMentionResponse("test"));
 
 
-  console.log("test", await maggie.getMentionResponse("kom terug"));
-  console.log("test", await maggie.getMessageResponses("nee", "U91HHN2JE"));
+  console.log("kom terug", await maggie.getMentionResponse("kom terug"));
+  console.log("nee", await maggie.getMentionResponse("nee", null, null, "U91HHN2JE"));
+
+  console.log("test", await maggie.getMentionResponse("test", null, null, "U91HHN2JE"));
+
 
   console.log("⚡️ Slakbot is running!");
 })();

@@ -69,3 +69,16 @@ export const TIMEOUT_ANSWER = [
     "moet ik aan %user% vragen.. %user% mag ik terug praten?"
   ];
   
+  export const TIMEOUT_STOP_POSITIVE_ANSWER = [
+    "ok danku ben terug",
+    "dankuwel",
+    "danku"
+  ];
+
+  export const TIMEOUT_STOP_NEGATIVE_ANSWER = [
+    "och hoer",
+    "och slet",
+    "ok blijf in hoek",
+    ":(",
+    "jammer dan"
+  ];

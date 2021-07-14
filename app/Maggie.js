@@ -1,7 +1,6 @@
 import { sample } from "lodash";
 
-import { TIMEOUT_ANSWER, DURING_TIMEOUT_ANSWER, TIMEOUT_STOP_ANSWER, TIMEOUT_STOP_POSITIVE, TIMEOUT_STOP_NEGATIVE, TIMEOUT_STOP_TRIGGER } from "./answers/Timeout";
-import { THANKS_ANSWER } from "./answers/Thanks";
+import { TIMEOUT_ANSWER, DURING_TIMEOUT_ANSWER, TIMEOUT_STOP_ANSWER, TIMEOUT_STOP_POSITIVE, TIMEOUT_STOP_NEGATIVE, TIMEOUT_STOP_TRIGGER, TIMEOUT_STOP_POSITIVE_ANSWER, TIMEOUT_STOP_NEGATIVE_ANSWER} from "./answers/Timeout";
 
 import { MaggieBrein } from "./services/MaggieBrein";
 import { MaggieMond } from "./services/MaggieMond";
@@ -25,7 +24,7 @@ class Maggie {
   askForStopTimeoutInProgress = false;
 
   getMentionResponse = async (textInput, context, files, user) => {
-    if (!this.isMaggieInHoekForTimeout()) {
+    if (!this.isMaggieInHoekForTimeout(1)) {
       const text = textInput?.replace(`<@${context?.botUserId}>`, "").trim();
       let imageUrl;
       if (files?.length > 0) {
@@ -53,28 +52,30 @@ class Maggie {
         }
       }
 
-      if (TIMEOUT_ANSWER.includes(response) && !this.isMaggieInHoekForTimeout()) {
+      if (TIMEOUT_ANSWER.includes(response) && !this.isMaggieInHoekForTimeout(0)) {
         this.setMaggieInHoekForTimeout(user);
       }
-
-
 
       maggieBrein.pushMessage({ text: response, user: this.id });
 
       return response;
     } else {
       let response;
-      if (TIMEOUT_STOP_TRIGGER.includes(textInput) && this.isMaggieInHoekForTimeout()) {
+      if (TIMEOUT_STOP_TRIGGER.includes(textInput) && this.isMaggieInHoekForTimeout(0)) {
         response = this.askForStopTimeout();
       } else {
-        response = this.getTalkAboutTimeoutAnswer();
+        if (user === this.timeoutUser) {
+          return this.handleTimeoutStopAnswer(textInput);
+        } else {
+          response = this.getTalkAboutTimeoutAnswer();
+        }
       }
       return response;
     }
   };
 
   getMessageResponses = async (message, user) => {
-    if (!this.isMaggieInHoekForTimeout()) {
+    if (!this.isMaggieInHoekForTimeout(1)) {
       maggieBrein.pushMessage({ text: message, user });
       const latestMessages = maggieBrein?.messages;
       console.log("latest", latestMessages);
@@ -109,11 +110,13 @@ class Maggie {
     this.timeoutMessageAmount = Math.floor(Math.random() * (max - min) + min);
   }
 
-  isMaggieInHoekForTimeout() {
-    if (this.timeoutMessageAmount > 0) {
-      this.timeoutMessageAmount--;
+  isMaggieInHoekForTimeout(reduceWith) {
+    if (this.timeoutMessageAmount > 1) {
+      this.timeoutMessageAmount = this.timeoutMessageAmount - reduceWith;
+      return true;
+    } else {
+      return false;
     }
-    return this.timeoutMessageAmount > 0;
   }
 
   getTalkAboutTimeoutAnswer() {
@@ -148,9 +151,9 @@ class Maggie {
     let response = "";
     if (TIMEOUT_STOP_POSITIVE.includes(message)) {
       this.timeoutMessageAmount = 0;
-      response = sample(THANKS_ANSWER);
+      response = sample(TIMEOUT_STOP_POSITIVE_ANSWER);
     } else if (TIMEOUT_STOP_NEGATIVE.includes(message)) {
-      response = this.getTalkAboutTimeoutAnswer();
+      response = sample(TIMEOUT_STOP_NEGATIVE_ANSWER);
     }
     return response;
   } 

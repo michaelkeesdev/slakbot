@@ -35,8 +35,10 @@ app.event("app_mention", async ({ context, event }) => {
 
   const text = event.text.replace(`<@${context.botUserId}>`, "").trim();
   const files = event?.files ? event.files : [];
+  
+  let user = event?.user;
 
-  const response = await maggie.getMentionResponse(text, context, files);
+  const response = await maggie.getMentionResponse(text, context, files, user);
   const message = { token, channel, text: response };
 
   await app.client.chat.postMessage(message);

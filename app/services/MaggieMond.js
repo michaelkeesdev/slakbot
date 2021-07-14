@@ -12,7 +12,7 @@ import { WEETJES_ANSWER } from "../answers/weetjes/Weetjes";
 import { WHEN_ANSWER } from "./../answers/When";
 import { WHERE_ANSWER } from "./../answers/Where";
 import { SORRY_ANSWER } from "./../answers/Sorry";
-import { EXCUSES_ANSWER } from "./../answers/Excuses";
+import { TIMEOUT_ANSWER } from "../answers/Timeout";
 
 import { BasicAnweringService } from "./answering/BasicAnsweringService";
 import { UserService } from "./user/UserService";
@@ -192,8 +192,8 @@ class MaggieMond {
     return sample(COLOURS);
   }
 
-  giveExcuses() {
-    return sample(EXCUSES_ANSWER);
+  goInTimeout() {
+    return sample(TIMEOUT_ANSWER);
   }
 }
 

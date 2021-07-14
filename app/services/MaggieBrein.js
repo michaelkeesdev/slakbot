@@ -4,7 +4,7 @@ import { BASIC_FOLLOWUP_TRIGGER } from "./../answers/questions/BasicFollowUpQues
 
 import { BYE_TRIGGER } from "./../answers/Bye";
 import { GOODMORNING_TRIGGER } from "./../answers/Goodmorning";
-import { EXCUSES_TRIGGER } from "./../answers/Excuses";
+import { TIMEOUT_TRIGGER } from "../answers/Timeout";
 import { HOW_TRIGGER } from "./../answers/How";
 import { WHY_TRIGGER } from "./../answers/Why";
 import { JOKE_TRIGGER } from "./../answers/Joke";
@@ -27,6 +27,7 @@ import {
   FOOD_TRIGGER,
   FOOD_TRIGGER_SUFFIX_INCLUDE,
 } from "../answers/food/Food";
+import { TIME_ANSWER } from "../answers/Time";
 
 const decisionService = new DecisionService();
 const maggieMond = new MaggieMond();
@@ -231,8 +232,8 @@ class MaggieBrein {
         action: () => maggieMond.sayColour(),
       },
       {
-        names: [EXCUSES_TRIGGER],
-        action: () => maggieMond.giveExcuses(),
+        names: [TIMEOUT_TRIGGER],
+        action: () => maggieMond.goInTimeout(),
       },
     ];
   }

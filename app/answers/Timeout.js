@@ -1,4 +1,4 @@
-export const EXCUSES_TRIGGER = [
+export const TIMEOUT_TRIGGER = [
     "zwijg hoer",
     "zwijgt hoer",
     "zwijg slet",
@@ -15,11 +15,22 @@ export const EXCUSES_TRIGGER = [
     "trap het af"
 ]
 
-export const EXCUSES_ANSWER = [
+export const TIMEOUT_ANSWER = [
     "Ok sorry :(",
     "Ja sorry",
     "Oke ik ben weg",
     "Ok hoer tot straks",
     "oke ff kaf dan",
     "ok excuseer"
+  ];
+
+  export const DURING_TIMEOUT_ANSWER = [
+    "Ik moest in de hoek van %user%",
+    "Ik moet zwijgen van %user%",
+    "Mag ni praten",
+    "Kmoet zwijgen",
+    "Vraag aan %user% ik mag ni praten",
+    "Sorry sta in hoek",
+    "Ik mag niks zeggen",
+    "Ik moet zwijgen sorry"
   ];

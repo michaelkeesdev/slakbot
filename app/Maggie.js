@@ -1,5 +1,6 @@
-import { HOER_TRIGGER } from "./answers/Hoer";
-import { EXCUSES_ANSWER } from "./answers/Excuses";
+import { sample } from "lodash";
+
+import { TIMEOUT_ANSWER, DURING_TIMEOUT_ANSWER } from "./answers/Timeout";
 
 import { MaggieBrein } from "./services/MaggieBrein";
 import { MaggieMond } from "./services/MaggieMond";
@@ -14,13 +15,14 @@ const PID_MONOLOGUE = 5;
 
 const MIN_TIMEOUT = 3;
 const MAX_TIMEOUT = 50;
-
+const RESPONSE_DURING_TIMEOUT_PID = 3;
 
 class Maggie {
   id = "U01NEE5JYSY";
+  timeoutUser;
   timeoutMessageAmount = 0;
 
-  getMentionResponse = async (textInput, context, files) => {
+  getMentionResponse = async (textInput, context, files, user) => {
     if (!this.isMaggieInHoekForTimeout()) {
       const text = textInput?.replace(`<@${context?.botUserId}>`, "").trim();
       let imageUrl;
@@ -32,6 +34,7 @@ class Maggie {
       const fuzzyMatch = await maggieBrein.getFuzzyMatch(tokens);
 
       let response = "";
+
       if (fuzzyMatch) {
         response = await fuzzyMatch?.action(text, context, imageUrl);
       } else if (exactMatches) {
@@ -48,13 +51,17 @@ class Maggie {
         }
       }
 
-      if (EXCUSES_ANSWER.includes(response) && !this.isMaggieInHoekForTimeout()) {
-        this.setMaggieInHoekForTimeout();
+      if (TIMEOUT_ANSWER.includes(response) && !this.isMaggieInHoekForTimeout()) {
+        this.setMaggieInHoekForTimeout(user);
       }
 
       maggieBrein.pushMessage({ text: response, user: this.id });
 
       return response;
+    } else {
+        let response = this.getTalkAboutTimeoutAnswer();
+        maggieBrein.pushMessage({ text: response, user: this.id });
+        return response;
     }
   };
 
@@ -83,9 +90,10 @@ class Maggie {
     }
   };
 
-  setMaggieInHoekForTimeout() {
+  setMaggieInHoekForTimeout(userWhoSetMaggieInHoek) {
     let min = Math.ceil(MIN_TIMEOUT);
     let max = Math.floor(MAX_TIMEOUT);
+    this.timeoutUser = userWhoSetMaggieInHoek;
     this.timeoutMessageAmount = Math.floor(Math.random() * (max - min) + min);
     console.log("new timeout:", this.timeoutMessageAmount);
   }
@@ -96,6 +104,20 @@ class Maggie {
     }
     console.log("new reduced timeout:", this.timeoutMessageAmount);
     return this.timeoutMessageAmount > 0;
+  }
+
+  getTalkAboutTimeoutAnswer() {
+    let willAnswerAboutTimeout = Math.floor(Math.random() * RESPONSE_DURING_TIMEOUT_PID);
+    if (willAnswerAboutTimeout == 1) {
+
+    let customTimeoutResponse = {
+    "%user%": "<@"+ this.timeoutUser + ">",
+    };
+      let duringTimeoutAnswer = sample(DURING_TIMEOUT_ANSWER).replace(/%\w+%/g, function (all) {
+        return customTimeoutResponse[all] || all;
+      });
+      return duringTimeoutAnswer;
+    }
   }
 }
 

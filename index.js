@@ -45,21 +45,7 @@ app.event("app_mention", async ({ context, event }) => {
 (async () => {
   await app.start(process.env.PORT || 8080);
 
-  console.log("test", await maggie.getMentionResponse("zwijg hoer"));
-  
-  console.log("test", await maggie.getMentionResponse("test hoer"));
-  
-  console.log("test", await maggie.getMentionResponse("test hoer"));
-  
-  console.log("test", await maggie.getMentionResponse("test hoer"));
-  
-  console.log("test", await maggie.getMentionResponse("test hoer"));
-  
-  console.log("test", await maggie.getMentionResponse("test hoer"));
-  
-  console.log("test", await maggie.getMentionResponse("test hoer"));
-  
-  console.log("test", await maggie.getMentionResponse("test hoer"));
+  console.log("test", await maggie.getMentionResponse("zwijg hoer", null, null, "U91HHN2JE"));
 
   console.log("test", await maggie.getMentionResponse("test hoer"));
   console.log("test", await maggie.getMentionResponse("test hoer"));
@@ -69,7 +55,6 @@ app.event("app_mention", async ({ context, event }) => {
   console.log("test", await maggie.getMentionResponse("test hoer"));
   console.log("test", await maggie.getMentionResponse("test hoer"));
   console.log("test", await maggie.getMentionResponse("test hoer"));
-  
   console.log("test", await maggie.getMentionResponse("test hoer"));
   console.log("test", await maggie.getMentionResponse("test hoer"));
   console.log("test", await maggie.getMentionResponse("test hoer"));
@@ -78,6 +63,16 @@ app.event("app_mention", async ({ context, event }) => {
   console.log("test", await maggie.getMentionResponse("test hoer"));
   console.log("test", await maggie.getMentionResponse("test hoer"));
   console.log("test", await maggie.getMentionResponse("test hoer"));
+  console.log("test", await maggie.getMentionResponse("test hoer"));
+  console.log("test", await maggie.getMentionResponse("test hoer"));
+  console.log("test", await maggie.getMentionResponse("test hoer"));
+  console.log("test", await maggie.getMentionResponse("test hoer"));
+  console.log("test", await maggie.getMentionResponse("test hoer"));
+  console.log("test", await maggie.getMentionResponse("test hoer"));
+  console.log("test", await maggie.getMentionResponse("test hoer"));
+  console.log("test", await maggie.getMentionResponse("test hoer"));
+
+
 
 
 

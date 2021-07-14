@@ -13,7 +13,7 @@ const PID_DUPLICATE = 3;
 const PID_MONOLOGUE = 5;
 
 const MIN_TIMEOUT = 3;
-const MAX_TIMEOUT = 15;
+const MAX_TIMEOUT = 50;
 
 
 class Maggie {

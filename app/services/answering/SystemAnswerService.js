@@ -3,7 +3,7 @@ import {
   SYSTEM_ANSWER_PREFIX,
   SYSTEM_ANSWER,
   SYSTEM_ANSWER_SUFFIX,
-} from "./../../answers/basic/ExplanationAnswer";
+} from "./../../answers/basic/SystemAnswer";
 import { NOUNS } from "../../answers/words/RandomNouns";
 import { UserService } from "./../user/UserService";
 

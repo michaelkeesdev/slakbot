@@ -13,7 +13,7 @@ const PID_DUPLICATE = 3;
 const PID_MONOLOGUE = 5;
 
 const MIN_TIMEOUT = 3;
-const MAX_TIMEOUT = 20;
+const MAX_TIMEOUT = 15;
 
 
 class Maggie {
@@ -55,31 +55,31 @@ class Maggie {
       maggieBrein.pushMessage({ text: response, user: this.id });
 
       return response;
-    } else {
-      this.reduceTimeout();
     }
   };
 
   getMessageResponses = async (message, user) => {
-    maggieBrein.pushMessage({ text: message, user });
-    const latestMessages = maggieBrein?.messages;
-    console.log("latest", latestMessages);
+    if (!this.isMaggieInHoekForTimeout()) {
+      maggieBrein.pushMessage({ text: message, user });
+      const latestMessages = maggieBrein?.messages;
+      console.log("latest", latestMessages);
 
-    const random = Math.floor(Math.random() * 60);
-    if (random === 1) {
-      const randomMessage = maggieMond.giveBasicAnswer();
-      return [randomMessage];
-    } else {
-      const matches = maggieBrein.getMessageMatches(latestMessages);
-      const responses = matches.reduce((result, match) => {
-        const message = match.getMessage();
-        if (Math.floor(Math.random() * match.pid) === 1 && message) {
-          result.push(message);
-          maggieBrein.pushMessage({ text: message, user: this.id });
-        }
-        return result;
-      }, []);
-      return responses;
+      const random = Math.floor(Math.random() * 60);
+      if (random === 1) {
+        const randomMessage = maggieMond.giveBasicAnswer();
+        return [randomMessage];
+      } else {
+        const matches = maggieBrein.getMessageMatches(latestMessages);
+        const responses = matches.reduce((result, match) => {
+          const message = match.getMessage();
+          if (Math.floor(Math.random() * match.pid) === 1 && message) {
+            result.push(message);
+            maggieBrein.pushMessage({ text: message, user: this.id });
+          }
+          return result;
+        }, []);
+        return responses;
+      }
     }
   };
 
@@ -91,12 +91,11 @@ class Maggie {
   }
 
   isMaggieInHoekForTimeout() {
-    return this.timeoutMessageAmount > 0;
-  }
-
-  reduceTimeout() {
-    this.timeoutMessageAmount--;
+    if (this.timeoutMessageAmount > 0) {
+      this.timeoutMessageAmount--;
+    }
     console.log("new reduced timeout:", this.timeoutMessageAmount);
+    return this.timeoutMessageAmount > 0;
   }
 }
 

@@ -5,7 +5,6 @@ import { BASIC_FOLLOWUP_QUESTION } from "./../answers/questions/BasicFollowUpQue
 import { BYE_ANSWER } from "./../answers/Bye";
 import { COUNTRY_LIST } from "./../answers/Countries";
 import { GOODMORNING_ANSWER } from "./../answers/Goodmorning";
-import { HOW_ANSWER } from "./../answers/How";
 import { JOKE_ANSWER } from "./../answers/Joke";
 import { THANKS_ANSWER } from "./../answers/Thanks";
 import { WEETJES_ANSWER } from "../answers/weetjes/Weetjes";
@@ -21,6 +20,7 @@ import { NewsService } from "./news/NewsService";
 import { NineGagService } from "./9gag/9gagService";
 import { FoodService } from "./food/FoodService";
 import { YoutubeService } from "./google/YoutubeService";
+import { TubeService } from "./google/TubeService";
 import { DecisionService } from "./answering/DecisionService";
 import { EuroMillionsService } from "./gambling/EuroMillionsService";
 import { WeatherService } from "./weather/WeatherService";
@@ -50,6 +50,7 @@ const birthdayService = new BirthdayService();
 const ninegagService = new NineGagService();
 const deviantArtService = new DeviantArtService();
 const youtubeService = new YoutubeService();
+const tubeService = new TubeService();
 const decisionService = new DecisionService();
 const euroMillionsService = new EuroMillionsService();
 const howMuchService = new HowMuchService();
@@ -148,6 +149,9 @@ class MaggieMond {
   sayExactYoutube(text) {
     return youtubeService.getExactYoutube(text);
   }
+  sayExactTube(text) {
+    return tubeService.getTube(text);
+  }
   readTheNews() {
     return newsService.getNewsPosts();
   }
@@ -163,7 +167,6 @@ class MaggieMond {
   sayFood(suggest) {
     return foodService.getRecaipie(suggest);
   }
-
   speakDecision(text) {
     return decisionService.makeDecision(text);
   }

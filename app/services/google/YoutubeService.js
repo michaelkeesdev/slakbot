@@ -18,15 +18,17 @@ class YoutubeService {
       maxResults: "50",
       q: text,
     });
-    let index = Math.floor(Math.random() * 50);
-    return `https://www.youtube.com/watch?v=${result.data.items[index].id.videoId}`;
+
+    return `https://www.youtube.com/watch?v=${sample(result.data.items).id.videoId}`;
   };
 
   getExactYoutube = async (text) => {
     let result = await this.youtube.search.list({
       part: "id,snippet",
+      maxResults: "50",
       q: text,
     });
+
     return `https://www.youtube.com/watch?v=${result.data.items[0].id.videoId}`;
   };
 

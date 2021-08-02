@@ -31,7 +31,7 @@ class Maggie {
         imageUrl = files[0]?.thumb_960;
       }
       const tokens = maggieBrein.getTokens(text);
-      const exactMatches = await maggieBrein.getExactMatches(tokens);
+      const exactMatches = maggieBrein.getExactMatches(tokens);
       const fuzzyMatch = await maggieBrein.getFuzzyMatch(tokens);
 
       let response = "";

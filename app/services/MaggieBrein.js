@@ -23,11 +23,7 @@ import { flatMap } from "lodash";
 import { COUNTRY_TRIGGER } from "../answers/Countries";
 import { SORRY_TRIGGER } from "../answers/Sorry";
 import { HOER_TRIGGER } from "../answers/Hoer";
-import {
-  FOOD_TRIGGER,
-  FOOD_TRIGGER_SUFFIX_INCLUDE,
-} from "../answers/food/Food";
-import { TIME_ANSWER } from "../answers/Time";
+import { FOOD_TRIGGER } from "../answers/food/Food";
 
 const decisionService = new DecisionService();
 const maggieMond = new MaggieMond();
@@ -164,6 +160,10 @@ class MaggieBrein {
       {
         names: ["grietje", "wufke", "slet"],
         action: async () => await maggieMond.showGirl(),
+      },
+      {
+        names: ["hoertjes", "hoertje", "pron", "madu", "mbali"],
+        action: async (text) => await maggieMond.sayExactTube(text),
       },
       {
         names: ["cosplay"],

@@ -40,8 +40,10 @@ export const TIMEOUT_ANSWER = [
     "kom terug",
     "uit hoek",
     "uit de hoek",
+    "kom uit hoek",
     "kom maar terug",
-    "kom eens terug"
+    "kom eens terug",
+    "kom eens"
   ];
 
   export const TIMEOUT_STOP_POSITIVE = [
@@ -55,6 +57,17 @@ export const TIMEOUT_ANSWER = [
     "kom es terug",
     "maakt da ge terug bent",
     "hup waarke"
+  ];
+
+  export const TIMEOUT_STOP_NEGATIVE = [
+    "nee lol",
+    "nee",
+    "nee?",
+    "denk het niet",
+    "dacht het niet",
+    "meje",
+    "denk ni",
+    "nah"
   ];
 
   export const TIMEOUT_STOP_ANSWER = [
@@ -74,5 +87,5 @@ export const TIMEOUT_ANSWER = [
     "och slet",
     "ok blijf in hoek",
     ":(",
-    "jammer dan blijf ik hoek"
+    "jammer dan"
   ];

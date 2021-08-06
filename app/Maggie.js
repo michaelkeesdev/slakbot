@@ -21,7 +21,6 @@ class Maggie {
   id = "U01NEE5JYSY";
   timeoutUser;
   timeoutMessageAmount = 0;
-  askForStopTimeoutInProgress = false;
 
   getMentionResponse = async (textInput, context, files, user) => {
     if (!this.isMaggieInHoekForTimeout(1)) {
@@ -61,12 +60,8 @@ class Maggie {
 
       return response;
     } else {
-      if (TIMEOUT_STOP_TRIGGER.includes(textInput) && this.isMaggieInHoekForTimeout(0) &&  user !== this.timeoutUser) {
-        console.log("askstop1");
-        return this.askForStopTimeout();
-      } else {
-        console.log("handlestop1");
-        return this.handleTimeoutStopAnswer(textInput);
+      if (this.isMaggieInHoekForTimeout(0)) {
+        return this.handleTimeoutStopAnswer(textInput, user);
       }
     }
   };
@@ -96,14 +91,14 @@ class Maggie {
     }
   };
 
-  setMaggieInHoekForTimeout(userWhoSetMaggieInHoek) {
+  setMaggieInHoekForTimeout = (userWhoSetMaggieInHoek) => {
     let min = Math.ceil(MIN_TIMEOUT);
     let max = Math.floor(MAX_TIMEOUT);
     this.timeoutUser = userWhoSetMaggieInHoek;
     this.timeoutMessageAmount = Math.floor(Math.random() * (max - min) + min);
   }
 
-  isMaggieInHoekForTimeout(reduceWith) {
+  isMaggieInHoekForTimeout = (reduceWith) => {
     if (this.timeoutMessageAmount > 1) {
       this.timeoutMessageAmount = this.timeoutMessageAmount - reduceWith;
       return true;
@@ -112,7 +107,7 @@ class Maggie {
     }
   }
 
-  getTalkAboutTimeoutAnswer() {
+  getTalkAboutTimeoutAnswer = () => {
     let willAnswerAboutTimeout = Math.floor(Math.random() * RESPONSE_DURING_TIMEOUT_PID);
     if (willAnswerAboutTimeout == 1) {
 
@@ -126,7 +121,7 @@ class Maggie {
     }
   }
 
-  askForStopTimeout() {
+  askForStopTimeout = () => {
     let timeoutStopUser = {
       "%user%": "<@" + this.timeoutUser + ">",
     };
@@ -135,23 +130,22 @@ class Maggie {
       return timeoutStopUser[all] || all;
     });
 
-    this.askForStopTimeoutInProgress = true;
-
     return timeoutStopQuestion;
   }
 
-  handleTimeoutStopAnswer(message) {
+  handleTimeoutStopAnswer = (message, user) => {
     let response = "";
-    if (TIMEOUT_STOP_POSITIVE.includes(message)) {
-      console.log("positive");
-      this.timeoutMessageAmount = 0;
-      response = sample(TIMEOUT_STOP_POSITIVE_ANSWER);
+    if (user === this.timeoutUser) {
+      if (TIMEOUT_STOP_TRIGGER.includes(message) || TIMEOUT_STOP_POSITIVE.includes(message)) {
+        this.timeoutMessageAmount = 0;
+        response = sample(TIMEOUT_STOP_POSITIVE_ANSWER);
+      } else if (TIMEOUT_STOP_NEGATIVE.includes(message)) {
+        response = sample(TIMEOUT_STOP_NEGATIVE_ANSWER);
+      }
+      return response;
     } else {
-      console.log("negative");
-      response = sample(TIMEOUT_STOP_NEGATIVE_ANSWER);
+       return this.askForStopTimeout();
     }
-    this.askForStopTimeoutInProgress = false;
-    return response;
   } 
 }
 

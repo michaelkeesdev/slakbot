@@ -138,6 +138,10 @@ class MaggieBrein {
         action: (text) => maggieMond.tagUser(text),
       },
       {
+        names: ["scheld", "scheldt"],
+        action: (text) => maggieMond.scheldUser(text),
+      },
+      {
         names: SORRY_TRIGGER,
         action: (text) => maggieMond.saySorry(),
       },

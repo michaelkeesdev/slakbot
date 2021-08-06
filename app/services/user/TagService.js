@@ -1,6 +1,8 @@
 import { UserService } from "./UserService";
 import { StringBuilder } from './../../util/StringBuilder';
 import { BASIC_COMMAND } from './../../answers/basic/BasicCommand';
+import { SCHELD } from "../../answers/basic/Scheld";
+import { sample } from "lodash";
 
 class TagService {
 
@@ -22,6 +24,21 @@ class TagService {
                 }
             });
     
+        } else {
+            responseBuilder.append("wie?");
+        }
+
+        return responseBuilder.toString();
+
+    }
+
+    tagUserAndScheld(text) {
+        let responseBuilder = new StringBuilder();
+
+        let users = this.userService.extractUsersFromText(text);
+
+        if (users.length > 0) {
+            responseBuilder.append(this.tagUsers(users) + sample(SCHELD));    
         } else {
             responseBuilder.append("wie?");
         }

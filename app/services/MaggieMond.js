@@ -117,14 +117,15 @@ class MaggieMond {
   sayWhat() {
     return sample(NOUNS);
   }
-
   sayRandomUser() {
     return userService.getRandomUserRandomName();
   }
   tagUser(text) {
     return tagService.tagUserAndAddTextCommand(text);
   }
-
+  scheldUser(text) {
+    return tagService.tagUserAndScheld(text);
+  }
   showMeme() {
     return ninegagService.get9gagBasic();
   }

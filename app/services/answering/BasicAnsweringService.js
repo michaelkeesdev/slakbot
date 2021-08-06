@@ -68,28 +68,28 @@ class BasicAnweringService {
     }
 
     addAnswerToResponse(responseBuilder, allowDontKnow) {
-        let decision = Math.floor(Math.random() * 11);
+        let decision = Math.floor(Math.random() * 17);
 
-        // 0-1-2-3 Maggie agrees
-        if (decision < 4) {
+        // 0-1-2-3-4-5-6 Maggie agrees
+        if (decision < 7) {
             this.agree(responseBuilder);
         }
-        // 4-5-6-7 Maggie disagrees
-        if (decision >= 4 && decision < 8) {
+        // 7-8-9-10-11-12-13 Maggie disagrees
+        if (decision >= 7 && decision < 14) {
             this.disagree(responseBuilder);
         }
-        // 8-9 Maggie weet ni
-        if (decision == 8 || decision == 9) {
+        // 14-15 Maggie weet ni
+        if (decision == 14 || decision == 15) {
             if (allowDontKnow) {
                 this.dontKnow(responseBuilder);
-            } else if (decision == 8) {
+            } else if (decision == 14) {
                 this.agree(responseBuilder);
-            } else if (decision == 9) {
+            } else if (decision == 15) {
                 this.disagree(responseBuilder);
             }
         }
-        // 10 just prefix
-        if (decision == 10) {
+        // 15 just prefix
+        if (decision == 16) {
             responseBuilder.append(" ").append(sample(BASIC_PHRASE));
         }
     }

@@ -32,5 +32,18 @@ export const BASIC_DISAGREE_ANSWER = [
     "nee XDDDDDD",
     "nee lol XD",
     "nee :s",
-    "HAHAHAHHAH. Nee."
+    "HAHAHAHHAH. Nee.",
+    "Nop",
+    "Kan niet",
+    "0% kans",
+    "Sowieso niet",
+    "Zowiezo niet",
+    "Nee xx",
+    ":x:",
+    "Ik ben daar niet zeker van. Dus nee.",
+    "Met zekerheid niet.",
+    "Gewoon nee.",
+    "Gewoon nee?",
+    "Nee jom",
+    "Nee jong"
   ];

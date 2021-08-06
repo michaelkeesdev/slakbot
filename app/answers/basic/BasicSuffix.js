@@ -8,5 +8,18 @@ export const BASIC_SUFFIX = [
     "Slet.",
     "Hoer.",
     "En laat me nu doen",
-    "Ff moe nu, dutje"
+    "Ff moe nu, dutje",
+    "ff kaf",
+    "En zwijg nu?",
+    "En als ge mij nog 1 keer tagt krijgt ge lappen.",
+    "Tot ziens xoxo",
+    "Daag.",
+    "Hoogachtend, Maggie.",
+    "Blij u van dienst te kunnen zijn",
+    "Tot de volgende.",
+    "Doeg",
+    "Houdoe",
+    "Nu ben ik wel echt weg",
+    "En je bent een mongooltje overigens.",
+    "En dans"
 ];

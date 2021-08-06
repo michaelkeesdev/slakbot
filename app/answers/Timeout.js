@@ -1,4 +1,5 @@
 export const TIMEOUT_TRIGGER = [
+    "zwijg",
     "zwijg hoer",
     "zwijgt hoer",
     "zwijg slet",
@@ -49,18 +50,11 @@ export const TIMEOUT_ANSWER = [
     "is goed",
     "doe maar",
     "goed",
-    "jaja"
-  ];
-
-  export const TIMEOUT_STOP_NEGATIVE = [
-    "nee lol",
-    "nee",
-    "nee?",
-    "denk het niet",
-    "dacht het niet",
-    "meje",
-    "denk ni",
-    "nah"
+    "jaja",
+    "kom terug",
+    "kom es terug",
+    "maakt da ge terug bent",
+    "hup waarke"
   ];
 
   export const TIMEOUT_STOP_ANSWER = [

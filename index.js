@@ -47,7 +47,10 @@ app.event("app_mention", async ({ context, event }) => {
 (async () => {
   await app.start(process.env.PORT || 8080);
 
-  console.log("scheld", await maggie.getMentionResponse("scheldt rits uit"));
+  console.log("in timeout", await maggie.getMentionResponse("klep", null, null, "U91HHN2JE"));
+  console.log("ask stop", await maggie.getMentionResponse("hup slet", null, null, "U91HHN2JE"));
+
+
 
   console.log("⚡️ Slakbot is running!");
 })();

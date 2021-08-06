@@ -196,11 +196,6 @@ class MaggieMond {
     return sample(COLOURS);
   }
 
-  goInTimeout() {
-    console.log("go timeout");
-    return sample(TIMEOUT_ANSWER);
-  }
-
   askForStopTimeout() {
     return sample(TIMEOUT_STOP_PLACEHOLDER);
   }

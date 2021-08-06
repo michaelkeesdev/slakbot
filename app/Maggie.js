@@ -1,6 +1,6 @@
 import { sample } from "lodash";
 
-import { TIMEOUT_ANSWER, DURING_TIMEOUT_ANSWER, TIMEOUT_STOP_ANSWER, TIMEOUT_STOP_POSITIVE, TIMEOUT_STOP_NEGATIVE, TIMEOUT_STOP_TRIGGER, TIMEOUT_STOP_POSITIVE_ANSWER, TIMEOUT_STOP_NEGATIVE_ANSWER} from "./answers/Timeout";
+import { DURING_TIMEOUT_ANSWER, TIMEOUT_STOP_ANSWER, TIMEOUT_STOP_POSITIVE, TIMEOUT_STOP_NEGATIVE, TIMEOUT_STOP_TRIGGER, TIMEOUT_STOP_POSITIVE_ANSWER, TIMEOUT_STOP_NEGATIVE_ANSWER, TIMEOUT_TRIGGER, TIMEOUT_ANSWER} from "./answers/Timeout";
 
 import { MaggieBrein } from "./services/MaggieBrein";
 import { MaggieMond } from "./services/MaggieMond";
@@ -52,25 +52,22 @@ class Maggie {
         }
       }
 
-      if (TIMEOUT_ANSWER.includes(response) && !this.isMaggieInHoekForTimeout(0)) {
+      if (TIMEOUT_TRIGGER.includes(textInput) && !this.isMaggieInHoekForTimeout(0)) {
         this.setMaggieInHoekForTimeout(user);
+        response = sample(TIMEOUT_ANSWER);
       }
 
       maggieBrein.pushMessage({ text: response, user: this.id });
 
       return response;
     } else {
-      let response;
-      if (TIMEOUT_STOP_TRIGGER.includes(textInput) && this.isMaggieInHoekForTimeout(0)) {
-        response = this.askForStopTimeout();
+      if (TIMEOUT_STOP_TRIGGER.includes(textInput) && this.isMaggieInHoekForTimeout(0) &&  user !== this.timeoutUser) {
+        console.log("askstop1");
+        return this.askForStopTimeout();
       } else {
-        if (user === this.timeoutUser  && this.askForStopTimeoutInProgress) {
+        console.log("handlestop1");
           return this.handleTimeoutStopAnswer(textInput);
-        } else {
-          response = this.getTalkAboutTimeoutAnswer();
-        }
       }
-      return response;
     }
   };
 
@@ -95,10 +92,6 @@ class Maggie {
           return result;
         }, []);
         return responses;
-      }
-    } else {
-      if (user === this.timeoutUser && this.askForStopTimeoutInProgress) {
-        return this.handleTimeoutStopAnswer(message);
       }
     }
   };
@@ -150,9 +143,11 @@ class Maggie {
   handleTimeoutStopAnswer(message) {
     let response = "";
     if (TIMEOUT_STOP_POSITIVE.includes(message)) {
+      console.log("positive");
       this.timeoutMessageAmount = 0;
       response = sample(TIMEOUT_STOP_POSITIVE_ANSWER);
-    } else if (TIMEOUT_STOP_NEGATIVE.includes(message)) {
+    } else {
+      console.log("negative");
       response = sample(TIMEOUT_STOP_NEGATIVE_ANSWER);
     }
     this.askForStopTimeoutInProgress = false;

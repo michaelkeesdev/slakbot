@@ -236,10 +236,6 @@ class MaggieBrein {
         action: () => maggieMond.sayColour(),
       },
       {
-        names: [TIMEOUT_TRIGGER],
-        action: () => maggieMond.goInTimeout(),
-      },
-      {
         names: [TIMEOUT_STOP_TRIGGER],
         action: () => maggieMond.askForStopTimeout(),
       },

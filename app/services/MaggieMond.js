@@ -39,6 +39,8 @@ import { HOER } from "../answers/Hoer";
 import { TagService } from "./user/TagService";
 import { TokenizerService } from "./tokenizer/Tokenizer";
 import { MolService } from "./tv/MolService";
+import { WikiService } from "./wiki/WikiService";
+import { ImageService } from "./google/ImageService";
 
 const basicAnweringService = new BasicAnweringService();
 
@@ -63,6 +65,8 @@ const foodService = new FoodService(httpClient, tokenizer);
 const timeService = new TimeService();
 const tagService = new TagService();
 const molService = new MolService();
+const wikiService = new WikiService(httpClient);
+const imageService = new ImageService();
 
 class MaggieMond {
   askBasicFollowUpQuestion() {
@@ -98,9 +102,6 @@ class MaggieMond {
   }
   sayThanks() {
     return sample(THANKS_ANSWER);
-  }
-  sayWeetje() {
-    return sample(WEETJES_ANSWER);
   }
   sayWhen() {
     return sample(WHEN_ANSWER);
@@ -195,7 +196,18 @@ class MaggieMond {
   sayColour() {
     return sample(COLOURS);
   }
-
+  sayWeetje() {
+    return wikiService.getWeetje();
+  }
+  sayWikiSummary(topic) {
+    return wikiService.getWikiSummary(topic);
+  }
+  sayWiki(topic) {
+    return wikiService.getWikiSearch(topic);
+  }
+  sayImage(text) {
+    return imageService.getImage(text);
+  }
   askForStopTimeout() {
     return sample(TIMEOUT_STOP_PLACEHOLDER);
   }

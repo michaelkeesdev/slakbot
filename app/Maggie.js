@@ -1,6 +1,16 @@
 import { sample } from "lodash";
 
-import { DURING_TIMEOUT_ANSWER, TIMEOUT_STOP_ANSWER, TIMEOUT_STOP_POSITIVE, TIMEOUT_STOP_NEGATIVE, TIMEOUT_STOP_TRIGGER, TIMEOUT_STOP_POSITIVE_ANSWER, TIMEOUT_STOP_NEGATIVE_ANSWER, TIMEOUT_TRIGGER, TIMEOUT_ANSWER} from "./answers/Timeout";
+import {
+  DURING_TIMEOUT_ANSWER,
+  TIMEOUT_STOP_ANSWER,
+  TIMEOUT_STOP_POSITIVE,
+  TIMEOUT_STOP_NEGATIVE,
+  TIMEOUT_STOP_TRIGGER,
+  TIMEOUT_STOP_POSITIVE_ANSWER,
+  TIMEOUT_STOP_NEGATIVE_ANSWER,
+  TIMEOUT_TRIGGER,
+  TIMEOUT_ANSWER,
+} from "./answers/Timeout";
 
 import { MaggieBrein } from "./services/MaggieBrein";
 import { MaggieMond } from "./services/MaggieMond";
@@ -51,7 +61,10 @@ class Maggie {
         }
       }
 
-      if (TIMEOUT_TRIGGER.includes(textInput) && !this.isMaggieInHoekForTimeout(0)) {
+      if (
+        TIMEOUT_TRIGGER.includes(textInput) &&
+        !this.isMaggieInHoekForTimeout(0)
+      ) {
         this.setMaggieInHoekForTimeout(user);
         response = sample(TIMEOUT_ANSWER);
       }
@@ -96,7 +109,7 @@ class Maggie {
     let max = Math.floor(MAX_TIMEOUT);
     this.timeoutUser = userWhoSetMaggieInHoek;
     this.timeoutMessageAmount = Math.floor(Math.random() * (max - min) + min);
-  }
+  };
 
   isMaggieInHoekForTimeout = (reduceWith) => {
     if (this.timeoutMessageAmount > 1) {
@@ -105,38 +118,48 @@ class Maggie {
     } else {
       return false;
     }
-  }
+  };
 
   getTalkAboutTimeoutAnswer = () => {
-    let willAnswerAboutTimeout = Math.floor(Math.random() * RESPONSE_DURING_TIMEOUT_PID);
+    let willAnswerAboutTimeout = Math.floor(
+      Math.random() * RESPONSE_DURING_TIMEOUT_PID
+    );
     if (willAnswerAboutTimeout == 1) {
-
       let customTimeoutResponse = {
         "%user%": "<@" + this.timeoutUser + ">",
       };
-      let duringTimeoutAnswer = sample(DURING_TIMEOUT_ANSWER).replace(/%\w+%/g, function (all) {
-        return customTimeoutResponse[all] || all;
-      });
+      let duringTimeoutAnswer = sample(DURING_TIMEOUT_ANSWER).replace(
+        /%\w+%/g,
+        function (all) {
+          return customTimeoutResponse[all] || all;
+        }
+      );
       return duringTimeoutAnswer;
     }
-  }
+  };
 
   askForStopTimeout = () => {
     let timeoutStopUser = {
       "%user%": "<@" + this.timeoutUser + ">",
     };
 
-    let timeoutStopQuestion = sample(TIMEOUT_STOP_ANSWER).replace(/%\w+%/g, function (all) {
-      return timeoutStopUser[all] || all;
-    });
+    let timeoutStopQuestion = sample(TIMEOUT_STOP_ANSWER).replace(
+      /%\w+%/g,
+      function (all) {
+        return timeoutStopUser[all] || all;
+      }
+    );
 
     return timeoutStopQuestion;
-  }
+  };
 
   handleTimeoutStopAnswer = (message, user) => {
     let response = "";
     if (user === this.timeoutUser) {
-      if (TIMEOUT_STOP_TRIGGER.includes(message) || TIMEOUT_STOP_POSITIVE.includes(message)) {
+      if (
+        TIMEOUT_STOP_TRIGGER.includes(message) ||
+        TIMEOUT_STOP_POSITIVE.includes(message)
+      ) {
         this.timeoutMessageAmount = 0;
         response = sample(TIMEOUT_STOP_POSITIVE_ANSWER);
       } else if (TIMEOUT_STOP_NEGATIVE.includes(message)) {
@@ -144,9 +167,9 @@ class Maggie {
       }
       return response;
     } else {
-       return this.askForStopTimeout();
+      return this.askForStopTimeout();
     }
-  } 
+  };
 }
 
 export { Maggie };

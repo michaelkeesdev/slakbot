@@ -74,5 +74,5 @@ export const TIMEOUT_ANSWER = [
     "och slet",
     "ok blijf in hoek",
     ":(",
-    "jammer dan"
+    "jammer dan blijf ik hoek"
   ];

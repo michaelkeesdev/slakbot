@@ -47,8 +47,8 @@ app.event("app_mention", async ({ context, event }) => {
 (async () => {
   await app.start(process.env.PORT || 8080);
 
-  console.log("in timeout", await maggie.getMentionResponse("klep", null, null, "U91HHN2JE"));
-  console.log("ask stop", await maggie.getMentionResponse("hup slet", null, null, "U91HHN2JE"));
+  console.log("in timeout", await maggie.getMentionResponse("in de hoek", null, null, "U91HHN2JE"));
+  //console.log("ask stop", await maggie.getMentionResponse("hup waarke", null, null, "U91HHN2JE"));
 
 
 

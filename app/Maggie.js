@@ -66,7 +66,7 @@ class Maggie {
         return this.askForStopTimeout();
       } else {
         console.log("handlestop1");
-          return this.handleTimeoutStopAnswer(textInput);
+        return this.handleTimeoutStopAnswer(textInput);
       }
     }
   };

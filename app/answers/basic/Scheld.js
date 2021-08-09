@@ -8,11 +8,11 @@ export const SCHELD_PHRASE = [
     "Gy zyt een %scheld%. %suffix%",
     "Ge bent een %scheld%. %suffix%",
     "Je bent een %scheld%. %suffix%",
-    "%adjective %scheld%. %suffix%",
+    "%adjective% %scheld%. %suffix%",
     "%scheld%. %suffix%",
-    "%adjective %scheld%",
-    "Een %adjective %scheld% bent gy",
-    "Een %adjective %scheld% bent gy. %suffix%",
+    "%adjective% %scheld%",
+    "Een %adjective% %scheld% bent gy",
+    "Een %adjective% %scheld% bent gy. %suffix%",
     "Och hij is het nie waard",
 ];
 

@@ -26,5 +26,5 @@ export const BASIC_PHRASE = [
     "Halloooooooo.",
     "Hey hoi.",
     "Aanwezig.",
-    "Ik ben hier."
+    "Eigenlijk boeit het mij niet."
   ];

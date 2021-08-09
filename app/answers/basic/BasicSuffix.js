@@ -20,6 +20,6 @@ export const BASIC_SUFFIX = [
     "Doeg",
     "Houdoe",
     "Nu ben ik wel echt weg",
-    "En je bent een mongooltje overigens.",
-    "En dans"
+    "En gy bent een %adjective% %scheld% overigens.",
+    "En dans",
 ];

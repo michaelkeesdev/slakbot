@@ -24,6 +24,7 @@ import { COUNTRY_TRIGGER } from "../answers/Countries";
 import { SORRY_TRIGGER } from "../answers/Sorry";
 import { HOER_TRIGGER } from "../answers/Hoer";
 import { FOOD_TRIGGER } from "../answers/food/Food";
+import { IMAGE_TRIGGER } from "../answers/image/Images";
 
 const decisionService = new DecisionService();
 const maggieMond = new MaggieMond();
@@ -122,9 +123,12 @@ class MaggieBrein {
       { names: HOWMUCH_TRIGGER, action: () => maggieMond.sayHowMuch() },
       { names: SLUIP_TRIGGER, action: async () => maggieMond.saySluip() },
       { names: THANKS_TRIGGER, action: () => maggieMond.sayThanks() },
-      { names: WEETJES_TRIGGER, action: () => maggieMond.sayWeetje() },
       { names: WHEN_TRIGGER, action: () => maggieMond.sayWhen() },
       { names: WHERE_TRIGGER, action: () => maggieMond.sayWhere() },
+      {
+        names: WEETJES_TRIGGER,
+        action: async () => await maggieMond.sayWeetje(),
+      },
       {
         names: ["wie"],
         action: () => maggieMond.sayRandomUser(),
@@ -175,11 +179,12 @@ class MaggieBrein {
       },
       { names: ["nsfw"], action: async () => await maggieMond.showNsfw() },
       {
-        names: ["9gag", "ninegag", "meme", "foto"],
+        names: ["9gag", "ninegag", "meme"],
         action: async () => await maggieMond.showMeme(),
       },
+
       {
-        names: ["nieuws", "vandaag gebeurd", "news", "hln", "gazet"],
+        names: ["nieuws", "news", "hln", "gazet"],
         action: async () => await maggieMond.readTheNews(),
       },
       {
@@ -234,6 +239,18 @@ class MaggieBrein {
       {
         names: ["kleur"],
         action: () => maggieMond.sayColour(),
+      },
+      {
+        names: ["wiki", "wikipedia"],
+        action: async (text) => await maggieMond.sayWiki(text),
+      },
+      {
+        names: ["wat is", "wie is", "vertel meer over"],
+        action: async (text) => await maggieMond.sayWikiSummary(text),
+      },
+      {
+        names: IMAGE_TRIGGER,
+        action: async (text) => await maggieMond.sayImage(text),
       },
       {
         names: [TIMEOUT_STOP_TRIGGER],

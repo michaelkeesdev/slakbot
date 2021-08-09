@@ -35,7 +35,7 @@ app.event("app_mention", async ({ context, event }) => {
 
   const text = event.text.replace(`<@${context.botUserId}>`, "").trim();
   const files = event?.files ? event.files : [];
-  
+
   let user = event?.user;
 
   const response = await maggie.getMentionResponse(text, context, files, user);
@@ -47,12 +47,32 @@ app.event("app_mention", async ({ context, event }) => {
 (async () => {
   await app.start(process.env.PORT || 8080);
 
-  console.log("in timeout", await maggie.getMentionResponse("in de hoek", null, null, "U91HHN2JE"));
-  console.log("ask stop", await maggie.getMentionResponse("kom uit hoek", null, null, "U91HHN2J"));
-  console.log("ja", await maggie.getMentionResponse("hup waarke", null, null, "U91HHN2JE"));
+  console.log(
+    "wiki sinaasappel",
+    await maggie.getMentionResponse("wiki sinaasappel")
+  );
 
+  console.log(
+    "wat is sinaasappel",
+    await maggie.getMentionResponse("wat is sinaasappel")
+  );
 
+  console.log(
+    "wie is shakira",
+    await maggie.getMentionResponse("wie is shakira")
+  );
 
+  console.log("wat", await maggie.getMentionResponse("wat"));
+  console.log("wat gedaan", await maggie.getMentionResponse("wat gedaan"));
+  console.log("wie", await maggie.getMentionResponse("wie"));
+  console.log("wie gedaan", await maggie.getMentionResponse("wie gedaan"));
+
+  console.log(
+    "foto van shakira",
+    await maggie.getMentionResponse("foto van shakira")
+  );
+
+  // console.log("weetje", await maggie.getMentionResponse("weetje"));
 
   console.log("⚡️ Slakbot is running!");
 })();

@@ -1,3 +1,33 @@
+export const SCHELD_PHRASE = [
+    "Gy zyt een %scheld%",
+    "Ge bent een %scheld%",
+    "Gij bent een %scheld%",
+    "Je bent een %scheld%",
+    "Een vuil %scheld% bent ge",
+    "Een vuil %scheld% zijt ge",
+    "Gy zyt een %scheld%. %suffix%",
+    "Ge bent een %scheld%. %suffix%",
+    "Je bent een %scheld%. %suffix%",
+    "%adjective %scheld%. %suffix%",
+    "%scheld%. %suffix%",
+    "%adjective %scheld%",
+    "Een %adjective %scheld% bent gy",
+    "Een %adjective %scheld% bent gy. %suffix%",
+    "Och hij is het nie waard",
+];
+
+export const SCHELD_SUFFIX = [
+    "Schaam u diep.",
+    "Walg.",
+    "En dans.",
+    "Triest...",
+    "Nog nooit zoiets meegemaakt.",
+    "Erg dit.",
+    "Erg gij.",
+    "Ga wenen.",
+    "Ge bent mijn woorden niet waard eigenlijk."
+];
+
 export const SCHELD = [
     "aapmens",
     "aarstulp",

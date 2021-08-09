@@ -47,6 +47,9 @@ app.event("app_mention", async ({ context, event }) => {
 (async () => {
   await app.start(process.env.PORT || 8080);
 
+  console.log("scheld", await maggie.getMentionResponse("scheld kees"));
+
+  /*
   console.log(
     "wiki sinaasappel",
     await maggie.getMentionResponse("wiki sinaasappel")
@@ -73,6 +76,7 @@ app.event("app_mention", async ({ context, event }) => {
   );
 
   // console.log("weetje", await maggie.getMentionResponse("weetje"));
+  */
 
   console.log("⚡️ Slakbot is running!");
 })();

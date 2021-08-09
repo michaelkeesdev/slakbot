@@ -1,7 +1,9 @@
 import { UserService } from "./UserService";
 import { StringBuilder } from './../../util/StringBuilder';
 import { BASIC_COMMAND } from './../../answers/basic/BasicCommand';
-import { SCHELD } from "../../answers/basic/Scheld";
+import { SCHELD_PHRASE, SCHELD_SUFFIX, SCHELD } from "../../answers/basic/Scheld";
+import { ADJECTIVES } from "../../answers/words/Adjectives";
+
 import { sample } from "lodash";
 
 class TagService {
@@ -37,8 +39,18 @@ class TagService {
 
         let users = this.userService.extractUsersFromText(text);
 
+        let scheldParts = { 
+            "%adjective%": sample(ADJECTIVES), 
+            "%scheld%": sample(SCHELD),
+            "%suffix%": sample(SCHELD_SUFFIX)
+        }
+
+        let scheld = sample(SCHELD_PHRASE).replace(/%\w+%/g, function(all) {
+            return scheldParts[all] || all;
+        });
+
         if (users.length > 0) {
-            responseBuilder.append(this.tagUsers(users) + sample(SCHELD));    
+            responseBuilder.append(this.tagUsers(users) + scheld);    
         } else {
             responseBuilder.append("wie?");
         }

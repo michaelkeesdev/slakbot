@@ -10,7 +10,10 @@ import { WEETJES_PREFIX } from '../../answers/weetjes/Weetjesprefix';
 import { BASIC_SUFFIX } from '../../answers/basic/BasicSuffix';
 import { HOW_YOU_DOING_PREFIX, HOW_YOU_DOING_SUFFIX, HOW_YOU_DOING_ANSWER } from '../../answers/HowYouDoing';
 import { EMOJIS } from '../../answers/basic/EmojiApp';
+import { ADJECTIVE } from './../../answers/words/Adjectives';
+import { SCHELD } from './../../answers/basic/Scheld';
 import { SystemAnswerService } from './SystemAnswerService';
+
 
 const PREFIX_PID = 6;
 const SUFFIX_PID = 6;
@@ -127,7 +130,16 @@ class BasicAnweringService {
         }
 
         if (suffix === 1) {
-            responseBuilder.appendFullStopIfNone().append(" ").append(sample(BASIC_SUFFIX));
+            let suffixParts = { 
+                "%adjective%": sample(ADJECTIVE), 
+                "%scheld%": sample(SCHELD)
+            }
+
+            let suffix = sample(BASIC_SUFFIX).replace(/%\w+%/g, function(all) {
+                return suffixParts[all] || all;
+            });
+
+            responseBuilder.appendFullStopIfNone().append(" ").append(suffix);
         }
         if (emoji === 1) {
             responseBuilder.append(" ").append(sample(EMOJIS));

@@ -135,11 +135,11 @@ class BasicAnweringService {
                 "%scheld%": sample(SCHELD)
             }
 
-            let suffix = sample(BASIC_SUFFIX).replace(/%\w+%/g, function(all) {
+            let suffixText = sample(BASIC_SUFFIX).replace(/%\w+%/g, function(all) {
                 return suffixParts[all] || all;
             });
 
-            responseBuilder.appendFullStopIfNone().append(" ").append(suffix);
+            responseBuilder.appendFullStopIfNone().append(" ").append(suffixText);
         }
         if (emoji === 1) {
             responseBuilder.append(" ").append(sample(EMOJIS));

@@ -8,4 +8,6 @@ export const WHY_ANSWERS = [
   "Vermits %user% moet %verb%",
   "Goeie vraag. %user% weet jij het?",
   "Waarom ni",
+  "Omdat %user% een %adjective% %scheld% is?",
+  "Vermits %user% een %scheld% is",
 ];

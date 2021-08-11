@@ -69,7 +69,8 @@ client.once('ready', () => {
 client.on('message', async (message) => {
   if (message.isMentioned(client.user)) {
     console.log(`${interaction.user.tag} in #${interaction.channel.name} triggered an interaction.`);
-    await maggie.getMentionResponse(interaction, null, null, interaction.user.tag)
+    response = await maggie.getMentionResponse(message, null, null, message.user)
+    message.reply(response);
   }
 });
 

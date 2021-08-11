@@ -58,9 +58,9 @@ app.event("app_mention", async ({ context, event }) => {
 
 // DISCORD
 
-const { Client, Intents } = require('discord.js');
+const { Client, Intents, Permissions } = require('discord.js');
 
-const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+const client = new Client({ intents: [Intents.FLAGS.GUILDS], permissions: [Permissions.ALL] });
 
 client.once('ready', () => {
 	console.log('Discord Ready!');

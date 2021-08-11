@@ -66,9 +66,11 @@ client.once('ready', () => {
 	console.log('Discord Ready!');
 });
 
-client.on('interactionCreate', async (interaction) => {
-  const response = await maggie.getMentionResponse(interaction, null, null, interaction.user.tag);
-	interaction.reply(response);
+client.on('message', async (message) => {
+  if (message.includes("Maggie") || message.includes("875074049968058431") || message.includes("#5880")) {
+    console.log(`${interaction.user.tag} in #${interaction.channel.name} triggered an interaction.`);
+    await maggie.getMentionResponse(interaction, null, null, interaction.user.tag)
+  }
 });
 
 client.login(process.env.DISCORD_TOKEN);

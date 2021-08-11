@@ -67,8 +67,8 @@ client.once('ready', () => {
 });
 
 client.on('interactionCreate', async (interaction) => {
-	console.log(`${interaction.user.tag} in #${interaction.channel.name} triggered an interaction.`);
-  await maggie.getMentionResponse(interaction, null, null, interaction.user.tag)
+  const response = await maggie.getMentionResponse(interaction, null, null, interaction.user.tag);
+	interaction.reply(response);
 });
 
 client.login(process.env.DISCORD_TOKEN);

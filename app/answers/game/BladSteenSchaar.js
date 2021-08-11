@@ -40,7 +40,7 @@ export const BLAD_STEEN_SCHAAR_MAGGIE_LOSS_PHRASE = [
     "pff ik %bladsteenschaar%",
     "kuthoer ik %bladsteenschaar%",
     "och ik %bladsteenschaar%",
-    "valsgespeeld lol ik %bladsteenschaar%"
+    "ge speelt vals, ik %bladsteenschaar%"
 ]
 
 export const BLAD_STEEN_SCHAAR_WTF_PHRASE = [

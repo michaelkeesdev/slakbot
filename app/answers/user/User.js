@@ -43,7 +43,7 @@ export const USERS = [{
 }, {
     id: "U92KLC4CX",
     tagName: "Rits",
-    shortNames: ["Ries", "Rits", "Rats", "Maurats", "Oplichter"],
+    shortNames: ["Rits", "Rats", "Maurats", "Oplichter"],
     firstName: "Maurice",
     lastName: "Dalderup",
     birthDay: "2 januari"

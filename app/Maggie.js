@@ -1,4 +1,5 @@
 import { sample } from "lodash";
+import { BLAD_STEEN_SCHAAR_INIT_TRIGGER } from "./answers/game/BladSteenSchaar";
 
 import {
   DURING_TIMEOUT_ANSWER,
@@ -31,6 +32,8 @@ class Maggie {
   id = "U01NEE5JYSY";
   timeoutUser;
   timeoutMessageAmount = 0;
+
+  bladSteenSchaarUser;
 
   getMentionResponse = async (textInput, context, files, user) => {
     if (!this.isMaggieInHoekForTimeout(1)) {
@@ -67,6 +70,14 @@ class Maggie {
       ) {
         this.setMaggieInHoekForTimeout(user);
         response = sample(TIMEOUT_ANSWER);
+      }
+
+      if (BLAD_STEEN_SCHAAR_INIT_TRIGGER.includes(textInput) && !this.bladSteenSchaarUser) {
+          response = maggieMond.initBladSteenSchaar();
+          this.bladSteenSchaarUser = user;
+      } else if (this.bladSteenSchaarUser === user) {
+          response = maggieMond.playBladSteenSchaar(textInput);
+          this.bladSteenSchaarUser = null;
       }
 
       maggieBrein.pushMessage({ text: response, user: this.id });

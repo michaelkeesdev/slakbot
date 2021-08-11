@@ -46,37 +46,9 @@ app.event("app_mention", async ({ context, event }) => {
 
 (async () => {
   await app.start(process.env.PORT || 8080);
-
-  console.log("scheld", await maggie.getMentionResponse("scheld kees"));
-
-  /*
-  console.log(
-    "wiki sinaasappel",
-    await maggie.getMentionResponse("wiki sinaasappel")
-  );
-
-  console.log(
-    "wat is sinaasappel",
-    await maggie.getMentionResponse("wat is sinaasappel")
-  );
-
-  console.log(
-    "wie is shakira",
-    await maggie.getMentionResponse("wie is shakira")
-  );
-
-  console.log("wat", await maggie.getMentionResponse("wat"));
-  console.log("wat gedaan", await maggie.getMentionResponse("wat gedaan"));
-  console.log("wie", await maggie.getMentionResponse("wie"));
-  console.log("wie gedaan", await maggie.getMentionResponse("wie gedaan"));
-
-  console.log(
-    "foto van shakira",
-    await maggie.getMentionResponse("foto van shakira")
-  );
-
-  // console.log("weetje", await maggie.getMentionResponse("weetje"));
-  */
+  console.log("init", await maggie.getMentionResponse("blad steen schaar"));
+  console.log("play", await maggie.getMentionResponse("hoer"));
+  console.log("end", await maggie.getMentionResponse("ge suckt"));
 
   console.log("⚡️ Slakbot is running!");
 })();

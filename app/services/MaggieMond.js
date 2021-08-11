@@ -22,7 +22,7 @@ import { FoodService } from "./food/FoodService";
 import { YoutubeService } from "./google/YoutubeService";
 import { TubeService } from "./google/TubeService";
 import { DecisionService } from "./answering/DecisionService";
-import { EuroMillionsService } from "./gambling/EuroMillionsService";
+import { EuroMillionsService } from "./game/EuroMillionsService";
 import { WeatherService } from "./weather/WeatherService";
 import { TimeService } from "./time/TimeService";
 import { HttpClient } from "../../httpClient";
@@ -41,6 +41,7 @@ import { TokenizerService } from "./tokenizer/Tokenizer";
 import { MolService } from "./tv/MolService";
 import { WikiService } from "./wiki/WikiService";
 import { ImageService } from "./google/ImageService";
+import { BladSteenSchaarService } from "./game/BladSteenSchaarService";
 
 const basicAnweringService = new BasicAnweringService();
 
@@ -67,6 +68,7 @@ const tagService = new TagService();
 const molService = new MolService();
 const wikiService = new WikiService(httpClient);
 const imageService = new ImageService();
+const bladSteenSchaarService = new BladSteenSchaarService();
 
 class MaggieMond {
   askBasicFollowUpQuestion() {
@@ -210,6 +212,12 @@ class MaggieMond {
   }
   askForStopTimeout() {
     return sample(TIMEOUT_STOP_PLACEHOLDER);
+  }
+  initBladSteenSchaar() {
+    return bladSteenSchaarService.init();
+  }
+  playBladSteenSchaar(textInput) {
+    return bladSteenSchaarService.play(textInput);
   }
 }
 

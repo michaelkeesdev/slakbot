@@ -69,7 +69,7 @@ client.once('ready', () => {
 client.on('message', async (message) => {
   if (message.isMentioned(client.user)) {
     response = await maggie.getMentionResponse(message.content, null, null, message.author)
-    message.reply(response);
+    message.channel.send(response);
   }
 });
 

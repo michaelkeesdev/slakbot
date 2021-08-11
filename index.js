@@ -64,6 +64,7 @@ const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
 client.once('ready', () => {
 	console.log('⚡️ Discord Ready!');
+  console.log(client);
 });
 
 client.on('message', async (message) => {
@@ -72,5 +73,4 @@ client.on('message', async (message) => {
     message.channel.send(response);
   }
 });
-
 client.login(process.env.DISCORD_TOKEN);

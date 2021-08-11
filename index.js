@@ -1,3 +1,5 @@
+// SLACK
+
 import { App } from "@slack/bolt";
 import "dotenv/config";
 
@@ -52,3 +54,21 @@ app.event("app_mention", async ({ context, event }) => {
 
   console.log("⚡️ Slakbot is running!");
 })();
+
+
+// DISCORD
+
+const { Client, Intents } = require('discord.js');
+
+const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+
+client.once('ready', () => {
+	console.log('Discord Ready!');
+});
+
+client.on('interactionCreate', async (interaction) => {
+	console.log(`${interaction.user.tag} in #${interaction.channel.name} triggered an interaction.`);
+  await maggie.getMentionResponse(interaction, null, null, interaction.user.tag)
+});
+
+client.login(process.env.DISCORD_TOKEN);

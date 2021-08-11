@@ -46,7 +46,6 @@ export const BLAD_STEEN_SCHAAR_MAGGIE_LOSS_PHRASE = [
 export const BLAD_STEEN_SCHAAR_WTF_PHRASE = [
     "wtf, ik had %bladsteenschaar%, mja doe normaal" ,
     "ik had %bladsteenschaar%..ma als gij ni tegoei doet pff",
-    "ik %bladsteenschaar% mja nee pff",
     "rps dacht ik???",
     "wa? tis rps? laat maar dan",
     "ok als ge ni tegoei speelt, dag"

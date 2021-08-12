@@ -87,6 +87,10 @@ class Maggie {
         this.higherLowerUser = user;
       } else if (this.higherLowerUser === user && maggieMond.higherLowerStillPlaying()) {
         response = maggieMond.playHigherLower(textInput);
+        if (!this.maggieMond.higherLowerStillPlaying()) {
+          this.higherLowerUser = null;
+        }
+        }
       } else if (!maggieMond.higherLowerStillPlaying()) {
         this.higherLowerUser = null;
       }

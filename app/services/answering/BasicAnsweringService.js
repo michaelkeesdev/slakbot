@@ -10,7 +10,7 @@ import { WEETJES_PREFIX } from '../../answers/weetjes/Weetjesprefix';
 import { BASIC_SUFFIX } from '../../answers/basic/BasicSuffix';
 import { HOW_YOU_DOING_PREFIX, HOW_YOU_DOING_SUFFIX, HOW_YOU_DOING_ANSWER } from '../../answers/HowYouDoing';
 import { EMOJIS } from '../../answers/basic/EmojiApp';
-import { ADJECTIVE } from './../../answers/words/Adjectives';
+import { ADJECTIVES } from './../../answers/words/Adjectives';
 import { SCHELD } from './../../answers/basic/Scheld';
 import { SystemAnswerService } from './SystemAnswerService';
 
@@ -131,7 +131,7 @@ class BasicAnweringService {
 
         if (suffix === 1) {
             let suffixParts = { 
-                "%adjective%": sample(ADJECTIVE), 
+                "%adjective%": sample(ADJECTIVES), 
                 "%scheld%": sample(SCHELD)
             }
 

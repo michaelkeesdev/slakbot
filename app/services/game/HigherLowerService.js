@@ -46,11 +46,13 @@ class HigherLowerService {
             response = sample(HIGHER_LOWER_CORRECT_CONTINUE);
             this.totalCorrectInRow++;
             this.lastPick = maggiePick;    
+            this.gameLost = false;
         } else if (this.isLossForPlayer(playerInput, maggiePick)) {
             response = sample(HIGHER_LOWER_WRONG_LOSE)
             this.gameLost = true;
         } else {
             response = sample(HIGHER_LOWER_WTF_PHRASE);
+            this.gameLost = true;
         }
 
         let higherLower = { 

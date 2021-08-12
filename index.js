@@ -69,10 +69,6 @@ const { InteractionResponseType, verifyKeyMiddleware } = require("discord-intera
 var discordApp = express();
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
-client.once('ready', () => {
-	console.log('⚡️ Discord Ready!');
-  console.log(client);
-});
 
 discordApp.post('/interactions', verifyKeyMiddleware('f79402272be9d36eb834d5c9364761fd6a1fdec310a12685c947c92bc7cd3b95'), async (req, res) => {
   const message = req.body;
@@ -88,5 +84,10 @@ discordApp.post('/interactions', verifyKeyMiddleware('f79402272be9d36eb834d5c936
   }
 });
 
-
 client.login(process.env.DISCORD_TOKEN);
+
+discordApp.listen(8000, function () {
+  client.once('ready', () => {
+    console.log('⚡️ Discord Ready!');
+  });
+ });

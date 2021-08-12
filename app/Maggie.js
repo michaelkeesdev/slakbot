@@ -94,6 +94,7 @@ class Maggie {
       maggieBrein.pushMessage({ text: response, user: this.id });
 
       return response;
+      
     } else {
       if (this.isMaggieInHoekForTimeout(0)) {
         return this.handleTimeoutStopAnswer(textInput, user);

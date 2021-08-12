@@ -82,7 +82,7 @@ class Maggie {
           this.bladSteenSchaarUser = null;
       }
 
-      if (HIGHER_LOWER_INIT_TRIGGER.includes(textInput) && !this.higherLowerUser) {
+      if ("higher lower" === textInput && !this.higherLowerUser) {
         response = maggieMond.initHigherLower();
         this.higherLowerUser = user;
       } else if (this.higherLowerUser === user && maggieMond.higherLowerStillPlaying()) {

@@ -58,8 +58,15 @@ app.event("app_mention", async ({ context, event }) => {
 
 // DISCORD
 
-const { Client, Intents, Permissions } = require('discord.js');
 
+// respond with "hello world" when a GET request is made to the homepage
+
+
+const express = require('express');
+const { Client, Intents, Permissions } = require('discord.js');
+const { InteractionResponseType, verifyKeyMiddleware } = require("discord-interactions");
+
+var discordApp = express();
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
 client.once('ready', () => {
@@ -67,10 +74,19 @@ client.once('ready', () => {
   console.log(client);
 });
 
-client.on('message', async (message) => {
+discordApp.post('/interactions', verifyKeyMiddleware('f79402272be9d36eb834d5c9364761fd6a1fdec310a12685c947c92bc7cd3b95'), async (req, res) => {
+  const message = req.body;
+
   if (message.isMentioned(client.user)) {
     response = await maggie.getMentionResponse(message.content, null, null, message.author)
-    message.channel.send(response);
+    res.send({
+      type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+      data: {
+        content: response,
+      },
+    });
   }
 });
+
+
 client.login(process.env.DISCORD_TOKEN);

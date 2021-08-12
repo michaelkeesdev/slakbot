@@ -90,7 +90,6 @@ class Maggie {
         if (!this.maggieMond.higherLowerStillPlaying()) {
           this.higherLowerUser = null;
         }
-        }
       } else if (!maggieMond.higherLowerStillPlaying()) {
         this.higherLowerUser = null;
       }

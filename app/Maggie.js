@@ -87,14 +87,14 @@ class Maggie {
         this.higherLowerUser = user;
       } else if (this.higherLowerUser === user && maggieMond.higherLowerStillPlaying()) {
         response = maggieMond.playHigherLower(textInput);
-      } else {
+      } else if (!maggieMond.higherLowerStillPlaying()) {
         this.higherLowerUser = null;
       }
 
       maggieBrein.pushMessage({ text: response, user: this.id });
 
       return response;
-      
+
     } else {
       if (this.isMaggieInHoekForTimeout(0)) {
         return this.handleTimeoutStopAnswer(textInput, user);

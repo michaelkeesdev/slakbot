@@ -49,9 +49,13 @@ app.event("app_mention", async ({ context, event }) => {
 (async () => {
   await app.start(process.env.PORT || 8080);
   console.log("init", await maggie.getMentionResponse("higher lower", null, null, "U91HHN2JE"));
+  console.log("higher", await maggie.getMentionResponse("hoger", null, null, "U90TSU6JU"));
   console.log("higher", await maggie.getMentionResponse("hoger", null, null, "U91HHN2JE"));
   console.log("higher", await maggie.getMentionResponse("hoger", null, null, "U91HHN2JE"));
-  console.log("higher", await maggie.getMentionResponse("hoger", null, null, "U91HHN2JE"));
+
+  console.log("init", await maggie.getMentionResponse("higher lower", null, null, "U90TSU6JU"));
+
+  
 
 
   console.log("⚡️ Slakbot is running!");

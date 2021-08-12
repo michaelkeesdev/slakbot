@@ -86,7 +86,7 @@ discordApp.post('/interactions', verifyKeyMiddleware('f79402272be9d36eb834d5c936
 
 client.login(process.env.DISCORD_TOKEN);
 
-discordApp.listen(process.env.PORT || 8080, function () {
+discordApp.listen(8081, function () {
   client.once('ready', () => {
     console.log('⚡️ Discord Ready!');
   });

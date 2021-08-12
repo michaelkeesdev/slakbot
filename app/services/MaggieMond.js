@@ -42,6 +42,7 @@ import { MolService } from "./tv/MolService";
 import { WikiService } from "./wiki/WikiService";
 import { ImageService } from "./google/ImageService";
 import { BladSteenSchaarService } from "./game/BladSteenSchaarService";
+import { HigherLowerService } from "./game/HigherLowerService";
 
 const basicAnweringService = new BasicAnweringService();
 
@@ -69,6 +70,7 @@ const molService = new MolService();
 const wikiService = new WikiService(httpClient);
 const imageService = new ImageService();
 const bladSteenSchaarService = new BladSteenSchaarService();
+const higherLowerService = new HigherLowerService()
 
 class MaggieMond {
   askBasicFollowUpQuestion() {
@@ -218,6 +220,15 @@ class MaggieMond {
   }
   playBladSteenSchaar(textInput) {
     return bladSteenSchaarService.play(textInput);
+  }
+  initHigherLower() {
+    return higherLowerService.init();
+  }
+  playHigherLower(textInput) {
+    return higherLowerService.play(textInput);
+  }
+  higherLowerStillPlaying() {
+    return !higherLowerService.gameLost;
   }
 }
 

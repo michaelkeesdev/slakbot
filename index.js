@@ -48,9 +48,11 @@ app.event("app_mention", async ({ context, event }) => {
 
 (async () => {
   await app.start(process.env.PORT || 8080);
-  console.log("init", await maggie.getMentionResponse("blad steen schaar"));
-  console.log("play", await maggie.getMentionResponse("hoer"));
-  console.log("end", await maggie.getMentionResponse("ge suckt"));
+  console.log("init", await maggie.getMentionResponse("higher lower", null, null, "U91HHN2JE"));
+  console.log("higher", await maggie.getMentionResponse("hoger", null, null, "U91HHN2JE"));
+  console.log("higher", await maggie.getMentionResponse("hoger", null, null, "U91HHN2JE"));
+  console.log("higher", await maggie.getMentionResponse("hoger", null, null, "U91HHN2JE"));
+
 
   console.log("⚡️ Slakbot is running!");
 })();
@@ -61,7 +63,7 @@ app.event("app_mention", async ({ context, event }) => {
 
 // respond with "hello world" when a GET request is made to the homepage
 
-
+/*
 const express = require('express');
 const { Client, Intents, Permissions } = require('discord.js');
 const { InteractionResponseType, verifyKeyMiddleware } = require("discord-interactions");
@@ -91,3 +93,4 @@ discordApp.listen(8081, function () {
     console.log('⚡️ Discord Ready!');
   });
  });
+ */

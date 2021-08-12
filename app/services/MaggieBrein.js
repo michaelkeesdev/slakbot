@@ -25,6 +25,7 @@ import { SORRY_TRIGGER } from "../answers/Sorry";
 import { HOER_TRIGGER } from "../answers/Hoer";
 import { FOOD_TRIGGER } from "../answers/food/Food";
 import { IMAGE_TRIGGER } from "../answers/image/Images";
+import { HigherLowerService } from "./game/HigherLowerService";
 
 const decisionService = new DecisionService();
 const maggieMond = new MaggieMond();

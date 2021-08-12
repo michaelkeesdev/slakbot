@@ -1,5 +1,6 @@
 import { sample } from "lodash";
 import { BLAD_STEEN_SCHAAR_INIT_TRIGGER } from "./answers/game/BladSteenSchaar";
+import { HIGHER_LOWER_INIT_TRIGGER } from "./answers/game/HigherLower";
 
 import {
   DURING_TIMEOUT_ANSWER,
@@ -34,6 +35,7 @@ class Maggie {
   timeoutMessageAmount = 0;
 
   bladSteenSchaarUser;
+  higherLowerUser;
 
   getMentionResponse = async (textInput, context, files, user) => {
     if (!this.isMaggieInHoekForTimeout(1)) {
@@ -78,6 +80,15 @@ class Maggie {
       } else if (this.bladSteenSchaarUser === user) {
           response = maggieMond.playBladSteenSchaar(textInput);
           this.bladSteenSchaarUser = null;
+      }
+
+      if (HIGHER_LOWER_INIT_TRIGGER.includes(textInput) && !this.higherLowerUser) {
+        response = maggieMond.initHigherLower();
+        this.higherLowerUser = user;
+      } else if (this.higherLowerUser === user && maggieMond.higherLowerStillPlaying()) {
+        response = maggieMond.playHigherLower(textInput);
+      } else {
+        this.higherLowerUser = null;
       }
 
       maggieBrein.pushMessage({ text: response, user: this.id });

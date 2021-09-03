@@ -48,14 +48,20 @@ app.event("app_mention", async ({ context, event }) => {
 
 (async () => {
   await app.start(process.env.PORT || 8080);
-  console.log("init", await maggie.getMentionResponse("higher lower", null, null, "U91HHN2JE"));
-  console.log("higher", await maggie.getMentionResponse("hoger", null, null, "U90TSU6JU"));
-  console.log("higher", await maggie.getMentionResponse("hoger", null, null, "U91HHN2JE"));
-  console.log("higher", await maggie.getMentionResponse("hoger", null, null, "U91HHN2JE"));
+  console.log("1 init", await maggie.getMentionResponse("higher lower", null, null, "U91HHN2JE"));
+  console.log("2 other player higher", await maggie.getMentionResponse("hoger", null, null, "U90TSU6JU"));
+  console.log("3 other player rps", await maggie.getMentionResponse("rps", null, null, "U90TSU6JU"));
 
-  console.log("init", await maggie.getMentionResponse("higher lower", null, null, "U90TSU6JU"));
+  console.log("4 higher", await maggie.getMentionResponse("hoger", null, null, "U91HHN2JE"));
+  console.log("5 other player blad", await maggie.getMentionResponse("blad", null, null, "U90TSU6JU"));
+  console.log("6 higher", await maggie.getMentionResponse("hoger", null, null, "U91HHN2JE"));
+  console.log("7 higher", await maggie.getMentionResponse("hoger", null, null, "U91HHN2JE"));
 
-  
+  console.log("8 init game 2", await maggie.getMentionResponse("higher lower", null, null, "U91HHN2JE"));
+  console.log("9 play game 2", await maggie.getMentionResponse("hoger", null, null, "U91HHN2JE"));
+  console.log("10 play game 2", await maggie.getMentionResponse("hoger", null, null, "U91HHN2JE"));
+  console.log("11 play game 2", await maggie.getMentionResponse("hoger", null, null, "U91HHN2JE"));
+  console.log("12 play game 2", await maggie.getMentionResponse("hoger", null, null, "U91HHN2JE"));
 
 
   console.log("⚡️ Slakbot is running!");

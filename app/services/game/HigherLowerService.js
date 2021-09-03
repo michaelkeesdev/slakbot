@@ -7,18 +7,15 @@ class HigherLowerService {
     numberUtil = new NumberUtil();
     lastPick;
     totalCorrectInRow;
-    gameLost;
 
     init() {
-        this.lastPick = null;
-        this.totalCorrectInRow = 0;
-        this.gameLost = false;
+        console.log("init higher lower");
 
-        let firstPick = this.numberUtil.generateRandom(1, 100);
-        this.lastPick = firstPick;
+        this.lastPick = this.numberUtil.generateRandom(1, 100);
+        this.totalCorrectInRow = 0;
 
         let higherLower = { 
-            "%number%": firstPick,
+            "%number%": this.lastPick,
         }
 
         return sample(HIGHER_LOWER_INIT_PHRASE).replace(/%\w+%/g, function(all) {
@@ -27,7 +24,9 @@ class HigherLowerService {
     }
 
     play(playerInput) {
-        if (this.lastPick === 0) {
+        console.log("play higher lower");
+
+        if (playerInput === "higher lower") {
             return this.init();
         }
 
@@ -36,53 +35,50 @@ class HigherLowerService {
             maggiePick = this.numberUtil.generateRandom(1, 100);
         } while (maggiePick === this.lastPick);
 
-        console.log("player said", playerInput);
-        console.log("maggie picks", maggiePick);
-        console.log("last number was", this.lastPick);
-
         let response;
 
-        if (this.isWinForPlayer(playerInput, maggiePick)) {
-            response = sample(HIGHER_LOWER_CORRECT_CONTINUE);
+        if (this.playerWon(playerInput, maggiePick)) {
             this.totalCorrectInRow++;
-            this.lastPick = maggiePick;    
-            this.gameLost = false;
-        } else if (this.isLossForPlayer(playerInput, maggiePick)) {
-            response = sample(HIGHER_LOWER_WRONG_LOSE)
-            this.gameLost = true;
-        } else {
-            response = sample(HIGHER_LOWER_WTF_PHRASE);
-            this.gameLost = true;
-        }
-
-        let higherLower = { 
-            "%number%": maggiePick,
-            "%totalCorrectInRow%": this.totalCorrectInRow
-        }
-        
-        if (this.gameLost) {
+            this.lastPick = maggiePick;  
+            response = this.respond(sample(HIGHER_LOWER_CORRECT_CONTINUE))  
+        } else if (this.playerLost(playerInput, maggiePick)) {
+            response = this.respond(sample(HIGHER_LOWER_WRONG_LOSE))
             this.totalCorrectInRow = 0;
             this.lastPick = 0;
+        } else {
+            response = this.respond(sample(HIGHER_LOWER_WTF_PHRASE));
         }
 
-        console.log(response.replace(/%\w+%/g, function(all) {
-            return higherLower[all] || all;
-        }));
+        console.log(response);
+        return response;
+    }
 
+    respond(response) {
+        let higherLower = { 
+            "%number%": this.lastPick,
+            "%totalCorrectInRow%": this.totalCorrectInRow
+        }
         return response.replace(/%\w+%/g, function(all) {
             return higherLower[all] || all;
         });
     }
 
-
-    isWinForPlayer(playerInput, maggiePick) {
+    playerWon(playerInput, maggiePick) {
         return (playerInput.includes("hoger") || playerInput.includes("higher")) && maggiePick > this.lastPick
          || (playerInput.includes("lager") || playerInput.includes("lower")) && maggiePick < this.lastPick;
     }
 
-    isLossForPlayer(playerInput, maggiePick) {
+    playerLost(playerInput, maggiePick) {
         return (playerInput.includes("hoger") || playerInput.includes("higher")) && maggiePick < this.lastPick 
         || (playerInput.includes("lager") || playerInput.includes("lower")) && maggiePick > this.lastPick;
+    }
+
+    gameHasEnded() {
+        return this.totalCorrectInRow === 0 && this.lastPick === 0;
+    }
+
+    end(user) {
+        console.log("higherlower with ", user, " ended");
     }
 }
 

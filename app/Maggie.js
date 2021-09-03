@@ -34,9 +34,6 @@ class Maggie {
   timeoutUser;
   timeoutMessageAmount = 0;
 
-  bladSteenSchaarUser;
-  higherLowerUser;
-
   getMentionResponse = async (textInput, context, files, user) => {
     if (!this.isMaggieInHoekForTimeout(1)) {
       const text = textInput?.replace(`<@${context?.botUserId}>`, "").trim();
@@ -56,6 +53,8 @@ class Maggie {
         response = await exactMatches[0]?.action(text, context, imageUrl);
       }
 
+      response = await maggieBrein.playGame(text, user);
+
       if (!response) {
         switch (true) {
           case maggieBrein.needsToDecide(text):
@@ -66,34 +65,7 @@ class Maggie {
         }
       }
 
-      if (
-        TIMEOUT_TRIGGER.includes(textInput) &&
-        !this.isMaggieInHoekForTimeout(0)
-      ) {
-        this.setMaggieInHoekForTimeout(user);
-        response = sample(TIMEOUT_ANSWER);
-      }
-
-      if (BLAD_STEEN_SCHAAR_INIT_TRIGGER.includes(textInput) && !this.bladSteenSchaarUser) {
-          response = maggieMond.initBladSteenSchaar();
-          this.bladSteenSchaarUser = user;
-      } else if (this.bladSteenSchaarUser === user) {
-          response = maggieMond.playBladSteenSchaar(textInput);
-          this.bladSteenSchaarUser = null;
-      }
-
-      if ("higher lower" === textInput && !this.higherLowerUser) {
-        response = maggieMond.initHigherLower();
-        this.higherLowerUser = user;
-      } else if (this.higherLowerUser === user && maggieMond.higherLowerStillPlaying()) {
-        response = maggieMond.playHigherLower(textInput);
-        if (!maggieMond.higherLowerStillPlaying()) {
-          this.higherLowerUser = null;
-        }
-      } else if (!maggieMond.higherLowerStillPlaying()) {
-        this.higherLowerUser = null;
-      }
-
+      this.checkIfMaggieNeedsTimeout(textInput, user);
       maggieBrein.pushMessage({ text: response, user: this.id });
 
       return response;
@@ -104,6 +76,13 @@ class Maggie {
       }
     }
   };
+
+  checkIfMaggieNeedsTimeout(textInput, user) {
+    if (TIMEOUT_TRIGGER.includes(textInput) && !this.isMaggieInHoekForTimeout(0)) {
+      this.setMaggieInHoekForTimeout(user);
+      response = sample(TIMEOUT_ANSWER);
+    }
+  }
 
   getMessageResponses = async (message, user) => {
     if (!this.isMaggieInHoekForTimeout(1)) {

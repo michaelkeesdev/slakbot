@@ -25,11 +25,12 @@ import { SORRY_TRIGGER } from "../answers/Sorry";
 import { HOER_TRIGGER } from "../answers/Hoer";
 import { FOOD_TRIGGER } from "../answers/food/Food";
 import { IMAGE_TRIGGER } from "../answers/image/Images";
-import { HigherLowerService } from "./game/HigherLowerService";
+import { BaseGameService } from "./game/BaseGameService";
 
 const decisionService = new DecisionService();
 const maggieMond = new MaggieMond();
 const tokenizer = new TokenizerService();
+const gameService = new BaseGameService();
 
 const MAX_MESSAGES_MEM = 10;
 
@@ -108,6 +109,11 @@ class MaggieBrein {
   getTokens = (text) => {
     return tokenizer.tokenize(text);
   };
+
+  playGame = async (textInput, user) => {
+    gameService.initGame(textInput, user);
+    return gameService.playGame(textInput, user);
+  }
 
   getSimpeleMaggieMatches() {
     return [

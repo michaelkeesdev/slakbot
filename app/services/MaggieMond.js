@@ -215,21 +215,6 @@ class MaggieMond {
   askForStopTimeout() {
     return sample(TIMEOUT_STOP_PLACEHOLDER);
   }
-  initBladSteenSchaar() {
-    return bladSteenSchaarService.init();
-  }
-  playBladSteenSchaar(textInput) {
-    return bladSteenSchaarService.play(textInput);
-  }
-  initHigherLower() {
-    return higherLowerService.init();
-  }
-  playHigherLower(textInput) {
-    return higherLowerService.play(textInput);
-  }
-  higherLowerStillPlaying() {
-    return !higherLowerService.gameLost;
-  }
 }
 
 export { MaggieMond };

@@ -1,12 +1,22 @@
 import { sample } from "lodash";
 import { BLAD_STEEN_SCHAAR, BLAD_STEEN_SCHAAR_EQUAL_PHRASE, BLAD_STEEN_SCHAAR_INIT_PHRASE, BLAD_STEEN_SCHAAR_MAGGIE_WIN_PHRASE, BLAD_STEEN_SCHAAR_MAGGIE_LOSS_PHRASE, BLAD_STEEN_SCHAAR_WTF_PHRASE } from "../../answers/game/BladSteenSchaar";
 
+
 class BladSteenSchaarService {
+    gameEnded;
     init() {
         return sample(BLAD_STEEN_SCHAAR_INIT_PHRASE);
     }
 
     play(playerInput) {
+        console.log("play rps");
+        if (playerInput === "rps") {
+            response = this.init();
+            this.gameEnded = false;
+            return response;
+        }
+
+        this.gameOnFirstTurn = false;
         let maggiePick = sample(BLAD_STEEN_SCHAAR);
         let response;
 
@@ -23,6 +33,8 @@ class BladSteenSchaarService {
         let bladsteenschaar = { 
             "%bladsteenschaar%": maggiePick
         }
+
+        this.gameEnded = true;
 
         return response.replace(/%\w+%/g, function(all) {
             return bladsteenschaar[all] || all;
@@ -45,6 +57,14 @@ class BladSteenSchaarService {
         return playerInput.includes("blad") && maggiePick === "steen"
         || playerInput.includes("steen") && maggiePick === "schaar"
         || playerInput.includes("schaar") && maggiePick === "blad";
+    }
+
+    gameHasEnded() {
+        return this.gameEnded;
+    }
+
+    end(user) {
+        console.log("rps with ", user, " ended");
     }
 }
 

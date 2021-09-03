@@ -8,14 +8,24 @@ class BladSteenSchaarService {
 
     gameEnded;
 
-    init() {
-        return sample(BLAD_STEEN_SCHAAR_INIT_PHRASE);
+    init(user) {
+        let userObject = this.userService.getById(user);
+        let response = sample(BLAD_STEEN_SCHAAR_INIT_PHRASE);
+
+        let bladsteenschaar = { 
+            "%shortName%": sample(userObject.shortNames)
+        }
+
+        return response.replace(/%\w+%/g, function(all) {
+            return bladsteenschaar[all] || all;
+        });
+
     }
 
     play(playerInput, user) {
         console.log("play rps");
         if (playerInput === "rps") {
-            response = this.init();
+            response = this.init(user);
             this.gameEnded = false;
             return response;
         }
@@ -34,7 +44,6 @@ class BladSteenSchaarService {
             response = sample(BLAD_STEEN_SCHAAR_WTF_PHRASE);
         }
 
-        console.log("user", user);
         let userObject = this.userService.getById(user);
         let bladsteenschaar = { 
             "%bladsteenschaar%": maggiePick,

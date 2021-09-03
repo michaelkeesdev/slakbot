@@ -20,6 +20,7 @@ class BaseGameService {
                 this.userService.extractUsersFromText(textInput).forEach(user => {
                     players.push(this.getPlayerTag(user.id));
                 })
+                this.shufflePlayers(players);
                 console.log("FOUND ", players);
                 currentRunningGames.set(initPlayerTag, new HigherLowerService(players));
             }
@@ -53,6 +54,13 @@ class BaseGameService {
 
     getPlayerTag(user) {
         return `<@${user}>`;
+    }
+
+    shufflePlayers(players) {
+        for (let i = players.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [players[i], players[j]] = [players[j], players[i]];
+        }
     }
 }
 

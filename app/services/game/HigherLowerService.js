@@ -20,7 +20,7 @@ class HigherLowerService {
 
         let higherLower = { 
             "%number%": this.lastPick,
-            "%shortName": sample(userObject.shortNames)
+            "%shortName%": sample(userObject.shortNames)
         }
 
         return sample(HIGHER_LOWER_INIT_PHRASE).replace(/%\w+%/g, function(all) {

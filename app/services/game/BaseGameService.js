@@ -17,7 +17,6 @@ class BaseGameService {
 
     playGame = async (textInput, user) => {
         // Gameservice needs play() method
-        console.log("PLAY GAMES request text=", textInput, " user=", user);
         if (currentRunningGames.has(user) && !currentRunningGames.get(user).gameHasEnded()) {
             let response = currentRunningGames.get(user).play(textInput, user);
 

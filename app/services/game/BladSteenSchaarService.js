@@ -23,7 +23,6 @@ class BladSteenSchaarService {
     }
 
     play(playerInput, user) {
-        console.log("play rps");
         if (playerInput === "rps") {
             response = this.init(user);
             this.gameEnded = false;

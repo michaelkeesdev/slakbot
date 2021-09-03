@@ -11,12 +11,9 @@ class HigherLowerService {
     lastPick;
     totalCorrectInRow;
 
-    init(user) {
-        console.log("init higher lower");
-
+    init(userObject) {
         this.lastPick = this.numberUtil.generateRandom(1, 100);
         this.totalCorrectInRow = 0;
-        let userObject = this.userService.getById(user);
 
         let higherLower = { 
             "%number%": this.lastPick,
@@ -29,10 +26,10 @@ class HigherLowerService {
     }
 
     play(playerInput, user) {
-        console.log("play higher lower");
+        let userObject = this.userService.getById(user);
 
         if (playerInput === "higher lower") {
-            return this.init(user);
+            return this.init(userObject);
         }
 
         let maggiePick;
@@ -42,24 +39,25 @@ class HigherLowerService {
 
         let response;
 
-        if (this.playerWon(playerInput, maggiePick)) {
+        if (this.playerWon(playerInput, maggiePick, userObject)) {
+            console.log("Maggie picked ", maggiePick, "for ", userObject.tagName,".", userObject.tagName, "said ", playerInput,".", userObject.tagName, "wins");
             this.totalCorrectInRow++;
-            this.lastPick = maggiePick;  
-            response = this.respond(sample(HIGHER_LOWER_CORRECT_CONTINUE), user)  
-        } else if (this.playerLost(playerInput, maggiePick)) {
-            response = this.respond(sample(HIGHER_LOWER_WRONG_LOSE), user)
+            this.lastPick = maggiePick;
+            response = this.respond(sample(HIGHER_LOWER_CORRECT_CONTINUE), userObject)  
+        } else if (this.playerLost(playerInput, maggiePick, userObject)) {
+            console.log("Maggie picked ", maggiePick, "for ", userObject.tagName,".", userObject.tagName, "said ", playerInput,".", userObject.tagName, "loses");
             this.totalCorrectInRow = 0;
+            this.lastPick = maggiePick;
+            response = this.respond(sample(HIGHER_LOWER_WRONG_LOSE), userObject)
             this.lastPick = 0;
         } else {
-            response = this.respond(sample(HIGHER_LOWER_WTF_PHRASE), user);
+            response = this.respond(sample(HIGHER_LOWER_WTF_PHRASE), userObject);
         }
 
-        console.log(response);
         return response;
     }
 
-    respond(response, user) {
-        let userObject = this.userService.getById(user);
+    respond(response, userObject) {
         let higherLower = { 
             "%number%": this.lastPick,
             "%totalCorrectInRow%": this.totalCorrectInRow,

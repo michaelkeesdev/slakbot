@@ -1,14 +1,18 @@
 import { sample } from "lodash";
 import { BLAD_STEEN_SCHAAR, BLAD_STEEN_SCHAAR_EQUAL_PHRASE, BLAD_STEEN_SCHAAR_INIT_PHRASE, BLAD_STEEN_SCHAAR_MAGGIE_WIN_PHRASE, BLAD_STEEN_SCHAAR_MAGGIE_LOSS_PHRASE, BLAD_STEEN_SCHAAR_WTF_PHRASE } from "../../answers/game/BladSteenSchaar";
+import { UserService } from "./../user/UserService";
 
 
 class BladSteenSchaarService {
+    userService = new UserService();
+
     gameEnded;
+
     init() {
         return sample(BLAD_STEEN_SCHAAR_INIT_PHRASE);
     }
 
-    play(playerInput) {
+    play(playerInput, user) {
         console.log("play rps");
         if (playerInput === "rps") {
             response = this.init();
@@ -29,9 +33,12 @@ class BladSteenSchaarService {
         } else {
             response = sample(BLAD_STEEN_SCHAAR_WTF_PHRASE);
         }
-        
+
+        console.log("user", user);
+        let userObject = this.userService.getById(user);
         let bladsteenschaar = { 
-            "%bladsteenschaar%": maggiePick
+            "%bladsteenschaar%": maggiePick,
+            "%shortName%": sample(userObject.shortNames)
         }
 
         this.gameEnded = true;

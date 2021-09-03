@@ -1,5 +1,3 @@
-import { StringBuilder } from './../../util/StringBuilder';
-import { BASIC_COMMAND } from './../../answers/basic/BasicCommand';
 import { sample } from 'lodash';
 import { USERS } from '../../answers/user/User';
 
@@ -38,6 +36,10 @@ class UserService {
       return USERS;
     }
     return USERS.filter(user => this.textIncludesUser(text.toLowerCase(), user));
+  }
+
+  getById(userId) {
+    return USERS.filter(user => user.id.toString() === userId.toString())[0];
   }
 
   textIncludesUser(text, user) {

@@ -110,7 +110,7 @@ class MaggieBrein {
     return tokenizer.tokenize(text);
   };
 
-  playGame = async (textInput, user) => {
+  playGame(textInput, user) {
     gameService.initGame(textInput, user);
     return gameService.playGame(textInput, user);
   }

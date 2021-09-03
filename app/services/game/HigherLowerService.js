@@ -1,23 +1,32 @@
 import { sample } from "lodash";
 import { NumberUtil } from "../../util/NumberUtil";
-import { UserService } from "./../user/UserService";
 import { HIGHER_LOWER_INIT_PHRASE, HIGHER_LOWER_CORRECT_CONTINUE, HIGHER_LOWER_WRONG_LOSE, HIGHER_LOWER_WTF_PHRASE } from "../../answers/game/HigherLower";
 
 
 class HigherLowerService {
     numberUtil = new NumberUtil();
-    userService = new UserService();
 
     lastPick;
     totalCorrectInRow;
 
-    init(userObject) {
+    currentPlayerTag;
+    nextPlayerTag;
+
+    nextPlayerIndex = 0;
+    players;
+
+    constructor(players) {
+        this.players = players;
+        this.nextPlayerTag = players[0];
+    }
+
+    init() {
         this.lastPick = this.numberUtil.generateRandom(1, 100);
         this.totalCorrectInRow = 0;
 
         let higherLower = { 
             "%number%": this.lastPick,
-            "%shortName%": sample(userObject.shortNames)
+            "%nextPlayerTag%": this.getNextPlayerTag()
         }
 
         return sample(HIGHER_LOWER_INIT_PHRASE).replace(/%\w+%/g, function(all) {
@@ -25,43 +34,55 @@ class HigherLowerService {
         });
     }
 
-    play(playerInput, user) {
-        let userObject = this.userService.getById(user);
-
-        if (playerInput === "higher lower") {
-            return this.init(userObject);
+    play(playerInput, init) {
+        if (init) {
+            return this.init();
         }
 
+        // Prepare current turn
+        this.setCurrentPlayerTag(this.nextPlayerTag);
+        console.log("set current player to ", this.nextPlayerTag);
+        if (this.players.length -1 > this.nextPlayerIndex) {
+            this.nextPlayerIndex++;
+        } else {
+            this.nextPlayerIndex = 0;
+        }
+        console.log("set next player to ", this.players[this.nextPlayerIndex]);
+        this.setNextPlayerTag(this.players[this.nextPlayerIndex]);
+        
+        // Game
         let maggiePick;
         do {
             maggiePick = this.numberUtil.generateRandom(1, 100);
         } while (maggiePick === this.lastPick);
 
         let response;
+        console.log("Maggie picked ", maggiePick, "for ", this.getCurrentPlayerTag(),".", this.getCurrentPlayerTag(), "said ", playerInput,".");
 
-        if (this.playerWon(playerInput, maggiePick, userObject)) {
-            console.log("Maggie picked ", maggiePick, "for ", userObject.tagName,".", userObject.tagName, "said ", playerInput,".", userObject.tagName, "wins");
+        if (this.playerWon(playerInput, maggiePick)) {
+            console.log(this.getCurrentPlayerTag(), "wins");
             this.totalCorrectInRow++;
             this.lastPick = maggiePick;
-            response = this.respond(sample(HIGHER_LOWER_CORRECT_CONTINUE), userObject)  
-        } else if (this.playerLost(playerInput, maggiePick, userObject)) {
-            console.log("Maggie picked ", maggiePick, "for ", userObject.tagName,".", userObject.tagName, "said ", playerInput,".", userObject.tagName, "loses");
+            response = this.respond(sample(HIGHER_LOWER_CORRECT_CONTINUE))  
+        } else if (this.playerLost(playerInput, maggiePick)) {
+            console.log(this.getCurrentPlayerTag(), "loses");
             this.totalCorrectInRow = 0;
             this.lastPick = maggiePick;
-            response = this.respond(sample(HIGHER_LOWER_WRONG_LOSE), userObject)
+            response = this.respond(sample(HIGHER_LOWER_WRONG_LOSE))
             this.lastPick = 0;
         } else {
-            response = this.respond(sample(HIGHER_LOWER_WTF_PHRASE), userObject);
+            response = this.respond(sample(HIGHER_LOWER_WTF_PHRASE));
         }
 
         return response;
     }
 
-    respond(response, userObject) {
+    respond(response) {
         let higherLower = { 
             "%number%": this.lastPick,
             "%totalCorrectInRow%": this.totalCorrectInRow,
-            "%shortName%": sample(userObject.shortNames)
+            "%currentPlayerTag%": this.getCurrentPlayerTag(),
+            "%nextPlayerTag%": this.getNextPlayerTag()
         }
         return response.replace(/%\w+%/g, function(all) {
             return higherLower[all] || all;
@@ -78,12 +99,28 @@ class HigherLowerService {
         || (playerInput.includes("lager") || playerInput.includes("lower")) && maggiePick > this.lastPick;
     }
 
-    gameHasEnded() {
-        return this.totalCorrectInRow === 0 && this.lastPick === 0;
+    getPlayer1Tag() {
+        return this.player1Tag;
     }
 
-    end(user) {
-        console.log("higherlower with ", user, " ended");
+    setNextPlayerTag(nextPlayerTag) {
+        this.nextPlayerTag = nextPlayerTag;
+    }
+
+    setCurrentPlayerTag(currentPlayerTag) {
+        this.currentPlayerTag = currentPlayerTag;
+    }
+
+    getNextPlayerTag() {
+        return this.nextPlayerTag;
+    }
+
+    getCurrentPlayerTag() {
+        return this.currentPlayerTag;
+    }
+
+    gameHasEnded() {
+        return this.totalCorrectInRow === 0 && this.lastPick === 0;
     }
 }
 

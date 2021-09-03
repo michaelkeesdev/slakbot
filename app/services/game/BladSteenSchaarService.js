@@ -1,19 +1,21 @@
 import { sample } from "lodash";
 import { BLAD_STEEN_SCHAAR, BLAD_STEEN_SCHAAR_EQUAL_PHRASE, BLAD_STEEN_SCHAAR_INIT_PHRASE, BLAD_STEEN_SCHAAR_MAGGIE_WIN_PHRASE, BLAD_STEEN_SCHAAR_MAGGIE_LOSS_PHRASE, BLAD_STEEN_SCHAAR_WTF_PHRASE } from "../../answers/game/BladSteenSchaar";
-import { UserService } from "./../user/UserService";
 
 
 class BladSteenSchaarService {
-    userService = new UserService();
-
     gameEnded;
+    player1Tag;
 
-    init(user) {
-        let userObject = this.userService.getById(user);
+    constructor(players) {
+        // Just 1
+        this.player1Tag = players[0];
+    }
+
+    init() {
         let response = sample(BLAD_STEEN_SCHAAR_INIT_PHRASE);
 
         let bladsteenschaar = { 
-            "%shortName%": sample(userObject.shortNames)
+            "%player1Tag%": this.getPlayer1Tag()
         }
 
         return response.replace(/%\w+%/g, function(all) {
@@ -22,9 +24,9 @@ class BladSteenSchaarService {
 
     }
 
-    play(playerInput, user) {
-        if (playerInput === "rps") {
-            response = this.init(user);
+    play(playerInput, init) {
+        if (init) {
+            response = this.init();
             this.gameEnded = false;
             return response;
         }
@@ -43,10 +45,9 @@ class BladSteenSchaarService {
             response = sample(BLAD_STEEN_SCHAAR_WTF_PHRASE);
         }
 
-        let userObject = this.userService.getById(user);
         let bladsteenschaar = { 
             "%bladsteenschaar%": maggiePick,
-            "%shortName%": sample(userObject.shortNames)
+            "%player1Tag%": this.getPlayer1Tag()
         }
 
         this.gameEnded = true;
@@ -74,12 +75,16 @@ class BladSteenSchaarService {
         || playerInput.includes("schaar") && maggiePick === "blad";
     }
 
-    gameHasEnded() {
-        return this.gameEnded;
+    getPlayer1Tag() {
+        return this.player1Tag;
     }
 
-    end(user) {
-        console.log("rps with ", user, " ended");
+    getNextPlayerTag() {
+        return this.player1Tag;
+    }
+
+    gameHasEnded() {
+        return this.gameEnded;
     }
 }
 

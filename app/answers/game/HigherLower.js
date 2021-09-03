@@ -3,26 +3,26 @@ export const HIGHER_LOWER_INIT_TRIGGER = [
 ];
 
 export const HIGHER_LOWER_INIT_PHRASE = [
-    "ok doe %shortName%, getal is %number%",
-    "hup %shortName%, %number%",
-    "ok hup %shortName%, %number%",
-    "goed doe maar %shortName%, %number%", 
-    "ben benieuwd %shortName%, %number%",
-    "ok %shortName%, ik zeg %number%"
+    "ok doe %nextPlayerTag%, getal is %number%",
+    "hup %nextPlayerTag%, %number%",
+    "ok hup %nextPlayerTag%, %number%",
+    "goed doe maar %nextPlayerTag%, %number%", 
+    "ben benieuwd %nextPlayerTag%, %number%",
+    "ok %nextPlayerTag%, ik zeg %number%"
 ];
 
 export const HIGHER_LOWER_CORRECT_CONTINUE = [
-    "idd  %totalCorrectInRow% al juist %shortName%. Het was %number%, volgende hoger of lager?",
-    "idd, was %number%, %totalCorrectInRow% juist nu. Volgende hoger of lager %shortName%?",
-    "%totalCorrectInRow%  goed al %shortName%, getal was %number%. Volgende hoger of lager?",
-    "ok idd %number%. %totalCorrectInRow% punten. Hoger of lager %shortName% zeg keer?"
+    "idd %totalCorrectInRow% al juist %currentPlayerTag%. Het was %number%, volgende hoger of lager %nextPlayerTag%?",
+    "idd, was %number%, %totalCorrectInRow% juist nu %currentPlayerTag%. Volgende hoger of lager %nextPlayerTag%?",
+    "%totalCorrectInRow%  goed al %currentPlayerTag%, getal was %number%. Volgende hoger of lager %nextPlayerTag%?",
+    "ok idd %number%. %totalCorrectInRow% punten %currentPlayerTag%. Hoger of lager %nextPlayerTag% zeg keer?"
 ];
 
 export const HIGHER_LOWER_WRONG_LOSE = [
     "haha loser het was %number%",
-    "lol %shortName% het was %number%",
-    "ge suckt %shortName% het was %number%",
-    "lol nee, het was %number% %shortName%"
+    "lol %currentPlayerTag% het was %number%",
+    "ge suckt %currentPlayerTag% het was %number%",
+    "lol nee, het was %number% %currentPlayerTag%"
 ];
 
 export const HIGHER_LOWER_EQUAL_STOP = [
@@ -31,9 +31,9 @@ export const HIGHER_LOWER_EQUAL_STOP = [
 ]
 
 export const HIGHER_LOWER_WTF_PHRASE = [
-    "wtf doe normaal %shortName%" ,
-    "ja dag %shortName%",
-    "hoger lager dacht ik %shortName%???",
-    "wa %shortName%? tis hoger lager? laat maar dan",
-    "ok %shortName% als ge ni tegoei speelt, dag"
+    "wtf doe normaal %currentPlayerTag%" ,
+    "ja dag %currentPlayerTag%",
+    "hoger lager dacht ik %currentPlayerTag%???",
+    "wa %currentPlayerTag%? tis hoger lager? laat maar dan",
+    "ok %currentPlayerTag% als ge ni tegoei speelt, dag"
 ];

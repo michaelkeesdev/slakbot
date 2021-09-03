@@ -48,25 +48,14 @@ app.event("app_mention", async ({ context, event }) => {
 
 (async () => {
   await app.start(process.env.PORT || 8080);
-  console.log("1 init", await maggie.getMentionResponse("higher lower", null, null, "U91HHN2JE"));
-  console.log("2 other player higher", await maggie.getMentionResponse("hoger", null, null, "U90TSU6JU"));
-  console.log("3 other player hoger lager", await maggie.getMentionResponse("higher lower", null, null, "U90TSU6JU"));
-
-  console.log("4 higher", await maggie.getMentionResponse("hoger", null, null, "U91HHN2JE"));
-  console.log("5 other player hoger lager", await maggie.getMentionResponse("hoger", null, null, "U90TSU6JU"));
-  console.log("6 other player hoger lager", await maggie.getMentionResponse("lager", null, null, "U90TSU6JU"));
-  console.log("7 other player hoger lager", await maggie.getMentionResponse("lager lower", null, null, "U90TSU6JU"));
-  console.log("8 higher", await maggie.getMentionResponse("hoger", null, null, "U91HHN2JE"));
-  console.log("9 higher", await maggie.getMentionResponse("hoger", null, null, "U91HHN2JE"));
-
-  console.log("10 init game 2", await maggie.getMentionResponse("higher lower", null, null, "U91HHN2JE"));
-  console.log("11 play game 2", await maggie.getMentionResponse("hoger", null, null, "U91HHN2JE"));
-  console.log("12 play game 2", await maggie.getMentionResponse("hoger", null, null, "U91HHN2JE"));
-  console.log("13 play game 2", await maggie.getMentionResponse("hoger", null, null, "U91HHN2JE"));
-  console.log("14 play game 2", await maggie.getMentionResponse("hoger", null, null, "U91HHN2JE"));
-
-  console.log("1 play rps", await maggie.getMentionResponse("rps", null, null, "U91HHN2JE"));
-  console.log("2 play rps", await maggie.getMentionResponse("blad", null, null, "U91HHN2JE"));
+  console.log("1 init", await maggie.getMentionResponse("higher lower met rits", null, null, "U91HHN2JE"));
+  console.log("2", await maggie.getMentionResponse("hoger", null, null, "U91HHN2JE"));
+  console.log("3", await maggie.getMentionResponse("lager", null, null, "U92KLC4CX"));
+  console.log("4", await maggie.getMentionResponse("lager", null, null, "U91HHN2JE"));
+  console.log("5", await maggie.getMentionResponse("hoger", null, null, "U92KLC4CX"));
+  console.log("6", await maggie.getMentionResponse("lager", null, null, "U91HHN2JE"));
+  console.log("7", await maggie.getMentionResponse("hoger", null, null, "U92KLC4CX"));
+  console.log("8", await maggie.getMentionResponse("lager", null, null, "U91HHN2JE"));
 
 
   console.log("⚡️ Slakbot is running!");

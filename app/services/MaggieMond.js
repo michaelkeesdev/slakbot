@@ -69,8 +69,6 @@ const tagService = new TagService();
 const molService = new MolService();
 const wikiService = new WikiService(httpClient);
 const imageService = new ImageService();
-const bladSteenSchaarService = new BladSteenSchaarService();
-const higherLowerService = new HigherLowerService()
 
 class MaggieMond {
   askBasicFollowUpQuestion() {

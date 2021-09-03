@@ -8,10 +8,8 @@ class BaseGameService {
         if (!currentRunningGames.has(user)) {
             // Gameservice needs init() method
             if (textInput === "rps") {
-                console.log("Create rps for ", user, "text input was", textInput);
                 currentRunningGames.set(user, new BladSteenSchaarService());
             } else if (textInput === "higher lower") {
-                console.log("Create higher lower for ", user, "text input was", textInput);
                 currentRunningGames.set(user, new HigherLowerService());
             }
         }

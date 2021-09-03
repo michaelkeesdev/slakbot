@@ -21,7 +21,6 @@ class BaseGameService {
                     players.push(this.getPlayerTag(user.id));
                 })
                 this.shufflePlayers(players);
-                console.log("FOUND ", players);
                 currentRunningGames.set(initPlayerTag, new HigherLowerService(players));
             }
         }

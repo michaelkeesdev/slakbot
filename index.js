@@ -48,8 +48,15 @@ app.event("app_mention", async ({ context, event }) => {
 
 (async () => {
   await app.start(process.env.PORT || 8080);
+
+  console.log("tag", await maggie.getMentionResponse("tag dennis", null, null, "U91HHN2JE"));
+
   console.log("1 init", await maggie.getMentionResponse("higher lower met rits", null, null, "U91HHN2JE"));
   console.log("2", await maggie.getMentionResponse("hoger", null, null, "U91HHN2JE"));
+
+  console.log("tag", await maggie.getMentionResponse("tag dennis", null, null, "U91HHN2JE"));
+
+  console.log("6", await maggie.getMentionResponse("lager", null, null, "test"));
   console.log("3", await maggie.getMentionResponse("lager", null, null, "U92KLC4CX"));
   console.log("4", await maggie.getMentionResponse("lager", null, null, "U91HHN2JE"));
   console.log("5", await maggie.getMentionResponse("hoger", null, null, "U92KLC4CX"));

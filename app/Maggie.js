@@ -53,7 +53,10 @@ class Maggie {
         response = await exactMatches[0]?.action(text, context, imageUrl);
       }
 
-      response = await maggieBrein.playGame(text, user);
+      let gamePlay = maggieBrein.playGame(text, user);
+      if (gamePlay) {
+        response = gamePlay;
+      }
 
       if (!response) {
         switch (true) {

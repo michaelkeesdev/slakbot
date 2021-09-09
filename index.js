@@ -10,7 +10,7 @@ const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
 });
 
-const maggie = new Maggie();
+const maggie = new Maggie(app, process.env.SLACK_BOT_TOKEN);
 
 app.event("message", async ({ event, context }) => {
   const token = context?.botToken;

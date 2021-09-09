@@ -41,8 +41,7 @@ import { TokenizerService } from "./tokenizer/Tokenizer";
 import { MolService } from "./tv/MolService";
 import { WikiService } from "./wiki/WikiService";
 import { ImageService } from "./google/ImageService";
-import { BladSteenSchaarService } from "./game/BladSteenSchaarService";
-import { HigherLowerService } from "./game/HigherLowerService";
+import { PoepService } from "./game/PoepService";
 
 const basicAnweringService = new BasicAnweringService();
 
@@ -69,6 +68,7 @@ const tagService = new TagService();
 const molService = new MolService();
 const wikiService = new WikiService(httpClient);
 const imageService = new ImageService();
+const poepService = new PoepService();
 
 class MaggieMond {
   askBasicFollowUpQuestion() {
@@ -125,6 +125,9 @@ class MaggieMond {
   }
   tagUser(text) {
     return tagService.tagUserAndAddTextCommand(text);
+  }
+  tagEveryone() {
+    return tagService.tagEveryone();
   }
   scheldUser(text) {
     return tagService.tagUserAndScheld(text);
@@ -213,6 +216,10 @@ class MaggieMond {
   askForStopTimeout() {
     return sample(TIMEOUT_STOP_PLACEHOLDER);
   }
+  sendPoepLink() {
+    return poepService.sendPoepLink();
+  }
+
 }
 
 export { MaggieMond };

@@ -1,6 +1,4 @@
 import { sample } from "lodash";
-import { BLAD_STEEN_SCHAAR_INIT_TRIGGER } from "./answers/game/BladSteenSchaar";
-import { HIGHER_LOWER_INIT_TRIGGER } from "./answers/game/HigherLower";
 
 import {
   DURING_TIMEOUT_ANSWER,
@@ -17,6 +15,7 @@ import {
 import { MaggieBrein } from "./services/MaggieBrein";
 import { MaggieMond } from "./services/MaggieMond";
 
+const nodeCron = require("node-cron");
 const maggieMond = new MaggieMond();
 const maggieBrein = new MaggieBrein();
 
@@ -30,9 +29,33 @@ const MAX_TIMEOUT = 300;
 const RESPONSE_DURING_TIMEOUT_PID = 3;
 
 class Maggie {
+  app;
+  token;
+  cronOptions;
   id = "U01NEE5JYSY";
   timeoutUser;
   timeoutMessageAmount = 0;
+
+  constructor(app, token) {
+    this.app = app;
+    this.token = token;
+
+    this.cronOptions = {
+      scheduled: true,
+      timezone: "Europe/Brussels"
+    }
+    this.registerCronTasks();
+  }
+
+  registerCronTasks = function () {
+    nodeCron.schedule('40 9 * * 1-5', () => {
+      const messageWithHup = { token: this.token, text: maggieMond.tagEveryone(), channel: "C92K3U2T1"};
+      this.app.client.chat.postMessage(messageWithHup);
+
+      const messageWithLink = { token: this.token, text: maggieMond.sendPoepLink(), channel: "C92K3U2T1" };
+      this.app.client.chat.postMessage(messageWithLink);
+    }, this.cronOptions);
+  };
 
   getMentionResponse = async (textInput, context, files, user) => {
     if (!this.isMaggieInHoekForTimeout(1)) {

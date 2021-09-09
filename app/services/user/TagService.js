@@ -72,6 +72,10 @@ class TagService {
     tagUser(user) {
         return `<@${user.id}>`;
     }
+
+    tagEveryone() {
+        return "Hup <!channel>";
+    }
 }
 
 export { TagService };

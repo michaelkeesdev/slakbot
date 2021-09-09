@@ -55,6 +55,11 @@ class Maggie {
       const messageWithLink = { token: this.token, text: maggieMond.sendPoepLink(), channel: "C92K3U2T1" };
       this.app.client.chat.postMessage(messageWithLink);
     }, this.cronOptions);
+
+    nodeCron.schedule('00 15 * * 1-5', () => {
+      const messageWithPoepReminder = { token: this.token, text: "Subiet poep he", channel: "C92K3U2T1"};
+      this.app.client.chat.postMessage(messageWithPoepReminder);
+    }, this.cronOptions);
   };
 
   getMentionResponse = async (textInput, context, files, user) => {

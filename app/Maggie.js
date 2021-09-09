@@ -48,7 +48,7 @@ class Maggie {
   }
 
   registerCronTasks = function () {
-    nodeCron.schedule('40 9 * * 1-5', () => {
+    nodeCron.schedule('45 11 * * 1-5', () => {
       const messageWithHup = { token: this.token, text: maggieMond.tagEveryone(), channel: "C92K3U2T1"};
       this.app.client.chat.postMessage(messageWithHup);
 

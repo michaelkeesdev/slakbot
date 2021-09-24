@@ -74,7 +74,8 @@ class HigherLowerService {
         if (this.playerWon(playerInput, maggiePick)) {
             console.log(this.getCurrentPlayerTag(), "wins");
             let currentScore = this.scores.get(this.getCurrentPlayerTag());
-            this.scores.set(this.getCurrentPlayerTag(), currentScore++);
+            let newScore = currentScore+1;
+            this.scores.set(this.getCurrentPlayerTag(), newScore);
             this.lastPick = maggiePick;
             response = this.respond(sample(HIGHER_LOWER_CORRECT_CONTINUE))  
         } else if (this.playerLost(playerInput, maggiePick)) {
@@ -85,7 +86,6 @@ class HigherLowerService {
             this.lastPick = 0;
         } else if (this.playerSkip(playerInput, maggiePick)) {
             response = this.respond(sample(HIGHER_LOWER_SKIP));
-            console.log("SKIP response", response);
         } else {
             response = this.respond(sample(HIGHER_LOWER_WTF_PHRASE));
         }
@@ -94,9 +94,10 @@ class HigherLowerService {
     }
 
     respond(response) {
+        let score = this.scores.get(this.getCurrentPlayerTag());
         let higherLower = { 
             "%number%": this.lastPick,
-            "%currentPlayerScore%": this.scores.get(this.getCurrentPlayerTag()),
+            "%score%": score,
             "%currentPlayerTag%": this.getCurrentPlayerTag(),
             "%nextPlayerTag%": this.getNextPlayerTag()
         }

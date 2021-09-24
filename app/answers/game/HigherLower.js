@@ -12,10 +12,10 @@ export const HIGHER_LOWER_INIT_PHRASE = [
 ];
 
 export const HIGHER_LOWER_CORRECT_CONTINUE = [
-    "idd %currentPlayerScore% al juist %currentPlayerTag%. Het was %number%, volgende hoger of lager %nextPlayerTag%?",
-    "idd, was %number%, %currentPlayerScore% juist nu %currentPlayerTag%. Volgende hoger of lager %nextPlayerTag%?",
-    "%currentPlayerScore% goed al %currentPlayerTag%, getal was %number%. Volgende hoger of lager %nextPlayerTag%?",
-    "ok idd %number%. %currentPlayerScore% punten %currentPlayerTag%. Hoger of lager %nextPlayerTag% zeg keer?"
+    "idd %score% al juist %currentPlayerTag%. Het was %number%, volgende hoger of lager %nextPlayerTag%?",
+    "idd, was %number%, %score% juist nu %currentPlayerTag%. Volgende hoger of lager %nextPlayerTag%?",
+    "%score% goed al %currentPlayerTag%, getal was %number%. Volgende hoger of lager %nextPlayerTag%?",
+    "ok idd %number%. %score% punten %currentPlayerTag%. Hoger of lager %nextPlayerTag% zeg keer?"
 ];
 
 export const HIGHER_LOWER_WRONG_LOSE = [

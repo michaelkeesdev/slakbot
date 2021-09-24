@@ -86,7 +86,7 @@ class HigherLowerService {
             if (this.gameHasEnded()) {
                 response = "Eindscore: " 
                 this.players.forEach(player => {
-                    response + player + ": " + this.scores.get(player)+ " punt";
+                    response += player + ": " + this.scores.get(player)+ " punt. ";
                 })
             } else {
                 response = this.respond(sample(HIGHER_LOWER_WRONG_LOSE))

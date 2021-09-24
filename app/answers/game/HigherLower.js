@@ -19,10 +19,10 @@ export const HIGHER_LOWER_CORRECT_CONTINUE = [
 ];
 
 export const HIGHER_LOWER_WRONG_LOSE = [
-    "haha loser het was %number%",
-    "lol %currentPlayerTag% het was %number%",
-    "ge suckt %currentPlayerTag% het was %number%",
-    "lol nee, het was %number% %currentPlayerTag%"
+    "haha loser het was %number%, volgende hoger of lager %nextPlayerTag%?",
+    "lol %currentPlayerTag% het was %number%, volgende hoger of lager %nextPlayerTag%?",
+    "ge suckt %currentPlayerTag% het was %number%, volgende hoger of lager %nextPlayerTag%?",
+    "lol nee, het was %number% %currentPlayerTag%, volgende hoger of lager %nextPlayerTag%?"
 ];
 
 export const HIGHER_LOWER_SKIP = [

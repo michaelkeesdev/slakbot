@@ -1,13 +1,12 @@
 import { sample } from "lodash";
 import { NumberUtil } from "../../util/NumberUtil";
-import { HIGHER_LOWER_INIT_PHRASE, HIGHER_LOWER_CORRECT_CONTINUE, HIGHER_LOWER_WRONG_LOSE, HIGHER_LOWER_WTF_PHRASE } from "../../answers/game/HigherLower";
+import { HIGHER_LOWER_INIT_PHRASE, HIGHER_LOWER_CORRECT_CONTINUE, HIGHER_LOWER_WRONG_LOSE, HIGHER_LOWER_WTF_PHRASE, HIGHER_LOWER_SKIP } from "../../answers/game/HigherLower";
 
 
 class HigherLowerService {
     numberUtil = new NumberUtil();
 
     lastPick;
-    totalCorrectInRow;
 
     currentPlayerTag;
     nextPlayerTag;
@@ -15,14 +14,23 @@ class HigherLowerService {
     nextPlayerIndex = 0;
     players;
 
+    scores = new Map();
+    playerFirstTurn = new Map();
+    playerLostFlag = new Map();
+
+
     constructor(players) {
         this.players = players;
         this.nextPlayerTag = players[0];
+        this.players.forEach(player => {
+            this.scores.set(player, 0);
+            this.playerFirstTurn.set(player, true);
+            this.playerLostFlag.set(player, false);
+        })
     }
 
     init() {
         this.lastPick = this.numberUtil.generateRandom(1, 100);
-        this.totalCorrectInRow = 0;
 
         let higherLower = { 
             "%number%": this.lastPick,
@@ -42,14 +50,18 @@ class HigherLowerService {
         // Prepare current turn
         this.setCurrentPlayerTag(this.nextPlayerTag);
         console.log("set current player to ", this.nextPlayerTag);
-        if (this.players.length -1 > this.nextPlayerIndex) {
-            this.nextPlayerIndex++;
-        } else {
-            this.nextPlayerIndex = 0;
-        }
+        do {
+            if (this.players.length -1 > this.nextPlayerIndex) {
+                this.nextPlayerIndex++;            
+            } else {
+                this.nextPlayerIndex = 0;
+            }
+        } while (this.playerLostFlag.get(this.players[this.nextPlayerIndex]));
+        
         console.log("set next player to ", this.players[this.nextPlayerIndex]);
         this.setNextPlayerTag(this.players[this.nextPlayerIndex]);
-        
+        this.playerFirstTurn.set(this.getCurrentPlayerTag, false);
+
         // Game
         let maggiePick;
         do {
@@ -61,15 +73,19 @@ class HigherLowerService {
 
         if (this.playerWon(playerInput, maggiePick)) {
             console.log(this.getCurrentPlayerTag(), "wins");
-            this.totalCorrectInRow++;
+            let currentScore = this.scores.get(this.getCurrentPlayerTag());
+            this.scores.set(this.getCurrentPlayerTag(), currentScore++);
             this.lastPick = maggiePick;
             response = this.respond(sample(HIGHER_LOWER_CORRECT_CONTINUE))  
         } else if (this.playerLost(playerInput, maggiePick)) {
             console.log(this.getCurrentPlayerTag(), "loses");
-            this.totalCorrectInRow = 0;
+            this.playerLostFlag.set(this.getCurrentPlayerTag(), true);
             this.lastPick = maggiePick;
             response = this.respond(sample(HIGHER_LOWER_WRONG_LOSE))
             this.lastPick = 0;
+        } else if (this.playerSkip(playerInput, maggiePick)) {
+            response = this.respond(sample(HIGHER_LOWER_SKIP));
+            console.log("SKIP response", response);
         } else {
             response = this.respond(sample(HIGHER_LOWER_WTF_PHRASE));
         }
@@ -80,7 +96,7 @@ class HigherLowerService {
     respond(response) {
         let higherLower = { 
             "%number%": this.lastPick,
-            "%totalCorrectInRow%": this.totalCorrectInRow,
+            "%currentPlayerScore%": this.scores.get(this.getCurrentPlayerTag()),
             "%currentPlayerTag%": this.getCurrentPlayerTag(),
             "%nextPlayerTag%": this.getNextPlayerTag()
         }
@@ -97,6 +113,10 @@ class HigherLowerService {
     playerLost(playerInput, maggiePick) {
         return (playerInput.includes("hoger") || playerInput.includes("higher")) && maggiePick < this.lastPick 
         || (playerInput.includes("lager") || playerInput.includes("lower")) && maggiePick > this.lastPick;
+    }
+
+    playerSkip(playerInput) {
+        return playerInput.includes("skip");
     }
 
     getPlayer1Tag() {
@@ -120,7 +140,14 @@ class HigherLowerService {
     }
 
     gameHasEnded() {
-        return this.totalCorrectInRow === 0 && this.lastPick === 0;
+        let playerStillPlaying = false;
+        this.players.forEach(player => {
+            if (!this.playerLostFlag.get(player)) {
+                return playerStillPlaying = true;
+            }
+        });
+
+        return !playerStillPlaying;
     }
 }
 

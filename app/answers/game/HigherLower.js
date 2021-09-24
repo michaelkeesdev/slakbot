@@ -12,10 +12,10 @@ export const HIGHER_LOWER_INIT_PHRASE = [
 ];
 
 export const HIGHER_LOWER_CORRECT_CONTINUE = [
-    "idd %totalCorrectInRow% al juist %currentPlayerTag%. Het was %number%, volgende hoger of lager %nextPlayerTag%?",
-    "idd, was %number%, %totalCorrectInRow% juist nu %currentPlayerTag%. Volgende hoger of lager %nextPlayerTag%?",
-    "%totalCorrectInRow%  goed al %currentPlayerTag%, getal was %number%. Volgende hoger of lager %nextPlayerTag%?",
-    "ok idd %number%. %totalCorrectInRow% punten %currentPlayerTag%. Hoger of lager %nextPlayerTag% zeg keer?"
+    "idd %currentPlayerScore% al juist %currentPlayerTag%. Het was %number%, volgende hoger of lager %nextPlayerTag%?",
+    "idd, was %number%, %currentPlayerScore% juist nu %currentPlayerTag%. Volgende hoger of lager %nextPlayerTag%?",
+    "%currentPlayerScore% goed al %currentPlayerTag%, getal was %number%. Volgende hoger of lager %nextPlayerTag%?",
+    "ok idd %number%. %currentPlayerScore% punten %currentPlayerTag%. Hoger of lager %nextPlayerTag% zeg keer?"
 ];
 
 export const HIGHER_LOWER_WRONG_LOSE = [
@@ -23,6 +23,13 @@ export const HIGHER_LOWER_WRONG_LOSE = [
     "lol %currentPlayerTag% het was %number%",
     "ge suckt %currentPlayerTag% het was %number%",
     "lol nee, het was %number% %currentPlayerTag%"
+];
+
+export const HIGHER_LOWER_SKIP = [
+    "ok geen punten voor %currentPlayerTag%, %nextPlayerTag% gij proberen hoger of lager als %number%?" ,
+    "ok %currentPlayerTag% skipt, %nextPlayerTag% uw beurt voor  %number%?",
+    "%currentPlayerTag% durft niet, %nextPlayerTag% gij hoger of lager als %number%?",
+    "skip van %currentPlayerTag%, hoger of lager als %number% %nextPlayerTag%"
 ];
 
 export const HIGHER_LOWER_EQUAL_STOP = [

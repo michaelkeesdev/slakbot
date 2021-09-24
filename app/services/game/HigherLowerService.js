@@ -83,7 +83,6 @@ class HigherLowerService {
             this.playerLostFlag.set(this.getCurrentPlayerTag(), true);
             this.lastPick = maggiePick;
             response = this.respond(sample(HIGHER_LOWER_WRONG_LOSE))
-            this.lastPick = 0;
         } else if (this.playerSkip(playerInput, maggiePick)) {
             response = this.respond(sample(HIGHER_LOWER_SKIP));
         } else {

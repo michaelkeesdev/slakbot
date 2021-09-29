@@ -82,14 +82,12 @@ class HigherLowerService {
             console.log(this.getCurrentPlayerTag(), "loses");
             this.playerLostFlag.set(this.getCurrentPlayerTag(), true);
             this.lastPick = maggiePick;
-
+            response = this.respond(sample(HIGHER_LOWER_WRONG_LOSE));
             if (this.gameHasEnded()) {
-                response = "Eindscore: " 
+                response += "Eindscore: " 
                 this.players.forEach(player => {
                     response += player + ": " + this.scores.get(player)+ " punt. ";
                 })
-            } else {
-                response = this.respond(sample(HIGHER_LOWER_WRONG_LOSE))
             }
         } else if (this.playerSkip(playerInput, maggiePick)) {
             response = this.respond(sample(HIGHER_LOWER_SKIP));

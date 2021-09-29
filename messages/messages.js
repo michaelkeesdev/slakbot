@@ -130,5 +130,6 @@ export const BASIC = [
   "Kan he",
   "Pffffff vermoeiend",
   "Ik wil dood.",
-  "Ja joepie"
+  "Ja joepie",
+  "Moptje"
 ];

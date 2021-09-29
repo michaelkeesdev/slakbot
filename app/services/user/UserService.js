@@ -1,11 +1,17 @@
 import { sample } from 'lodash';
-import { USERS } from '../../answers/user/User';
+import { USERS, USERS_EXTRA } from '../../answers/user/User';
 
 class UserService {
   activeUser = "";
 
   getRandomUser() {
-    return sample(USERS);
+    let nameRoll = Math.floor(Math.random() * 10);
+
+    if (nameRoll < 8) {
+      return sample(USERS);
+    } else if (nameRoll == 8 || nameRoll == 9) {
+      return sample(USERS_EXTRA);
+    }
   }
 
   getRandomUserRandomName() {
@@ -13,7 +19,11 @@ class UserService {
     let nameRoll = Math.floor(Math.random() * 10);
 
     if (nameRoll < 5) {
-      return user.tagName;
+      if (user.tagName) {
+        return user.tagName; 
+      } else {
+        return user.firstName;
+      }
     }
 
     if (nameRoll == 5 || nameRoll == 6) {
@@ -27,8 +37,6 @@ class UserService {
     if (nameRoll == 8 || nameRoll == 9) {
       return user.firstName.concat(" ").concat(user.lastName);
     }
-
-    return sample(USERS);
   }
 
   extractUsersFromText(text) {

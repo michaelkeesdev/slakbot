@@ -63,3 +63,49 @@ export const USERS = [{
     birthday: ""
 }]
 
+export const USERS_EXTRA = [{
+    shortNames: ["Mel", "Melissa", "hoertje van kees", "vriendin kees"],
+    firstName: "Melissa",
+    lastName: "Camberlin"
+}, {
+    shortNames: ["Mbali", "negerin van dennis", "Mbali"],
+    firstName: "Mbali",
+    lastName: "[achternaam]"
+}, {
+    shortNames: ["Lise", "voil wijf van crab", "zus crab", "Lise van crab"],
+    firstName: "Lise",
+    lastName: "Crabbé"
+}, {
+    shortNames: ["Wendy", "dikke wendy", "wendy van jap daar die oer"],
+    firstName: "Wendy",
+    lastName: "Van beek"
+}, {
+    shortNames: ["Line", " de vriendin van crab", "de oer van crab", "Tine"],
+    firstName: "Line",
+    lastName: "VDW"
+}, {
+    shortNames: ["Madu", "madoer"],
+    firstName: "Madu",
+    lastName: "de oer"
+}, {
+    shortNames: ["Janus"],
+    firstName: "Janus",
+    lastName: "de oer"
+}, {
+    shortNames: ["Evy", "evyeie", "evieye", "eviye", "eviey", "eviy"],
+    firstName: "Evy",
+    lastName: "'kan nie poep' van Brasschaat"
+}, {
+    shortNames: ["Jolien", "Jolien van wan", "die oer van wan"],
+    firstName: "Jolien",
+    lastName: "Los"
+}, {
+    shortNames: ["Wan", "Wannes", "de wan"],
+    firstName: "Wannes",
+    lastName: "van de jap huis"
+}, {
+    shortNames: ["Bart", "Dollarbart", ""],
+    firstName: "Bart",
+    lastName: "Jans"
+}]
+

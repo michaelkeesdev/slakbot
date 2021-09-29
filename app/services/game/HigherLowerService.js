@@ -84,7 +84,7 @@ class HigherLowerService {
             this.lastPick = maggiePick;
             response = this.respond(sample(HIGHER_LOWER_WRONG_LOSE));
             if (this.gameHasEnded()) {
-                response += "Eindscore: " 
+                response += " Eindscore: " 
                 this.players.forEach(player => {
                     response += player + ": " + this.scores.get(player)+ " punt. ";
                 })

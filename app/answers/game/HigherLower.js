@@ -25,6 +25,13 @@ export const HIGHER_LOWER_WRONG_LOSE = [
     "lol nee, het was %number% %currentPlayerTag%, volgende hoger of lager %nextPlayerTag%?"
 ];
 
+export const HIGHER_LOWER_WRONG_END = [
+    "heuh loser het was %number%. Spel gedaan dan. Eindscores: ",
+    "haha ge suckt allemaal, het was %number%. Eindscores: ",
+    "Oke spel gedaan, slecht wel want het was %number%. Scores: ",
+    "Pff nee %number%. Olle punten zijn "
+];
+
 export const HIGHER_LOWER_SKIP = [
     "ok geen punten voor %currentPlayerTag%, %nextPlayerTag% gij proberen hoger of lager als %number%?" ,
     "ok %currentPlayerTag% skipt, %nextPlayerTag% uw beurt voor  %number%?",

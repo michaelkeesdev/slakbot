@@ -1,6 +1,6 @@
 import { sample } from "lodash";
 import { NumberUtil } from "../../util/NumberUtil";
-import { HIGHER_LOWER_INIT_PHRASE, HIGHER_LOWER_CORRECT_CONTINUE, HIGHER_LOWER_WRONG_LOSE, HIGHER_LOWER_WTF_PHRASE, HIGHER_LOWER_SKIP } from "../../answers/game/HigherLower";
+import { HIGHER_LOWER_INIT_PHRASE, HIGHER_LOWER_CORRECT_CONTINUE, HIGHER_LOWER_WRONG_LOSE, HIGHER_LOWER_WTF_PHRASE, HIGHER_LOWER_SKIP, HIGHER_LOWER_WRONG_END } from "../../answers/game/HigherLower";
 
 
 class HigherLowerService {
@@ -82,12 +82,13 @@ class HigherLowerService {
             console.log(this.getCurrentPlayerTag(), "loses");
             this.playerLostFlag.set(this.getCurrentPlayerTag(), true);
             this.lastPick = maggiePick;
-            response = this.respond(sample(HIGHER_LOWER_WRONG_LOSE));
             if (this.gameHasEnded()) {
-                response += " Eindscore: " 
+                response = this.respond(sample(HIGHER_LOWER_WRONG_END));
                 this.players.forEach(player => {
                     response += player + ": " + this.scores.get(player)+ " punt. ";
                 })
+            } else {
+                response = this.respond(sample(HIGHER_LOWER_WRONG_LOSE))
             }
         } else if (this.playerSkip(playerInput, maggiePick)) {
             response = this.respond(sample(HIGHER_LOWER_SKIP));

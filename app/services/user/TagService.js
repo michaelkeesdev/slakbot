@@ -75,15 +75,15 @@ class TagService {
     }
 
     tagUser(user) {
-        if (this.platform === "discord") {
-        return `<@${user.discordId}>`;
+        if (this.platform == "discord") {
+            return `<@${user.discordId}>`;
         } else {
             return `<@${user.id}>`;
         }
     }
 
     tagEveryone() {
-        if (this.platform === "discord") {
+        if (this.platform == "discord") {
             return "Hup @everyone";
         } else {
             return "Hup <!channel>";

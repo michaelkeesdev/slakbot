@@ -12,7 +12,8 @@ const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
 });
 
-const maggie = new Maggie(app, process.env.SLACK_BOT_TOKEN);
+const maggieSlack = new Maggie("slack");
+const maggieDiscord = new Maggie("discord");
 
 app.event("message", async ({ event, context }) => {
   const token = context?.botToken;
@@ -22,7 +23,7 @@ app.event("message", async ({ event, context }) => {
   let user = event?.user;
   console.log("message event", `${user}: ${text}`);
 
-  const messages = await maggie.getMessageResponses(text, user);
+  const messages = await maggieSlack.getMessageResponses(text, user);
 
   if (messages?.length) {
     messages.map(async (message) => {
@@ -42,7 +43,7 @@ app.event("app_mention", async ({ context, event }) => {
 
   let user = event?.user;
 
-  const response = await maggie.getMentionResponse(text, context, files, user);
+  const response = await maggieSlack.getMentionResponse(text, context, files, user);
   const message = { token, channel, text: response };
 
   await app.client.chat.postMessage(message);
@@ -80,7 +81,7 @@ client.on("messageCreate", async (msg) => {
 
   if (msg.content.match(maggieIdRegex)) {
     let message = msg.content.replace(maggieIdRegex, "").trim();
-    const response = await maggie.getMentionResponse(
+    const response = await maggieDiscord.getMentionResponse(
       message,
       null,
       [],

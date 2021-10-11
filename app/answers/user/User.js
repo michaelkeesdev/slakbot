@@ -62,6 +62,14 @@ export const USERS = [{
     lastName: "Achternaam",
     birthday: ""
 }, {
+    id: "U91TU7WKU",
+    discordId: "150957477196726273",
+    tagName: "dblitz",
+    shortNames: ["Arno", "Parno"],
+    firstName: "Arno ",
+    lastName: "Bruynseels",
+    birthday: "ergens in september en ging nog trakteren"
+}, {
     id: "U01K3BVEVT3",
     discordId: "875074049968058431",
     tagName: "Maggie",

@@ -1,5 +1,6 @@
 export const USERS = [{
     id: "UHB8YS8MU",
+    discordId: "802271483480768522",
     tagName: "Crabbe",
     shortNames: ["Crab", "Crabbe", "Michel"],
     firstName: "Michiel",
@@ -7,6 +8,7 @@ export const USERS = [{
     birthDay: "2 december"
 }, {
     id: "U9213H10B",
+    discordId: "822168059565047838",
     tagName: "Dennis",
     shortNames: ["Dennis"],
     firstName: "Dennis",
@@ -14,6 +16,7 @@ export const USERS = [{
     birthDay: "29 januari"
 }, {
     id: "U911D6401",
+    discordId: "207861495453843457",
     tagName: "Jappeh",
     shortNames: ["Djap", "Japn", "Jappe", "Jappeh", "d'jap'n", "Jap", "JAPNJATNKAFN", "herriner mij jap"],
     firstName: "Jasper",
@@ -28,6 +31,7 @@ export const USERS = [{
     birthDay: ""
 },  {
     id: "U91HHN2JE",
+    discordId: "370261720624660483",
     tagName: "Joa",
     shortNames: ["Joa"],
     firstName: "Joachim",
@@ -35,6 +39,7 @@ export const USERS = [{
     birthDay: "30 oktober"
 }, {
     id: "U90TSU6JU",
+    discordId: "693189233334157332",
     tagName: "Kees",
     shortNames: ["Kees", "Slet", "Molly", "Mollie"],
     firstName: "Michaël",
@@ -42,13 +47,23 @@ export const USERS = [{
     birthDay: "8 mei"
 }, {
     id: "U92KLC4CX",
+    discordId: "253496829071720460",
     tagName: "Rits",
     shortNames: ["Rits", "Rats", "Maurats", "Oplichter"],
     firstName: "Maurice",
     lastName: "Dalderup",
     birthDay: "2 januari"
 }, {
+    id: "error",
+    discordId: "413023073130905602",
+    tagName: "lucious cucumber",
+    shortNames: ["Wan", "wan", "de wan"],
+    firstName: "Wannes ",
+    lastName: "Achternaam",
+    birthday: ""
+}, {
     id: "U01K3BVEVT3",
+    discordId: "875074049968058431",
     tagName: "Maggie",
     shortNames: ["Maggie", "ikzelf"],
     firstName: "Maggie",

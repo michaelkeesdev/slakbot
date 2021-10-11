@@ -41,7 +41,6 @@ class Maggie {
   }
 
   getMentionResponse = async (textInput, context, files, user) => {
-    console.log("getMentionResponse", textInput, context, user);
     if (!this.isMaggieInHoekForTimeout(1)) {
       const text = textInput?.replace(`<@${context?.botUserId}>`, "").trim();
       let imageUrl;

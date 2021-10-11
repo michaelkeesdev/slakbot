@@ -51,7 +51,6 @@ app.event("app_mention", async ({ context, event }) => {
 
 (async () => {
   await app.start(process.env.PORT || 8080);
-
   console.log("⚡️ Slakbot is running!");
 })();
 
@@ -78,14 +77,13 @@ client.on("messageCreate", async (msg) => {
   console.log(msg.content);
 
   const maggieIdRegex = new RegExp(`(<@)(${DISCORD_MAGGIE_IDS.join("|")})(>)`);
-
   if (msg.content.match(maggieIdRegex)) {
     let message = msg.content.replace(maggieIdRegex, "").trim();
     const response = await maggieDiscord.getMentionResponse(
       message,
       null,
       [],
-      msg.user
+      msg.author.id
     );
     msg.channel.send(response);
   }

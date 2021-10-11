@@ -10,6 +10,7 @@ class BaseGameService {
     userService = new UserService();
 
     initGame(textInput, user) {
+        console.log(user);
         if (!currentRunningGames.has(user)) {
             let initPlayerTag = this.getPlayerTag(user);
             let players = [initPlayerTag];

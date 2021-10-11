@@ -15,8 +15,7 @@ import {
 import { MaggieBrein } from "./services/MaggieBrein";
 import { MaggieMond } from "./services/MaggieMond";
 
-const nodeCron = require("node-cron");
-const maggieMond = new MaggieMond();
+let maggieMond;
 const maggieBrein = new MaggieBrein();
 
 const SIZE_DUPLICATE = 3;
@@ -36,31 +35,9 @@ class Maggie {
   timeoutUser;
   timeoutMessageAmount = 0;
 
-  constructor(app, token) {
-    this.app = app;
-    this.token = token;
-
-    this.cronOptions = {
-      scheduled: true,
-      timezone: "Europe/Brussels"
-    }
-    this.registerCronTasks();
+  constructor(platform) {
+    maggieMond = new MaggieMond(platform);
   }
-
-  registerCronTasks = function () {
-    nodeCron.schedule('45 11 * * 1-5', () => {
-      const messageWithHup = { token: this.token, text: maggieMond.tagEveryone(), channel: "C92K3U2T1"};
-      this.app.client.chat.postMessage(messageWithHup);
-
-      const messageWithLink = { token: this.token, text: maggieMond.sendPoepLink(), channel: "C92K3U2T1" };
-      this.app.client.chat.postMessage(messageWithLink);
-    }, this.cronOptions);
-
-    nodeCron.schedule('00 15 * * 1-5', () => {
-      const messageWithPoepReminder = { token: this.token, text: "Subiet poep he", channel: "C92K3U2T1"};
-      this.app.client.chat.postMessage(messageWithPoepReminder);
-    }, this.cronOptions);
-  };
 
   getMentionResponse = async (textInput, context, files, user) => {
     if (!this.isMaggieInHoekForTimeout(1)) {

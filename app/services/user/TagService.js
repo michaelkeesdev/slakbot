@@ -8,7 +8,12 @@ import { sample } from "lodash";
 
 class TagService {
 
+    platform = "";
     userService = new UserService();
+
+    constructor(platform) {
+        this.platform = platform;
+    }
 
     tagUserAndAddTextCommand(text) {
         let responseBuilder = new StringBuilder();
@@ -70,11 +75,19 @@ class TagService {
     }
 
     tagUser(user) {
-        return `<@${user.id}>`;
+        if (this.platform === "discord") {
+        return `<@${user.discordId}>`;
+        } else {
+            return user.id;
+        }
     }
 
     tagEveryone() {
-        return "Hup <!channel>";
+        if (this.platform === "discord") {
+            return "Hup @everyone";
+        } else {
+            return "Hup <!channel>";
+        }
     }
 }
 

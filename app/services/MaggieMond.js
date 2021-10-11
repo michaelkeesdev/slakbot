@@ -64,13 +64,19 @@ const newsService = new NewsService(httpClient);
 const recognitionService = new ImageRecognitionService(httpClient);
 const foodService = new FoodService(httpClient, tokenizer);
 const timeService = new TimeService();
-const tagService = new TagService();
 const molService = new MolService();
 const wikiService = new WikiService(httpClient);
 const imageService = new ImageService();
 const poepService = new PoepService();
 
+let tagService;
+
 class MaggieMond {
+
+  constructor(platform) {
+    tagService = new TagService(platform);
+  }
+
   askBasicFollowUpQuestion() {
     return sample(BASIC_FOLLOWUP_QUESTION);
   }

@@ -10,7 +10,9 @@ const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
 });
 
-const maggie = new Maggie(app, process.env.SLACK_BOT_TOKEN);
+const maggie = new Maggie();
+let maggieSlack;
+let maggieDiscord;
 
 app.event("message", async ({ event, context }) => {
   const token = context?.botToken;
@@ -48,21 +50,11 @@ app.event("app_mention", async ({ context, event }) => {
 
 (async () => {
   await app.start(process.env.PORT || 8080);
-  console.log("1 init", await maggie.getMentionResponse("wie naam", null, null, "U91HHN2JE"));
-  console.log("1 init", await maggie.getMentionResponse("wie naam", null, null, "U91HHN2JE"));
-  console.log("1 init", await maggie.getMentionResponse("wie naam", null, null, "U91HHN2JE"));
-  console.log("1 init", await maggie.getMentionResponse("wie naam", null, null, "U91HHN2JE"));
-  console.log("1 init", await maggie.getMentionResponse("wie naam", null, null, "U91HHN2JE"));
-  console.log("1 init", await maggie.getMentionResponse("wie naam", null, null, "U91HHN2JE"));
-  console.log("1 init", await maggie.getMentionResponse("wie naam", null, null, "U91HHN2JE"));
-  console.log("1 init", await maggie.getMentionResponse("wie naam", null, null, "U91HHN2JE"));
-  console.log("1 init", await maggie.getMentionResponse("wie naam", null, null, "U91HHN2JE"));
-  console.log("1 init", await maggie.getMentionResponse("wie naam", null, null, "U91HHN2JE"));
-  console.log("1 init", await maggie.getMentionResponse("wie naam", null, null, "U91HHN2JE"));
-  console.log("1 init", await maggie.getMentionResponse("wie naam", null, null, "U91HHN2JE"));
-  console.log("1 init", await maggie.getMentionResponse("wie naam", null, null, "U91HHN2JE"));
-  console.log("1 init", await maggie.getMentionResponse("wie naam", null, null, "U91HHN2JE"));
-  console.log("1 init", await maggie.getMentionResponse("wie naam", null, null, "U91HHN2JE"));
+  maggieSlack = new Maggie("slack");
+  console.log("tag kees", await maggieSlack.getMentionResponse("tag kees", null, null, "U91HHN2JE"));
+
+  maggieDiscord = new Maggie("discord");
+  console.log("tag kees", await maggieDiscord.getMentionResponse("tag kees", null, null, "U91HHN2JE"));
 
   console.log("⚡️ Slakbot is running!");
 })();

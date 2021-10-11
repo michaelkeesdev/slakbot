@@ -46,10 +46,6 @@ class UserService {
     return USERS.filter(user => this.textIncludesUser(text.toLowerCase(), user));
   }
 
-  getById(userId) {
-    return USERS.filter(user => user.id.toString() === userId.toString())[0];
-  }
-
   textIncludesUser(text, user) {
     return text.includes(user.id) || text.includes(user.tagName) || user.shortNames.some(shortName => text.includes(shortName.toLowerCase()));
   }

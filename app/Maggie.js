@@ -1,3 +1,4 @@
+import { text } from "express";
 import { sample } from "lodash";
 
 import {
@@ -42,27 +43,48 @@ class Maggie {
 
     this.cronOptions = {
       scheduled: true,
-      timezone: "Europe/Brussels"
-    }
+      timezone: "Europe/Brussels",
+    };
     this.registerCronTasks();
   }
 
   registerCronTasks = function () {
-    nodeCron.schedule('45 11 * * 1-5', () => {
-      const messageWithHup = { token: this.token, text: maggieMond.tagEveryone(), channel: "C92K3U2T1"};
-      this.app.client.chat.postMessage(messageWithHup);
+    nodeCron.schedule(
+      "45 11 * * 1-5",
+      () => {
+        const messageWithHup = {
+          token: this.token,
+          text: maggieMond.tagEveryone(),
+          channel: "C92K3U2T1",
+        };
+        this.app.client.chat.postMessage(messageWithHup);
 
-      const messageWithLink = { token: this.token, text: maggieMond.sendPoepLink(), channel: "C92K3U2T1" };
-      this.app.client.chat.postMessage(messageWithLink);
-    }, this.cronOptions);
+        const messageWithLink = {
+          token: this.token,
+          text: maggieMond.sendPoepLink(),
+          channel: "C92K3U2T1",
+        };
+        this.app.client.chat.postMessage(messageWithLink);
+      },
+      this.cronOptions
+    );
 
-    nodeCron.schedule('00 15 * * 1-5', () => {
-      const messageWithPoepReminder = { token: this.token, text: "Subiet poep he", channel: "C92K3U2T1"};
-      this.app.client.chat.postMessage(messageWithPoepReminder);
-    }, this.cronOptions);
+    nodeCron.schedule(
+      "00 15 * * 1-5",
+      () => {
+        const messageWithPoepReminder = {
+          token: this.token,
+          text: "Subiet poep he",
+          channel: "C92K3U2T1",
+        };
+        this.app.client.chat.postMessage(messageWithPoepReminder);
+      },
+      this.cronOptions
+    );
   };
 
   getMentionResponse = async (textInput, context, files, user) => {
+    console.log("getMentionResponse", textInput, context, user);
     if (!this.isMaggieInHoekForTimeout(1)) {
       const text = textInput?.replace(`<@${context?.botUserId}>`, "").trim();
       let imageUrl;
@@ -100,7 +122,6 @@ class Maggie {
       maggieBrein.pushMessage({ text: response, user: this.id });
 
       return response;
-
     } else {
       if (this.isMaggieInHoekForTimeout(0)) {
         return this.handleTimeoutStopAnswer(textInput, user);
@@ -109,7 +130,10 @@ class Maggie {
   };
 
   checkIfMaggieNeedsTimeout(textInput, user) {
-    if (TIMEOUT_TRIGGER.includes(textInput) && !this.isMaggieInHoekForTimeout(0)) {
+    if (
+      TIMEOUT_TRIGGER.includes(textInput) &&
+      !this.isMaggieInHoekForTimeout(0)
+    ) {
       this.setMaggieInHoekForTimeout(user);
       response = sample(TIMEOUT_ANSWER);
     }

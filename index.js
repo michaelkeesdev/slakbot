@@ -1,7 +1,9 @@
 // SLACK
 
 import { App } from "@slack/bolt";
-import "dotenv/config";
+require("dotenv").config();
+
+const { Client, Intents, MessageEmbed } = require("discord.js");
 
 import { Maggie } from "./app/Maggie";
 
@@ -48,59 +50,45 @@ app.event("app_mention", async ({ context, event }) => {
 
 (async () => {
   await app.start(process.env.PORT || 8080);
-  console.log("1 init", await maggie.getMentionResponse("wie naam", null, null, "U91HHN2JE"));
-  console.log("1 init", await maggie.getMentionResponse("wie naam", null, null, "U91HHN2JE"));
-  console.log("1 init", await maggie.getMentionResponse("wie naam", null, null, "U91HHN2JE"));
-  console.log("1 init", await maggie.getMentionResponse("wie naam", null, null, "U91HHN2JE"));
-  console.log("1 init", await maggie.getMentionResponse("wie naam", null, null, "U91HHN2JE"));
-  console.log("1 init", await maggie.getMentionResponse("wie naam", null, null, "U91HHN2JE"));
-  console.log("1 init", await maggie.getMentionResponse("wie naam", null, null, "U91HHN2JE"));
-  console.log("1 init", await maggie.getMentionResponse("wie naam", null, null, "U91HHN2JE"));
-  console.log("1 init", await maggie.getMentionResponse("wie naam", null, null, "U91HHN2JE"));
-  console.log("1 init", await maggie.getMentionResponse("wie naam", null, null, "U91HHN2JE"));
-  console.log("1 init", await maggie.getMentionResponse("wie naam", null, null, "U91HHN2JE"));
-  console.log("1 init", await maggie.getMentionResponse("wie naam", null, null, "U91HHN2JE"));
-  console.log("1 init", await maggie.getMentionResponse("wie naam", null, null, "U91HHN2JE"));
-  console.log("1 init", await maggie.getMentionResponse("wie naam", null, null, "U91HHN2JE"));
-  console.log("1 init", await maggie.getMentionResponse("wie naam", null, null, "U91HHN2JE"));
 
   console.log("⚡️ Slakbot is running!");
 })();
 
+const DISCORD_MAGGIE_IDS = ["&875087867293106238", "!875074049968058431"];
 
-// DISCORD
+const client = new Client({
+  intents: [
+    Intents.FLAGS.GUILDS,
+    Intents.FLAGS.GUILD_WEBHOOKS,
+    Intents.FLAGS.GUILD_INTEGRATIONS,
+    Intents.FLAGS.GUILD_MESSAGES,
+    Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
+    Intents.FLAGS.DIRECT_MESSAGES,
+    Intents.FLAGS.GUILD_MESSAGE_TYPING,
+    Intents.FLAGS.DIRECT_MESSAGE_TYPING,
+  ],
+});
 
+client.on("ready", async (client) => {
+  console.log(`Logged in as ${client.user.tag}!`);
+});
 
-// respond with "hello world" when a GET request is made to the homepage
+client.on("messageCreate", async (msg) => {
+  console.log(msg.content);
 
-/*
-const express = require('express');
-const { Client, Intents, Permissions } = require('discord.js');
-const { InteractionResponseType, verifyKeyMiddleware } = require("discord-interactions");
+  const maggieIdRegex = new RegExp(`(<@)(${DISCORD_MAGGIE_IDS.join("|")})(>)`);
 
-var discordApp = express();
-const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
-
-
-discordApp.post('/interactions', verifyKeyMiddleware('f79402272be9d36eb834d5c9364761fd6a1fdec310a12685c947c92bc7cd3b95'), async (req, res) => {
-  const message = req.body;
-
-  if (message.isMentioned(client.user)) {
-    response = await maggie.getMentionResponse(message.content, null, null, message.author)
-    res.send({
-      type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
-      data: {
-        content: response,
-      },
-    });
+  if (msg.content.match(maggieIdRegex)) {
+    let message = msg.content.replace(maggieIdRegex, "").trim();
+    const response = await maggie.getMentionResponse(
+      message,
+      null,
+      [],
+      msg.user
+    );
+    msg.channel.send(response);
   }
 });
 
-client.login(process.env.DISCORD_TOKEN);
-
-discordApp.listen(8081, function () {
-  client.once('ready', () => {
-    console.log('⚡️ Discord Ready!');
-  });
- });
- */
+//make sure this line is the last line
+client.login(process.env.DISCORD_TOKEN); //login bot using token

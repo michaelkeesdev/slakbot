@@ -78,7 +78,7 @@ class TagService {
         if (this.platform === "discord") {
         return `<@${user.discordId}>`;
         } else {
-            return user.id;
+            return `<@${user.id}>`;
         }
     }
 

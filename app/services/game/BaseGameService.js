@@ -10,7 +10,6 @@ class BaseGameService {
     userService = new UserService();
 
     initGame(textInput, user) {
-        console.log(user);
         if (!currentRunningGames.has(user)) {
             let initPlayerTag = this.getPlayerTag(user);
             let players = [initPlayerTag];
@@ -19,7 +18,7 @@ class BaseGameService {
                 currentRunningGames.set(initPlayerTag, new BladSteenSchaarService(players));
             } else if (textInput.substr(0, 12) === "higher lower") {
                 this.userService.extractUsersFromText(textInput).forEach(user => {
-                    players.push(this.getPlayerTag(user.id));
+                    players.push(this.getPlayerTag(user.discordId));
                 })
                 this.shufflePlayers(players);
                 currentRunningGames.set(initPlayerTag, new HigherLowerService(players));
@@ -53,6 +52,7 @@ class BaseGameService {
     }
 
     getPlayerTag(user) {
+        console.log("player tag", user);
         return `<@${user}>`;
     }
 

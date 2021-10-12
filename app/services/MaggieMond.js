@@ -69,12 +69,13 @@ const wikiService = new WikiService(httpClient);
 const imageService = new ImageService();
 const poepService = new PoepService();
 
-let tagService;
 
 class MaggieMond {
 
+  tagService;
+
   constructor(platform) {
-    tagService = new TagService(platform);
+    this.tagService = new TagService(platform);
   }
 
   askBasicFollowUpQuestion() {
@@ -130,13 +131,13 @@ class MaggieMond {
     return userService.getRandomUserRandomName();
   }
   tagUser(text) {
-    return tagService.tagUserAndAddTextCommand(text);
+    return this.tagService.tagUserAndAddTextCommand(text);
   }
   tagEveryone() {
-    return tagService.tagEveryone();
+    return this.tagService.tagEveryone();
   }
   scheldUser(text) {
-    return tagService.tagUserAndScheld(text);
+    return this.tagService.tagUserAndScheld(text);
   }
   showMeme() {
     return ninegagService.get9gagBasic();

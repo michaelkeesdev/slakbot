@@ -1,4 +1,3 @@
-import { text } from "express";
 import { sample } from "lodash";
 
 import {
@@ -16,14 +15,6 @@ import {
 import { MaggieBrein } from "./services/MaggieBrein";
 import { MaggieMond } from "./services/MaggieMond";
 
-let maggieMond;
-const maggieBrein = new MaggieBrein();
-
-const SIZE_DUPLICATE = 3;
-const SIZE_MONOLOGUE = 7;
-const PID_DUPLICATE = 3;
-const PID_MONOLOGUE = 5;
-
 const MIN_TIMEOUT = 50;
 const MAX_TIMEOUT = 300;
 const RESPONSE_DURING_TIMEOUT_PID = 3;
@@ -36,20 +27,25 @@ class Maggie {
   timeoutUser;
   timeoutMessageAmount = 0;
 
+  maggieMond;
+  maggieBrein;
+
   constructor(platform) {
-    maggieMond = new MaggieMond(platform);
+    this.maggieMond = new MaggieMond(platform);
+    this.maggieBrein = new MaggieBrein(platform);
   }
 
   getMentionResponse = async (textInput, context, files, user) => {
+
     if (!this.isMaggieInHoekForTimeout(1)) {
       const text = textInput?.replace(`<@${context?.botUserId}>`, "").trim();
       let imageUrl;
       if (files?.length > 0) {
         imageUrl = files[0]?.thumb_960;
       }
-      const tokens = maggieBrein.getTokens(text);
-      const exactMatches = maggieBrein.getExactMatches(tokens);
-      const fuzzyMatch = await maggieBrein.getFuzzyMatch(tokens);
+      const tokens = this.maggieBrein.getTokens(text);
+      const exactMatches = this.maggieBrein.getExactMatches(tokens);
+      const fuzzyMatch = await this.maggieBrein.getFuzzyMatch(tokens);
 
       let response = "";
 
@@ -59,23 +55,23 @@ class Maggie {
         response = await exactMatches[0]?.action(text, context, imageUrl);
       }
 
-      let gamePlay = maggieBrein.playGame(text, user);
+      let gamePlay = this.maggieBrein.playGame(text, user);
       if (gamePlay) {
         response = gamePlay;
       }
 
       if (!response) {
         switch (true) {
-          case maggieBrein.needsToDecide(text):
-            response = maggieMond.speakDecision(text);
+          case this.maggieBrein.needsToDecide(text):
+            response = this.maggieMond.speakDecision(text);
             break;
           default:
-            response = maggieMond.giveBasicAnswer();
+            response = this.maggieMond.giveBasicAnswer();
         }
       }
 
       this.checkIfMaggieNeedsTimeout(textInput, user);
-      maggieBrein.pushMessage({ text: response, user: this.id });
+      this.maggieBrein.pushMessage({ text: response, user: this.id });
 
       return response;
     } else {
@@ -97,21 +93,21 @@ class Maggie {
 
   getMessageResponses = async (message, user) => {
     if (!this.isMaggieInHoekForTimeout(1)) {
-      maggieBrein.pushMessage({ text: message, user });
+      this.maggieBrein.pushMessage({ text: message, user });
       const latestMessages = maggieBrein?.messages;
       console.log("latest", latestMessages);
 
       const random = Math.floor(Math.random() * 60);
       if (random === 1) {
-        const randomMessage = maggieMond.giveBasicAnswer();
+        const randomMessage = this.maggieMond.giveBasicAnswer();
         return [randomMessage];
       } else {
-        const matches = maggieBrein.getMessageMatches(latestMessages);
+        const matches = this.maggieBrein.getMessageMatches(latestMessages);
         const responses = matches.reduce((result, match) => {
           const message = match.getMessage();
           if (Math.floor(Math.random() * match.pid) === 1 && message) {
             result.push(message);
-            maggieBrein.pushMessage({ text: message, user: this.id });
+            this.maggieBrein.pushMessage({ text: message, user: this.id });
           }
           return result;
         }, []);

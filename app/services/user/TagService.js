@@ -21,6 +21,7 @@ class TagService {
         let users = this.userService.extractUsersFromText(text);
 
         if (users.length > 0) {
+
             responseBuilder.append(this.tagUsers(users));
 
             let alreadyMatched = false;
@@ -74,11 +75,16 @@ class TagService {
         return responseBuilder.toString();
     }
 
-    tagUser(user) {
-        if (this.platform == "discord") {
-            return `<@${user.discordId}>`;
-        } else {
+    tagUser(user) {    
+        console.log("user to tag", user);
+        if (this.platform === "slack") {
+            console.log("on platform", this.platform);
+            console.log("with id ", user.id);
             return `<@${user.id}>`;
+        } else {
+            console.log("on platform", this.platform);
+            console.log("with id ", user.discordId);
+            return `<@${user.discordId}>`;
         }
     }
 

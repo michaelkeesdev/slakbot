@@ -51,6 +51,16 @@ app.event("app_mention", async ({ context, event }) => {
 
 (async () => {
   await app.start(process.env.PORT || 8080);
+
+  //console.log("maggieSlack", maggieSlack.maggieMond.tagService);
+  //console.log("maggieDiscord", maggieDiscord.maggieMond.tagService);
+
+  //console.log("maggieSlack", maggieSlack.maggieBrein.gameService);
+  //console.log("maggieDiscord", maggieDiscord.maggieBrein.gameService);
+
+  console.log("1 slack", await maggieSlack.getMentionResponse("tag kees slack", null, null, "U91HHN2JE"));
+  console.log("2 discord", await maggieDiscord.getMentionResponse("tag kees discord", null, null, "37026172062466048"));
+
   console.log("⚡️ Slakbot is running!");
 })();
 

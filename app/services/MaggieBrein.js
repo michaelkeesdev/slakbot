@@ -28,9 +28,7 @@ import { IMAGE_TRIGGER } from "../answers/image/Images";
 import { BaseGameService } from "./game/BaseGameService";
 
 const decisionService = new DecisionService();
-const maggieMond = new MaggieMond();
 const tokenizer = new TokenizerService();
-const gameService = new BaseGameService();
 
 const MAX_MESSAGES_MEM = 10;
 
@@ -39,9 +37,17 @@ const SIZE_MONOLOGUE = 8;
 const PID_DUPLICATE = 3;
 const PID_MONOLOGUE = 10;
 
+
 class MaggieBrein {
+  gameService;
+  maggieMond;
   matches = this.getSimpeleMaggieMatches();
   messages = [];
+
+  constructor(platform) {
+    this.gameService = new BaseGameService(platform);
+    this.maggieMond = new MaggieMond(platform);
+  }
 
   getFuzzyMatch = async (tokens) => {
     const tokenizedMatches = this.matches?.flatMap((match) =>
@@ -111,157 +117,157 @@ class MaggieBrein {
   };
 
   playGame(textInput, user) {
-    gameService.initGame(textInput, user);
-    return gameService.playGame(textInput, user);
+    this.gameService.initGame(textInput, user);
+    return this.gameService.playGame(textInput, user);
   }
 
   getSimpeleMaggieMatches() {
     return [
-      { names: BYE_TRIGGER, action: () => maggieMond.sayBye() },
-      { names: [COUNTRY_TRIGGER], action: () => maggieMond.sayCountry() },
-      { names: GOODMORNING_TRIGGER, action: () => maggieMond.sayGoodMorning() },
-      { names: WHY_TRIGGER, action: () => maggieMond.sayWhy() },
-      { names: HOW_TRIGGER, action: () => maggieMond.sayHow() },
+      { names: BYE_TRIGGER, action: () => this.maggieMond.sayBye() },
+      { names: [COUNTRY_TRIGGER], action: () => this.maggieMond.sayCountry() },
+      { names: GOODMORNING_TRIGGER, action: () => this.maggieMond.sayGoodMorning() },
+      { names: WHY_TRIGGER, action: () => this.maggieMond.sayWhy() },
+      { names: HOW_TRIGGER, action: () => this.maggieMond.sayHow() },
       {
         names: HOW_YOU_DOING_TRIGGER,
-        action: () => maggieMond.sayHowYouDoing(),
+        action: () => this.maggieMond.sayHowYouDoing(),
       },
-      { names: JOKE_TRIGGER, action: () => maggieMond.sayJoke() },
-      { names: HOWMUCH_TRIGGER, action: () => maggieMond.sayHowMuch() },
-      { names: SLUIP_TRIGGER, action: async () => maggieMond.saySluip() },
-      { names: THANKS_TRIGGER, action: () => maggieMond.sayThanks() },
-      { names: WHEN_TRIGGER, action: () => maggieMond.sayWhen() },
-      { names: WHERE_TRIGGER, action: () => maggieMond.sayWhere() },
+      { names: JOKE_TRIGGER, action: () => this.maggieMond.sayJoke() },
+      { names: HOWMUCH_TRIGGER, action: () => this.maggieMond.sayHowMuch() },
+      { names: SLUIP_TRIGGER, action: async () => this.maggieMond.saySluip() },
+      { names: THANKS_TRIGGER, action: () => this.maggieMond.sayThanks() },
+      { names: WHEN_TRIGGER, action: () => this.maggieMond.sayWhen() },
+      { names: WHERE_TRIGGER, action: () => this.maggieMond.sayWhere() },
       {
         names: WEETJES_TRIGGER,
-        action: async () => await maggieMond.sayWeetje(),
+        action: async () => await this.maggieMond.sayWeetje(),
       },
       {
         names: ["wie"],
-        action: () => maggieMond.sayRandomUser(),
+        action: () => this.maggieMond.sayRandomUser(),
       },
       {
         names: ["wat"],
-        action: () => maggieMond.sayWhat(),
+        action: () => this.maggieMond.sayWhat(),
       },
       {
         names: ["tag"],
-        action: (text) => maggieMond.tagUser(text),
+        action: (text) => this.maggieMond.tagUser(text),
       },
       {
         names: ["scheld", "scheldt"],
-        action: (text) => maggieMond.scheldUser(text),
+        action: (text) => this.maggieMond.scheldUser(text),
       },
       {
         names: SORRY_TRIGGER,
-        action: (text) => maggieMond.saySorry(),
+        action: (text) => this.maggieMond.saySorry(),
       },
       {
         names: ["verjaardag", "jarig", "jaardag", "verjaardagen"],
-        action: (text) => maggieMond.sayBirthDay(text),
+        action: (text) => this.maggieMond.sayBirthDay(text),
       },
       {
         names: ["hoelaat", "uur"],
-        action: (text) => maggieMond.sayTime(text),
+        action: (text) => this.maggieMond.sayTime(text),
       },
       {
         names: ["youtube random", "zoek youtube", "muziek"],
-        action: async (text) => await maggieMond.sayRandomYoutube(text),
+        action: async (text) => await this.maggieMond.sayRandomYoutube(text),
       },
       {
         names: ["youtube exact", "geef video over"],
-        action: async (text) => await maggieMond.sayExactYoutube(text),
+        action: async (text) => await this.maggieMond.sayExactYoutube(text),
       },
       {
         names: ["grietje", "wufke", "slet"],
-        action: async () => await maggieMond.showGirl(),
+        action: async () => await this.maggieMond.showGirl(),
       },
       {
         names: ["hoertjes", "hoertje", "pron", "madu", "mbali"],
-        action: async (text) => await maggieMond.sayExactTube(text),
+        action: async (text) => await this.maggieMond.sayExactTube(text),
       },
       {
         names: ["cosplay"],
-        action: async () => await maggieMond.showCosplay(),
+        action: async () => await this.maggieMond.showCosplay(),
       },
-      { names: ["nsfw"], action: async () => await maggieMond.showNsfw() },
+      { names: ["nsfw"], action: async () => await this.maggieMond.showNsfw() },
       {
         names: ["9gag", "ninegag", "meme"],
-        action: async () => await maggieMond.showMeme(),
+        action: async () => await this.maggieMond.showMeme(),
       },
 
       {
         names: ["nieuws", "news", "hln", "gazet"],
-        action: async () => await maggieMond.readTheNews(),
+        action: async () => await this.maggieMond.readTheNews(),
       },
       {
         names: ["euromillions", "euro millions", "euromillions"],
-        action: () => maggieMond.tellNextEuroMillionsDraw(),
+        action: () => this.maggieMond.tellNextEuroMillionsDraw(),
       },
       {
         names: ["weer"],
         action: async (text) => {
           const city = text?.replace("weer", "");
-          return await maggieMond.sayCurrentWeather(city);
+          return await this.maggieMond.sayCurrentWeather(city);
         },
       },
       {
         names: ["pollution"],
         action: async (text) => {
           const city = text?.replace("pollution", "");
-          return await maggieMond.sayCurrentWeatherPollution(city);
+          return await this.maggieMond.sayCurrentWeatherPollution(city);
         },
       },
       {
         names: ["weer voorspelling", "voorspelling"],
         action: async (text) => {
           const city = text?.replace("voorspelling", "").replace("weer", "");
-          return await maggieMond.sayForecastWeather(city);
+          return await this.maggieMond.sayForecastWeather(city);
         },
       },
       {
         names: ["zou", "doen", "doenbaar"],
         action: async (text, context, imageUrl) => {
-          return await maggieMond.recognize(imageUrl);
+          return await this.maggieMond.recognize(imageUrl);
         },
       },
       {
         names: ["maand"],
-        action: async () => await maggieMond.sayMonth(),
+        action: async () => await this.maggieMond.sayMonth(),
       },
       {
         names: FOOD_TRIGGER,
         action: async (text) => {
-          return await maggieMond.sayFood(text);
+          return await this.maggieMond.sayFood(text);
         },
       },
       {
         names: BASIC_FOLLOWUP_TRIGGER,
-        action: () => maggieMond.askBasicFollowUpQuestion(),
+        action: () => this.maggieMond.askBasicFollowUpQuestion(),
       },
       {
         names: ["wie mol"],
-        action: async () => maggieMond.sayMolName(),
+        action: async () => this.maggieMond.sayMolName(),
       },
       {
         names: ["kleur"],
-        action: () => maggieMond.sayColour(),
+        action: () => this.maggieMond.sayColour(),
       },
       {
         names: ["wiki", "wikipedia"],
-        action: async (text) => await maggieMond.sayWiki(text),
+        action: async (text) => await this.maggieMond.sayWiki(text),
       },
       {
         names: ["wat is", "wie is", "vertel meer over"],
-        action: async (text) => await maggieMond.sayWikiSummary(text),
+        action: async (text) => await this.maggieMond.sayWikiSummary(text),
       },
       {
         names: IMAGE_TRIGGER,
-        action: async (text) => await maggieMond.sayImage(text),
+        action: async (text) => await this.maggieMond.sayImage(text),
       },
       {
         names: [TIMEOUT_STOP_TRIGGER],
-        action: () => maggieMond.askForStopTimeout(),
+        action: () => this.maggieMond.askForStopTimeout(),
       }
     ];
   }
@@ -281,7 +287,7 @@ class MaggieBrein {
         isMatchFn: () => messages?.length >= SIZE_MONOLOGUE,
         getMessage: () => {
           if (this.isMonologueAnswer(messages, SIZE_MONOLOGUE)) {
-            return maggieMond.sayMonologue();
+            return this.maggieMond.sayMonologue();
           }
         },
         pid: PID_MONOLOGUE,
@@ -290,7 +296,7 @@ class MaggieBrein {
         isMatchFn: () =>
           HOER_TRIGGER.includes(messages[messages.length - 1]?.text),
         getMessage: () => {
-          return maggieMond.sayHoer();
+          return this.maggieMond.sayHoer();
         },
         pid: 5,
       },

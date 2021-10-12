@@ -6,19 +6,25 @@ import { HigherLowerService } from "./HigherLowerService";
 const currentRunningGames = new Map();
 
 class BaseGameService {
-    tagService = new TagService();
-    userService = new UserService();
+    tagService;
+    userService;
+
+    constructor(platform) {
+        this.tagService = new TagService(platform);
+        this.userService = new UserService();
+    }
 
     initGame(textInput, user) {
         if (!currentRunningGames.has(user)) {
-            let initPlayerTag = this.getPlayerTag(user);
+            let initUser = this.userService.extractUsersFromText(user);
+            let initPlayerTag = this.tagService.tagUser(initUser);
             let players = [initPlayerTag];
             // Gameservice needs init() method
             if (textInput === "rps") {
                 currentRunningGames.set(initPlayerTag, new BladSteenSchaarService(players));
             } else if (textInput.substr(0, 12) === "higher lower") {
                 this.userService.extractUsersFromText(textInput).forEach(user => {
-                    players.push(this.getPlayerTag(user.discordId));
+                    players.push(this.tagService.tagUser(user));
                 })
                 this.shufflePlayers(players);
                 currentRunningGames.set(initPlayerTag, new HigherLowerService(players));
@@ -27,7 +33,8 @@ class BaseGameService {
     }
 
     playGame(textInput, user) {
-        let playerTag = this.getPlayerTag(user);
+        let userObject = this.userService.extractUsersFromText(user);
+        let playerTag = this.tagService.tagUser(userObject);
 
         // Gameservice needs play() method
         if (currentRunningGames.has(playerTag) && !currentRunningGames.get(playerTag).gameHasEnded()) {
@@ -49,11 +56,6 @@ class BaseGameService {
             }
             return response;
         }
-    }
-
-    getPlayerTag(user) {
-        console.log("player tag", user);
-        return `<@${user}>`;
     }
 
     shufflePlayers(players) {

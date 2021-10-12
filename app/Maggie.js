@@ -94,7 +94,7 @@ class Maggie {
   getMessageResponses = async (message, user) => {
     if (!this.isMaggieInHoekForTimeout(1)) {
       this.maggieBrein.pushMessage({ text: message, user });
-      const latestMessages = maggieBrein?.messages;
+      const latestMessages = this.maggieBrein?.messages;
       console.log("latest", latestMessages);
 
       const random = Math.floor(Math.random() * 60);

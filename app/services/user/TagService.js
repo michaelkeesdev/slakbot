@@ -76,14 +76,9 @@ class TagService {
     }
 
     tagUser(user) {    
-        console.log("user to tag", user);
         if (this.platform === "slack") {
-            console.log("on platform", this.platform);
-            console.log("with id ", user.id);
             return `<@${user.id}>`;
         } else {
-            console.log("on platform", this.platform);
-            console.log("with id ", user.discordId);
             return `<@${user.discordId}>`;
         }
     }

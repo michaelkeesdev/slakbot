@@ -1,5 +1,6 @@
 import { sample } from 'lodash';
 import { USERS, USERS_EXTRA } from '../../answers/user/User';
+import { TubeService } from '../google/TubeService';
 
 class UserService {
   activeUser = "";
@@ -44,6 +45,10 @@ class UserService {
       return USERS;
     }
     return USERS.filter(user => this.textIncludesUser(text.toLowerCase(), user));
+  }
+
+  getUserById(id) {
+    return USERS.filter(user => user.id == id || user.discordId == id);
   }
 
   textIncludesUser(text, user) {

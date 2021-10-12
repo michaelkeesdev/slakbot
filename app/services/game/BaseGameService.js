@@ -16,7 +16,7 @@ class BaseGameService {
 
     initGame(textInput, user) {
         if (!currentRunningGames.has(user)) {
-            let initUser = this.userService.extractUsersFromText(user);
+            let initUser = this.userService.getUserById(user);
             let initPlayerTag = this.tagService.tagUser(initUser);
             let players = [initPlayerTag];
             // Gameservice needs init() method

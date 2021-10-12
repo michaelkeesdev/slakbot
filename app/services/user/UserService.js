@@ -48,7 +48,8 @@ class UserService {
   }
 
   getUserById(id) {
-    return USERS.filter(user => user.id == id || user.discordId == id);
+    let users = USERS.filter(user => user.id == id || user.discordId == id);
+    if (users.length == 1) return users[0];
   }
 
   textIncludesUser(text, user) {

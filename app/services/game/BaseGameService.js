@@ -16,8 +16,8 @@ class BaseGameService {
 
     initGame(textInput, user) {
         if (!currentRunningGames.has(user)) {
-            let initUser = this.userService.getUserById(user);
-            let initPlayerTag = this.tagService.tagUser(initUser);
+            let initUserObject = this.userService.getUserById(user);
+            let initPlayerTag = this.tagService.tagUser(initUserObject);
             let players = [initPlayerTag];
             // Gameservice needs init() method
             if (textInput === "rps") {
@@ -33,9 +33,8 @@ class BaseGameService {
     }
 
     playGame(textInput, user) {
-        let userObject = this.userService.extractUsersFromText(user);
-        let playerTag = this.tagService.tagUser(userObject);
-
+        let playerObject = this.userService.getUserById(user);
+        let playerTag = this.tagService.tagUser(playerObject);
         // Gameservice needs play() method
         if (currentRunningGames.has(playerTag) && !currentRunningGames.get(playerTag).gameHasEnded()) {
             let game = currentRunningGames.get(playerTag);

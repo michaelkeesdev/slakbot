@@ -51,10 +51,6 @@ app.event("app_mention", async ({ context, event }) => {
 
 (async () => {
   await app.start(process.env.PORT || 8080);
-
-  console.log("1 slack", await maggieSlack.getMentionResponse("higher lower kees slack", null, null, "U91HHN2JE"));
-  console.log("2 discord", await maggieDiscord.getMentionResponse("higher lower kees discord", null, null, "370261720624660483"));
-
   console.log("⚡️ Slakbot is running!");
 })();
 

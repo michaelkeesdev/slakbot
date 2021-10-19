@@ -118,7 +118,7 @@ class HigherLowerService {
     }
 
     playerLost(playerInput, maggiePick) {
-        return ((this.playerSaidHigher(playerInput) && !this.playerSaidLower(playerInput)) && maggiePick < this.lastPic) 
+        return ((this.playerSaidHigher(playerInput) && !this.playerSaidLower(playerInput)) && maggiePick < this.lastPick) 
         || ((this.playerSaidLower(playerInput) && !this.playerSaidHigher(playerInput)) && maggiePick > this.lastPick);
     }
 

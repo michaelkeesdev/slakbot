@@ -113,13 +113,13 @@ class HigherLowerService {
     }
 
     playerWon(playerInput, maggiePick) {
-        return (this.playerSaidHigher(playerInput) && !this.playerSaidLower(playerInput)) && maggiePick > this.lastPick
-         || (this.playerSaidLower(playerInput) && !this.playerSaidHigher(playerInput)) && maggiePick < this.lastPick;
+        return ((this.playerSaidHigher(playerInput) && !this.playerSaidLower(playerInput)) && maggiePick > this.lastPick)
+         || ((this.playerSaidLower(playerInput) && !this.playerSaidHigher(playerInput)) && maggiePick < this.lastPick);
     }
 
     playerLost(playerInput, maggiePick) {
-        return (this.playerSaidHigher(playerInput) && !this.playerSaidLower(playerInput)) && maggiePick < this.lastPick 
-        || (this.playerSaidLower(playerInput) && !this.playerSaidHigher(playerInput)) && maggiePick > this.lastPick;
+        return ((this.playerSaidHigher(playerInput) && !this.playerSaidLower(playerInput)) && maggiePick < this.lastPic) 
+        || ((this.playerSaidLower(playerInput) && !this.playerSaidHigher(playerInput)) && maggiePick > this.lastPick);
     }
 
     playerSaidHigher(playerInput) {

@@ -58,9 +58,9 @@ export const USERS = [{
     discordId: "413023073130905602",
     tagName: "lucious cucumber",
     shortNames: ["Wan", "wan", "de wan"],
-    firstName: "Wannes ",
-    lastName: "Achternaam",
-    birthday: ""
+    firstName: "Wannes",
+    lastName: "Wuytack",
+    birthday: "19 oktober"
 }, {
     id: "U91TU7WKU",
     discordId: "150957477196726273",

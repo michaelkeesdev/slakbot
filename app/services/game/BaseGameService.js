@@ -2,6 +2,7 @@ import { TagService } from "./../user/TagService";
 import { UserService } from "../user/UserService";
 import { BladSteenSchaarService } from "./BladSteenSchaarService";
 import { HigherLowerService } from "./HigherLowerService";
+import { PestService } from "./PestService";
 
 const currentRunningGames = new Map();
 
@@ -28,6 +29,12 @@ class BaseGameService {
                 })
                 this.shufflePlayers(players);
                 currentRunningGames.set(initPlayerTag, new HigherLowerService(players));
+            } else if(textInput === "pest") {
+                this.userService.extractUsersFromText(textInput).forEach(user => {
+                    players.push(this.tagService.tagUser(user));
+                });
+                this.shufflePlayers(players);
+                currentRunningGames.set(initPlayerTag, new PestService(players));
             }
         }
     }
@@ -42,6 +49,8 @@ class BaseGameService {
             if (textInput === "rps") {
                 init = true;
             } else if (textInput.substr(0, 12) === "higher lower") {
+                init = true;
+            } else if(textInput === "pest") {
                 init = true;
             }
 

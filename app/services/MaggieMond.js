@@ -69,9 +69,7 @@ const wikiService = new WikiService(httpClient);
 const imageService = new ImageService();
 const poepService = new PoepService();
 
-
 class MaggieMond {
-
   tagService;
 
   constructor(platform) {
@@ -120,6 +118,9 @@ class MaggieMond {
   }
   sayMonth() {
     return sample(MONTH_ANSWERS);
+  }
+  sayGame() {
+    return sample(GAME_ANSWERS);
   }
   sayWhy() {
     return whyService.getWhyAnswer();
@@ -226,7 +227,6 @@ class MaggieMond {
   sendPoepLink() {
     return poepService.sendPoepLink();
   }
-
 }
 
 export { MaggieMond };

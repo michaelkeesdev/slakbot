@@ -42,6 +42,7 @@ import { MolService } from "./tv/MolService";
 import { WikiService } from "./wiki/WikiService";
 import { ImageService } from "./google/ImageService";
 import { PoepService } from "./game/PoepService";
+import { MopService } from "./mop/MopService";
 
 const basicAnweringService = new BasicAnweringService();
 
@@ -68,6 +69,7 @@ const molService = new MolService();
 const wikiService = new WikiService(httpClient);
 const imageService = new ImageService();
 const poepService = new PoepService();
+const mopService = new MopService();
 
 
 class MaggieMond {
@@ -225,6 +227,9 @@ class MaggieMond {
   }
   sendPoepLink() {
     return poepService.sendPoepLink();
+  }
+  sayMopje() {
+    return mopService.sayMopje();
   }
 
 }

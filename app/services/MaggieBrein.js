@@ -268,7 +268,11 @@ class MaggieBrein {
       {
         names: [TIMEOUT_STOP_TRIGGER],
         action: () => this.maggieMond.askForStopTimeout(),
-      }
+      },
+      {
+        names: ["mop", "mopje", "grapje"],
+        action: async (text) => await this.maggieMond.sayMopje(text),
+      },
     ];
   }
 

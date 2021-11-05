@@ -37,7 +37,6 @@ const SIZE_MONOLOGUE = 8;
 const PID_DUPLICATE = 3;
 const PID_MONOLOGUE = 10;
 
-
 class MaggieBrein {
   gameService;
   maggieMond;
@@ -125,7 +124,10 @@ class MaggieBrein {
     return [
       { names: BYE_TRIGGER, action: () => this.maggieMond.sayBye() },
       { names: [COUNTRY_TRIGGER], action: () => this.maggieMond.sayCountry() },
-      { names: GOODMORNING_TRIGGER, action: () => this.maggieMond.sayGoodMorning() },
+      {
+        names: GOODMORNING_TRIGGER,
+        action: () => this.maggieMond.sayGoodMorning(),
+      },
       { names: WHY_TRIGGER, action: () => this.maggieMond.sayWhy() },
       { names: HOW_TRIGGER, action: () => this.maggieMond.sayHow() },
       {
@@ -234,6 +236,10 @@ class MaggieBrein {
       {
         names: ["maand"],
         action: async () => await this.maggieMond.sayMonth(),
+      },
+      {
+        names: ["welk spel"],
+        action: async () => await this.maggieMond.sayGame(),
       },
       {
         names: FOOD_TRIGGER,

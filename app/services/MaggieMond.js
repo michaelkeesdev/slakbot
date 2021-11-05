@@ -29,6 +29,7 @@ import { HttpClient } from "../../httpClient";
 import { DeviantArtService } from "./deviantart/deviantArtService";
 import { HowMuchService } from "./HowMuchService";
 import { MONTH_ANSWERS } from "../answers/Month";
+import { GAME_ANSWERS } from "../answers/Game";
 import { HowService } from "./hoe/HowService";
 import { WhyService } from "./why/WhyService";
 import { NOUNS } from "../answers/words/RandomNouns";
@@ -71,9 +72,7 @@ const imageService = new ImageService();
 const poepService = new PoepService();
 const mopService = new MopService();
 
-
 class MaggieMond {
-
   tagService;
 
   constructor(platform) {
@@ -122,6 +121,9 @@ class MaggieMond {
   }
   sayMonth() {
     return sample(MONTH_ANSWERS);
+  }
+  sayGame() {
+    return sample(GAME_ANSWERS);
   }
   sayWhy() {
     return whyService.getWhyAnswer();

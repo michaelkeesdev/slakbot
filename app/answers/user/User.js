@@ -54,7 +54,7 @@ export const USERS = [{
     lastName: "Dalderup",
     birthDay: "2 januari"
 }, {
-    id: "error",
+    id: "U02LD2R6X7T",
     discordId: "413023073130905602",
     tagName: "lucious cucumber",
     shortNames: ["Wan", "wan", "de wan"],

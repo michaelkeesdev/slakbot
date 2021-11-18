@@ -11,7 +11,7 @@ class WeatherService {
         city ? city : "Antwerp"
       }&appid=a56e4906698ac4909f50c2b0f9f72647&units=metric&lang=nl`
     );
-    if (response) {
+    if (response && response?.weather?.length) {
       return `${response?.weather[0]?.description}, ${response?.main?.temp} °C in ${response?.name}`;
     }
   };

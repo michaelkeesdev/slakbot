@@ -29,7 +29,7 @@ class WeatherService {
       const pollutionRes = await this.httpClient.get(
         `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=a56e4906698ac4909f50c2b0f9f72647&units=metric&lang=nl`
       );
-      if (pollutionRes && pollutionRes.list.length) {
+      if (pollutionRes && pollutionRes?.list?.length) {
         const pollutionReport = pollutionRes?.list[0];
         const CO = pollutionReport?.components?.co;
         const NO = pollutionReport?.components?.no;

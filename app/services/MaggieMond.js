@@ -102,7 +102,7 @@ class MaggieMond {
     return howService.getHowAnswer();
   }
   sayHowMuch() {
-    return howMuchService.giveNumber();
+    return howMuchService.giveNumber().toString();
   }
   sayHowYouDoing() {
     return basicAnweringService.buildAnswerToHowYouDoingPhrase();
@@ -233,7 +233,6 @@ class MaggieMond {
   sayMopje() {
     return mopService.sayMopje();
   }
-
 }
 
 export { MaggieMond };

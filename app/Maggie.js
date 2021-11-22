@@ -70,7 +70,11 @@ class Maggie {
         }
       }
 
-      this.checkIfMaggieNeedsTimeout(textInput, user);
+      if (TIMEOUT_TRIGGER.includes(textInput) && !this.isMaggieInHoekForTimeout(0)) {
+        this.setMaggieInHoekForTimeout(user);
+        response = sample(TIMEOUT_ANSWER);
+      }
+      
       this.maggieBrein.pushMessage({ text: response, user: this.id });
 
       return response;
@@ -81,15 +85,6 @@ class Maggie {
     }
   };
 
-  checkIfMaggieNeedsTimeout(textInput, user) {
-    if (
-      TIMEOUT_TRIGGER.includes(textInput) &&
-      !this.isMaggieInHoekForTimeout(0)
-    ) {
-      this.setMaggieInHoekForTimeout(user);
-      response = sample(TIMEOUT_ANSWER);
-    }
-  }
 
   getMessageResponses = async (message, user) => {
     if (!this.isMaggieInHoekForTimeout(1)) {

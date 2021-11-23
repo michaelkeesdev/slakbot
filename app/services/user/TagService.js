@@ -76,10 +76,12 @@ class TagService {
     }
 
     tagUser(user) {    
-        if (this.platform == "slack" && user.id) {
-            return `<@${user.id}>`;
-        } else if (user.discordId) {
-            return `<@${user.discordId}>`;
+        if (user != null) {
+            if (this.platform == "slack" && user.id) {
+                return `<@${user.id}>`;
+            } else if (user.discordId) {
+                return `<@${user.discordId}>`;
+            }
         }
     }
 

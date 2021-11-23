@@ -76,9 +76,9 @@ class TagService {
     }
 
     tagUser(user) {    
-        if (this.platform == "slack") {
+        if (this.platform == "slack" && user.id) {
             return `<@${user.id}>`;
-        } else {
+        } else if (user.discordId) {
             return `<@${user.discordId}>`;
         }
     }

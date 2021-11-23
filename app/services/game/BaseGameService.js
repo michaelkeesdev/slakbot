@@ -14,8 +14,12 @@ class BaseGameService {
         this.userService = new UserService();
     }
 
+    textInputContainsGameName(textInput) {
+        return textInput === "rps" || textInput.substr(0, 12) === "higher lower";
+    }
+
     initGame(textInput, user) {
-        if (!currentRunningGames.has(user)) {
+        if (this.textInputContainsGameName(textInput) && !currentRunningGames.has(user)) {
             let initUserObject = this.userService.getUserById(user);
             let initPlayerTag = this.tagService.tagUser(initUserObject);
             let players = [initPlayerTag];

@@ -25,7 +25,10 @@ class WhereService {
     let pidWhoIncl = Math.floor(Math.random() * 30);
     let pidWhoPlace = Math.floor(Math.random() * 10);
 
-    decision = this.changeDecisionBasedOnText(text);
+    if (text) {
+      console.log("text", text);
+      decision = this.changeDecisionBasedOnText(text);
+    }
 
     switch (decision) {
       case decision < 5:

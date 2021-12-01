@@ -70,7 +70,7 @@ class WhereService {
 
   changeDecisionBasedOnText(text, decision) {
     switch (text) {
-      case text.contains("weekend"):
+      case text.split(" ").includes("weekend"):
         decision = 6;
         break;
     }

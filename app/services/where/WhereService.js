@@ -30,6 +30,8 @@ class WhereService {
       decision = this.changeDecisionBasedOnText(text);
     }
 
+    console.log("decision", decision);
+
     switch (decision) {
       case decision < 5:
         place = sample(PLACES_BASIC);

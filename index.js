@@ -43,7 +43,12 @@ app.event("app_mention", async ({ context, event }) => {
 
   let user = event?.user;
 
-  const response = await maggieSlack.getMentionResponse(text, context, files, user);
+  const response = await maggieSlack.getMentionResponse(
+    text,
+    context,
+    files,
+    user
+  );
   const message = { token, channel, text: response };
 
   await app.client.chat.postMessage(message);
@@ -51,7 +56,6 @@ app.event("app_mention", async ({ context, event }) => {
 
 (async () => {
   await app.start(process.env.PORT || 8080);
-  //console.log("mopje", await maggieSlack.getMentionResponse("zwijg", null, null, "U92KLC4CX"));
   console.log("⚡️ Slakbot is running!");
 })();
 

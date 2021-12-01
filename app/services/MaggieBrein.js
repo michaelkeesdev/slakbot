@@ -139,7 +139,10 @@ class MaggieBrein {
       { names: SLUIP_TRIGGER, action: async () => this.maggieMond.saySluip() },
       { names: THANKS_TRIGGER, action: () => this.maggieMond.sayThanks() },
       { names: WHEN_TRIGGER, action: () => this.maggieMond.sayWhen() },
-      { names: WHERE_TRIGGER, action: () => this.maggieMond.sayWhere() },
+      {
+        names: WHERE_TRIGGER,
+        action: (text) => this.maggieMond.sayWhere(text),
+      },
       {
         names: WEETJES_TRIGGER,
         action: async () => await this.maggieMond.sayWeetje(),

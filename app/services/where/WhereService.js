@@ -27,7 +27,7 @@ class WhereService {
 
     if (text) {
       console.log("text", text);
-      decision = this.changeDecisionBasedOnText(text);
+      decision = this.changeDecisionBasedOnText(text, decision);
     }
 
     console.log("decision", decision);
@@ -74,6 +74,9 @@ class WhereService {
     switch (text) {
       case text.split(" ").includes("weekend"):
         decision = 6;
+        break;
+      default:
+        decision = decision;
         break;
     }
     return decision;

@@ -18,7 +18,7 @@ class WhereService {
     let place = "Weet het ni";
     let user = new UserService().getRandomUserRandomName();
 
-    let decision = Math.floor(Math.random() * 17);
+    let decision = Math.floor(Math.random() * 16);
     let pidScheld = Math.floor(Math.random() * 40);
     let pidAdjective = Math.floor(Math.random() * 40);
     let pidVerb = Math.floor(Math.random() * 40);
@@ -51,9 +51,6 @@ class WhereService {
       case decision >= 13 && decision < 16:
         place = sample(PLACES_JOB);
         break;
-      case decision === 16:
-        place = responseBuilder.append(" ").append(sample(BASIC_PHRASE));
-        break;
     }
     if (pidAdjective === 1) {
       place = sample(ADJECTIVES) + " " + place;
@@ -67,6 +64,7 @@ class WhereService {
     if (pidWhoIncl === 1) {
       place = place + " met " + user;
     }
+    console.log("place", place);
     return place;
   }
 

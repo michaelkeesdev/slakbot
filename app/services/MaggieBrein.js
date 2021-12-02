@@ -269,7 +269,7 @@ class MaggieBrein {
       /*{
         names: ["wat is", "wie is", "vertel meer over"],
         action: async (text) => await this.maggieMond.sayWikiSummary(text),
-      },
+      }, */
       {
         names: IMAGE_TRIGGER,
         action: async (text) => await this.maggieMond.sayImage(text),

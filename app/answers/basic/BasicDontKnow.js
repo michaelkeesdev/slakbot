@@ -23,5 +23,22 @@ export const BASIC_DONT_KNOW_ANSWER = [
     "w8 ff",
     "meh",
     "nu ff niet",
-    "even geduld"
+    "even geduld",
+    "de jap de jap de jap",
+    "moet ni zoveel vragen stellen",
+    "nutteloze vraag",
+    "zwijg",
+    "zwijgt nu toch eens",
+    "ma laat mij nu eens doen",
+    "idk",
+    "geen idee",
+    "pff geen idee",
+    "pff idk",
+    "waarom zou ik da weten",
+    "ik moet da weten?",
+    "kan ik ni weten he",
+    "vraagt iemand anders eens",
+    "val eens iemand anders lastig",
+    "laat me doen",
+    "och"
   ];

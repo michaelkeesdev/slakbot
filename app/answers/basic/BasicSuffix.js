@@ -22,4 +22,5 @@ export const BASIC_SUFFIX = [
     "Nu ben ik wel echt weg",
     "En gy bent een %adjective% %scheld% overigens.",
     "En dans",
+    "Want de bel doet het niet."
 ];

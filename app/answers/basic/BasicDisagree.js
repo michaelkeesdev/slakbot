@@ -45,5 +45,19 @@ export const BASIC_DISAGREE_ANSWER = [
     "Gewoon nee.",
     "Gewoon nee?",
     "Nee jom",
-    "Nee jong"
+    "Nee jong",
+    "Tzal",
+    "Het zal.",
+    "Denkt gij?",
+    "Is ni he.",
+    "Maja nee lol.",
+    "Maja nee he.",
+    "Zeker niet.",
+    "Een kat is geen mus.",
+    "Zwijg nu eens.",
+    "Nee zwijg.",
+    "Geef het op aub.",
+    "Negatief.",
+    "Helaas, nee.",
+    "Helaas, nope."
   ];

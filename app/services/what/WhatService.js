@@ -22,7 +22,7 @@ class WhatService {
       }
     }
     if (decision === 7) {
-      what = sample(NOUN) + " " + sample(VERBS);
+      what = sample(NOUNS) + " " + sample(VERBS);
     }
     if (decision === 8) {
       what = sample(VERBS);

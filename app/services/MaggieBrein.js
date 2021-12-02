@@ -188,7 +188,7 @@ class MaggieBrein {
         action: async () => await this.maggieMond.showGirl(),
       },
       {
-        names: ["hoertjes", "hoertje", "pron", "madu", "mbali"],
+        names: ["hoertjes", "hoertje", "pron"],
         action: async (text) => await this.maggieMond.sayExactTube(text),
       },
       {
@@ -206,7 +206,7 @@ class MaggieBrein {
         action: async () => await this.maggieMond.readTheNews(),
       },
       {
-        names: ["euromillions", "euro millions", "euromillions"],
+        names: ["euromillions", "euromillions"],
         action: () => this.maggieMond.tellNextEuroMillionsDraw(),
       },
       {
@@ -230,12 +230,12 @@ class MaggieBrein {
           return await this.maggieMond.sayForecastWeather(city);
         },
       },
-      {
+      /*{
         names: ["zou", "doen", "doenbaar"],
         action: async (text, context, imageUrl) => {
           return await this.maggieMond.recognize(imageUrl);
         },
-      },
+      },*/
       {
         names: ["maand"],
         action: async () => await this.maggieMond.sayMonth(),
@@ -266,7 +266,7 @@ class MaggieBrein {
         names: ["wiki", "wikipedia"],
         action: async (text) => await this.maggieMond.sayWiki(text),
       },
-      {
+      /*{
         names: ["wat is", "wie is", "vertel meer over"],
         action: async (text) => await this.maggieMond.sayWikiSummary(text),
       },

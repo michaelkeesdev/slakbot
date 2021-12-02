@@ -153,7 +153,7 @@ class MaggieBrein {
       },
       {
         names: ["wat"],
-        action: () => this.maggieMond.sayWhat(),
+        action: (text) => this.maggieMond.sayWhat(text),
       },
       {
         names: ["tag"],

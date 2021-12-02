@@ -132,8 +132,8 @@ class MaggieMond {
   sayWhy() {
     return whyService.getWhyAnswer();
   }
-  sayWhat() {
-    return whatService.getWhatAnswer();
+  sayWhat(text) {
+    return whatService.getWhatAnswer(text);
   }
   sayRandomUser() {
     return userService.getRandomUserRandomName();

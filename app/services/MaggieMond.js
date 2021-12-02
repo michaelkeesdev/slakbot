@@ -32,6 +32,7 @@ import { MONTH_ANSWERS } from "../answers/Month";
 import { GAME_ANSWERS } from "../answers/Game";
 import { HowService } from "./hoe/HowService";
 import { WhyService } from "./why/WhyService";
+import { WhatService } from "./what/WhatService";
 import { WhereService } from "./where/WhereService";
 import { NOUNS } from "../answers/words/RandomNouns";
 import { COLOURS } from "../answers/words/Colours";
@@ -50,6 +51,7 @@ const basicAnweringService = new BasicAnweringService();
 
 const howService = new HowService();
 const whyService = new WhyService();
+const whatService = new WhatService();
 const whereService = new WhereService();
 const httpClient = new HttpClient();
 const userService = new UserService();
@@ -131,7 +133,7 @@ class MaggieMond {
     return whyService.getWhyAnswer();
   }
   sayWhat() {
-    return sample(NOUNS);
+    return whatService.getWhatAnswer();
   }
   sayRandomUser() {
     return userService.getRandomUserRandomName();

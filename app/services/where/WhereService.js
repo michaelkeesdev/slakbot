@@ -32,25 +32,23 @@ class WhereService {
 
     console.log("decision", decision);
 
-    switch (decision) {
-      case decision < 5:
-        place = sample(PLACES_BASIC);
-        break;
-      case decision >= 5 && decision < 7:
-        place = sample(PLACES_PLACE);
-        break;
-      case decision >= 5 && decision < 8:
-        place = sample(PLACES_SPECIAL_PLACES);
-        break;
-      case decision >= 9 && decision < 12:
-        place = sample(PLACES_WHO);
-        if (pidWhoPlace === 1) {
-          place = place + " van " + user;
-        }
-        break;
-      case decision >= 13 && decision < 16:
-        place = sample(PLACES_JOB);
-        break;
+    if (decision < 5) {
+      place = sample(PLACES_BASIC);
+    }
+    if (decision >= 5 && decision < 7) {
+      place = sample(PLACES_PLACE);
+    }
+    if (decision >= 5 && decision < 8) {
+      place = sample(PLACES_SPECIAL_PLACES);
+    }
+    if (decision >= 9 && decision < 12) {
+      place = sample(PLACES_WHO);
+      if (pidWhoPlace === 1) {
+        place = place + " van " + user;
+      }
+    }
+    if (decision >= 13 && decision < 16) {
+      place = sample(PLACES_JOB);
     }
     if (pidAdjective === 1) {
       place = sample(ADJECTIVES) + " " + place;

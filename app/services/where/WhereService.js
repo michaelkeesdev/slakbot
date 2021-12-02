@@ -68,7 +68,7 @@ class WhereService {
 
   changeDecisionBasedOnText(text, decision) {
     switch (text) {
-      case text.split(" ").includes("weekend"):
+      case text.match(new RegExp(/weekend|zomer|vakantie|verlof/, i)):
         decision = 6;
         break;
       default:

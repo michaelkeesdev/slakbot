@@ -7,13 +7,11 @@ import { COUNTRY_LIST } from "./../answers/Countries";
 import { GOODMORNING_ANSWER } from "./../answers/Goodmorning";
 import { JOKE_ANSWER } from "./../answers/Joke";
 import { THANKS_ANSWER } from "./../answers/Thanks";
-import { WEETJES_ANSWER } from "../answers/weetjes/Weetjes";
 import { WHEN_ANSWER } from "./../answers/When";
-import { WHERE_ANSWER } from "./../answers/Where";
 import { SORRY_ANSWER } from "./../answers/Sorry";
-import { TIMEOUT_ANSWER, TIMEOUT_STOP_PLACEHOLDER } from "../answers/Timeout";
+import { TIMEOUT_STOP_PLACEHOLDER } from "../answers/Timeout";
 
-import { BasicAnweringService } from "./answering/BasicAnsweringService";
+import { BaseAnweringService, COMMAND_DECISION, COMMAND_HOW, COMMAND_HOWMUCH, COMMAND_HOWYOUDOING, COMMAND_WHAT, COMMAND_WHERE, COMMAND_WHY, COMMAND_YESNODONTKNOW } from "./answering/BaseAnsweringService";
 import { UserService } from "./user/UserService";
 import { BirthdayService } from "./user/BirthdayService";
 import { NewsService } from "./news/NewsService";
@@ -21,20 +19,13 @@ import { NineGagService } from "./9gag/9gagService";
 import { FoodService } from "./food/FoodService";
 import { YoutubeService } from "./google/YoutubeService";
 import { TubeService } from "./google/TubeService";
-import { DecisionService } from "./answering/DecisionService";
 import { EuroMillionsService } from "./game/EuroMillionsService";
 import { WeatherService } from "./weather/WeatherService";
 import { TimeService } from "./time/TimeService";
 import { HttpClient } from "../../httpClient";
 import { DeviantArtService } from "./deviantart/deviantArtService";
-import { HowMuchService } from "./HowMuchService";
 import { MONTH_ANSWERS } from "../answers/Month";
 import { GAME_ANSWERS } from "../answers/Game";
-import { HowService } from "./hoe/HowService";
-import { WhyService } from "./why/WhyService";
-import { WhatService } from "./what/WhatService";
-import { WhereService } from "./where/WhereService";
-import { NOUNS } from "../answers/words/RandomNouns";
 import { COLOURS } from "../answers/words/Colours";
 import { ImageRecognitionService } from "./recognition/ImageRecognition";
 import { MONOLOGUE } from "../answers/Monologue";
@@ -47,12 +38,8 @@ import { ImageService } from "./google/ImageService";
 import { PoepService } from "./game/PoepService";
 import { MopService } from "./mop/MopService";
 
-const basicAnweringService = new BasicAnweringService();
+const baseAnweringService = new BaseAnweringService();
 
-const howService = new HowService();
-const whyService = new WhyService();
-const whatService = new WhatService();
-const whereService = new WhereService();
 const httpClient = new HttpClient();
 const userService = new UserService();
 const birthdayService = new BirthdayService();
@@ -60,9 +47,7 @@ const ninegagService = new NineGagService();
 const deviantArtService = new DeviantArtService();
 const youtubeService = new YoutubeService();
 const tubeService = new TubeService();
-const decisionService = new DecisionService();
 const euroMillionsService = new EuroMillionsService();
-const howMuchService = new HowMuchService();
 
 const tokenizer = new TokenizerService();
 const weatherService = new WeatherService(httpClient);
@@ -83,13 +68,46 @@ class MaggieMond {
     this.tagService = new TagService(platform);
   }
 
+  // BASE ANSWER SERVICE
+
+  giveBasicAnswer() {
+    return baseAnweringService.answer(COMMAND_YESNODONTKNOW, "mood");
+  }
+
+  makeDecision(text) {
+    return baseAnweringService.answer(COMMAND_DECISION, "mood", text);
+  }
+
+  sayHow() {
+    return baseAnweringService.answer(COMMAND_HOW, "mood");
+  }
+
+  sayHowMuch() {
+    return baseAnweringService.answer(COMMAND_HOWMUCH, "mood");
+  }
+
+  sayHowYouDoing() {
+    return baseAnweringService.answer(COMMAND_HOWYOUDOING, "mood");
+  }
+
+  sayWhat(text) {
+    return baseAnweringService.answer(COMMAND_WHAT, "mood", text);
+  }
+
+  sayWhere(text) {
+    return baseAnweringService.answer(COMMAND_WHERE, "mood", text);
+  }
+
+  sayWhy() {
+    return baseAnweringService.answer(COMMAND_WHY, "mood");
+  }
+
+  // CUSTOM //  
+
   askBasicFollowUpQuestion() {
     return sample(BASIC_FOLLOWUP_QUESTION);
   }
 
-  giveBasicAnswer() {
-    return basicAnweringService.buildAnswerPhrase();
-  }
   sayBye() {
     return sample(BYE_ANSWER);
   }
@@ -102,15 +120,7 @@ class MaggieMond {
   sayGoodMorning() {
     return sample(GOODMORNING_ANSWER);
   }
-  sayHow() {
-    return howService.getHowAnswer();
-  }
-  sayHowMuch() {
-    return howMuchService.giveNumber().toString();
-  }
-  sayHowYouDoing() {
-    return basicAnweringService.buildAnswerToHowYouDoingPhrase();
-  }
+
   sayJoke() {
     return sample(JOKE_ANSWER);
   }
@@ -120,20 +130,12 @@ class MaggieMond {
   sayWhen() {
     return sample(WHEN_ANSWER);
   }
-  sayWhere(text) {
-    return whereService.getWhereAnswer(text);
-  }
+
   sayMonth() {
     return sample(MONTH_ANSWERS);
   }
   sayGame() {
     return sample(GAME_ANSWERS);
-  }
-  sayWhy() {
-    return whyService.getWhyAnswer();
-  }
-  sayWhat(text) {
-    return whatService.getWhatAnswer(text);
   }
   sayRandomUser() {
     return userService.getRandomUserRandomName();
@@ -188,9 +190,6 @@ class MaggieMond {
   }
   sayFood(suggest) {
     return foodService.getRecaipie(suggest);
-  }
-  speakDecision(text) {
-    return decisionService.makeDecision(text);
   }
 
   tellNextEuroMillionsDraw() {

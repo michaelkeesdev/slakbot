@@ -61,12 +61,10 @@ class Maggie {
       }
 
       if (!response) {
-        switch (true) {
-          case this.maggieBrein.needsToDecide(text):
-            response = this.maggieMond.speakDecision(text);
-            break;
-          default:
-            response = this.maggieMond.giveBasicAnswer();
+        if (text.split(" of ").length > 1) {
+          response = this.maggieMond.makeDecision(text);
+        } else {
+          response = this.maggieMond.giveBasicAnswer();
         }
       }
 

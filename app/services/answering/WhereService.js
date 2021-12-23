@@ -1,10 +1,8 @@
 import { sample } from "lodash";
-import { WHY_ANSWERS } from "./../../answers/Why";
-import { NOUNS } from "./../../answers/words/RandomNouns";
-import { VERBS } from "./../../answers/words/Verbs";
-import { ADJECTIVES } from "./../../answers/words/Adjectives";
-import { SCHELD } from "./../../answers/basic/Scheld";
-import { UserService } from "./../user/UserService";
+import { VERBS } from "../../answers/words/Verbs";
+import { ADJECTIVES } from "../../answers/words/Adjectives";
+import { SCHELD } from "../../answers/basic/Scheld";
+import { UserService } from "../user/UserService";
 import {
   PLACES_PLACE,
   PLACES_BASIC,
@@ -14,7 +12,17 @@ import {
 } from "../../answers/Where";
 
 class WhereService {
-  getWhereAnswer(text) {
+  mood;
+  inputText;
+  responseBuilder;
+
+  constructor(mood, inputText, responseBuilder) {
+      this.mood = mood;
+      this.inputText = inputText;
+      this.responseBuilder = responseBuilder;
+  }
+
+  answer = () => {
     let place = "Weet het ni";
     let user = new UserService().getRandomUserRandomName();
 
@@ -25,12 +33,9 @@ class WhereService {
     let pidWhoIncl = Math.floor(Math.random() * 30);
     let pidWhoPlace = Math.floor(Math.random() * 10);
 
-    if (text) {
-      console.log("text", text);
-      decision = this.changeDecisionBasedOnText(text, decision);
+    if (this.inputText) {
+      decision = this.changeDecisionBasedOnText(decision);
     }
-
-    console.log("decision", decision);
 
     if (decision < 7) {
       place = sample(PLACES_BASIC);
@@ -63,12 +68,14 @@ class WhereService {
       place = place + " met " + user;
     }
     console.log("place", place);
-    return place;
+
+    this.responseBuilder.append(place);
+    return this.responseBuilder.toString();
   }
 
-  changeDecisionBasedOnText(text, decision) {
-    switch (text) {
-      case text.match(new RegExp(/weekend|zomer|vakantie|verlof/)):
+  changeDecisionBasedOnText(decision) {
+    switch (this.inputText) {
+      case this.inputText.match(new RegExp(/weekend|zomer|vakantie|verlof/)):
         decision = 6;
         break;
       default:

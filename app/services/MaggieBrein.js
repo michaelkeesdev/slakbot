@@ -15,7 +15,6 @@ import { WEETJES_TRIGGER } from "./../answers/weetjes/Weetjes";
 import { WHEN_TRIGGER } from "./../answers/When";
 import { WHERE_TRIGGER } from "./../answers/Where";
 
-import { DecisionService } from "./answering/DecisionService";
 import { MaggieMond } from "./MaggieMond";
 import { TokenizerService } from "./tokenizer/Tokenizer";
 import { HOW_YOU_DOING_TRIGGER } from "./../answers/HowYouDoing";
@@ -27,7 +26,6 @@ import { FOOD_TRIGGER } from "../answers/food/Food";
 import { IMAGE_TRIGGER } from "../answers/image/Images";
 import { BaseGameService } from "./game/BaseGameService";
 
-const decisionService = new DecisionService();
 const tokenizer = new TokenizerService();
 
 const MAX_MESSAGES_MEM = 10;
@@ -339,10 +337,6 @@ class MaggieBrein {
       this.messages.shift();
     }
     this.messages.push(message);
-  }
-
-  needsToDecide(text) {
-    return decisionService.needsToDecide(text);
   }
 }
 

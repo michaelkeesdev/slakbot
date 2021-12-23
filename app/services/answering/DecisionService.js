@@ -3,19 +3,26 @@ import { sample } from 'lodash';
 const ALL_PID = 10;
 
 class DecisionService {
-    needsToDecide(text) {
-        return text.split(" of ").length > 1
+    mood;
+    inputText;
+    responseBuilder;
+  
+    constructor(mood, inputText, responseBuilder) {
+        this.mood = mood;
+        this.inputText = inputText;
+        this.responseBuilder = responseBuilder;
     }
 
-    makeDecision(text) {
-        if (this.needsToDecide(text)) {
+    answer = () => {
+        if (this.inputText.split(" of ").length > 1) {
             let and = Math.floor(Math.random() * ALL_PID);
             if(and === 1) {
-                return text.replace(" of ", " en ");
+                this.responseBuilder.append(this.inputText.replace(" of ", " en "));
             } else {
-                return sample(text.split(" of "))
+                this.responseBuilder.append(sample(this.inputText.split(" of ")))
             }
             
+            return this.responseBuilder.toString();
         }
     }
 }

@@ -92,7 +92,7 @@ class Maggie {
 
       const random = Math.floor(Math.random() * 60);
       if (random === 1) {
-        const randomMessage = this.maggieMond.giveBasicAnswer(text);
+        const randomMessage = this.maggieMond.giveBasicAnswer(message);
         return [randomMessage];
       } else {
         const matches = this.maggieBrein.getMessageMatches(latestMessages);

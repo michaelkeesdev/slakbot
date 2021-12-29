@@ -70,24 +70,24 @@ class MaggieMond {
 
   // BASE ANSWER SERVICE
 
-  giveBasicAnswer() {
-    return baseAnweringService.answer(COMMAND_YESNODONTKNOW, "mood");
+  giveBasicAnswer(text) {
+    return baseAnweringService.answer(COMMAND_YESNODONTKNOW, "mood", text);
   }
 
   makeDecision(text) {
     return baseAnweringService.answer(COMMAND_DECISION, "mood", text);
   }
 
-  sayHow() {
-    return baseAnweringService.answer(COMMAND_HOW, "mood");
+  sayHow(text) {
+    return baseAnweringService.answer(COMMAND_HOW, "mood", text);
   }
 
-  sayHowMuch() {
-    return baseAnweringService.answer(COMMAND_HOWMUCH, "mood");
+  sayHowMuch(text) {
+    return baseAnweringService.answer(COMMAND_HOWMUCH, "mood", text);
   }
 
-  sayHowYouDoing() {
-    return baseAnweringService.answer(COMMAND_HOWYOUDOING, "mood");
+  sayHowYouDoing(text) {
+    return baseAnweringService.answer(COMMAND_HOWYOUDOING, "mood", text);
   }
 
   sayWhat(text) {
@@ -98,8 +98,8 @@ class MaggieMond {
     return baseAnweringService.answer(COMMAND_WHERE, "mood", text);
   }
 
-  sayWhy() {
-    return baseAnweringService.answer(COMMAND_WHY, "mood");
+  sayWhy(text) {
+    return baseAnweringService.answer(COMMAND_WHY, "mood", text);
   }
 
   // CUSTOM //  

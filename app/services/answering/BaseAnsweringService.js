@@ -105,11 +105,15 @@ class BaseAnweringService {
         }
 
         if (textInput.includes("hoer") || textInput.includes("slet")) {
-            this.currentMood--;
+            if (this.currentMood >= MOOD_SCALE_WORST_MOOD) {
+                this.currentMood--;
+            }
         }
 
         if (textInput.includes("xoxo") || textInput.includes("xx")) {
-            this.currentMood++;
+            if (this.currentMood <= MOOD_SCALE_BEST_MOOD) {
+                this.currentMood++;
+            }
         }
     }
 

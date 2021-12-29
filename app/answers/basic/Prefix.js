@@ -1,11 +1,11 @@
-export const BASIC_PHRASE = [
+export const PREFIX = [
   "Even denken...",
   "Ah hm...",
   "Euh...",
   "Mhm...",
 ];
 
-export const BASIC_PHRASE_BAD_MOOD = [
+export const PREFIX_BAD_MOOD = [
   "Lachwekkend.",
   "Triest.",
   "Zielige steen.",
@@ -24,7 +24,7 @@ export const BASIC_PHRASE_BAD_MOOD = [
   "Eigenlijk boeit het mij niet."
 ];
 
-export const BASIC_PHRASE_GOOD_MOOD = [
+export const PREFIX_GOOD_MOOD = [
   "Blij dat je mij stuurt xxx.",
   "Aanwezig.",
   "XD",

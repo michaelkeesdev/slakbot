@@ -64,7 +64,7 @@ class Maggie {
         if (text.split(" of ").length > 1) {
           response = this.maggieMond.makeDecision(text);
         } else {
-          response = this.maggieMond.giveBasicAnswer();
+          response = this.maggieMond.giveBasicAnswer(text);
         }
       }
 
@@ -92,7 +92,7 @@ class Maggie {
 
       const random = Math.floor(Math.random() * 60);
       if (random === 1) {
-        const randomMessage = this.maggieMond.giveBasicAnswer();
+        const randomMessage = this.maggieMond.giveBasicAnswer(text);
         return [randomMessage];
       } else {
         const matches = this.maggieBrein.getMessageMatches(latestMessages);

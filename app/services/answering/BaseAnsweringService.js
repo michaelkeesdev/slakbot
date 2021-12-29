@@ -46,7 +46,7 @@ class BaseAnweringService {
     currentMood = 0;
 
     answer = (answerCommand, mood, textInput) => {
-        this.setMood();
+        this.setMood(textInput);
         console.log("BASIC: answerCommand", answerCommand, "mood", this.currentMood, "textInput", textInput);
 
         let responseBuilder = new StringBuilder();
@@ -85,7 +85,7 @@ class BaseAnweringService {
         return responseBuilder.toString();
     }
 
-    setMood() {
+    setMood(textInput) {
         if (this.currentMood == 0) {
             this.currentMood = 6;
         }
@@ -102,6 +102,14 @@ class BaseAnweringService {
                 console.log("Mood down");
                 this.currentMood--;
             }
+        }
+
+        if (textInput.includes("hoer") || textInput.includes("slet")) {
+            this.currentMood--;
+        }
+
+        if (textInput.includes("xoxo") || textInput.includes("xx")) {
+            this.currentMood++;
         }
     }
 

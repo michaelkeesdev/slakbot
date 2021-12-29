@@ -1,5 +1,5 @@
 import { sample } from "lodash";
-import { BASIC_SUFFIX } from "../../answers/basic/BasicSuffix";
+import { SUFFIX } from "../../answers/basic/Suffix";
 import { FOOD } from "../../answers/Food";
 import { FOOD_TRIGGER_SUFFIX_EXCLUDE, FOOD_TRIGGER, FOOD_TRIGGER_SUFFIX_INCLUDE } from "../../answers/food/Food";
 
@@ -42,7 +42,7 @@ class FoodService {
     }
     const recipe = sample(recipes);
     if (!recipe) {
-      return `${NOTHING_FOUND}.. ${sample(BASIC_SUFFIX)}`;
+      return `${NOTHING_FOUND}.. ${sample(SUFFIX)}`;
     } else {
       const url = recipe
         .replace(/[^\w\s]/ig, '')

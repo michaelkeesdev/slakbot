@@ -138,6 +138,8 @@ class BaseAnweringService {
                 responseBuilder.append(sample(PREFIX))
             }
         }
+
+        responseBuilder.append(" ");
     }
 
 

@@ -110,14 +110,14 @@ class BaseAnweringService {
         if (this.currentMood <= MOOD_SCALE_BAD_MOOD_START) {
             // Unhappy      0 PLUS CURRENT 4, PID = 4
             // Very unhappy 0 PLUS CURRENT 2, PID = 2
-            if (Math.floor(Math.random() * 0 + this.currentMood) == 1) {
+            if (Math.floor(Math.random() * (0 + this.currentMood)) == 1) {
                 responseBuilder.append(sample(PREFIX_BAD_MOOD))
             }
             // 8, 9, 10 = happy    
         } else if (this.currentMood >= MOOD_SCALE_GOOD_MOOD_START) {
             // Happy        12 MINUS CURRENT 8, PID = 4
             // Very happy   12 MINUS CURRENT 10, PID = 2
-            if (Math.floor(Math.random() * 12 - this.currentMood) == 1) {
+            if (Math.floor(Math.random() * (12 - this.currentMood)) == 1) {
                 responseBuilder.append(sample(PREFIX_GOOD_MOOD))
             }
             // Regular mood    
@@ -141,14 +141,14 @@ class BaseAnweringService {
         if (this.currentMood <= MOOD_SCALE_BAD_MOOD_START) {
             // Unhappy      0 PLUS CURRENT 4, PID = 4
             // Very unhappy 0 PLUS CURRENT 2, PID = 2
-            if (Math.floor(Math.random() * 0 + this.currentMood) == 1) {
+            if (Math.floor(Math.random() * (0 + this.currentMood)) == 1) {
                 this.appendSuffix(responseBuilder, sample(SUFFIX_BAD_MOOD));
             }
         // 8, 9, 10 = happy    
         } else if (this.currentMood >= MOOD_SCALE_GOOD_MOOD_START) {
             // Happy        12 MINUS CURRENT 8, PID = 4
             // Very happy   12 MINUS CURRENT 10, PID = 2
-            if (Math.floor(Math.random() * 12 - this.currentMood) == 1) {
+            if (Math.floor(Math.random() * (12 - this.currentMood)) == 1) {
                 this.appendSuffix(responseBuilder, sample(SUFFIX_GOOD_MOOD));
             }
         // Regular mood    

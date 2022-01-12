@@ -25,6 +25,7 @@ import { HOER_TRIGGER } from "../answers/Hoer";
 import { FOOD_TRIGGER } from "../answers/food/Food";
 import { IMAGE_TRIGGER } from "../answers/image/Images";
 import { BaseGameService } from "./game/BaseGameService";
+import { MoodService } from "./MoodService";
 
 const tokenizer = new TokenizerService();
 
@@ -40,10 +41,20 @@ class MaggieBrein {
   maggieMond;
   matches = this.getSimpeleMaggieMatches();
   messages = [];
+  moodService;
 
   constructor(platform) {
     this.gameService = new BaseGameService(platform);
     this.maggieMond = new MaggieMond(platform);
+    this.moodService = new MoodService();
+  }
+
+  setMood(textInput) {
+    this.moodService.setMood(textInput);
+  }
+
+  getMood() {
+    this.moodService.getMood();
   }
 
   getFuzzyMatch = async (tokens) => {
@@ -118,7 +129,7 @@ class MaggieBrein {
     return this.gameService.playGame(textInput, user);
   }
 
-  getSimpeleMaggieMatches() {
+  getSimpeleMaggieMatches(mood) {
     return [
       { names: BYE_TRIGGER, action: () => this.maggieMond.sayBye() },
       { names: [COUNTRY_TRIGGER], action: () => this.maggieMond.sayCountry() },
@@ -133,7 +144,10 @@ class MaggieBrein {
         action: (text) => this.maggieMond.sayHowYouDoing(text),
       },
       { names: JOKE_TRIGGER, action: () => this.maggieMond.sayJoke() },
-      { names: HOWMUCH_TRIGGER, action: (text) => this.maggieMond.sayHowMuch(text) },
+      {
+        names: HOWMUCH_TRIGGER,
+        action: (text) => this.maggieMond.sayHowMuch(text),
+      },
       { names: SLUIP_TRIGGER, action: async () => this.maggieMond.saySluip() },
       { names: THANKS_TRIGGER, action: () => this.maggieMond.sayThanks() },
       { names: WHEN_TRIGGER, action: () => this.maggieMond.sayWhen() },

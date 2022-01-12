@@ -57,6 +57,11 @@ app.event("app_mention", async ({ context, event }) => {
 (async () => {
   await app.start(process.env.PORT || 8080);
   console.log("⚡️ Slakbot is running!");
+
+  console.log(
+    "test",
+    await maggieSlack.getMentionResponse("denk gij wel content he?", null)
+  );
 })();
 
 const DISCORD_MAGGIE_IDS = ["&875087867293106238", "!875074049968058431"];

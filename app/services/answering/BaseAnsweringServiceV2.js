@@ -11,19 +11,10 @@ import { DecisionService } from "./DecisionService";
 import { StringUtil } from "../../util/StringUtil";
 
 import { BASIC_ANSWER } from "../../answers/V2/Answers";
-import {
-  PREFIX,
-  PREFIX_FREQUENCY_LIST,
-  PREFIX_PID,
-} from "../../answers/V2/Prefix";
+import { PREFIX_FREQUENCY_LIST, PREFIX_PID } from "../../answers/V2/Prefix";
 import { AGREE, CONFUSED, DISAGREE } from "../../answers/V2/Tags";
+import { SUFFIX_FREQUENCY_LIST, SUFFIX_PID } from "../../answers/V2/Suffix";
 import {
-  SUFFIX,
-  SUFFIX_FREQUENCY_LIST,
-  SUFFIX_PID,
-} from "../../answers/V2/Suffix";
-import {
-  EMOJIS,
   EMOJIS_MOOD_PID,
   EMOJIS_NORMAL_PID,
   EMOJI_FREQUENCY_LIST,
@@ -37,7 +28,6 @@ import {
   SENTENCES_BASIC,
 } from "../../answers/V2/Sentences";
 import {
-  PUNCTUATION_MARKS,
   PUNCTUATION_MARKS_FREQUENCY_LIST,
   PUNCTUATION_MARKS_PID,
 } from "../../answers/V2/Punctuations";

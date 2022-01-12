@@ -1,14 +1,7 @@
 import { sample } from "lodash";
 import { SCHELD } from "../answers/basic/Scheld";
-import { EMOJIS } from "../answers/tagged/emojis";
-import {
-  ANGRY,
-  BUSY,
-  CONFUSED,
-  HAPPY,
-  KIND,
-  SAD,
-} from "../answers/tagged/tags";
+import { EMOJIS } from "../answers/V2/Emojis";
+import { ANGRY, BUSY, CONFUSED, HAPPY, KIND, SAD } from "../answers/V2/Tags";
 
 const happyWords = EMOJIS.filter((emoji) => emoji.tags.includes(HAPPY));
 

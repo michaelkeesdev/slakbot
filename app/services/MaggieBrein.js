@@ -39,7 +39,7 @@ const PID_MONOLOGUE = 10;
 class MaggieBrein {
   gameService;
   maggieMond;
-  matches = this.getSimpeleMaggieMatches();
+  matches = this.getSimpeleMaggieMatches(this.getMood());
   messages = [];
   moodService;
 
@@ -141,7 +141,7 @@ class MaggieBrein {
       { names: HOW_TRIGGER, action: (text) => this.maggieMond.sayHow(text) },
       {
         names: HOW_YOU_DOING_TRIGGER,
-        action: (text) => this.maggieMond.sayHowYouDoing(text),
+        action: (text, mood) => this.maggieMond.sayHowYouDoing(text, mood),
       },
       { names: JOKE_TRIGGER, action: () => this.maggieMond.sayJoke() },
       {

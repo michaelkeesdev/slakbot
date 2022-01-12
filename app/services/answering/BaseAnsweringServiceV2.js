@@ -226,8 +226,9 @@ class BaseAnweringServiceV2 {
           itemList.push({ value: item.value });
         }
       } else {
-        item;
+        itemList.push(item);
       }
+      return itemList;
     });
   }
 }

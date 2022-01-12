@@ -8,3 +8,4 @@ export const SLEEPY = "SLEEPY";
 export const CONFUSED = "CONFUSED";
 export const NEUTRAL = "NEUTRAL";
 export const HAPPY = "HAPPY";
+export const GRUMPY = "GRUMPY";

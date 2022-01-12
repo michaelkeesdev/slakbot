@@ -36,7 +36,7 @@ export const ADJECTIVES = [
   { value: "afgedankte", tags: ["ANGRY", "SAD", "GRUMPY"] },
   { value: "adoptie", tags: ["ANGRY", "SAD", "GRUMPY"] },
   { value: "aderige", tags: ["ANGRY", "SAD", "GRUMPY"] },
-  { value: "affrontelijke ", tags: ["ANGRY", "SAD", "GRUMPY"] },
+  { value: "affrontelijke", tags: ["ANGRY", "SAD", "GRUMPY"] },
   { value: "afgezaagde", tags: ["ANGRY", "SAD", "GRUMPY"] },
   { value: "zwette", tags: ["ANGRY", "SAD", "GRUMPY"] },
   { value: "lelijke", tags: ["ANGRY", "SAD", "GRUMPY"] },

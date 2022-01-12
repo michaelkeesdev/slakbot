@@ -98,8 +98,8 @@ class MaggieMond {
     return baseAnweringServicev2.answer(COMMAND_HOWMUCH, "mood", text);
   }
 
-  sayHowYouDoing(text) {
-    return baseAnweringServicev2.answer(COMMAND_HOWYOUDOING, "mood", text);
+  sayHowYouDoing(text, mood) {
+    return baseAnweringServicev2.answer(COMMAND_HOWYOUDOING, mood, text);
   }
 
   sayWhat(text) {

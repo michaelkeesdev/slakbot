@@ -1,0 +1,10 @@
+export const AGREE = "AGREE";
+export const DISAGREE = "DISAGREE";
+export const ANGRY = "ANGRY";
+export const SAD = "SAD";
+export const KIND = "KIND";
+export const BUSY = "BUSY";
+export const CONFUSED = "CONFUSED";
+export const SLEEPY = "SLEEPY";
+export const CONFUSED = "CONFUSED";
+export const NEUTRAL = "NEUTRAL";

@@ -10,24 +10,24 @@ import { HowMuchService } from "./HowMuchService";
 import { DecisionService } from "./DecisionService";
 import { StringUtil } from "../../util/StringUtil";
 
-import { BASIC_ANSWER } from "../../answers/tagged/answers";
+import { BASIC_ANSWER } from "../../answers/tagged/Answers";
 import {
   PREFIX,
   PREFIX_FREQUENCY_LIST,
   PREFIX_PID,
-} from "../../answers/tagged/prefix";
-import { AGREE, CONFUSED, DISAGREE } from "../../answers/tagged/tags";
+} from "../../answers/tagged/Prefix";
+import { AGREE, CONFUSED, DISAGREE } from "../../answers/tagged/Tags";
 import {
   SUFFIX,
   SUFFIX_FREQUENCY_LIST,
   SUFFIX_PID,
-} from "../../answers/tagged/suffix";
+} from "../../answers/tagged/Suffix";
 import {
   EMOJIS,
   EMOJIS_MOOD_PID,
   EMOJIS_NORMAL_PID,
   EMOJI_FREQUENCY_LIST,
-} from "../../answers/tagged/emojis";
+} from "../../answers/tagged/Emojis";
 import { UserService } from "../user/UserService";
 import { ADJECTIVES } from "../../answers/tagged/Adjectives";
 import { SCHELD } from "../../answers/tagged/Scheld";
@@ -35,12 +35,12 @@ import { VERBS } from "../../answers/words/Verbs";
 import {
   SENTENCES_ADVANCED,
   SENTENCES_BASIC,
-} from "../../answers/tagged/sentences";
+} from "../../answers/tagged/Sentences";
 import {
   PUNCTUATION_MARKS,
   PUNCTUATION_MARKS_FREQUENCY_LIST,
   PUNCTUATION_MARKS_PID,
-} from "../../answers/tagged/punctuations";
+} from "../../answers/tagged/Punctuations";
 import { WEETJES_PREFIX } from "../../answers/weetjes/Weetjesprefix";
 import { WEETJES_ANSWER } from "../../answers/weetjes/Weetjes";
 

@@ -13,8 +13,7 @@ export const SUFFIX = [
   { value: "denk ik", tags: [], frequency: 50 },
   { value: "denk", tags: [], frequency: 50 },
   { value: "nope", tags: ["ANGRY"], frequency: 20 },
-  { value: "Sterf", tags: ["ANGRY", frequency: 3 },
-];   
+  { value: "Sterf", tags: ["ANGRY"], frequency: 3 },
+];
 
 export const SUFFIX_FREQUENCY_LIST = SUFFIX.flatMap(frequencyList);
-     

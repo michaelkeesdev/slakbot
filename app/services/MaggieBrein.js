@@ -54,7 +54,9 @@ class MaggieBrein {
   }
 
   getMood() {
-    this.moodService.getMood();
+    if (this.moodService) {
+      this.moodService.getMood();
+    }
   }
 
   getFuzzyMatch = async (tokens) => {

@@ -1,7 +1,6 @@
 import {
   HOW_YOU_DOING_PREFIX,
   HOW_YOU_DOING_SUFFIX,
-  HOW_YOU_DOING_ANSWER,
 } from "../../answers/HowYouDoing";
 import { HOW_YOU_DOING_ANSWER } from "../../answers/V2/HowDoing";
 
@@ -37,7 +36,7 @@ class HowYouDoingService {
     }
     this.responseBuilder
       .append(" ")
-      .append(StringUtil.firstCharToLower(sample(HOW_YOU_DOING_ANSWER)));
+      .append(StringUtil.firstCharToLower(sample(HOW_YOU_DOING_ANSWER).value));
   }
 
   addHowYouDoingSuffixToResponse() {

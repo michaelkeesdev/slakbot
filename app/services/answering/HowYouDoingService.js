@@ -32,7 +32,7 @@ class HowYouDoingService {
   addHowYouDoingAnswerToResponse() {
     let list = HOW_YOU_DOING_ANSWER;
     if (this.mood) {
-      list = setMoodList(this.mood, list);
+      list = this.setMoodList(this.mood, list);
     }
     this.responseBuilder
       .append(" ")

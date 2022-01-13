@@ -1,7 +1,7 @@
 import { frequencyList } from "../../util/FrequencyList";
 
-export const PREFIX_PID = 75;
-export const PREFIX_MOOD_PID = 90;
+export const PREFIX_PID = 20;
+export const PREFIX_MOOD_PID = 60;
 
 export const PREFIX = [
   { value: "Ja", tags: [], frequency: 100 },

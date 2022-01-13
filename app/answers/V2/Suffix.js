@@ -1,6 +1,6 @@
 import { frequencyList } from "../../util/FrequencyList";
 
-export const SUFFIX_PID = 70; // 30/100%
+export const SUFFIX_PID = 40; // 30/100%
 
 export const SUFFIX = [
   { value: "he", tags: [], frequency: 100 },

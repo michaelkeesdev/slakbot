@@ -1,7 +1,7 @@
 import { frequencyList } from "../../util/FrequencyList";
 
-export const EMOJIS_NORMAL_PID = 20;
-export const EMOJIS_MOOD_PID = 20;
+export const EMOJIS_NORMAL_PID = 10;
+export const EMOJIS_MOOD_PID = 10;
 
 export const EMOJIS = [
   { value: "xD", tags: ["HAPPY"], frequency: 100 },

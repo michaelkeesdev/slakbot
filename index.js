@@ -59,8 +59,8 @@ app.event("app_mention", async ({ context, event }) => {
   console.log("⚡️ Slakbot is running!");
 })();
 
-const DISCORD_MAGGIE_IDS = ["&875087867293106238", "!875074049968058431"];
-const DISCORD_FLIP_IDS = ["&931182323309875270", "!931182323309875270"];
+const DISCORD_MAGGIE_IDS = ["&875087867293106238", "!875074049968058431"];875074049968058431
+const DISCORD_FLIP_IDS = ["&931182323309875270", "!931182323309875270"];931182323309875270
 
 const client = new Client({
   intents: [
@@ -107,4 +107,6 @@ client.on("messageCreate", async (msg) => {
 });
 
 //make sure this line is the last line
-client.login(process.env.DISCORD_TOKEN); //login bot using token
+client.login(process.env.DISCORD_MAGGIE); //login bot using token
+client.login(process.env.DISCORD_FLIP); //login bot using token
+

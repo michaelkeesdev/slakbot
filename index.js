@@ -65,6 +65,7 @@ app.event("app_mention", async ({ context, event }) => {
 })();
 
 const DISCORD_MAGGIE_IDS = ["&875087867293106238", "!875074049968058431"];
+const DISCORD_FLIP_IDS = ["&931182323309875270", "!931182323309875270"];
 
 const client = new Client({
   intents: [
@@ -87,8 +88,19 @@ client.on("messageCreate", async (msg) => {
   console.log(msg.content);
 
   const maggieIdRegex = new RegExp(`(<@)(${DISCORD_MAGGIE_IDS.join("|")})(>)`);
+  const flipIdRegex = new RegExp(`(<@)(${DISCORD_FLIP_IDS.join("|")})(>)`);
+
   if (msg.content.match(maggieIdRegex)) {
     let message = msg.content.replace(maggieIdRegex, "").trim();
+    const response = await maggieDiscord.getMentionResponse(
+      message,
+      null,
+      [],
+      msg.author.id
+    );
+    msg.channel.send(response);
+  } else if (msg.content.match(flipIdRegex)) {
+    let message = msg.content.replace(flipIdRegex, "").trim();
     const response = await maggieDiscord.getMentionResponse(
       message,
       null,

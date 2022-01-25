@@ -119,7 +119,7 @@ class BaseAnweringServiceV2 {
   getAnswerByDecision(responseBuilder, percent, mood) {
     let list = BASIC_ANSWER;
     if (mood) {
-      list = setMoodList(mood, list);
+      list = this.setMoodList(mood, list);
     }
 
     if (frequency(percent)) {
@@ -155,7 +155,7 @@ class BaseAnweringServiceV2 {
   getPrefix(responseBuilder, percent, mood) {
     let list = PREFIX_FREQUENCY_LIST;
     if (mood) {
-      list = setMoodList(mood, list);
+      list = this.setMoodList(mood, list);
     }
     if (frequency(percent)) {
       responseBuilder.append(" ").append(sample(list).value);
@@ -166,7 +166,7 @@ class BaseAnweringServiceV2 {
   getSuffix(responseBuilder, percent, mood) {
     let list = SUFFIX_FREQUENCY_LIST;
     if (mood) {
-      list = setMoodList(mood, list);
+      list = this.setMoodList(mood, list);
     }
     if (frequency(percent)) {
       responseBuilder.append(" ").append(sample(list).value);
@@ -179,7 +179,7 @@ class BaseAnweringServiceV2 {
   getEmojis(responseBuilder, percent, mood) {
     let list = EMOJI_FREQUENCY_LIST;
     if (mood) {
-      list = setMoodList(mood, list);
+      list = this.setMoodList(mood, list);
     }
     if (frequency(percent)) {
       responseBuilder.append(" ").append(sample(list).value);
@@ -200,7 +200,7 @@ class BaseAnweringServiceV2 {
   getPunctuationMark(responseBuilder, mood) {
     let list = PUNCTUATION_MARKS_PID;
     if (mood) {
-      list = setMoodList(mood, list);
+      list = this.setMoodList(mood, list);
     }
     if (frequency(list)) {
       responseBuilder.append(sample(PUNCTUATION_MARKS_FREQUENCY_LIST).value);

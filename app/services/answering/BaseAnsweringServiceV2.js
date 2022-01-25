@@ -140,20 +140,14 @@ class BaseAnweringServiceV2 {
 
   getBasicSentence(responseBuilder, percent, mood) {
     if (frequency(percent)) {
-      responseBuilder
-        .appendFullStopIfNone()
-        .append(" ")
-        .append(sample(SENTENCES_BASIC).value);
+      responseBuilder.append(" ").append(sample(SENTENCES_BASIC).value);
       this.getPunctuationMark(responseBuilder);
     }
   }
 
   getAdvancedSentence(responseBuilder, percent, mood) {
     if (frequency(percent)) {
-      responseBuilder
-        .appendFullStopIfNone()
-        .append(" ")
-        .append(sample(SENTENCES_ADVANCED).value);
+      responseBuilder.append(" ").append(sample(SENTENCES_ADVANCED).value);
       this.getPunctuationMark(responseBuilder);
     }
   }
@@ -177,8 +171,8 @@ class BaseAnweringServiceV2 {
     if (frequency(percent)) {
       responseBuilder.append(" ").append(sample(list).value);
       this.getPrefix(responseBuilder, percent / 3, mood);
+      this.getPunctuationMark(responseBuilder);
     }
-    this.getPunctuationMark(responseBuilder);
     return;
   }
 

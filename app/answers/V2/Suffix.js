@@ -4,8 +4,8 @@ export const SUFFIX_PID = 40; // 30/100%
 
 export const SUFFIX = [
   { value: "he", tags: [], frequency: 100 },
-  { value: "hoor", tags: ["HAPPY"], frequency: 30 },
-  { value: "pff", tags: ["ANGRY", "SAD", "GRUMPY"], frequency: 80 },
+  { value: "hoor", tags: ["HAPPY"], frequency: 6 },
+  { value: "pff", tags: ["ANGRY", "SAD", "GRUMPY"], frequency: 60 },
   { value: "zucht", tags: ["ANGRY", "SAD", "GRUMPY"], frequency: 20 },
   { value: "ff", tags: [], frequency: 20 },
   { value: "nu", tags: [], frequency: 30 },

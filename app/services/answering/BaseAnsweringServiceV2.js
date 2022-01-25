@@ -10,9 +10,12 @@ import { HowMuchService } from "./HowMuchService";
 import { DecisionService } from "./DecisionService";
 import { StringUtil } from "../../util/StringUtil";
 
-import { BASIC_ANSWER } from "../../answers/V2/Answers";
+import {
+  BASIC_ANSWER,
+  BASIC_ANSWER_FREQUENCY_LIST,
+} from "../../answers/V2/Answers";
 import { PREFIX_FREQUENCY_LIST, PREFIX_PID } from "../../answers/V2/Prefix";
-import { AGREE, CONFUSED, DISAGREE } from "../../answers/V2/Tags";
+import { AGREE, BUSY, CONFUSED, DISAGREE } from "../../answers/V2/Tags";
 import { SUFFIX_FREQUENCY_LIST, SUFFIX_PID } from "../../answers/V2/Suffix";
 import {
   EMOJIS_MOOD_PID,
@@ -94,7 +97,7 @@ class BaseAnweringServiceV2 {
     this.getSuffix(responseBuilder, SUFFIX_PID, mood);
     this.getEmojis(responseBuilder, EMOJIS_NORMAL_PID, mood);
     this.getWeetje(responseBuilder, 5, mood);
-    this.getBasicSentence(responseBuilder, 30, mood);
+    this.getBasicSentence(responseBuilder, 20, mood);
     this.getAdvancedSentence(responseBuilder, 10, mood);
     this.replaceParams(responseBuilder, mood);
   }
@@ -117,17 +120,18 @@ class BaseAnweringServiceV2 {
   }
 
   getAnswerByDecision(responseBuilder, percent, mood) {
-    let list = BASIC_ANSWER;
+    let list = BASIC_ANSWER_FREQUENCY_LIST;
     if (mood) {
       list = this.setMoodList(mood, list);
     }
 
     if (frequency(percent)) {
-      const pid = random(16);
+      const pid = random(18);
       let BASIC_ANSWER_TYPE = "";
       if (pid < 6) BASIC_ANSWER_TYPE = AGREE;
       if (pid >= 6 && pid < 12) BASIC_ANSWER_TYPE = DISAGREE;
       if (pid >= 12 && pid < 14) BASIC_ANSWER_TYPE = CONFUSED;
+      if (pid >= 14 && pid < 16) BASIC_ANSWER_TYPE = BUSY;
       const answersFilteredByType = list.filter((answer) =>
         answer.tags.includes(BASIC_ANSWER_TYPE)
       );

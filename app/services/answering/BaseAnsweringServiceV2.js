@@ -149,7 +149,7 @@ class BaseAnweringServiceV2 {
   getBasicSentence(responseBuilder, percent, mood) {
     if (frequency(percent)) {
       responseBuilder
-        .appendFullStopIfNone(punctuationList)
+        .appendFullStopIfNone(this.punctuationList)
         .append(" ")
         .append(sample(SENTENCES_BASIC).value, true, this.punctuationList);
       this.getPunctuationMark(responseBuilder);
@@ -159,7 +159,7 @@ class BaseAnweringServiceV2 {
   getAdvancedSentence(responseBuilder, percent, mood) {
     if (frequency(percent)) {
       responseBuilder
-        .appendFullStopIfNone(punctuationList)
+        .appendFullStopIfNone(this.punctuationList)
         .append(" ")
         .append(sample(SENTENCES_ADVANCED).value, true, this.punctuationList);
       this.getPunctuationMark(responseBuilder);
@@ -211,7 +211,7 @@ class BaseAnweringServiceV2 {
   getWeetje(responseBuilder, percent, mood) {
     if (frequency(percent)) {
       responseBuilder
-        .appendFullStopIfNone(punctuationList)
+        .appendFullStopIfNone(this.punctuationList)
         .append(" ")
         .append(sample(WEETJES_PREFIX))
         .append(StringUtil.firstCharToLower(sample(WEETJES_ANSWER)));

@@ -31,6 +31,7 @@ import {
   SENTENCES_BASIC,
 } from "../../answers/V2/Sentences";
 import {
+  PUNCTUATION_MARKS,
   PUNCTUATION_MARKS_FREQUENCY_LIST,
   PUNCTUATION_MARKS_PID,
 } from "../../answers/V2/Punctuations";
@@ -56,6 +57,7 @@ export function random(up) {
 
 class BaseAnweringServiceV2 {
   userService = new UserService();
+  punctuationList = PUNCTUATION_MARKS.map((punc) => punc.value);
 
   answer = (answerCommand, mood, textInput) => {
     let responseBuilder = new StringBuilder();
@@ -96,7 +98,7 @@ class BaseAnweringServiceV2 {
     this.getAnswerByDecision(responseBuilder, 90, mood);
     this.getSuffix(responseBuilder, SUFFIX_PID, mood);
     this.getEmojis(responseBuilder, EMOJIS_NORMAL_PID, mood);
-    this.getWeetje(responseBuilder, 5, mood);
+    this.getWeetje(responseBuilder, 3, mood);
     this.getBasicSentence(responseBuilder, 20, mood);
     this.getAdvancedSentence(responseBuilder, 10, mood);
     this.replaceParams(responseBuilder, mood);
@@ -144,14 +146,20 @@ class BaseAnweringServiceV2 {
 
   getBasicSentence(responseBuilder, percent, mood) {
     if (frequency(percent)) {
-      responseBuilder.append(" ").append(sample(SENTENCES_BASIC).value);
+      responseBuilder
+        .appendFullStopIfNone(punctuationList)
+        .append(" ")
+        .append(sample(SENTENCES_BASIC).value);
       this.getPunctuationMark(responseBuilder);
     }
   }
 
   getAdvancedSentence(responseBuilder, percent, mood) {
     if (frequency(percent)) {
-      responseBuilder.append(" ").append(sample(SENTENCES_ADVANCED).value);
+      responseBuilder
+        .appendFullStopIfNone(punctuationList)
+        .append(" ")
+        .append(sample(SENTENCES_ADVANCED).value);
       this.getPunctuationMark(responseBuilder);
     }
   }
@@ -195,6 +203,7 @@ class BaseAnweringServiceV2 {
   getWeetje(responseBuilder, percent, mood) {
     if (frequency(percent)) {
       responseBuilder
+        .appendFullStopIfNone(punctuationList)
         .append(" ")
         .append(sample(WEETJES_PREFIX))
         .append(StringUtil.firstCharToLower(sample(WEETJES_ANSWER)));

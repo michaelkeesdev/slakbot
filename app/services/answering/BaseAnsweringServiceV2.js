@@ -89,7 +89,8 @@ class BaseAnweringServiceV2 {
       default:
         this.basisAnswer(mood, textInput, responseBuilder);
     }
-    return responseBuilder.toString();
+    const answer = responseBuilder.toString();
+    return answer ? answer : "";
   };
 
   basisAnswer(mood, textInput, responseBuilder) {

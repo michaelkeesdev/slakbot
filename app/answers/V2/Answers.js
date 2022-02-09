@@ -198,7 +198,7 @@ export const BASIC_ANSWER = [
   { value: "Ff kaf halen", tags: ["BUSY"], frequency: 50 },
   { value: "Jat kaf ff", tags: ["BUSY"], frequency: 50 },
   { value: "Jatje kaf halen", tags: ["BUSY"], frequency: 50 },
-  { value: "Jatje kaf $WHO ?", tags: ["BUSY"], frequency: 20 },
+  { value: "Jatje kaf %WHO ?", tags: ["BUSY"], frequency: 20 },
 ];
 
 export const BASIC_ANSWER_FREQUENCY_LIST = BASIC_ANSWER.flatMap(frequencyList);

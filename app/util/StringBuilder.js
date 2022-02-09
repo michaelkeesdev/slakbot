@@ -8,7 +8,7 @@ class StringBuilder {
     return this;
   }
 
-  append(value, caseCheck) {
+  append(value, caseCheck, punctuationList) {
     if (
       caseCheck &&
       !StringUtil.lastCharEqualsOneOf(this.toString(), punctuationList)

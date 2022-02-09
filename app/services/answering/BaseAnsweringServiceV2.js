@@ -139,7 +139,9 @@ class BaseAnweringServiceV2 {
       );
       const response = sample(answersFilteredByType);
       if (response && response.value) {
-        responseBuilder.append(" ").append(response.value);
+        responseBuilder
+          .append(" ")
+          .append(response.value, true, this.punctuationList);
       }
     }
   }
@@ -149,7 +151,7 @@ class BaseAnweringServiceV2 {
       responseBuilder
         .appendFullStopIfNone(punctuationList)
         .append(" ")
-        .append(sample(SENTENCES_BASIC).value);
+        .append(sample(SENTENCES_BASIC).value, true, this.punctuationList);
       this.getPunctuationMark(responseBuilder);
     }
   }
@@ -159,7 +161,7 @@ class BaseAnweringServiceV2 {
       responseBuilder
         .appendFullStopIfNone(punctuationList)
         .append(" ")
-        .append(sample(SENTENCES_ADVANCED).value);
+        .append(sample(SENTENCES_ADVANCED).value, true, this.punctuationList);
       this.getPunctuationMark(responseBuilder);
     }
   }
@@ -170,7 +172,9 @@ class BaseAnweringServiceV2 {
       list = this.setMoodList(mood, list);
     }
     if (frequency(percent)) {
-      responseBuilder.append(" ").append(sample(list).value);
+      responseBuilder
+        .append(" ")
+        .append(sample(list).value, true, this.punctuationList);
       this.getPrefix(responseBuilder, percent / 3, mood);
     }
   }
@@ -181,7 +185,9 @@ class BaseAnweringServiceV2 {
       list = this.setMoodList(mood, list);
     }
     if (frequency(percent)) {
-      responseBuilder.append(" ").append(sample(list).value);
+      responseBuilder
+        .append(" ")
+        .append(sample(list).value, true, this.punctuationList);
       this.getPrefix(responseBuilder, percent / 3, mood);
       this.getPunctuationMark(responseBuilder);
     }
@@ -194,7 +200,9 @@ class BaseAnweringServiceV2 {
       list = this.setMoodList(mood, list);
     }
     if (frequency(percent)) {
-      responseBuilder.append(" ").append(sample(list).value);
+      responseBuilder
+        .append(" ")
+        .append(sample(list).value, true, this.punctuationList);
       this.getEmojis(responseBuilder, percent / 3, mood);
     }
     return;
@@ -216,7 +224,11 @@ class BaseAnweringServiceV2 {
       list = this.setMoodList(mood, list);
     }
     if (frequency(list)) {
-      responseBuilder.append(sample(PUNCTUATION_MARKS_FREQUENCY_LIST).value);
+      responseBuilder.append(
+        sample(PUNCTUATION_MARKS_FREQUENCY_LIST).value,
+        true,
+        this.punctuationList
+      );
     }
   }
 

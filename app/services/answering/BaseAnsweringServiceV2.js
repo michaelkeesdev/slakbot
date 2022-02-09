@@ -238,7 +238,7 @@ class BaseAnweringServiceV2 {
       list = this.setMoodList(mood, list);
     }
     if (frequency(list)) {
-      responseBuilder.appendWithCasing(
+      responseBuilder.append(
         sample(PUNCTUATION_MARKS_FREQUENCY_LIST).value,
         true,
         this.punctuationList

@@ -30,10 +30,7 @@ class StringBuilder {
   }
 
   appendWithCasing(value, caseCheck, punctuationList) {
-    if (
-      caseCheck &&
-      StringUtil.lastCharEqualsOneOf(this.toString(), punctuationList)
-    ) {
+    if (caseCheck && StringUtil.lastCharEqualsOneOf(value, punctuationList)) {
       value = StringUtil.firstCharToLower(value);
     } else {
       value = StringUtil.firstCharToUpper(value);

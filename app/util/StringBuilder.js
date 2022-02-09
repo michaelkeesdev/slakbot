@@ -34,9 +34,9 @@ class StringBuilder {
       caseCheck &&
       StringUtil.lastCharEqualsOneOf(this.toString(), punctuationList)
     ) {
-      value = StringUtil.firstCharToLower(value);
-    } else {
       value = StringUtil.firstCharToUpper(value);
+    } else {
+      value = StringUtil.firstCharToLower(value);
     }
     if (value) {
       this.strings.push(" " + value);

@@ -11,7 +11,7 @@ class StringBuilder {
   append(value, caseCheck, punctuationList) {
     if (
       caseCheck &&
-      !StringUtil.lastCharEqualsOneOf(this.toString(), punctuationList)
+      StringUtil.lastCharEqualsOneOf(this.toString(), punctuationList)
     ) {
       value = StringUtil.firstCharToLower(value);
     }
@@ -25,6 +25,21 @@ class StringBuilder {
     const punctuationList = punctuations ? punctuations : [",", ".", "?", "!"];
     if (!StringUtil.lastCharEqualsOneOf(this.toString(), punctuationList)) {
       this.append(".");
+    }
+    return this;
+  }
+
+  appendWithCasing(value, caseCheck, punctuationList) {
+    if (
+      caseCheck &&
+      StringUtil.lastCharEqualsOneOf(this.toString(), punctuationList)
+    ) {
+      value = StringUtil.firstCharToLower(value);
+    } else {
+      value = StringUtil.firstCharToUpper(value);
+    }
+    if (value) {
+      this.strings.push(" " + value);
     }
     return this;
   }

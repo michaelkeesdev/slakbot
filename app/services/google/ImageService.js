@@ -22,7 +22,7 @@ class ImageService {
     let result = await this.search.cse.list({
       searchType: "image",
       cx: "eb00fd8986af6a2ce",
-      q: removedPrefixFromSuggest,
+      q: text,
     });
 
     if (result.data?.items?.length) {

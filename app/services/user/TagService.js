@@ -80,7 +80,7 @@ class TagService {
             if (this.platform == "slack") {
                 if (user.id) {
                     return `<@${user.id}>`;
-                } else if (user.id == "") {
+                } else if (user.id == "NO_SLACK") {
                     return `wa? ${user.tagName} zit hier toch ni?`
                 }
             } else if (user.discordId) {

@@ -91,6 +91,14 @@ export const USERS = [{
     firstName: "Filip",
     lastName: "Dewinter",
     birthday: ""
+}, {
+    id: "",
+    discordId: "914147362069442560",
+    tagName: "Tok",
+    shortNames: ["tok", "tokke"],
+    firstName: "Thomas",
+    lastName: "",
+    birthday: ""
 }]
 
 export const USERS_EXTRA = [{

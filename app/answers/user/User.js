@@ -87,7 +87,7 @@ export const USERS = [{
 }, {
     id: "U02T3PUCM4K",
     tagName: "Fluppe",
-    shortNames: ["flup, fluppe"],
+    shortNames: ["flup", "fluppe"],
     firstName: "Filip",
     lastName: "Dewinter",
     birthday: ""

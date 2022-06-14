@@ -84,6 +84,13 @@ export const USERS = [{
     firstName: "Hadrien",
     lastName: "Van Durme",
     birthday: ""
+}, {
+    id: "U02T3PUCM4K",
+    tagName: "Fluppe",
+    shortNames: ["flup, fluppe"],
+    firstName: "Filip",
+    lastName: "Dewinter",
+    birthday: ""
 }]
 
 export const USERS_EXTRA = [{

@@ -77,8 +77,12 @@ class TagService {
 
     tagUser(user) {    
         if (user != null) {
-            if (this.platform == "slack" && user.id) {
-                return `<@${user.id}>`;
+            if (this.platform == "slack") {
+                if (user.id) {
+                    return `<@${user.id}>`;
+                } else {
+                    return `wa? ${user.tagName} zit hier toch ni?`
+                }
             } else if (user.discordId) {
                 return `<@${user.discordId}>`;
             }

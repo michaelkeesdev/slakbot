@@ -92,7 +92,7 @@ export const USERS = [{
     lastName: "Dewinter",
     birthday: ""
 }, {
-    id: "NO_SLACK",
+    id: null,
     discordId: "914147362069442560",
     tagName: "Tok",
     shortNames: ["tok", "tokke"],

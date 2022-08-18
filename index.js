@@ -85,10 +85,12 @@ client.on("ready", async (client) => {
 });
 
 client.on("messageCreate", async (msg) => {
-  console.log(msg.content);
-
   const botIdRegex = new RegExp(`(<@)(${DISCORD_IDS.join("|")})(>)`);
   let message = msg.content.replace(botIdRegex, "").trim();
+  
+  console.log(msg.content);
+  console.log(botIdRegex);
+  console.log(msg.content.match(botIdRegex));
 
   if (msg.content.match(botIdRegex)) {
     const response = await maggieDiscord.getMentionResponse(

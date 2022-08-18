@@ -104,4 +104,4 @@ client.on("messageCreate", async (msg) => {
 });
 
 //make sure this line is the last line
-//client.login(process.env.DISCORD_BOT_TOKEN); //login bot using token
+client.login(process.env.DISCORD_BOT_TOKEN); //login bot using token

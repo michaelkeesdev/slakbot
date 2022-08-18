@@ -85,9 +85,9 @@ client.on("ready", async (client) => {
 });
 
 client.on("messageCreate", async (msg) => {
-  const botIdRegex = new RegExp(`(<@)(${DISCORD_IDS.join("|")})(>)`);
+  const botIdRegex = new RegExp(`(<@)(${DISCORD_IDS.join("|").replace("\"", "")})(>)`);
   let message = msg.content.replace(botIdRegex, "").trim();
-  
+
   console.log(msg.content);
   console.log(botIdRegex);
   console.log(msg.content.match(botIdRegex));

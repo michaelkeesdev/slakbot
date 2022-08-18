@@ -99,7 +99,10 @@ client.on("messageCreate", async (msg) => {
       [],
       msg.author.id
     );
-    msg.channel.send(response);
+
+    if (response != null && response != "") {
+      msg.channel.send(response);
+    }
   }
 });
 

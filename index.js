@@ -85,7 +85,7 @@ client.on("ready", async (client) => {
 });
 
 client.on("messageCreate", async (msg) => {
-  const botIdRegex = new RegExp("([A/(<@)(&875087867293106238|!875074049968058431|&931182323309875270|!931182323309875270)(>)/-Z])\w+");
+  const botIdRegex = new RegExp("^<@875074049968058431>");
   let message = msg.content.replace(botIdRegex, "").trim();
 
   console.log(msg.content);

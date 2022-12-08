@@ -28,11 +28,11 @@ app.event("message", async ({ event, context }) => {
 
   const pinMessageWritePid = Math.floor(Math.random() * 2);
   // if (pinMessageWritePid === 1) {
-  await app.client.pins.add(channel);
+  await app.client.pins.add({ channel });
   // }
 
   const pinMessageReadPid = Math.floor(Math.random() * 20);
-  const pins = await app.client.pins.list(channel);
+  const pins = await app.client.pins.list({ channel });
   //if (pinMessageReadPid === 1) {
   messages.push(sample(pins));
   //}

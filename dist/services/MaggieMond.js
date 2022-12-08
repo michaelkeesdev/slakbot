@@ -5,6 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.MaggieMond = void 0;
 var _lodash = require("lodash");
+var _bolt = require("@slack/bolt");
 var _BasicFollowUpQuestion = require("./../answers/questions/BasicFollowUpQuestion");
 var _Bye = require("./../answers/Bye");
 var _Countries = require("./../answers/Countries");

@@ -33,7 +33,7 @@ import { TubeService } from "./google/TubeService";
 import { EuroMillionsService } from "./game/EuroMillionsService";
 import { WeatherService } from "./weather/WeatherService";
 import { TimeService } from "./time/TimeService";
-import { HttpClient } from "../../httpClient";
+import { HttpClient } from "../httpClient";
 import { DeviantArtService } from "./deviantart/deviantArtService";
 import { MONTH_ANSWERS } from "../answers/Month";
 import { GAME_ANSWERS } from "../answers/Game";

@@ -1,0 +1,1045 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.SCHELD_SUFFIX = exports.SCHELD_PHRASE = exports.SCHELD = void 0;
+var SCHELD_PHRASE = [{
+  value: "gy zyt een %SCHELD"
+}, {
+  value: "ge bent een %SCHELD"
+}, {
+  value: "gij bent een %SCHELD"
+}, {
+  value: "je bent een %SCHELD"
+}, {
+  value: "een vuil %SCHELD bent ge"
+}, {
+  value: "een vuil %SCHELD zijt ge"
+}, {
+  value: "gy zyt een %SCHELD. %SUFFIX"
+}, {
+  value: "ge bent een %SCHELD. %SUFFIX"
+}, {
+  value: "je bent een %SCHELD. %SUFFIX"
+}, {
+  value: "%%ADJECTIVE %SCHELD. %SUFFIX"
+}, {
+  value: "%%SCHELD. %SUFFIX"
+}, {
+  value: "%ADJECTIVE %SCHELD"
+}, {
+  value: "een %ADJECTIVE %SCHELD, da bent gy"
+}, {
+  value: "een %ADJECTIVE %SCHELD, da bent gy. %SUFFIX"
+}, {
+  value: " is nutteloos"
+}];
+exports.SCHELD_PHRASE = SCHELD_PHRASE;
+var SCHELD_SUFFIX = [{
+  value: "Schaam u diep."
+}, {
+  value: "Walg."
+}, {
+  value: "En dans."
+}, {
+  value: "Triest..."
+}, {
+  value: "Nog nooit zoiets meegemaakt."
+}, {
+  value: "Erg dit."
+}, {
+  value: "Erg gij."
+}, {
+  value: "Ga wenen."
+}, {
+  value: "Ge bent mijn woorden niet waard eigenlijk."
+}, {
+  value: "Gy bent dom?"
+}, {
+  value: "Kunt gij eigenlijk iets?"
+}, {
+  value: "Zou beter opkankeren. En.."
+}, {
+  value: "Kalm he"
+}, {
+  value: "Eigenlijk boeit het mij niet."
+}];
+exports.SCHELD_SUFFIX = SCHELD_SUFFIX;
+var SCHELD = [{
+  value: "aapmens",
+  frequency: 100
+}, {
+  value: "aarstulp",
+  frequency: 100
+}, {
+  value: "achterlader",
+  frequency: 100
+}, {
+  value: "adder",
+  frequency: 100
+}, {
+  value: "addergebroed",
+  frequency: 100
+}, {
+  value: "afrotten",
+  frequency: 100
+}, {
+  value: "apenkont",
+  frequency: 100
+}, {
+  value: "appelflap",
+  frequency: 100
+}, {
+  value: "autist",
+  frequency: 100
+}, {
+  value: "babok",
+  frequency: 100
+}, {
+  value: "badgast",
+  frequency: 100
+}, {
+  value: "baggerduiker",
+  frequency: 100
+}, {
+  value: "bangerd",
+  frequency: 100
+}, {
+  value: "barslet",
+  frequency: 100
+}, {
+  value: "bedrijfspoedel",
+  frequency: 100
+}, {
+  value: "beheime",
+  frequency: 100
+}, {
+  value: "belhamel",
+  frequency: 100
+}, {
+  value: "bengel",
+  frequency: 100
+}, {
+  value: "bermslet",
+  frequency: 100
+}, {
+  value: "bitch",
+  frequency: 100
+}, {
+  value: "bleekscheet",
+  frequency: 100
+}, {
+  value: "bloedlijer",
+  frequency: 100
+}, {
+  value: "boeler",
+  frequency: 100
+}, {
+  value: "boer",
+  frequency: 100
+}, {
+  value: "boerenheikneuter",
+  frequency: 100
+}, {
+  value: "boerenhufter",
+  frequency: 100
+}, {
+  value: "boerenkaffer",
+  frequency: 100
+}, {
+  value: "boerenkarhengst",
+  frequency: 100
+}, {
+  value: "boerenkinkel",
+  frequency: 100
+}, {
+  value: "boerenpummel",
+  frequency: 100
+}, {
+  value: "boerin",
+  frequency: 100
+}, {
+  value: "bokkenrijder",
+  frequency: 100
+}, {
+  value: "bosneuker",
+  frequency: 100
+}, {
+  value: "botterik",
+  frequency: 100
+}, {
+  value: "bouwdoos",
+  frequency: 100
+}, {
+  value: "breezerslet",
+  frequency: 100
+}, {
+  value: "brilsmurf",
+  frequency: 100
+}, {
+  value: "bruinwerker",
+  frequency: 100
+}, {
+  value: "bulderbast",
+  frequency: 100
+}, {
+  value: "charlatan",
+  frequency: 100
+}, {
+  value: "choco",
+  frequency: 100
+}, {
+  value: "chocoladehoer",
+  frequency: 100
+}, {
+  value: "chocoladesnol",
+  frequency: 100
+}, {
+  value: "cijferneuker",
+  frequency: 100
+}, {
+  value: "coronalijer",
+  frequency: 100
+}, {
+  value: "covidioot",
+  frequency: 100
+}, {
+  value: "cretin",
+  frequency: 100
+}, {
+  value: "del",
+  frequency: 100
+}, {
+  value: "deuggleuf",
+  frequency: 100
+}, {
+  value: "dirkdoos",
+  frequency: 100
+}, {
+  value: "doos",
+  frequency: 100
+}, {
+  value: "dreuzel",
+  frequency: 100
+}, {
+  value: "droplul",
+  frequency: 100
+}, {
+  value: "druiloor",
+  frequency: 100
+}, {
+  value: "dwaas",
+  frequency: 100
+}, {
+  value: "ectoplasma",
+  frequency: 100
+}, {
+  value: "eendenkont",
+  frequency: 100
+}, {
+  value: "eikel",
+  frequency: 100
+}, {
+  value: "etter",
+  frequency: 100
+}, {
+  value: "etterbuil",
+  frequency: 100
+}, {
+  value: "ezel",
+  frequency: 100
+}, {
+  value: "fielt",
+  frequency: 100
+}, {
+  value: "flapdrol",
+  frequency: 100
+}, {
+  value: "fleer",
+  frequency: 100
+}, {
+  value: "flessentrekker",
+  frequency: 100
+}, {
+  value: "flikker",
+  frequency: 100
+}, {
+  value: "foefkop",
+  frequency: 100
+}, {
+  value: "galgenbrok",
+  frequency: 100
+}, {
+  value: "gangster",
+  frequency: 100
+}, {
+  value: "gannef",
+  frequency: 100
+}, {
+  value: "geit",
+  frequency: 100
+}, {
+  value: "geitenbreier",
+  frequency: 100
+}, {
+  value: "geitenneuker",
+  frequency: 100
+}, {
+  value: "geteisem",
+  frequency: 100
+}, {
+  value: "gluiper",
+  frequency: 100
+}, {
+  value: "gluiperd",
+  frequency: 100
+}, {
+  value: "gluipsnor",
+  frequency: 100
+}, {
+  value: "gratenbaal",
+  frequency: 100
+}, {
+  value: "greppeldel",
+  frequency: 100
+}, {
+  value: "grobbejanus",
+  frequency: 100
+}, {
+  value: "haai",
+  frequency: 100
+}, {
+  value: "halvezool",
+  frequency: 100
+}, {
+  value: "hapsnurker",
+  frequency: 100
+}, {
+  value: "harpij",
+  frequency: 100
+}, {
+  value: "heaumeau",
+  frequency: 100
+}, {
+  value: "heihaas",
+  frequency: 100
+}, {
+  value: "heikneuter",
+  frequency: 100
+}, {
+  value: "heks",
+  frequency: 100
+}, {
+  value: "hersenlijer",
+  frequency: 100
+}, {
+  value: "hockeytrut",
+  frequency: 100
+}, {
+  value: "hockeytut",
+  frequency: 100
+}, {
+  value: "hoerenjager",
+  frequency: 100
+}, {
+  value: "hoerenjong",
+  frequency: 100
+}, {
+  value: "hoerenkind",
+  frequency: 100
+}, {
+  value: "hoerenzoon",
+  frequency: 100
+}, {
+  value: "homo",
+  frequency: 100
+}, {
+  value: "hondenlul",
+  frequency: 100
+}, {
+  value: "hondenneuker",
+  frequency: 100
+}, {
+  value: "hufter",
+  frequency: 100
+}, {
+  value: "huppelkut",
+  frequency: 100
+}, {
+  value: "huzarenhoop",
+  frequency: 100
+}, {
+  value: "jeannette",
+  frequency: 100
+}, {
+  value: "kaas",
+  frequency: 100
+}, {
+  value: "kaashoer",
+  frequency: 100
+}, {
+  value: "kaaskop",
+  frequency: 100
+}, {
+  value: "kaffer",
+  frequency: 100
+}, {
+  value: "kakhuis",
+  frequency: 100
+}, {
+  value: "kakmadam",
+  frequency: 100
+}, {
+  value: "kakmaker",
+  frequency: 100
+}, {
+  value: "kamelenneuker",
+  frequency: 100
+}, {
+  value: "kamerolifant",
+  frequency: 100
+}, {
+  value: "kankerhoer",
+  frequency: 100
+}, {
+  value: "kankerhond",
+  frequency: 100
+}, {
+  value: "kankerlijder",
+  frequency: 100
+}, {
+  value: "kankerlijer",
+  frequency: 100
+}, {
+  value: "kankernicht",
+  frequency: 100
+}, {
+  value: "kapsoneslijer",
+  frequency: 100
+}, {
+  value: "karhengst",
+  frequency: 100
+}, {
+  value: "karonje",
+  frequency: 100
+}, {
+  value: "kees",
+  frequency: 100
+}, {
+  value: "keilef",
+  frequency: 100
+}, {
+  value: "kelerelijer",
+  frequency: 100
+}, {
+  value: "keutelkut",
+  frequency: 100
+}, {
+  value: "kinkel",
+  frequency: 100
+}, {
+  value: "kip",
+  frequency: 100
+}, {
+  value: "kippenneuker",
+  frequency: 100
+}, {
+  value: "klafte",
+  frequency: 100
+}, {
+  value: "klapkut",
+  frequency: 100
+}, {
+  value: "klaplul",
+  frequency: 100
+}, {
+  value: "klapperaap",
+  frequency: 100
+}, {
+  value: "klere",
+  frequency: 100
+}, {
+  value: "kloefkapper",
+  frequency: 100
+}, {
+  value: "klojo",
+  frequency: 100
+}, {
+  value: "klooi",
+  frequency: 100
+}, {
+  value: "kloothannes",
+  frequency: 100
+}, {
+  value: "kloothommel",
+  frequency: 100
+}, {
+  value: "klootviool",
+  frequency: 100
+}, {
+  value: "klootzak",
+  frequency: 100
+}, {
+  value: "klote",
+  frequency: 100
+}, {
+  value: "kluns",
+  frequency: 100
+}, {
+  value: "knijpkont",
+  frequency: 100
+}, {
+  value: "koeskoesvreter",
+  frequency: 100
+}, {
+  value: "koffieboon",
+  frequency: 100
+}, {
+  value: "kokosmakroon",
+  frequency: 100
+}, {
+  value: "kontkruiper",
+  frequency: 100
+}, {
+  value: "kontneuker",
+  frequency: 100
+}, {
+  value: "kreng",
+  frequency: 100
+}, {
+  value: "kriel",
+  frequency: 100
+}, {
+  value: "krielkip",
+  frequency: 100
+}, {
+  value: "krijslijster",
+  frequency: 100
+}, {
+  value: "kruimelbuik",
+  frequency: 100
+}, {
+  value: "kruiper",
+  frequency: 100
+}, {
+  value: "kut",
+  frequency: 100
+}, {
+  value: "kutstreek",
+  frequency: 100
+}, {
+  value: "kuttenkop",
+  frequency: 100
+}, {
+  value: "kutvent",
+  frequency: 100
+}, {
+  value: "kutwijf",
+  frequency: 100
+}, {
+  value: "kwakzalver",
+  frequency: 100
+}, {
+  value: "labbekak",
+  frequency: 100
+}, {
+  value: "labrat",
+  frequency: 100
+}, {
+  value: "lafbek",
+  frequency: 100
+}, {
+  value: "lamstraal",
+  frequency: 100
+}, {
+  value: "lekkerpieper",
+  frequency: 100
+}, {
+  value: "lelijkerd",
+  frequency: 100
+}, {
+  value: "lijer",
+  frequency: 100
+}, {
+  value: "linkmiegel",
+  frequency: 100
+}, {
+  value: "lol",
+  frequency: 100
+}, {
+  value: "lomperd",
+  frequency: 100
+}, {
+  value: "lomperik",
+  frequency: 100
+}, {
+  value: "loser",
+  frequency: 100
+}, {
+  value: "luibak",
+  frequency: 100
+}, {
+  value: "luibuis",
+  frequency: 100
+}, {
+  value: "luiskop",
+  frequency: 100
+}, {
+  value: "lul",
+  frequency: 100
+}, {
+  value: "lulhannes",
+  frequency: 100
+}, {
+  value: "lummel",
+  frequency: 100
+}, {
+  value: "macaronivreter",
+  frequency: 100
+}, {
+  value: "maffer",
+  frequency: 100
+}, {
+  value: "mafketel",
+  frequency: 100
+}, {
+  value: "mafkikker",
+  frequency: 100
+}, {
+  value: "makaak",
+  frequency: 100
+}, {
+  value: "masque",
+  frequency: 100
+}, {
+  value: "matje",
+  frequency: 100
+}, {
+  value: "mietje",
+  frequency: 100
+}, {
+  value: "mispruim",
+  frequency: 100
+}, {
+  value: "mispunt",
+  frequency: 100
+}, {
+  value: "mof",
+  frequency: 100
+}, {
+  value: "moffenhoer",
+  frequency: 100
+}, {
+  value: "Moffrika",
+  frequency: 100
+}, {
+  value: "mongool",
+  frequency: 100
+}, {
+  value: "morsebel",
+  frequency: 100
+}, {
+  value: "mosselhoer",
+  frequency: 100
+}, {
+  value: "muilezelin",
+  frequency: 100
+}, {
+  value: "muts",
+  frequency: 100
+}, {
+  value: "natkut",
+  frequency: 100
+}, {
+  value: "neetoor",
+  frequency: 100
+}, {
+  value: "netenvreter",
+  frequency: 100
+}, {
+  value: "neukpaal",
+  frequency: 100
+}, {
+  value: "nitwit",
+  frequency: 100
+}, {
+  value: "noppeshoer",
+  frequency: 100
+}, {
+  value: "oen",
+  frequency: 100
+}, {
+  value: "olijfneuker",
+  frequency: 100
+}, {
+  value: "onderkruipsel",
+  frequency: 100
+}, {
+  value: "optyfen",
+  frequency: 100
+}, {
+  value: "ossenkop",
+  frequency: 100
+}, {
+  value: "ossenlul",
+  frequency: 100
+}, {
+  value: "ouwehoedendoos",
+  frequency: 100
+}, {
+  value: "pagadder",
+  frequency: 100
+}, {
+  value: "palurk",
+  frequency: 100
+}, {
+  value: "paplap",
+  frequency: 100
+}, {
+  value: "pasjakroet",
+  frequency: 100
+}, {
+  value: "patjakker",
+  frequency: 100
+}, {
+  value: "pedo",
+  frequency: 100
+}, {
+  value: "pekelhoer",
+  frequency: 100
+}, {
+  value: "pepermuntvreter",
+  frequency: 100
+}, {
+  value: "pestlijder",
+  frequency: 100
+}, {
+  value: "pigmentvreter",
+  frequency: 100
+}, {
+  value: "pinda",
+  frequency: 100
+}, {
+  value: "pindachinees",
+  frequency: 100
+}, {
+  value: "pindapoepchinees",
+  frequency: 100
+}, {
+  value: "pleurislijder",
+  frequency: 100
+}, {
+  value: "ploert",
+  frequency: 100
+}, {
+  value: "plucheplakker",
+  frequency: 100
+}, {
+  value: "plurk",
+  frequency: 100
+}, {
+  value: "pokkenlijder",
+  frequency: 100
+}, {
+  value: "pokkenwijf",
+  frequency: 100
+}, {
+  value: "polak",
+  frequency: 100
+}, {
+  value: "politiemuts",
+  frequency: 100
+}, {
+  value: "pommel",
+  frequency: 100
+}, {
+  value: "populist",
+  frequency: 100
+}, {
+  value: "pothoer",
+  frequency: 100
+}, {
+  value: "puistenkop",
+  frequency: 100
+}, {
+  value: "pukkelbek",
+  frequency: 100
+}, {
+  value: "pummel",
+  frequency: 100
+}, {
+  value: "raas",
+  frequency: 100
+}, {
+  value: "randdebiel",
+  frequency: 100
+}, {
+  value: "reetkever",
+  frequency: 100
+}, {
+  value: "reetveger",
+  frequency: 100
+}, {
+  value: "rekel",
+  frequency: 100
+}, {
+  value: "roetmop",
+  frequency: 100
+}, {
+  value: "rotmof",
+  frequency: 100
+}, {
+  value: "rotzak",
+  frequency: 100
+}, {
+  value: "rugridder",
+  frequency: 100
+}, {
+  value: "ruigpoot",
+  frequency: 100
+}, {
+  value: "sakkers",
+  frequency: 100
+}, {
+  value: "sambalburger",
+  frequency: 100
+}, {
+  value: "sambalvreter",
+  frequency: 100
+}, {
+  value: "schaapskop",
+  frequency: 100
+}, {
+  value: "schapenneuker",
+  frequency: 100
+}, {
+  value: "schelm",
+  frequency: 100
+}, {
+  value: "schijterd",
+  frequency: 100
+}, {
+  value: "schijthoofd",
+  frequency: 100
+}, {
+  value: "schijtlaars",
+  frequency: 100
+}, {
+  value: "schijtlijster",
+  frequency: 100
+}, {
+  value: "schijtluis",
+  frequency: 100
+}, {
+  value: "schimmelkut",
+  frequency: 100
+}, {
+  value: "schobbejak",
+  frequency: 100
+}, {
+  value: "schoft",
+  frequency: 100
+}, {
+  value: "schurftkop",
+  frequency: 100
+}, {
+  value: "schurk",
+  frequency: 100
+}, {
+  value: "schuurmeid",
+  frequency: 100
+}, {
+  value: "secreet",
+  frequency: 100
+}, {
+  value: "sekreet",
+  frequency: 100
+}, {
+  value: "slet",
+  frequency: 100
+}, {
+  value: "slettenbak",
+  frequency: 100
+}, {
+  value: "slijmerd",
+  frequency: 100
+}, {
+  value: "sloerie",
+  frequency: 100
+}, {
+  value: "smeerkanis",
+  frequency: 100
+}, {
+  value: "smeerlap",
+  frequency: 100
+}, {
+  value: "smeerpijp",
+  frequency: 100
+}, {
+  value: "smiecht",
+  frequency: 100
+}, {
+  value: "smous",
+  frequency: 100
+}, {
+  value: "snoever",
+  frequency: 100
+}, {
+  value: "snotaap",
+  frequency: 100
+}, {
+  value: "snotolf",
+  frequency: 100
+}, {
+  value: "sodeflikker",
+  frequency: 100
+}, {
+  value: "sodemieter",
+  frequency: 100
+}, {
+  value: "sodomiet",
+  frequency: 100
+}, {
+  value: "soepkip",
+  frequency: 100
+}, {
+  value: "spaghettivreter",
+  frequency: 100
+}, {
+  value: "spast",
+  frequency: 100
+}, {
+  value: "spleetoog",
+  frequency: 100
+}, {
+  value: "steenezel",
+  frequency: 100
+}, {
+  value: "stinkbok",
+  frequency: 100
+}, {
+  value: "stinker",
+  frequency: 100
+}, {
+  value: "stinkerd",
+  frequency: 100
+}, {
+  value: "stoephoer",
+  frequency: 100
+}, {
+  value: "stomkop",
+  frequency: 100
+}, {
+  value: "strontzak",
+  frequency: 100
+}, {
+  value: "taalnazi",
+  frequency: 100
+}, {
+  value: "taart",
+  frequency: 100
+}, {
+  value: "teef",
+  frequency: 100
+}, {
+  value: "teringlijder",
+  frequency: 100
+}, {
+  value: "teringlijer",
+  frequency: 100
+}, {
+  value: "tietvlieg",
+  frequency: 100
+}, {
+  value: "totebel",
+  frequency: 100
+}, {
+  value: "trut",
+  frequency: 100
+}, {
+  value: "tyfuslijder",
+  frequency: 100
+}, {
+  value: "variétéhoer",
+  frequency: 100
+}, {
+  value: "varken",
+  frequency: 100
+}, {
+  value: "vetklep",
+  frequency: 100
+}, {
+  value: "vetzak",
+  frequency: 100
+}, {
+  value: "viruswappie",
+  frequency: 100
+}, {
+  value: "vlooienzak",
+  frequency: 100
+}, {
+  value: "vuilak",
+  frequency: 100
+}, {
+  value: "vullis",
+  frequency: 100
+}, {
+  value: "wipkip",
+  frequency: 100
+}, {
+  value: "zaagselkop",
+  frequency: 100
+}, {
+  value: "zakkenvuller",
+  frequency: 100
+}, {
+  value: "zakkenwasser",
+  frequency: 100
+}, {
+  value: "zalfpot",
+  frequency: 100
+}, {
+  value: "zeikbeer",
+  frequency: 100
+}, {
+  value: "zeikerd",
+  frequency: 100
+}, {
+  value: "zeikhannes",
+  frequency: 100
+}, {
+  value: "zeiklijster",
+  frequency: 100
+}, {
+  value: "zeiksnor",
+  frequency: 100
+}, {
+  value: "zeikstraal",
+  frequency: 100
+}, {
+  value: "zenuwenlijer",
+  frequency: 100
+}, {
+  value: "zenuwlijer",
+  frequency: 100
+}, {
+  value: "zeur",
+  frequency: 100
+}, {
+  value: "zeurkous",
+  frequency: 100
+}, {
+  value: "zeurpiet",
+  frequency: 100
+}, {
+  value: "zeurzak",
+  frequency: 100
+}, {
+  value: "zwijn",
+  frequency: 100
+}, {
+  value: "zwijnjak",
+  frequency: 100
+}];
+exports.SCHELD = SCHELD;

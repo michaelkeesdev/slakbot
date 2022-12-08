@@ -21,7 +21,7 @@ const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 import { sample } from "lodash";
 import { WEETJES_ANSWER } from "../../answers/weetjes/Weetjes";
-import { HttpClient } from "./../../../httpClient";
+import { HttpClient } from "./../../httpClient";
 
 const axios = require("axios");
 

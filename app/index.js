@@ -5,7 +5,7 @@ require("dotenv").config();
 
 const { Client, Intents, MessageEmbed } = require("discord.js");
 
-import { Maggie } from "./app/Maggie";
+import { Maggie } from "./Maggie";
 
 const app = new App({
   signingSecret: process.env.SLACK_SIGNING_SECRET,

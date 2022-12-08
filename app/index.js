@@ -56,6 +56,7 @@ app.event("app_mention", async ({ context, event }) => {
 
 (async () => {
   await app.start(process.env.PORT || 8080);
+    console.log("tag", await maggieSlack.getMentionResponse("tag tok", null, null, "U91HHN2JE"));
   console.log("⚡️ Slakbot is running!");
 
   console.log(
@@ -89,19 +90,24 @@ client.on("ready", async (client) => {
 });
 
 client.on("messageCreate", async (msg) => {
-  console.log(msg.content);
+  const botIdRegex = new RegExp("^<@875074049968058431>");
+  let message = msg.content.replace(botIdRegex, "").trim();
 
-  const botIdRegex = new RegExp(`(<@)(${DISCORD_IDS.join("|")})(>)`);
+  console.log(msg.content);
+  console.log(botIdRegex);
+  console.log(msg.content.match(botIdRegex));
 
   if (msg.content.match(botIdRegex)) {
-    let message = msg.content.replace(botIdRegex, "").trim();
     const response = await maggieDiscord.getMentionResponse(
       message,
       null,
       [],
       msg.author.id
     );
-    msg.channel.send(response);
+
+    if (response != null && response != "") {
+      msg.channel.send(response);
+    }
   }
 });
 

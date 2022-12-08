@@ -19,6 +19,9 @@ class ImageService {
     );
     const removedPrefixFromSuggest = text.replace(regex, "");
 
+    console.log("text: ", text);
+    console.log("filtered: ", removedPrefixFromSuggest);
+
     let result = await this.search.cse.list({
       searchType: "image",
       cx: "eb00fd8986af6a2ce",

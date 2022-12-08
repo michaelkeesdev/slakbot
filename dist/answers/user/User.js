@@ -90,6 +90,21 @@ var USERS = [{
   firstName: "Hadrien",
   lastName: "Van Durme",
   birthday: ""
+}, {
+  id: "U02T3PUCM4K",
+  tagName: "Fluppe",
+  shortNames: ["flup", "fluppe"],
+  firstName: "Filip",
+  lastName: "Dewinter",
+  birthday: ""
+}, {
+  id: null,
+  discordId: "914147362069442560",
+  tagName: "Tok",
+  shortNames: ["tok", "tokke"],
+  firstName: "Thomas",
+  lastName: "",
+  birthday: ""
 }];
 exports.USERS = USERS;
 var USERS_EXTRA = [{

@@ -31,23 +31,25 @@ var ImageService = /*#__PURE__*/_createClass(function ImageService() {
             case 0:
               regex = new RegExp("(?:^|\\W)(.*?)(".concat(_Images.IMAGE_TRIGGER.join("|"), ")(?:$|\\W)"), "ig");
               removedPrefixFromSuggest = text.replace(regex, "");
-              _context.next = 4;
+              console.log("text: ", text);
+              console.log("filtered: ", removedPrefixFromSuggest);
+              _context.next = 6;
               return _this.search.cse.list({
                 searchType: "image",
                 cx: "eb00fd8986af6a2ce",
                 q: removedPrefixFromSuggest
               });
-            case 4:
+            case 6:
               result = _context.sent;
               if (!((_result$data = result.data) !== null && _result$data !== void 0 && (_result$data$items = _result$data.items) !== null && _result$data$items !== void 0 && _result$data$items.length)) {
-                _context.next = 8;
+                _context.next = 10;
                 break;
               }
               item = (0, _lodash.sample)(result.data.items);
               return _context.abrupt("return", item.link);
-            case 8:
+            case 10:
               return _context.abrupt("return", null);
-            case 9:
+            case 11:
             case "end":
               return _context.stop();
           }

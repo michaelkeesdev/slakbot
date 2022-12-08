@@ -77,8 +77,12 @@ var TagService = /*#__PURE__*/function () {
     key: "tagUser",
     value: function tagUser(user) {
       if (user != null) {
-        if (this.platform == "slack" && user.id) {
-          return "<@".concat(user.id, ">");
+        if (this.platform == "slack") {
+          if (user.id) {
+            return "<@".concat(user.id, ">");
+          } else {
+            return "wa? ".concat(user.tagName, " zit hier toch ni?");
+          }
         } else if (user.discordId) {
           return "<@".concat(user.discordId, ">");
         }

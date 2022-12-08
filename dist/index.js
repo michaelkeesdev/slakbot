@@ -116,14 +116,20 @@ _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
           _context4.next = 2;
           return app.start(process.env.PORT || 8080);
         case 2:
-          console.log("⚡️ Slakbot is running!");
           _context4.t0 = console;
-          _context4.next = 6;
-          return maggieSlack.getMentionResponse("denk gij wel content he?", null);
-        case 6:
+          _context4.next = 5;
+          return maggieSlack.getMentionResponse("tag tok", null, null, "U91HHN2JE");
+        case 5:
           _context4.t1 = _context4.sent;
-          _context4.t0.log.call(_context4.t0, "test", _context4.t1);
-        case 8:
+          _context4.t0.log.call(_context4.t0, "tag", _context4.t1);
+          console.log("⚡️ Slakbot is running!");
+          _context4.t2 = console;
+          _context4.next = 11;
+          return maggieSlack.getMentionResponse("denk gij wel content he?", null);
+        case 11:
+          _context4.t3 = _context4.sent;
+          _context4.t2.log.call(_context4.t2, "test", _context4.t3);
+        case 13:
         case "end":
           return _context4.stop();
       }
@@ -159,19 +165,23 @@ client.on("messageCreate", /*#__PURE__*/function () {
       while (1) {
         switch (_context6.prev = _context6.next) {
           case 0:
+            botIdRegex = new RegExp("^<@875074049968058431>");
+            message = msg.content.replace(botIdRegex, "").trim();
             console.log(msg.content);
-            botIdRegex = new RegExp("(<@)(".concat(DISCORD_IDS.join("|"), ")(>)"));
+            console.log(botIdRegex);
+            console.log(msg.content.match(botIdRegex));
             if (!msg.content.match(botIdRegex)) {
-              _context6.next = 8;
+              _context6.next = 10;
               break;
             }
-            message = msg.content.replace(botIdRegex, "").trim();
-            _context6.next = 6;
+            _context6.next = 8;
             return maggieDiscord.getMentionResponse(message, null, [], msg.author.id);
-          case 6:
-            response = _context6.sent;
-            msg.channel.send(response);
           case 8:
+            response = _context6.sent;
+            if (response != null && response != "") {
+              msg.channel.send(response);
+            }
+          case 10:
           case "end":
             return _context6.stop();
         }

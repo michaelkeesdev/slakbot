@@ -1,6 +1,6 @@
 import { sample } from "lodash";
 import { JOKE_PREFIX, JOKE_SUFFIX } from "../../answers/Joke";
-import { HttpClient } from "./../../../httpClient";
+import { HttpClient } from "./../../httpClient";
 
 class MopService {
     httpClient; 

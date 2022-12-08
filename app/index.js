@@ -5,7 +5,7 @@ require("dotenv").config();
 
 const { Client, Intents, MessageEmbed } = require("discord.js");
 
-import { Maggie } from "./app/Maggie";
+import { Maggie } from "./Maggie";
 
 const app = new App({
   signingSecret: process.env.SLACK_SIGNING_SECRET,
@@ -58,6 +58,11 @@ app.event("app_mention", async ({ context, event }) => {
   await app.start(process.env.PORT || 8080);
     console.log("tag", await maggieSlack.getMentionResponse("tag tok", null, null, "U91HHN2JE"));
   console.log("⚡️ Slakbot is running!");
+
+  console.log(
+    "test",
+    await maggieSlack.getMentionResponse("denk gij wel content he?", null)
+  );
 })();
 
 const DISCORD_IDS = [

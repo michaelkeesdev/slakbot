@@ -7,15 +7,11 @@
     "node": "16.13.1"
   },
   "scripts": {
-    "start": "nodemon --exec npx babel-node index.js",
-    "start:node": "babel-node -- index.js",
-    "node": "node index.js"
+    "start": "node dist/index.js",
+    "start:dev": "nodemon --exec babel-node src/index.js",
+    "build": "rimraf dist && babel app --out-dir dist  --copy-files"
   },
   "dependencies": {
-    "@babel/cli": "^7.14.8",
-    "@babel/core": "^7.15.0",
-    "@babel/node": "^7.12.10",
-    "@babel/preset-env": "^7.12.11",
     "@rollup/plugin-babel": "^5.2.2",
     "@slack/bolt": "^2.4.1",
     "@slack/events-api": "^3.0.0",
@@ -25,7 +21,7 @@
     "babel-preset-es2015": "6.14.0",
     "cheerio": "^1.0.0-rc.5",
     "discord-interactions": "^2.3.0",
-    "discord.js": "^13.2.0",
+    "discord.js": "^13.2.0", 
     "dotenv": "^8.6.0",
     "express": "^4.17.1",
     "fuse.js": "^6.4.6",
@@ -36,7 +32,16 @@
     "nlp-tokenizer": "^1.0.0",
     "node-cron": "^3.0.0",
     "node-fetch": "^2.6.1",
-    "nodemon": "^2.0.7",
     "redtube": "^2.0.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.20.5",
+    "@babel/node": "^7.20.5",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-proposal-object-rest-spread": "^7.20.2",
+    "@babel/preset-env": "^7.20.2",
+    "nodemon": "^2.0.20",
+    "rimraf": "^3.0.2"
   }
 }

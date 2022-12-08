@@ -36,9 +36,9 @@ class Maggie {
   }
 
   getMentionResponse = async (textInput, context, files, user) => {
-
     if (!this.isMaggieInHoekForTimeout(1)) {
       const text = textInput?.replace(`<@${context?.botUserId}>`, "").trim();
+      this.maggieBrein.setMood(text);
       let imageUrl;
       if (files?.length > 0) {
         imageUrl = files[0]?.thumb_960;
@@ -64,15 +64,21 @@ class Maggie {
         if (text.split(" of ").length > 1) {
           response = this.maggieMond.makeDecision(text);
         } else {
-          response = this.maggieMond.giveBasicAnswer(text);
+          response = this.maggieMond.giveBasicAnswer(
+            text,
+            this.maggieBrein.getMood()
+          );
         }
       }
 
-      if (TIMEOUT_TRIGGER.includes(textInput) && !this.isMaggieInHoekForTimeout(0)) {
+      if (
+        TIMEOUT_TRIGGER.includes(textInput) &&
+        !this.isMaggieInHoekForTimeout(0)
+      ) {
         this.setMaggieInHoekForTimeout(user);
         response = sample(TIMEOUT_ANSWER);
       }
-      
+
       this.maggieBrein.pushMessage({ text: response, user: this.id });
 
       return response;
@@ -82,7 +88,6 @@ class Maggie {
       }
     }
   };
-
 
   getMessageResponses = async (message, user) => {
     if (!this.isMaggieInHoekForTimeout(1)) {

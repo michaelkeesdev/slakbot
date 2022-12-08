@@ -17,9 +17,9 @@ class WhereService {
   responseBuilder;
 
   constructor(mood, inputText, responseBuilder) {
-      this.mood = mood;
-      this.inputText = inputText;
-      this.responseBuilder = responseBuilder;
+    this.mood = mood;
+    this.inputText = inputText;
+    this.responseBuilder = responseBuilder;
   }
 
   answer = () => {
@@ -67,11 +67,10 @@ class WhereService {
     if (pidWhoIncl === 1) {
       place = place + " met " + user;
     }
-    console.log("place", place);
 
     this.responseBuilder.append(place);
     return this.responseBuilder.toString();
-  }
+  };
 
   changeDecisionBasedOnText(decision) {
     switch (this.inputText) {

@@ -11,7 +11,18 @@ import { WHEN_ANSWER } from "./../answers/When";
 import { SORRY_ANSWER } from "./../answers/Sorry";
 import { TIMEOUT_STOP_PLACEHOLDER } from "../answers/Timeout";
 
-import { BaseAnweringService, COMMAND_DECISION, COMMAND_HOW, COMMAND_HOWMUCH, COMMAND_HOWYOUDOING, COMMAND_WHAT, COMMAND_WHERE, COMMAND_WHY, COMMAND_YESNODONTKNOW } from "./answering/BaseAnsweringService";
+import { BaseAnweringServiceV2 } from "./answering/BaseAnsweringServiceV2";
+import {
+  BaseAnweringService,
+  COMMAND_DECISION,
+  COMMAND_HOW,
+  COMMAND_HOWMUCH,
+  COMMAND_HOWYOUDOING,
+  COMMAND_WHAT,
+  COMMAND_WHERE,
+  COMMAND_WHY,
+  COMMAND_YESNODONTKNOW,
+} from "./answering/BaseAnsweringService";
 import { UserService } from "./user/UserService";
 import { BirthdayService } from "./user/BirthdayService";
 import { NewsService } from "./news/NewsService";
@@ -22,7 +33,7 @@ import { TubeService } from "./google/TubeService";
 import { EuroMillionsService } from "./game/EuroMillionsService";
 import { WeatherService } from "./weather/WeatherService";
 import { TimeService } from "./time/TimeService";
-import { HttpClient } from "../../httpClient";
+import { HttpClient } from "../httpClient";
 import { DeviantArtService } from "./deviantart/deviantArtService";
 import { MONTH_ANSWERS } from "../answers/Month";
 import { GAME_ANSWERS } from "../answers/Game";
@@ -39,6 +50,7 @@ import { PoepService } from "./game/PoepService";
 import { MopService } from "./mop/MopService";
 
 const baseAnweringService = new BaseAnweringService();
+const baseAnweringServicev2 = new BaseAnweringServiceV2();
 
 const httpClient = new HttpClient();
 const userService = new UserService();
@@ -70,39 +82,39 @@ class MaggieMond {
 
   // BASE ANSWER SERVICE
 
-  giveBasicAnswer(text) {
-    return baseAnweringService.answer(COMMAND_YESNODONTKNOW, "mood", text);
+  giveBasicAnswer(text, mood) {
+    return baseAnweringServicev2.answer(COMMAND_YESNODONTKNOW, mood, text);
   }
 
   makeDecision(text) {
-    return baseAnweringService.answer(COMMAND_DECISION, "mood", text);
+    return baseAnweringServicev2.answer(COMMAND_DECISION, "mood", text);
   }
 
   sayHow(text) {
-    return baseAnweringService.answer(COMMAND_HOW, "mood", text);
+    return baseAnweringServicev2.answer(COMMAND_HOW, "mood", text);
   }
 
   sayHowMuch(text) {
-    return baseAnweringService.answer(COMMAND_HOWMUCH, "mood", text);
+    return baseAnweringServicev2.answer(COMMAND_HOWMUCH, "mood", text);
   }
 
-  sayHowYouDoing(text) {
-    return baseAnweringService.answer(COMMAND_HOWYOUDOING, "mood", text);
+  sayHowYouDoing(text, mood) {
+    return baseAnweringServicev2.answer(COMMAND_HOWYOUDOING, mood, text);
   }
 
   sayWhat(text) {
-    return baseAnweringService.answer(COMMAND_WHAT, "mood", text);
+    return baseAnweringServicev2.answer(COMMAND_WHAT, "mood", text);
   }
 
   sayWhere(text) {
-    return baseAnweringService.answer(COMMAND_WHERE, "mood", text);
+    return baseAnweringServicev2.answer(COMMAND_WHERE, "mood", text);
   }
 
   sayWhy(text) {
-    return baseAnweringService.answer(COMMAND_WHY, "mood", text);
+    return baseAnweringServicev2.answer(COMMAND_WHY, "mood", text);
   }
 
-  // CUSTOM //  
+  // CUSTOM //
 
   askBasicFollowUpQuestion() {
     return sample(BASIC_FOLLOWUP_QUESTION);

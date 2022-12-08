@@ -23,6 +23,11 @@ app.event("message", async ({ event, context }) => {
   let user = event?.user;
   console.log("message event", `${user}: ${text}`);
 
+  const pinMessagePid = Math.floor(Math.random() * 2);
+  if (pinMessagePid === 1) {
+    await app.client.pins.add(channel);
+  }
+
   const messages = await maggieSlack.getMessageResponses(text, user);
 
   if (messages?.length) {
@@ -56,7 +61,10 @@ app.event("app_mention", async ({ context, event }) => {
 
 (async () => {
   await app.start(process.env.PORT || 8080);
-    console.log("tag", await maggieSlack.getMentionResponse("tag tok", null, null, "U91HHN2JE"));
+  console.log(
+    "tag",
+    await maggieSlack.getMentionResponse("tag tok", null, null, "U91HHN2JE")
+  );
   console.log("⚡️ Slakbot is running!");
 
   console.log(

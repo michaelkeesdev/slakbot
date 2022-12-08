@@ -1,5 +1,6 @@
 import { sample } from "lodash";
 
+import { App } from "@slack/bolt";
 import { BASIC_FOLLOWUP_QUESTION } from "./../answers/questions/BasicFollowUpQuestion";
 
 import { BYE_ANSWER } from "./../answers/Bye";

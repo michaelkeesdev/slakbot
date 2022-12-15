@@ -27,16 +27,16 @@ app.event("message", async ({ event, context }) => {
 
   const messages = await maggieSlack.getMessageResponses(text, user);
 
-  const pinMessageWritePid = Math.floor(Math.random() * 200);
+  const pinMessageWritePid = Math.floor(Math.random() * 20);
   if (pinMessageWritePid === 1) {
     await app.client.pins.add({ token, channel });
   }
 
-  const pinMessageReadPid = Math.floor(Math.random() * 10);
+  const pinMessageReadPid = Math.floor(Math.random() * 200);
   if (pinMessageReadPid === 1) {
     const pins = await app.client.pins.list({ token, channel });
     const message = sample(pins?.items)?.message;
-    messages.push(`${message.user}: ${message.text}`);
+    messages.push(`@<${message.user}> : ${message.text}`);
   }
 
   if (messages?.length) {

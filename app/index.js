@@ -29,12 +29,12 @@ app.event("message", async ({ event, context }) => {
 
   const pinMessageWritePid = Math.floor(Math.random() * 200);
   if (pinMessageWritePid === 1) {
-    await app.client.pins.add({ channel });
+    await app.client.pins.add({ token, channel });
   }
 
   const pinMessageReadPid = Math.floor(Math.random() * 200);
   if (pinMessageReadPid === 1) {
-    const pins = await app.client.pins.list({ channel });
+    const pins = await app.client.pins.list({ token, channel });
     messages.push(sample(pins));
   }
 
@@ -103,7 +103,6 @@ const client = new Client({
 
 client.on("ready", async (client) => {
   console.log(`Logged in as ${client.user.tag}!`);
-  await app.client.pins.add({ channel });
 });
 
 client.on("messageCreate", async (msg) => {

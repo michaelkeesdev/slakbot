@@ -30,34 +30,37 @@ app.event("message", /*#__PURE__*/function () {
             channel = event === null || event === void 0 ? void 0 : event.channel;
             text = event === null || event === void 0 ? void 0 : event.text;
             user = event === null || event === void 0 ? void 0 : event.user;
-            console.log("message event", "".concat(user, ": ").concat(text));
-            _context2.next = 8;
+            console.log("channel", JSON.stringify(channel));
+            console.log("message event", "".concat(user, ": ").concat(text, " ").concat(channel));
+            _context2.next = 9;
             return maggieSlack.getMessageResponses(text, user);
-          case 8:
+          case 9:
             messages = _context2.sent;
             pinMessageWritePid = Math.floor(Math.random() * 200);
             if (!(pinMessageWritePid === 1)) {
-              _context2.next = 13;
+              _context2.next = 14;
               break;
             }
-            _context2.next = 13;
+            _context2.next = 14;
             return app.client.pins.add({
+              token: token,
               channel: channel
             });
-          case 13:
+          case 14:
             pinMessageReadPid = Math.floor(Math.random() * 200);
             if (!(pinMessageReadPid === 1)) {
-              _context2.next = 19;
+              _context2.next = 20;
               break;
             }
-            _context2.next = 17;
+            _context2.next = 18;
             return app.client.pins.list({
+              token: token,
               channel: channel
             });
-          case 17:
+          case 18:
             pins = _context2.sent;
             messages.push((0, _lodash.sample)(pins));
-          case 19:
+          case 20:
             if (messages !== null && messages !== void 0 && messages.length) {
               messages.map( /*#__PURE__*/function () {
                 var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(message) {
@@ -85,7 +88,7 @@ app.event("message", /*#__PURE__*/function () {
                 };
               }());
             }
-          case 20:
+          case 21:
           case "end":
             return _context2.stop();
         }
@@ -166,12 +169,23 @@ var client = new Client({
 });
 client.on("ready", /*#__PURE__*/function () {
   var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(client) {
+    var res;
     return _regeneratorRuntime().wrap(function _callee5$(_context5) {
       while (1) {
         switch (_context5.prev = _context5.next) {
           case 0:
             console.log("Logged in as ".concat(client.user.tag, "!"));
-          case 1:
+            console.log("client", client);
+            console.log("token", app.token);
+            _context5.next = 5;
+            return app.client.pins.add({
+              token: app.token,
+              channel: "C92K3U2T1"
+            });
+          case 5:
+            res = _context5.sent;
+            console.log(res);
+          case 7:
           case "end":
             return _context5.stop();
         }

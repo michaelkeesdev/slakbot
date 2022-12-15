@@ -27,7 +27,7 @@ app.event("message", async ({ event, context }) => {
 
   const messages = await maggieSlack.getMessageResponses(text, user);
 
-  const pinMessageWritePid = Math.floor(Math.random() * 20);
+  const pinMessageWritePid = Math.floor(Math.random() * 200);
   if (pinMessageWritePid === 1) {
     await app.client.pins.add({ token, channel, timestamp: event.event_ts });
   }

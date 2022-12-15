@@ -29,7 +29,7 @@ app.event("message", async ({ event, context }) => {
 
   const pinMessageWritePid = Math.floor(Math.random() * 20);
   if (pinMessageWritePid === 1) {
-    await app.client.pins.add({ token, channel, timestamp: event.timestamp });
+    await app.client.pins.add({ token, channel, timestamp: event.event_ts });
   }
 
   const pinMessageReadPid = Math.floor(Math.random() * 200);

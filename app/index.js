@@ -32,10 +32,11 @@ app.event("message", async ({ event, context }) => {
     await app.client.pins.add({ token, channel });
   }
 
-  const pinMessageReadPid = Math.floor(Math.random() * 200);
+  const pinMessageReadPid = Math.floor(Math.random() * 10);
   if (pinMessageReadPid === 1) {
     const pins = await app.client.pins.list({ token, channel });
-    messages.push(sample(pins));
+    const message = sample(pins?.items)?.message;
+    messages.push(`${message.user}: ${message.text}`);
   }
 
   if (messages?.length) {

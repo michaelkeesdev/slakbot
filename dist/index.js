@@ -35,24 +35,29 @@ app.event("message", /*#__PURE__*/function () {
             return maggieSlack.getMessageResponses(text, user);
           case 8:
             messages = _context2.sent;
-            pinMessageWritePid = Math.floor(Math.random() * 2); // if (pinMessageWritePid === 1) {
-            _context2.next = 12;
+            pinMessageWritePid = Math.floor(Math.random() * 200);
+            if (!(pinMessageWritePid === 1)) {
+              _context2.next = 13;
+              break;
+            }
+            _context2.next = 13;
             return app.client.pins.add({
               channel: channel
             });
-          case 12:
-            // }
-            pinMessageReadPid = Math.floor(Math.random() * 20);
-            _context2.next = 15;
+          case 13:
+            pinMessageReadPid = Math.floor(Math.random() * 200);
+            if (!(pinMessageReadPid === 1)) {
+              _context2.next = 19;
+              break;
+            }
+            _context2.next = 17;
             return app.client.pins.list({
               channel: channel
             });
-          case 15:
+          case 17:
             pins = _context2.sent;
-            //if (pinMessageReadPid === 1) {
             messages.push((0, _lodash.sample)(pins));
-            //}
-
+          case 19:
             if (messages !== null && messages !== void 0 && messages.length) {
               messages.map( /*#__PURE__*/function () {
                 var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(message) {
@@ -80,7 +85,7 @@ app.event("message", /*#__PURE__*/function () {
                 };
               }());
             }
-          case 18:
+          case 20:
           case "end":
             return _context2.stop();
         }

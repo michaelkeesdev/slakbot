@@ -19,17 +19,17 @@ const maggieDiscord = new Maggie("discord");
 app.event("message", async ({ event, context }) => {
   const token = context?.botToken;
   const channel = event?.channel;
+  console.log("event,", JSON.stringify(event));
 
   let text = event?.text;
   let user = event?.user;
-  console.log("channel", JSON.stringify(channel));
   console.log("message event", `${user}: ${text} ${channel}`);
 
   const messages = await maggieSlack.getMessageResponses(text, user);
 
   const pinMessageWritePid = Math.floor(Math.random() * 20);
   if (pinMessageWritePid === 1) {
-    await app.client.pins.add({ token, channel, timestamp: event.ts });
+    await app.client.pins.add({ token, channel, timestamp: event.timestamp });
   }
 
   const pinMessageReadPid = Math.floor(Math.random() * 200);

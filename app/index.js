@@ -22,6 +22,7 @@ app.event("message", async ({ event, context }) => {
 
   let text = event?.text;
   let user = event?.user;
+  console.log("channel", JSON.stringify(channel));
   console.log("message event", `${user}: ${text} ${channel}`);
 
   const messages = await maggieSlack.getMessageResponses(text, user);
@@ -102,6 +103,7 @@ const client = new Client({
 
 client.on("ready", async (client) => {
   console.log(`Logged in as ${client.user.tag}!`);
+  await app.client.pins.add({ channel });
 });
 
 client.on("messageCreate", async (msg) => {

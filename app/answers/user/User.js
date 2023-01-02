@@ -145,5 +145,9 @@ export const USERS_EXTRA = [{
     shortNames: ["Bart", "Dollarbart", ""],
     firstName: "Bart",
     lastName: "Jans"
+}, {
+    shortNames: ["nun", "nunun", "Nun'un"],
+    firstName: "Kornrat",
+    lastName: "Suya-in"
 }]
 

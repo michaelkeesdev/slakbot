@@ -12,6 +12,7 @@ export const PARTIJ_NAMES = [
     "cd&v",
     "de cd&v",
     "groen",
-    "de groen"
+    "de groen",
+    "geen enkele"
   ];
   

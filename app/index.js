@@ -72,7 +72,7 @@ app.event("app_mention", async ({ context, event }) => {
   await app.start(process.env.PORT || 8080);
   console.log(
     "tag",
-    await maggieSlack.getMentionResponse("tag tok", null, null, "U91HHN2JE")
+    await maggieSlack.getMentionResponse("welke partij", null, null, "U91HHN2JE")
   );
   console.log("⚡️ Slakbot is running!");
 

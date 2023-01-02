@@ -49,6 +49,7 @@ import { WikiService } from "./wiki/WikiService";
 import { ImageService } from "./google/ImageService";
 import { PoepService } from "./game/PoepService";
 import { MopService } from "./mop/MopService";
+import { PolitiekService } from "./politiek/PolitiekService";
 
 const baseAnweringService = new BaseAnweringService();
 const baseAnweringServicev2 = new BaseAnweringServiceV2();
@@ -73,6 +74,7 @@ const wikiService = new WikiService(httpClient);
 const imageService = new ImageService();
 const poepService = new PoepService();
 const mopService = new MopService();
+const politiekService = new PolitiekService();
 
 class MaggieMond {
   tagService;
@@ -248,6 +250,9 @@ class MaggieMond {
   }
   sayMopje() {
     return mopService.sayMopje();
+  }
+  sayPartij() {
+    return politiekService.sayPartij();
   }
 }
 

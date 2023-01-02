@@ -295,6 +295,9 @@ class MaggieBrein {
       {
         names: ["mop", "mopje", "grapje"],
         action: async (text) => await this.maggieMond.sayMopje(text),
+      }, {
+        names: ["welke partij", "partij", "politiek"],
+        action: async (text) => await this.maggieMond.sayPartij(),
       },
     ];
   }

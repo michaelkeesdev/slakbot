@@ -36,7 +36,7 @@ app.event("message", async ({ event, context }) => {
   if (pinMessageReadPid === 1) {
     const pins = await app.client.pins.list({ token, channel });
     const message = sample(pins?.items)?.message;
-    messages.push(`@<${message.user}> : ${message.text}`);
+    messages.push(`${message.text}`);
   }
 
   if (messages?.length) {

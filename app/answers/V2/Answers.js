@@ -43,7 +43,7 @@ export const BASIC_ANSWER = [
   {
     value: "Dat is een zekerheid",
     tags: ["HAPPY", "KIND", "AGREE"],
-    frequency: 505,
+    frequency: 50,
   },
   { value: "Zal zo zijn", tags: ["AGREE"], frequency: 40 },
   { value: "Ja", tags: ["AGREE"], frequency: 90 },
@@ -52,7 +52,7 @@ export const BASIC_ANSWER = [
   {
     value: "Wees daar maar zeker van",
     tags: ["HAPPY", "KIND", "AGREE"],
-    frequency: 505,
+    frequency: 50,
   },
   { value: "Absoluut", tags: ["AGREE"], frequency: 20 },
   { value: "Gelijk", tags: ["KIND", "AGREE"], frequency: 50 },

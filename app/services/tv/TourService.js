@@ -3,7 +3,7 @@ import { RIDERS } from "./../../answers/riders";
 
 class TourService {
   giveRandomName() {
-    return sample(RIDERS);
+    return sample(RIDERS).name;
   }
 }
 

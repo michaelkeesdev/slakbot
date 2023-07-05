@@ -273,6 +273,10 @@ class MaggieBrein {
         action: async () => this.maggieMond.sayMolName(),
       },
       {
+        names: ["tour", "koereur", "wielrenner", "wie tour", "etap", "wie etap", "etappe"],
+        action: async () => this.maggieMond.sayTourName(),
+      },
+      {
         names: ["kleur"],
         action: () => this.maggieMond.sayColour(),
       },

@@ -45,6 +45,7 @@ import { HOER } from "../answers/Hoer";
 import { TagService } from "./user/TagService";
 import { TokenizerService } from "./tokenizer/Tokenizer";
 import { MolService } from "./tv/MolService";
+import { TourService } from "./tv/TourService";
 import { WikiService } from "./wiki/WikiService";
 import { ImageService } from "./google/ImageService";
 import { PoepService } from "./game/PoepService";
@@ -70,6 +71,7 @@ const recognitionService = new ImageRecognitionService(httpClient);
 const foodService = new FoodService(httpClient, tokenizer);
 const timeService = new TimeService();
 const molService = new MolService();
+const tourService = new TourService();
 const wikiService = new WikiService(httpClient);
 const imageService = new ImageService();
 const poepService = new PoepService();
@@ -226,6 +228,9 @@ class MaggieMond {
   }
   sayMolName() {
     return molService.giveRandomName();
+  }
+  sayTourName() {
+    return tourService.giveRandomName();
   }
   sayColour() {
     return sample(COLOURS);

@@ -77,7 +77,7 @@ class NinegagV2 {
       response = await this.httpClient.get(url);
       console.log(response);
       const filterPosts = response?.data?.posts.filter(
-        (post) => !post?.images?.image700
+        (post) => !!post?.images?.image700
       );
       posts = posts.concat(filterPosts);
       

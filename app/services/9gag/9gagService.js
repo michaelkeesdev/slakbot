@@ -71,7 +71,7 @@ class NinegagV2 {
     for (let i = 0; i < pages; i++) {
       let url = TAG_POSTS_URL + tag;
       if (response?.data?.nextCursor) {
-          url += "?" + nextCursor;
+          url += "?" + response?.data?.nextCursor;
       }
       response = await this.httpClient.get(url);
       const filterPosts = response?.data?.posts.filter(

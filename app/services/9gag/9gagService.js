@@ -93,7 +93,7 @@ class NineGagService {
   };
 
   get9gagGirl = async () => {
-    return await new NinegagV2().scrap("nsfw", 10);
+    return await new NinegagV2().get("nsfw", 10);
   };
 }
 

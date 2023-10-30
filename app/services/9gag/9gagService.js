@@ -81,7 +81,7 @@ class NinegagV2 {
       console.log(sample(posts));
     }
     const post = sample(posts);
-    const url = post.images.image700.replaceAll("\");
+    const url = post.images.image700.url.replaceAll("\", "");
     return url;
   }
 }

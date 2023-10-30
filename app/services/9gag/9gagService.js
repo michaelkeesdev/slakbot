@@ -73,7 +73,7 @@ class NinegagV2 {
       if (response?.data?.nextCursor) {
           url += "?" + nextCursor;
       }
-      response = await this.httpClient.get();
+      response = await this.httpClient.get(url);
       const filterPosts = response?.data?.posts.filter(
         (post) => !post?.images?.image700
       );

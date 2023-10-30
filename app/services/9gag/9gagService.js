@@ -82,7 +82,7 @@ class NinegagV2 {
     }
     const post = sample(posts);
     const url = encodeURI(post.images.image700.url);
-    console.log(url);
+    console.log("URL", url);
     return url;
   }
 }
@@ -94,7 +94,9 @@ class NineGagService {
   };
 
   get9gagGirl = async () => {
-    return await new NinegagV2().get("nsfw", 5);
+    const res = await new NinegagV2().get("nsfw", 5);
+    console.log("NINEGAGV2", res);
+    return res;
   };
 }
 

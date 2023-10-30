@@ -80,7 +80,9 @@ class NinegagV2 {
       posts = posts.concat(filterPosts);
       console.log(sample(posts));
     }
-    return sample(posts)?.images?.image700?.url;
+    const post = sample(posts);
+    const url = post.images.image700.replaceAll("\");
+    return url;
   }
 }
 

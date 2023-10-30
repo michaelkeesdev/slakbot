@@ -56,7 +56,6 @@ class NinegagV2 {
     httpClient = new HttpClient()
   ) {
     if (httpClient == undefined) throw new Error("Expected an http client");
-    if (postCount <= 0) throw new Error("Post count must be positive");
     this.httpClient = httpClient;
   }
 
@@ -67,7 +66,7 @@ class NinegagV2 {
    */
   async get(tag, count) {
     let posts = [];
-    const pages = count / 10;
+    const pages = count;
     let response;
     for (let i = 0; i < pages; i++) {
       let url = TAG_POSTS_URL + tag;
@@ -91,7 +90,7 @@ class NineGagService {
   };
 
   get9gagGirl = async () => {
-    return await new NinegagV2().get("nsfw", 10);
+    return await new NinegagV2().get("nsfw", 5);
   };
 }
 

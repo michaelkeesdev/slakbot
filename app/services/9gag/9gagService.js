@@ -70,13 +70,11 @@ class NinegagV2 {
     const pages = count / 10;
     let response;
     for (let i = 0; i < pages; i++) {
-      response = await this.httpClient.get(
-        let url = TAG_POSTS_URL + tag;
-        if (response?.data?.nextCursor) {
+      let url = TAG_POSTS_URL + tag;
+      if (response?.data?.nextCursor) {
           url += "?" + nextCursor;
-        }
-        return url;
-      );
+      }
+      response = await this.httpClient.get();
       const filterPosts = response?.data?.posts.filter(
         (post) => !post?.images?.image700
       );

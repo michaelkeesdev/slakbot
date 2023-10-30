@@ -2,6 +2,7 @@ import { sample } from "lodash";
 import { HttpClient } from "./../../httpClient";
 
 const BASE_POSTS_URL = "https://9gag.com/v1/group-posts/group/";
+const TAG_POSTS_URL = "https://9gag.com/v1/tag-posts/tag/"; 
 
 class Ninegag {
   constructor(
@@ -50,6 +51,41 @@ class Ninegag {
   }
 }
 
+class NinegagV2 {
+  constructor(
+    httpClient = new HttpClient()
+  ) {
+    if (httpClient == undefined) throw new Error("Expected an http client");
+    if (postCount <= 0) throw new Error("Post count must be positive");
+    this.httpClient = httpClient;
+  }
+
+  /**
+   * Scraps 9gag from the start or continues after some post id
+   *
+   * @param {string} [group] - group section
+   */
+  async get(tag, count) {
+    let posts = [];
+    const pages = count / 10;
+    let response;
+    for (let i = 0; i < pages; i++) {
+      response = await this.httpClient.get(
+        let url = TAG_POSTS_URL + tag;
+        if (response?.data?.nextCursor) {
+          url += "?" + nextCursor;
+        }
+        return url;
+      );
+      const filterPosts = response?.data?.posts.filter(
+        (post) => !post?.images?.image700
+      );
+      posts = posts.concat(filterPosts);
+    }
+    return sample(posts)?.images?.image700?.url;
+  }
+}
+
 class NineGagService {
   get9gagBasic = async () => {
     // group-posts/group/default/type/hot
@@ -57,7 +93,7 @@ class NineGagService {
   };
 
   get9gagGirl = async () => {
-    return await new Ninegag(60, "hot", "default").scrap("girl");
+    return await new NinegagV2(50, "nsfw").scrap("girl");
   };
 }
 

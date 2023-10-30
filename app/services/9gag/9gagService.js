@@ -73,12 +73,14 @@ class NinegagV2 {
       if (response?.data?.nextCursor) {
           url += "?" + response?.data?.nextCursor;
       }
+      console.log("url", url);
       response = await this.httpClient.get(url);
+      console.log(response);
       const filterPosts = response?.data?.posts.filter(
         (post) => !post?.images?.image700
       );
       posts = posts.concat(filterPosts);
-      console.log(sample(posts));
+      
     }
     const post = sample(posts);
     const url = encodeURI(post.images.image700.url);

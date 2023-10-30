@@ -78,6 +78,7 @@ class NinegagV2 {
         (post) => !post?.images?.image700
       );
       posts = posts.concat(filterPosts);
+      console.log(sample(posts));
     }
     return sample(posts)?.images?.image700?.url;
   }
